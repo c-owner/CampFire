@@ -5258,8 +5258,8 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				/* font-family: 'Font Awesome 5 Free'; */
-				font-family: 'Nanum Brush Script', cursive;
+				font-family: 'Font Awesome 5 Free';
+				/* font-family: 'Nanum Brush Script', cursive; */
 				font-weight: 900;
 			}
 
