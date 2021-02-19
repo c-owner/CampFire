@@ -1,0 +1,81 @@
+///
+/// Momentum by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Posts */
+
+	.posts {
+		@include fixed-grid((
+			columns:			3,
+			gutters:			5rem
+		));
+
+		article {
+			margin-bottom: _size(element-margin) * 2;
+
+			.image {
+				margin-bottom: _size(element-margin);
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint('<=xlarge') {
+			@include fixed-grid-resize((
+				columns:		3,
+				gutters:		4rem
+			));
+		}
+
+		@include breakpoint('<=large') {
+			@include fixed-grid-resize((
+				columns:		3,
+				gutters:		3rem
+			));
+		}
+
+		@include breakpoint('medium') {
+			article {
+				text-align: center;
+			}
+
+			ul {
+				&.actions {
+					@include vendor('justify-content', 'center');
+				}
+			}
+		}
+
+		@include breakpoint('<=medium') {
+			@include fixed-grid-resize((
+				columns:		1,
+				gutters:		1rem,
+				prev-columns:	3
+			));
+
+			article {
+				margin-bottom: 3rem;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		@include breakpoint('<=small') {
+
+			@include fixed-grid-resize((
+				columns:		1,
+				gutters:		0.25rem,
+				prev-columns:	3
+			));
+
+			article {
+				margin-bottom: _size(element-margin) * 1.25;
+			}
+		}
+	}

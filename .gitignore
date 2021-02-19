@@ -1,0 +1,74 @@
+<<<<<<< HEAD
+/.metadata/
+.DS_Store
+=======
+# OS Files #
+.DS_Store
+   
+*.class
+   
+# Package Files #
+# *.jar
+# *.war
+# *.ear
+# *.db
+   
+######################
+# Windows
+######################
+   
+# Windows image file caches
+Thumbs.db
+   
+# Folder config file
+Desktop.ini
+   
+######################
+# OSX
+######################
+   
+.DS_Store
+.svn
+   
+# Thumbnails
+._*
+   
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+   
+   
+######################
+# Eclipse
+######################
+   
+*.pydevproject
+.metadata
+.project
+ bin/**
+.classpath
+.settings/
+# resource/*
+Servers
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+/src/main/resources/rebel.xml
+# External tool builders
+.externalToolBuilders/
+   
+# Locally stored "Eclipse launch configurations"
+*.launch
+   
+# CDT-specific
+.cproject
+   
+# PDT-specific
+.buildpath
+#-------------
+>>>>>>> 7143ab9c50dd9d29e2c446241b58fcf607dde568
