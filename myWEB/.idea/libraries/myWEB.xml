@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="myWEB">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/simplecaptcha-1.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
