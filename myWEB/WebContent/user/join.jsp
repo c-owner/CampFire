@@ -1,89 +1,71 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: corne
+  Date: 2021-03-05
+  Time: 오후 5:17
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="stylesheet" href="assets/css/main.css" />
-<link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
 </head>
 <body class="is-preload">
 
-	<!-- Header -->
-	<header id="header">
-
-		<!-- Nav -->
-		<nav id="nav">
-			<ul>
-				<a href="./index.html">
-				<img class="current" src="./images/menu-icon.png" alt="홈 바로가기" height="50"></a>
-					
-				<li class=""><a href="#">전체</a></li>
-				<li><a href="#" class="dropdown">계정 메뉴</a>
-					<ul>
-						<li class="actions stacked" style="margin: 0 auto; width: fit-content;">
-							<a href="./join.html">회원가입</a></li>
-						<li class="actions stacked" style="margin: 0 auto; width: fit-content;">
-							<a href="./login.html">로그인</a></li>
-					</ul></li>
-					<li><a href="#">공지사항</a></li>
-					<li><a href="elements.html">고객센터</a></li>
-				<!-- <li><a href="generic.html">Generic</a></li> -->
-				<!-- <li><a href="elements.html">Elements</a></li> -->
-			</ul>
-		</nav>
-
-		<!-- Logo -->
-		<!-- <a class="logo" href="index.html"> CORNER CAMP</a> -->
-	</header>
-</head>
+<!-- Header -->
+<jsp:include page="../assets/public/header.jsp"></jsp:include>
 
 <!-- 회원가입 부분 -->
 
-	<h3 style="text-align: center; font-size: 56px;">회원가입</h3>
-	<p></p>
-		<form method="post" action="#">
-			<div class="row gtr-uniform">
-				<div class="col-6 col-12-xsmall" style="margin: 0 auto;">
-					<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red; 
+<h3 style="text-align: center; font-size: 56px;">회원가입</h3>
+<p></p>
+<form method="post" action="#">
+    <div class="row gtr-uniform">
+        <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
+            <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 4~12길이)</span>
-				<input type="text" name="nickname" id="nickname" placeholder="ex)abc123 / abcd" minlength="4" maxlength="12" />
-				<br>
-				<span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
-				<span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
+            <input type="text" name="nickname" id="nickname" placeholder="ex)abc123 / abcd" minlength="4" maxlength="12" />
+            <br>
+            <span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
+            <span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
 					(* 영문+숫자+대소문자 조합 8자이상 입력) </span>
-				<input type="password" name="pw" id="pw"/>
-				 
-				<br>
-				<span style="color: red;">* </span><span style="font-weight: bold;">비밀번호 확인 </span> 
-				<input type="password" name="pw" id="pw"/>
-				<br>
-				<span style="color: red;">* </span><span style="font-weight: bold;">이메일</span> 
-				<input type="email" name="email" id="email" placeholder="abc@gmail.com" />
-				<div class="col-6 col-12-small">
-					<input type="checkbox" id="email-push" name="email-push" onclick="checkOnlyOne(this)" >
-					[선택]
-					<label for="email-push">수신거부</label>
-					<input type="checkbox" id="email-push2" name="email-push" onclick="checkOnlyOne(this)" checked>
-					<label for="email-push2">수신동의</label>
-				</div>
-				
-				
-			</div>
-			<div class="col-12">
-				<br>
-				<input type="checkbox" id="Agree" name="Agree">
-				<label for="Agree" style="margin-left: 25%;">
-					<span style="color:crimson; font-size: 20px;">*[필수] <b>홈페이지 이용약관 동의 </span>
-				</label>
-				
-				<br>
-				<span style="color: black; margin-left:25%; font-weight: bold;">개인정보 보호 약관</span>
-				<textarea name="textarea" id="textarea" rows="10" readonly
-			style="resize:inherit; width: 50%; margin: 0 auto; ">
+            <input type="password" name="pw" id="pw"/>
+
+            <br>
+            <span style="color: #ff0000;">* </span><span style="font-weight: bold;">비밀번호 확인 </span>
+            <input type="password" name="pw" id="pw"/>
+            <br>
+            <span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
+            <input type="email" name="email" id="email" placeholder="abc@gmail.com" />
+            <div class="col-6 col-12-small">
+                <input type="checkbox" id="email-push" name="email-push" onclick="checkOnlyOne(this)" >
+                [선택]
+                <label for="email-push">수신거부</label>
+                <input type="checkbox" id="email-push2" name="email-push" onclick="checkOnlyOne(this)" checked>
+                <label for="email-push2">수신동의</label>
+            </div>
+
+
+        </div>
+        <div class="col-12">
+            <br>
+            <input type="checkbox" id="Agree" name="Agree">
+            <label for="Agree" style="margin-left: 25%;">
+                <span style="color:crimson; font-size: 20px;">*[필수] <b>홈페이지 이용약관 동의 </span>
+            </label>
+
+            <br>
+            <span style="color: black; margin-left:25%; font-weight: bold;">개인정보 보호 약관</span>
+            <textarea name="textarea" id="textarea" rows="10" readonly
+                      style="resize:inherit; width: 50%; margin: 0 auto; ">
 시행일자 : 2020년 11월 16일
 
 제1조 (목적)
@@ -103,13 +85,13 @@
 1. 이 약관은 사이트를 통해 온라인으로 공시하고 회원의 동의로 효력을 발생합니다. 본 약관의 공시는 사이트에 게시하는 방법으로 합니다.
 2. 회사는 합리적인 사유가 발생할 경우 관련 법령에 위배되지 않는 범위 내에서 약관을 개정할 수 있습니다. 개정된 약관은 사이트를 통해 공지하거나 기타의 방법으로 회원에게 공지함으로써 그 효력이 발생하며, 이용자의 권리 또는 의무에 관한 변경은 최소한 7일 전에 공지합니다.
 3. 변경된 약관에 대한 정보를 알지 못해 발생하는 회원의 피해는 회사에서 책임지지 않습니다.
-4. 회원은 변경된 약관에 동의하지 않을 경우 서비스 이용을 중단하고 회원 탈퇴를 요청할 수 있습니다. 단, 이의가 있음에도 불구하고 제 2항에서 정한 바에 따른 회사의 고지가 있은 후 30일 이내에 이용계약을 하지 않은 회원은 변경된 약관에 동의한 것으로 간주합니다. 
+4. 회원은 변경된 약관에 동의하지 않을 경우 서비스 이용을 중단하고 회원 탈퇴를 요청할 수 있습니다. 단, 이의가 있음에도 불구하고 제 2항에서 정한 바에 따른 회사의 고지가 있은 후 30일 이내에 이용계약을 하지 않은 회원은 변경된 약관에 동의한 것으로 간주합니다.
 
 제4조 (약관외 준칙)
 회사는 필요한 경우 기타 유ㆍ무료 서비스 내의 운영원칙 또는 개별약관(이하 '서비스 별 약관'이라 합니다)를 정할 수 있으며, 본 약관과 서비스 별 약관의 내용이 상충되는 경우에는 서비스 별 약관의 내용을 우선하여 적용합니다.
 
 제5조 (회원 가입)
-1. 이 약관의 동의는 회원가입 당시 절차 상의 이용약관 및 개인정보처리방침에 동의한다는 의사표시와 함께 회사가 요청하는 정보를 제공하여 회원가입 신청을 완료함으로써 이루어집니다. 
+1. 이 약관의 동의는 회원가입 당시 절차 상의 이용약관 및 개인정보처리방침에 동의한다는 의사표시와 함께 회사가 요청하는 정보를 제공하여 회원가입 신청을 완료함으로써 이루어집니다.
 2. 회원으로 가입하여 서비스를 이용하고자 하는 이용자는 회사에서 요청하는 제반 정보(개인정보처리방침 제 1항 ‘수집하는 개인정보의 항목’)를 제공하여야 합니다.
 3. 회원은 반드시 회원 본인의 정보를 제공하여야만 서비스를 이용할 수 있으며, 타인의 정보를 도용하거나 허위의 정보를 등록하는 등 본인의 정확한 정보를 등록하지 않은 회원은 서비스 이용과 관련하여 아무런 권리를 주장할 수 없으며, 관계 법령에 따라 처벌 받을 수 있습니다. 또한 제 3자에게 야기한 손해를 배상할 책임이 있으며, 회사는 허위의 정보를 기재한 회원의 서비스 이용 자격을 제한할 수 있습니다.
 
@@ -185,149 +167,48 @@
 
 
 부칙 (시행일)
-본 약관은 2020년 11월 16일부터 적용하고, 2016년 5월 2일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.				
+본 약관은 2020년 11월 16일부터 적용하고, 2016년 5월 2일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.
 			</textarea>
-		</div>
-		
-		
-		</div>
-		<div class="col-12">
-			<br>
-			<ul class="actions">
-				<li style="margin: 0 auto;">
-				 <input type="submit" value="회원가입" class="primary" />
-				</li>
-			</ul>
-		</div>
-		</form>
+        </div>
+
+
+    </div>
+    <div class="col-12">
+        <br>
+        <ul class="actions">
+            <li style="margin: 0 auto;">
+                <input type="submit" value="회원가입" class="primary" />
+            </li>
+        </ul>
+    </div>
+</form>
 
 
 
 
-		<!-- Footer -->
-			<section id="footer">
-				<div class="wrapper style3">
-					<div class="inner">
-						<div>
-							<header>
-								<h3> 💡 Community</h3>
-							</header>
-							<div id="comm" class="maininfo">
-								<div class="m-wrap">
-									<!--community-->
-									
-			<dl> 
-				<dt class="sbj">
-					<img src="./images/community/bbsico_0.png" alt="" height="50"><br>
-					캠핑 팁					
-					<a href="./?c=info/camptip" class="fr more" title="더 보기">
-					<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve" width="16px" height="16px"><polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 " fill="#888"></polygon></svg>
-				</a>
-				</dt>
-			</dl> 
+<!-- Footer -->
+<jsp:include page="../assets/public/footer.jsp"></jsp:include>
 
-							
-			<dl> 
-				<dt class="sbj">
-					<img src="./images/community/bbsico_1.png" alt="" height="50"><br>
-					캠핑 음식					
-					<a href="./?c=info/campfood" class="fr more" title="더 보기">
-					<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve" width="16px" height="16px"><polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 " fill="#888"></polygon></svg>
-				</a>
-				</dt>
-																
-											</dl> 
+<!-- Scripts -->
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/browser.min.js"></script>
+<script src="../assets/js/jquery.dropotron.min.js"></script>
+<script src="../assets/js/breakpoints.min.js"></script>
+<script src="../assets/js/util.js"></script>
+<script src="../assets/js/main.js"></script>
 
-							
-			<dl> 
-				<dt class="sbj">
-					<img src="./images/community/bbsico_2.png" alt="" height="50"><br>
-					캠핑리뷰					
-					<a href="./?c=talk/review" class="fr more" title="더 보기">
-					<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve" width="16px" height="16px"><polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 " fill="#888"></polygon></svg>
-				</a>
-				</dt>
-																
-											</dl> 
+<script>
+    function checkOnlyOne(element) {
 
-							
-			<dl class="nomargin"> 
-				<dt class="sbj">
-					<img src="./images/community/bbsico_3.svg" alt="" height="50"><br>
-					자유게시판					
-					<a href="./?c=talk/freeboard" class="fr more" title="더 보기">
-					<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;" xml:space="preserve" width="16px" height="16px"><polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 " fill="#888"></polygon></svg>
-				</a>
-				</dt>
-											</dl> 
+        const checkboxes
+            = document.getElementsByName("email-push");
 
-	</div>	
-</div>
+        checkboxes.forEach((cb) => {
+            cb.checked = false;
+        })
 
-
-</div>
-
-
-<div>
-	<header>
-		<h3> </h3>
-	</header>
-	<a href="./index.html">
-		<img class="current" src="./images/menu-icon.png" alt="홈 바로가기" height="50"></a>
-							<div class="contact-icons">
-								<ul>
-									<li><a href="#" class="icon solid fa-envelope"><span>개인정보취급방침</span></a></li>
-									<li><a href="#" class="icon brands fa-twitter"><span>홈페이지 이용약관</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span>광고 및 제휴 문의</span></a></li>
-									<li><a href="#" class="icon brands fa-linkedin-in"><span>고객센터</span></a></li>
-									<li class="actions stacked" style=" width: fit-content;">
-										<a href="./join.html">회원가입</a></li>
-									<li class="actions stacked" style=" width: fit-content;">
-										<a href="./login.html">로그인</a></li>
-								</ul>
-								<ul>
-									<li><a href="#" class="icon solid fa-phone"><span>전화 (031) 211-0000</span></a></li>
-									<li>
-										<div class="icon solid fa-map-marker-alt">
-											<address>
-												Pangyo-ro<br />
-												Building, TN 1111-02230<br />
-												Bundang-gu, Gyeonggi-do<br />
-												Republic of Korea
-											</address>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-</div>
-<div class="copyright">
-					&copy; Camp Corner, All rights reserved. .
-</div>
-</div>
-			</section>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		
-		<script>
-		function checkOnlyOne(element) {
-			  
-			  const checkboxes 
-			      = document.getElementsByName("email-push");
-			  
-			  checkboxes.forEach((cb) => {
-			    cb.checked = false;
-			  })
-			  
-			  element.checked = true;
-			}
-		</script>
-		</body>
+        element.checked = true;
+    }
+</script>
+</body>
 </html>
