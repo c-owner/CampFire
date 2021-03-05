@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="WebContent">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-3.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ojdbc6.jar!/" />
+      <root url="jar://C:/apache-tomcat-8.5.63/lib/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tomcat-dbcp.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/myWEB/WebContent" />
+      <root url="file://$PROJECT_DIR$/out/artifacts/myWEB_war_exploded" />
+      <root url="file://$PROJECT_DIR$/out/artifacts/web" />
+    </SOURCES>
+  </library>
+</component>
