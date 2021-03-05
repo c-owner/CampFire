@@ -12,10 +12,10 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
     <meta name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" href="../assets/css/main.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
 </head>
 <body class="is-preload">
@@ -32,7 +32,8 @@
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 4~12길이)</span>
-            <input type="text" name="nickname" id="nickname" placeholder="ex)abc123 / abcd" minlength="4" maxlength="12" />
+            <input type="text" name="nickname" id="nickname" placeholder="ex)abc123 / abcd" minlength="4"
+                   maxlength="12"/>
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
             <span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
@@ -44,9 +45,9 @@
             <input type="password" name="pw" id="pw"/>
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
-            <input type="email" name="email" id="email" placeholder="abc@gmail.com" />
+            <input type="email" name="email" id="email" placeholder="abc@gmail.com"/>
             <div class="col-6 col-12-small">
-                <input type="checkbox" id="email-push" name="email-push" onclick="checkOnlyOne(this)" >
+                <input type="checkbox" id="email-push" name="email-push" onclick="checkOnlyOne(this)">
                 [선택]
                 <label for="email-push">수신거부</label>
                 <input type="checkbox" id="email-push2" name="email-push" onclick="checkOnlyOne(this)" checked>
@@ -177,13 +178,11 @@
         <br>
         <ul class="actions">
             <li style="margin: 0 auto;">
-                <input type="submit" value="회원가입" class="primary" />
+                <input type="submit" value="회원가입" class="primary"/>
             </li>
         </ul>
     </div>
 </form>
-
-
 
 
 <!-- Footer -->

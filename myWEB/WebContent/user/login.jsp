@@ -13,11 +13,11 @@
     <meta charset="UTF-8">
     <title>로그인</title>
     <meta name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/layout.css" />
+          content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" href="../assets/css/main.css"/>
+    <link rel="stylesheet" href="../assets/css/layout.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
 </head>
 <body class="is-preload">
@@ -29,10 +29,10 @@
 
 <h3 style="text-align: center; font-size: 56px;">로그인</h3>
 <form method="post" action="#">
-    <div class="row gtr-uniform" >
+    <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             아이디
-            <input type="text" name="id" id="id" maxlength="12" />
+            <input type="text" name="id" id="id" maxlength="12"/>
             <br>
             비밀번호 <input type="password" name="pw" id="pw"/>
             <a href="#"><span style="font-size: 28px;"> </span></a>
@@ -40,11 +40,11 @@
         </div>
 
     </div>
-    <div class="col-12" >
+    <div class="col-12">
         <ul class="actions">
             <li style="margin: 0 auto;">
                 <a href="join.jsp" class="button">회원가입 </a>
-                <input type="submit" value="로그인" class="primary" />
+                <input type="submit" value="로그인" class="primary"/>
             </li>
         </ul>
         <ul class="actions stacked" style="margin: 0 auto; width: fit-content;">
@@ -65,26 +65,27 @@
             </a>
         </div>
         <div class="content" style="margin:0 auto;">
-            <div class="good-job" >
+            <div class="good-job">
                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                 <!-- <h2>Find your ID & Password!</h2> -->
-                <div class="form-inline form-group" >
+                <div class="form-inline form-group">
                     <h3> 🔍아이디 찾기</h3>
                     <div class="msg">E-MAIL 을 입력하면 ID 일부를 확인할 수 있습니다.</div>
                     <div style="width: 60%; margin: 0 0 20 auto;">
                         <input type="email" name="email" id="email" value="" placeholder="📧이메일"
                                style=" display: inline;"/>
-                        <input type="button" class="button primary fit small" value="아이디 찾기" style="display: inline;" />
+                        <input type="button" class="button primary fit small" value="아이디 찾기" style="display: inline;"/>
                     </div>
                 </div>
 
-                <div class="form-inline form-group" >
+                <div class="form-inline form-group">
                     <h3>🔍 패스워드 찾기</h3>
                     <div class="msg">ID 와 E-MAIL 을 입력하여 임시비밀번호를 받을수 있습니다.</div>
                     <div style="width: 60%; margin: 0 0 20 auto;">
                         아이디 <input type="text" name="id" id="id" value="" placeholder="🕵️‍아이디"/>
                         이메일 <input type="email" name="email" id="email" value="" placeholder="📧이메일">
-                        <input type="button" class="button primary fit small" value="패스워드 찾기" style="display: inline;  " />
+                        <input type="button" class="button primary fit small" value="패스워드 찾기"
+                               style="display: inline;  "/>
                     </div>
                     <a class="btn-close fa-find" href="#" style="font-size:13px; text-align: right; color: grey;">로그인
                         <i class="quit" aria-hidden="true"></i>

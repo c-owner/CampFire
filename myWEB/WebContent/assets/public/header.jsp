@@ -27,7 +27,8 @@
                         <a href="../../user/join.jsp">회원가입</a></li>
                     <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
                         <a href="../../user/login.jsp">로그인</a></li>
-                </ul></li>
+                </ul>
+            </li>
             <li><a href="#">공지사항</a></li>
             <li><a href="../../elements.jsp">고객센터</a></li>
             <!-- <li><a href="generic.html">Generic</a></li> -->
@@ -40,7 +41,6 @@
 
     <!-- <a class="logo" href="index.html">  <span>CORNER CAMP</span></a> -->
 </header>
-
 
 
 </body>

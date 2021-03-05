@@ -8,31 +8,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 
- <html>
+<html>
 <head>
     <title>캠퍼들 모여 </title>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/layout.css" />
-    <link rel="stylesheet" href="assets/css/main-full.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/layout.css"/>
+    <link rel="stylesheet" href="assets/css/main-full.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
 
 </head>
 <body class="is-preload">
 
 <!-- Header -->
- <jsp:include page="assets/public/header.jsp"></jsp:include>
+<jsp:include page="assets/public/header.jsp"></jsp:include>
 
 <!-- Banner -->
 
 <section id="banner">
     <article class="full">
         <div class="image" data-position="center">
-            <img src="images/bg01.jpg" alt="" />
+            <img src="images/bg01.jpg" alt=""/>
         </div>
         <div class="content">
             <h1 class="alt"><a href="#"> 캠핑 코너 </a></h1>
@@ -70,8 +70,10 @@
             <div class="single-chart">
                 <a href="./?c=camping">
                     <svg viewBox="0 0 36 36" class="circular-chart color4">
-                        <path class="circle-bg total" d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                        <path class="circle total" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle-bg total"
+                              d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle total" stroke-dasharray="100, 100"
+                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                         <text x="18" y="21.5" class="ptext total">2,560</text>
                     </svg>
                 </a>
@@ -80,37 +82,46 @@
             <div class="single-chart">
                 <a href="./?c=5g">
                     <svg viewBox="0 0 36 36" class="circular-chart color1">
-                        <path class="circle-bg" d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                        <path class="circle" stroke-dasharray="13.828125, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle-bg"
+                              d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle" stroke-dasharray="13.828125, 100"
+                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                         <text x="18" y="21.5" class="ptext">354</text>
                     </svg>
                 </a>
                 <div class="sitename">
-                    오지/노지캠핑				</div>
+                    오지/노지캠핑
+                </div>
             </div>
 
             <div class="single-chart">
                 <a href="./?c=camp">
                     <svg viewBox="0 0 36 36" class="circular-chart color2">
-                        <path class="circle-bg" d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                        <path class="circle" stroke-dasharray="65.078125, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle-bg"
+                              d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle" stroke-dasharray="65.078125, 100"
+                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                         <text x="18" y="21.5" class="ptext">1,666</text>
                     </svg>
                 </a>
                 <div class="sitename">
-                    유료캠핑장				</div>
+                    유료캠핑장
+                </div>
             </div>
 
             <div class="single-chart">
                 <a href="./?c=glamping">
                     <svg viewBox="0 0 36 36" class="circular-chart color3">
-                        <path class="circle-bg" d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                        <path class="circle" stroke-dasharray="21.09375, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle-bg"
+                              d="M18 2.0845  a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+                        <path class="circle" stroke-dasharray="21.09375, 100"
+                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"></path>
                         <text x="18" y="21.5" class="ptext">540</text>
                     </svg>
                 </a>
                 <div class="sitename">
-                    글램핑/카라반				</div>
+                    글램핑/카라반
+                </div>
             </div>
 
         </div>
@@ -118,7 +129,7 @@
 
     <article class="half">
         <div class="image" data-position="center">
-            <img src="images/bg02.jpg" alt="" />
+            <img src="images/bg02.jpg" alt=""/>
         </div>
         <div class="content">
             <h2 class="alt"><a href="#">공지사항</a></h2>
@@ -129,7 +140,7 @@
     </article>
     <article class="half">
         <div class="image" data-position="center">
-            <img src="images/bg03.jpg" alt="" />
+            <img src="images/bg03.jpg" alt=""/>
         </div>
         <div class="content">
             <h2 class="alt"><a href="#">캠핑 꿀팁</a></h2>
@@ -142,7 +153,7 @@
 
 
 <!-- Footer -->
- <jsp:include page="assets/public/footer.jsp"></jsp:include>
+<jsp:include page="assets/public/footer.jsp"></jsp:include>
 
 
 <!-- Scripts -->

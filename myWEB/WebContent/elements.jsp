@@ -11,11 +11,11 @@
 <html>
 <head>
     <title>Untitled</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
 </head>
 <body class="is-preload">
@@ -161,7 +161,8 @@
                         Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra. Lorem ipsum
                         dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis
                         iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac sed amet praesent. Nunc
-                        lacinia ante nunc ac gravida.</blockquote>
+                        lacinia ante nunc ac gravida.
+                    </blockquote>
 
                     <!-- Table -->
                     <h3>Table</h3>
@@ -325,10 +326,10 @@
                     <form method="post" action="#">
                         <div class="row gtr-uniform">
                             <div class="col-6 col-12-xsmall">
-                                <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+                                <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name"/>
                             </div>
                             <div class="col-6 col-12-xsmall">
-                                <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                                <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email"/>
                             </div>
                             <!-- Break -->
                             <div class="col-12">
@@ -368,13 +369,14 @@
                             </div>
                             <!-- Break -->
                             <div class="col-12">
-                                <textarea name="demo-textarea" id="demo-textarea" placeholder="Alpha beta gamma delta" rows="6"></textarea>
+                                <textarea name="demo-textarea" id="demo-textarea" placeholder="Alpha beta gamma delta"
+                                          rows="6"></textarea>
                             </div>
                             <!-- Break -->
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" value="Submit Form" class="primary" /></li>
-                                    <li><input type="reset" value="Reset" /></li>
+                                    <li><input type="submit" value="Submit Form" class="primary"/></li>
+                                    <li><input type="reset" value="Reset"/></li>
                                 </ul>
                             </div>
                         </div>
@@ -383,25 +385,25 @@
                     <!-- Image -->
                     <h3>Image</h3>
                     <h4>Fit</h4>
-                    <span class="image fit"><img src="images/pic01.jpg" alt="" /></span>
+                    <span class="image fit"><img src="images/pic01.jpg" alt=""/></span>
                     <div class="box alt">
                         <div class="row gtr-50 gtr-uniform">
-                            <div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-                            <div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt="" /></span></div>
-                            <div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt=""/></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt=""/></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt=""/></span></div>
                             <!-- Break -->
-                            <div class="col-4"><span class="image fit"><img src="images/pic10.jpg" alt="" /></span></div>
-                            <div class="col-4"><span class="image fit"><img src="images/pic08.jpg" alt="" /></span></div>
-                            <div class="col-4"><span class="image fit"><img src="images/pic09.jpg" alt="" /></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic10.jpg" alt=""/></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic08.jpg" alt=""/></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic09.jpg" alt=""/></span></div>
                             <!-- Break -->
-                            <div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt="" /></span></div>
-                            <div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt="" /></span></div>
-                            <div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt="" /></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic06.jpg" alt=""/></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic04.jpg" alt=""/></span></div>
+                            <div class="col-4"><span class="image fit"><img src="images/pic05.jpg" alt=""/></span></div>
                         </div>
                     </div>
                     <h4>Left &amp; Right</h4>
                     <p>
-                        <span class="image left"><img src="images/pic02.jpg" alt="" /></span>
+                        <span class="image left"><img src="images/pic02.jpg" alt=""/></span>
                         Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget.
                         tempus euismod. Magna et cursus lorem faucibus vestibulum. Blandit adipiscing eu
                         felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque
@@ -414,7 +416,7 @@
                         sit amet dolor feugiat consequat.
                     </p>
                     <p>
-                        <span class="image right"><img src="images/pic02.jpg" alt="" /></span>
+                        <span class="image right"><img src="images/pic02.jpg" alt=""/></span>
                         Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget.
                         tempus euismod. Magna et cursus lorem faucibus vestibulum. Blandit adipiscing eu
                         felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque
@@ -466,8 +468,8 @@ print 'It took ' + i + ' iterations to sort the deck.';
                 <p>Lorem ipsum dolor mauris, consectetur id ipsum sit amet lorem sed amet consequat.</p>
             </header>
             <form method="post" action="#" class="combined">
-                <input type="email" name="email" id="email" placeholder="Your email address" class="invert" />
-                <input type="submit" class="special" value="Subscribe" />
+                <input type="email" name="email" id="email" placeholder="Your email address" class="invert"/>
+                <input type="submit" class="special" value="Subscribe"/>
             </form>
         </div>
     </div>
