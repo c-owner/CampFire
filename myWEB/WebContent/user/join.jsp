@@ -27,7 +27,7 @@
 
 <h3 style="text-align: center; font-size: 56px;">회원가입</h3>
 <p></p>
-<form method="post" action="#">
+<form method="post" action="${pageContext.request.contextPath}/user/UserJoin.me">
     <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
@@ -196,7 +196,8 @@
 <script src="../assets/js/breakpoints.min.js"></script>
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
-
+<sciprt> var contextPath = "${pageContext.request.contextPath};</sciprt>
+<%--<script src="${pageContext.request.contextPath}/user/join.js"> </script>--%>
 <script>
     function checkOnlyOne(element) {
 

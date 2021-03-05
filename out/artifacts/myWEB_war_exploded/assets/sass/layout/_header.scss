@@ -1,0 +1,316 @@
+///
+/// Momentum by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Header */
+
+	$accent: invert;
+
+	#header {
+		background: _palette($accent, bg);
+		color: _palette($accent, fg);
+		cursor: default;
+		height: _size(header);
+		padding: 4rem 0;
+		position: relative;
+		text-align: center;
+		width: 100%;
+		z-index: _misc(z-index-base) + 1;
+
+		> .logo {
+			color: _palette($accent, fg-bold);
+			font-size: 2rem;
+			font-weight: _font(weight-bold);
+			height: inherit;
+			line-height: inherit;
+			padding: 0 1.25rem;
+			text-decoration: none;
+
+			span {
+				color: _palette($accent, fg-light);
+				font-weight: _font(weight);
+			}
+		}
+
+		&.alt {
+
+			> .logo {
+				font-size: 1rem;
+			}
+
+			> nav {
+				margin: 0 auto 5.5rem auto;
+			}
+
+			h1 {
+				color: _palette($accent, fg-bold);
+				padding-top: 0.5rem;
+			}
+		}
+
+		> nav {
+			margin: 0 auto 7rem auto;
+
+			> ul {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+
+				> li {
+					display: inline-block;
+					margin: 0 2rem;
+					padding: 0 0 .75rem 0;
+					position: relative;
+					text-align: center;
+
+					> a {
+						color: _palette($accent, fg-light);
+						overflow: hidden;
+						position: relative;
+						text-decoration: none;
+
+						&:hover {
+							color: _palette($accent, fg-bold);
+						}
+
+						&.dropdown {
+							padding-left: 1.5rem;
+
+							&:before {
+								@include vendor('transition', 'background-image #{_duration(transition)} ease-in-out');
+								@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+								@include vendor('transform', 'rotate(90deg)');
+								background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><line x1='32' y1='16' x2='64' y2='48' stroke='rgba(153,153,153)' stroke-width='5px' /><line x1='32' y1='80' x2='64' y2='48' stroke='rgba(153,153,153)' stroke-width='5px' /></svg>");
+								background-position: center;
+								background-repeat: no-repeat;
+								background-size: 100%;
+								content: '';
+								cursor: pointer;
+								height: 100%;
+								left: 0;
+								line-height: inherit;
+								position: absolute;
+								top: 0;
+								width: 1rem;
+							}
+
+							&:hover {
+								&:before {
+									background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'><line x1='32' y1='16' x2='64' y2='48' stroke='rgba(255,255,255)' stroke-width='5px' /><line x1='32' y1='80' x2='64' y2='48' stroke='rgba(255,255,255)' stroke-width='5px' /></svg>");
+								}
+							}
+						}
+					}
+
+					> ul {
+						display: none;
+					}
+
+					&.current {
+
+						> a {
+							color: _palette($accent, fg-bold);
+							font-weight: _font(weight-bold);
+						}
+
+						&:after {
+							background-color: _palette(accent);
+							bottom: 0;
+							content: '';
+							display: block;
+							height: 0.1rem;
+							left: -0.75rem;
+							position: absolute;
+							width: calc(100% + 1.5rem);
+						}
+					}
+
+					&.active {
+						> a {
+							color: _palette($accent, fg-bold);
+						}
+					}
+				}
+			}
+		}
+
+		@at-root {
+			.dropotron {
+				background-color: lighten(_palette($accent, bg),5);
+				border-radius: 0.5rem;
+				list-style-type: none;
+				margin: -0.5rem 0 0 1px;
+				min-width: 10rem;
+				padding: 0.5rem 0;
+
+				&.level-0 {
+					margin-top: 1.125rem;
+					margin-left: 0;
+
+					&:before {
+						@include vendor('transform', 'rotate(45deg)');
+						background-color: lighten(_palette($accent, bg),5);
+						content: '';
+						height: 0.75rem;
+						position: absolute;
+						right: 2rem;
+						top: -0.375rem;
+						width: 0.75rem;
+					}
+				}
+
+				li {
+					border-top: solid 1px _palette($accent, border);
+					padding: 0;
+					position: relative;
+
+					&:first-child {
+						border-top: none;
+					}
+
+					&.active > a {
+						color: _palette($accent, fg-bold);
+					}
+				}
+
+				a {
+					border: 0;
+					color: _palette($accent, fg);
+					padding: 0.5rem 1rem;
+					text-decoration: none !important;
+
+					&:active, &:hover, &:focus {
+						color: _palette($accent, fg-bold);
+					}
+				}
+			}
+		}
+
+		> .navPanelToggle {
+			@include vendor('transition', (
+				'background-color #{_duration(transition)} ease-in-out',
+				'color #{_duration(transition)} ease-in-out',
+				'top #{_duration(transition)} ease-in-out',
+				'right #{_duration(transition)} ease-in-out'
+			));
+			@include icon(false, solid);
+			color: _palette($accent, fg);
+			display: none;
+			height: inherit;
+			line-height: inherit;
+			outline: 0;
+			padding: 0 1rem;
+			position: absolute;
+			right: 0;
+			top: 0;
+
+			&:hover {
+				color: _palette($accent, fg-bold);
+			}
+
+			&:before {
+				content: '\f0c9';
+				float: right;
+				line-height: inherit;
+				margin: 0 0 0 0.625rem;
+			}
+		}
+
+		@include breakpoint('<=xlarge') {
+			height: 20rem;
+			padding: 3rem 0;
+
+			> nav {
+				margin: 0 auto 5rem auto;
+			}
+
+			&.alt {
+				> nav {
+					margin-bottom: 3.5rem;
+				}
+			}
+		}
+
+		@include breakpoint('<=large') {
+			height: 18rem;
+			padding: 2rem 0;
+
+			> nav {
+				margin: 0 auto 4rem auto;
+			}
+
+			&.alt {
+				> nav {
+					margin-bottom: 3rem;
+				}
+			}
+		}
+
+		@include breakpoint('<=medium') {
+			@include vendor('display','flex');
+			@include vendor('align-items','center');
+			@include vendor('flex-direction','column');
+			@include vendor('justify-content','center');
+			height: 15rem;
+			line-height: 15rem;
+			padding: 0;
+
+			&.alt {
+				height: auto;
+				padding: 3rem 0;
+
+				h1 {
+					margin-bottom: 0;
+					//margin-top: 1.25rem;
+				}
+			}
+
+			> .logo {
+				height: auto;
+				line-height: 1;
+				margin-top: 0.75rem;
+			}
+
+			> nav {
+				display: none;
+			}
+
+			> .navPanelToggle {
+				display: block;
+				line-height: 1;
+				margin-top: 1rem;
+			}
+		}
+
+		@include breakpoint('<=small') {
+			height: 44px;
+			line-height: 44px;
+			padding: 0;
+
+			> .navPanelToggle {
+				span {
+					display: none;
+				}
+			}
+
+			> .logo {
+				font-size: 1rem;
+				left: 1rem;
+				line-height: 44px;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				top: 0;
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			.logo {
+				span {
+					display: none;
+				}
+			}
+		}
+	}

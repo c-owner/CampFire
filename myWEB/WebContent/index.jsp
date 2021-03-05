@@ -35,7 +35,7 @@
             <img src="images/bg01.jpg" alt="" />
         </div>
         <div class="content">
-            <h1 class="alt"><a href="./index.html"> 캠핑 코너 </a></h1>
+            <h1 class="alt"><a href="#"> 캠핑 코너 </a></h1>
             <h2 class="dateview1">MMMM Do YYYY, h:mm:ss a</h2>
 
 

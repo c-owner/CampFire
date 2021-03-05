@@ -1,0 +1,175 @@
+///
+/// Momentum by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Banner */
+
+	#banner {
+		@include color(invert);
+		@include vendor('display', 'flex');
+		@include vendor('flex-wrap', 'wrap');
+
+		> article {
+			@include vendor('display', 'flex');
+			@include vendor('align-items', 'center');
+			@include vendor('justify-content', 'center');
+			@include padding(8rem, 4rem);
+			color: _palette(fg-bold);
+			cursor: default;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+
+			&:before {
+				@include vendor('transition', 'opacity #{_duration(banner)} ease');
+				background-color: _palette(fg-bold);
+				content: '';
+				height: 100%;
+				left: 0;
+				opacity: 0.25;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: 1;
+			}
+
+			@for $i from 1 through _misc(max-banners) {
+				&:nth-child(#{$i}) {
+					&:before {
+						@include vendor('transition-delay', '#{(_duration(banner-delay) * ($i - 1))}');
+						background-color: darken(_palette(fg-bold), ($i - 1));
+					}
+				}
+			}
+
+			> .image {
+				@include vendor('transition', 'transform #{_duration(transition)} ease');
+				border-radius: 0;
+				display: block;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+
+			&.hover {
+				> .image {
+					@include vendor('transform', 'scale(1.075)');
+				}
+			}
+
+			.content {
+				max-width: 80%;
+				position: relative;
+				text-align: center;
+				z-index: 2;
+			}
+
+			h1, h2, h3 {
+				font-weight: _font(weight);
+			}
+
+			h1 {
+				margin-bottom: 2rem;
+			}
+
+			h2 {
+				margin-bottom: 3rem;
+			}
+
+			ul {
+				@include vendor('justify-content', 'center');
+			}
+
+			&.full {
+				min-height: 65vh;
+				width: 100%;
+
+				.content {
+					width: 50rem;
+				}
+
+				@include breakpoint(xlarge) {
+					min-height: 70vh;
+				}
+			}
+
+			&.half {
+				min-height: 50vh;
+				width: 50%;
+
+				.content {
+					width: 25rem;
+				}
+			}
+		}
+
+		@include breakpoint(medium) {
+			> article {
+				@include padding(6rem, 2rem);
+
+				&.full {
+					min-height: 55vh;
+				}
+
+				&.half {
+					min-height: 35vh;
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			> article {
+				@include padding(4rem, 1rem);
+
+				&.full {
+					min-height: 0;
+				}
+
+				&.half {
+					min-height: 0;
+				}
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			@include vendor('flex-direction', 'column');
+
+			> article {
+				@include padding(4rem, 2rem);
+
+				&.full {
+					width: 100%;
+
+					h2 {
+						font-size: 1.75rem;
+					}
+
+					.content {
+						max-width: 100%;
+						width: 100%;
+					}
+				}
+
+				&.half {
+					width: 100%;
+
+					.content {
+						width: 100%;
+						max-width: 100%;
+					}
+				}
+			}
+		}
+
+		body.is-loading & {
+			> article {
+				&:before {
+					opacity: 1;
+				}
+			}
+		}
+	}

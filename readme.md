@@ -18,3 +18,12 @@
 
 #### 
 
+---
+# project planning
+[click here](projectPlan.md)
+
+The project manager : corner
+
+
+
+

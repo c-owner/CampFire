@@ -1,7 +1,10 @@
-<<<<<<< HEAD
+
 /.metadata/
 .DS_Store
-=======
+
+# Office
+.pptx
+
 # OS Files #
 .DS_Store
    
@@ -71,4 +74,4 @@ local.properties
 # PDT-specific
 .buildpath
 #-------------
->>>>>>> 7143ab9c50dd9d29e2c446241b58fcf607dde568
+
