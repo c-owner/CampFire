@@ -12,17 +12,38 @@ function formSubmit() {
         form.memberId.focus();
         return false;
     }
-    if(form.memberPw.value = "" || !check) {
-        alert("비밀번호를 입력해주세요.");
-        form.memberPw.focus();
-        return false;
-    }
-    if(form.memberEmail.value = "" || !check) {
-        alert("이메일을 입력해주세요.");
-        form.memberEmail.focus();
-        return false;
-    }
 
-    form.Submit();
+    form.submit();
 }
+
+function checkId(id) {
+    check = false;
+    if(id==""){
+        $("#idCheck_text").text("아이디를 작성해주세요.");
+    } else {
+    console.log("checkId 2")
+        $.ajax({
+            url: "/MemberCheckId.me?id="+id,
+            type: "GET",
+            dataType: "text",
+            success: function (result) {
+                if(result.trim() == "ok"){
+                    check = true;
+                    $("#idCheck_text").text("✔사용 가능");
+                } else {
+                    $("#idCheck_text").text("❌사용 불가");
+                }
+            },
+            error: function() {
+                console.log("ERROR");
+            }
+        })
+    }
+}
+
+$("input[name='memberId']").keyup(function (event) {
+    var id = $("input[name='memberId']").val();
+    checkId(id);
+})
+
 

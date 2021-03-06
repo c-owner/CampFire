@@ -43,7 +43,7 @@
     <div class="col-12">
         <ul class="actions">
             <li style="margin: 0 auto;">
-                <a href="join.jsp" class="button">회원가입 </a>
+                <a href="${pageContext.request.contextPath}/MemberJoin.me" class="button">회원가입 </a>
                 <input type="submit" value="로그인" class="primary"/>
             </li>
         </ul>

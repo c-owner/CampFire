@@ -165,6 +165,7 @@
 <script src="assets/js/moment.js"></script>
 <script src="assets/js/moment-with-locales.js"></script>
 <script src="assets/js/account.js"></script>
+<sciprt> var contextPath = "${pageContext.request.contextPath};</sciprt>
 <script>
     var date = new Date();
     $('.dateview1').html(moment(date).format('MMMM Do YYYY,h:mm:ss a'));

@@ -27,13 +27,15 @@
 
 <h3 style="text-align: center; font-size: 56px;">회원가입</h3>
 <p></p>
-<form method="post" action="${pageContext.request.contextPath}/member/MemberJoin.me">
+<form name="joinForm" method="post" action="${pageContext.request.contextPath}/MemberJoinAction.me">
     <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 4~12길이)</span>
-            <input type="text" name="memberId" id="id" placeholder="ex)abc123 / abcd" minlength="4"
+            <input type="text" name="memberId" id="id" placeholder="ex)abc123 / 4~12" minlength="4"
                    maxlength="12"/>
+            <p id="idCheck_text"></p>
+
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
             <span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
@@ -60,7 +62,7 @@
             <br>
             <input type="checkbox" id="Agree" name="Agree">
             <label for="Agree" style="margin-left: 25%;">
-                <span style="color:crimson; font-size: 20px;">*[필수] <b>홈페이지 이용약관 동의 </span>
+                <span style="color:crimson; font-size: 20px;">*[필수] <b>홈페이지 이용약관 동의</b> </span>
             </label>
 
             <br>
@@ -178,8 +180,7 @@
         <br>
         <ul class="actions">
             <li style="margin: 0 auto;">
-                <a href="javascript:formSubmit()">
-                <input type="submit" value="회원가입" class="primary"/></a>
+                <input type="submit" value="가입하기" class="primary" onclick="formSubmit()"/>
             </li>
         </ul>
     </div>

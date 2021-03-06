@@ -10,18 +10,20 @@
 
 <html>
 <head>
-    <title>Untitled</title>
+    <title>Elements</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="stylesheet" href="../../../../Camp_Corner/myWEB/WebContent/assets/css/main.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../Camp_Corner/myWEB/WebContent/images/title-icon.png">
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/layout.css"/>
+    <link rel="stylesheet" href="assets/css/main-full.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
 </head>
 <body class="is-preload">
 
 <!-- Header -->
-<jsp:include page="../../../../Camp_Corner/myWEB/WebContent/assets/public/header.jsp"></jsp:include>
+<jsp:include page="./assets/public/header.jsp"></jsp:include>
 
 <!-- Main -->
 <div id="main">
@@ -476,15 +478,18 @@ print 'It took ' + i + ' iterations to sort the deck.';
 </section>
 
 <!-- Footer -->
-<jsp:include page="../../../../Camp_Corner/myWEB/WebContent/assets/public/footer.jsp"></jsp:include>
+<jsp:include page="./assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/jquery.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/browser.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/jquery.dropotron.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/breakpoints.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/util.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/moment.js"></script>
+<script src="assets/js/moment-with-locales.js"></script>
+<script src="assets/js/account.js"></script>
 
 </body>
 </html>
