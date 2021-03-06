@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="checkId" parameterType="string" resultType="_int">
-
+	SELECT COUNT(*) FROM MEMBER WHERE MEMBERID = #{memberId}
 </select>
 	
 	<select id="login" parameterType="hashmap" resultType="MemberVO">

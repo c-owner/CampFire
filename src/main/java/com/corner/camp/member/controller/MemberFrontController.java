@@ -29,7 +29,9 @@ public class MemberFrontController extends HttpServlet {
         ActionForward forward = null;
 
         if(command.equals("/member/MemberJoine.me")){
-
+            try {
+                forward = new MemberJoinAction().execute(req, resp);
+            } catch (Exception e) {;}
         }
 
 
