@@ -13,7 +13,7 @@
 </select>
 	
 	<select id="login" parameterType="hashmap" resultType="MemberVO">
-
+	SELECT COUNT(*) FROM MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = #{memberPw}
 	</select>
 
 </mapper>

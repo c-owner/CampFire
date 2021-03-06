@@ -5,6 +5,8 @@ import com.corner.mybatis.config.SqlMapConfig;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.util.HashMap;
+
 public class MemberDAO {
 
     private static int KEY = 3;
@@ -51,7 +53,9 @@ public class MemberDAO {
         return en_pw;
     }
 
-
+    public MemberVO login(HashMap<String, String> datas){
+        return session.selectOne("Member.login", datas);
+    }
 
 }
 

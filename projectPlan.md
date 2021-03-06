@@ -1,5 +1,17 @@
 # the project planning
 
+
+---
+## 기능 구현
+- join
+> 회원가입
+
+- login
+> 로그인
+
+- edit
+> 정보수정
+
 ---
 
 ## 사용자
