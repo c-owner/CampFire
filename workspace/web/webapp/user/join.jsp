@@ -31,8 +31,8 @@
     <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
-				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 4~12길이)</span>
-            <input type="text" name="memberId" id="memberId" maxlength="12"/>
+				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span>
+            <input type="text" name="memberId" minlength="4" maxlength="12"/>
             <p id="idCheck_text"></p>
 
             <br>

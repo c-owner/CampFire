@@ -7,7 +7,7 @@ var check = false;
 function formSubmit() {
     var form = document.joinForm;
 
-    if (form.memberId.value = "" || !check) {
+    if (form.memberId.value = "") {
         alert("아이디를 입력해주세요.");
         form.memberId.focus();
         
@@ -20,7 +20,7 @@ function formSubmit() {
 function checkId(id) {
     check = false;
     if (id == "") {
-        $("#idCheck_text").text("아이디를 작성해주세요.");
+        $("#idCheck_text").text("아이디를 작성 하십시오. ");
     } else {
         $.ajax({
             url: "MemberCheckIdOkAction.me?id="+id,

@@ -4,10 +4,7 @@
 <mapper namespace="Member">
 
 	<insert id="join" parameterType="MemberVO">
-	INSERT INTO MEMBER 
-	VALUES(
-		#{memberId}, #{memberPw}, #{memberEmail}
-	)
+	INSERT INTO MEMBER VALUES( #{memberId}, #{memberPw}, #{memberEmail} )
 	</insert>
 
     <select id="checkId" parameterType="string" resultType="_int">

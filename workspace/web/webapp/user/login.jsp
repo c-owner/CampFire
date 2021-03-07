@@ -45,7 +45,6 @@
             <li style="margin: 0 auto;">
                 <a href="${pageContext.request.contextPath}/MemberJoin.me" class="button">회원가입 </a>
               <input type="submit" value="로그인" class="primary"/>
-              <a href="">로그인</a>
             </li>
         </ul>
         <ul class="actions stacked" style="margin: 0 auto; width: fit-content;">
