@@ -41,7 +41,6 @@ public class MemberVO {
 		this.memberEmail = memberEmail;
 	}
 
- 
    
 }
 

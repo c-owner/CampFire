@@ -22,7 +22,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
 
 </head>
-<body class="is-preload">
+<body class="is-preload" onload="printClock()">
 
 <!-- Header -->
 <jsp:include page="./assets/public/header.jsp"></jsp:include>
@@ -35,9 +35,16 @@
             <img src="images/bg01.jpg" alt=""/>
         </div>
         <div class="content">
-            <h1 class="alt"><a href="#"> 캠핑 코너 </a></h1>
-            <h2 class="dateview1">MMMM Do YYYY, h:mm:ss a</h2>
-
+            <h1 class="alt"><a href="${pageContext.request.contextPath}/Main.me"> 캠핑 코너 </a></h1>
+            <!-- <h2 class="dateview1">MMMM Do YYYY, h:mm:ss a</h2> -->
+            <div id="clock" style=" width:350px;
+        height:250px; 
+        line-height:250px; 
+        color:#80deea;
+        font-size:65px;
+        margin: 0 auto; 
+        text-align:center;">
+            </div>
 
             <h2 class="alt" style="font-family: 'Nanum Brush Script', cursive;">오늘은 어디로 가볼까?</h2>
             <form method="post" action="#" class="combined">
@@ -170,6 +177,42 @@
     var date = new Date();
     $('.dateview1').html(moment(date).format('MMMM Do YYYY,h:mm:ss a'));
 
+    function printClock() {
+        
+        var clock = document.getElementById("clock");            // 출력할 장소 선택
+        var currentDate = new Date();                                     // 현재시간
+        var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
+        var amPm = 'AM'; // 초기값 AM
+        var currentHours = addZeros(currentDate.getHours(),2); 
+        var currentMinute = addZeros(currentDate.getMinutes() ,2);
+        var currentSeconds =  addZeros(currentDate.getSeconds(),2);
+        
+        if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+        	amPm = 'PM';
+        	currentHours = addZeros(currentHours - 12,2);
+        }
+
+        if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
+           currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
+        }
+        clock.innerHTML = currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+        
+        setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+    }
+
+    function addZeros(num, digit) { // 자릿수 맞춰주기
+    	  var zero = '';
+    	  num = num.toString();
+    	  if (num.length < digit) {
+    	    for (i = 0; i < digit - num.length; i++) {
+    	      zero += '0';
+    	    }
+    	  }
+    	  return zero + num;
+    }
+
+    
+    
 </script>
 </body>
 </html>

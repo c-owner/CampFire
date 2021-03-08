@@ -20,7 +20,6 @@ request.setCharacterEncoding("utf-8");
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
     <link rel="stylesheet" href="../assets/css/main.css"/>
-    <link rel="stylesheet" href="../assets/css/layout.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
 </head>
 <body class="is-preload">
@@ -42,9 +41,9 @@ request.setCharacterEncoding("utf-8");
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span>
-            <input type="text" name="memberId" id="memberId" maxlength="12"/>
-            <font id="idCheck2_text" size="3"></font>
-            <font id="idCheck_text" size="2"></font>
+            <input type="text" name="memberId" maxlength="12"/>
+            <font id="idCheck_text" size="3"></font>
+
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
             <span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
@@ -57,17 +56,21 @@ request.setCharacterEncoding("utf-8");
              <font id="pwCheck_text" size="3"></font>
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
-            <input type="email" name="memberEmail" placeholder="abc@gmail.com"/>
+            <input type="text" name="memberEmail" placeholder="abc@gmail.com"/>
             <div class="col-6 col-12-small">
-                <br> [선택]
                 <input type="radio" id="email-push" name="email-push">
+                [선택]
                 <label for="email-push">수신거부</label>
                 <input type="radio" id="email-push2" name="email-push" checked>
                 <label for="email-push2">수신동의</label>
             </div>
-
-
+            	<div style="text-align: center; margin: 0 auto;">
+            		<input type="submit" value="가입하기" class="primary" onclick="formSubmit()"/>
+		    	</div>
+		    </div>
         </div>
+</form>
+
         <div class="col-12">
             <br>
             <input type="checkbox" id="Agree" name="Agree">
@@ -185,16 +188,10 @@ request.setCharacterEncoding("utf-8");
         </div>
 
 
-    </div>
     <div class="col-12">
-        <br>
-        <ul class="actions">
-            <li style="margin: 0 auto;">
-            <a href="javascript:formSubmit()" class="btn-right" type="submit">가입하기</a>
-            </li>
-        </ul>
     </div>
-</form>
+        <br>
+    
 
 
 <!-- Footer -->

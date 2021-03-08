@@ -3,6 +3,48 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+    .btn-right {
+    margin: 0 auto;
+    text-align: center;
+  text-decoration: none;
+  font-family: "jua";
+  position: relative;
+  color: white;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  display: inline-block;
+  color: #fff;
+  background-color: #f48fb1;
+  padding: 0.9em 2.8em 0.9em 2.25em;
+  border-radius: 2rem;
+}
+
+.arrow-right {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid white;
+  margin-top: 8px;
+  margin-left: 9px;
+  animation: horizontal 0.7s ease-in-out infinite;
+}
+
+@keyframes horizontal {
+  0% {
+    margin-left: 9px;
+  }
+  50% {
+    margin-left: 11px;
+  }
+  100% {
+    margin-left: 9px;
+  }
+}
 
 html, body {
     width: 100%;

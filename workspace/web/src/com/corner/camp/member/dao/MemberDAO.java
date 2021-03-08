@@ -53,11 +53,6 @@ public class MemberDAO {
 		return en_pw;
 	}
 
-	/*
-	 * public MemberVO login(HashMap<String, String> datas) { return
-	 * session.selectOne("Member.login", datas); }
-	 */
-	
 	//로그인
 	/**
 	 * 
@@ -70,8 +65,7 @@ public class MemberDAO {
 		HashMap<String, String> member = new HashMap<>();
 		
 		member.put("id", id);
-//		member.put("pw", encrypt(pw));
-		member.put("pw", pw);
+		member.put("pw", encrypt(pw));
 		return (Integer)session.selectOne("Member.login", member) == 1;
 	}
 	

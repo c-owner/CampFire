@@ -1,12 +1,14 @@
 package com.corner.camp.member.controller;
 
-import com.corner.action.ActionForward;
+import java.io.IOException;
 
-import java.io.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.corner.action.ActionForward;
 
 //@WebServlet(name = "MemberFrontController", value = "/")
 public class MemberFrontController extends HttpServlet {
@@ -28,27 +30,25 @@ public class MemberFrontController extends HttpServlet {
         String command = requestURI.substring(contextPath.length());
         
         ActionForward forward = null;
-        System.out.println("uri " + requestURI);
 
         if (command.equals("/user/MemberJoin.me")) {
             try {
+            	String join = req.getParameter("join");
                 forward = new ActionForward();
                 forward.setRedirect(false);
-                forward.setPath("/user/join.jsp");
+                forward.setPath("/user/join.jsp" + (join != null ? "?join=false" : ""));
             } catch (Exception e) {
                 ;
             }
         } else if (command.equals("/user/MemberJoinOk.me")) {
             try {
                 forward = new MemberJoinOkAction().execute(req, resp);
-                System.out.println("프론트 컨트롤러 : 회원가입 forward");
             } catch (Exception e) {
                 ;
             }
         }  else if (command.equals("/user/MemberCheckIdOkAction.me")) {
             try {
                 forward = new MemberCheckIdOkAction().execute(req, resp);
-                System.out.println("중복 검사 끝");
             } catch (Exception e) {
                 ;
             }

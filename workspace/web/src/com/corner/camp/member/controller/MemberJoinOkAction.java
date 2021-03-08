@@ -1,14 +1,12 @@
 package com.corner.camp.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.corner.action.Action;
 import com.corner.action.ActionForward;
 import com.corner.camp.member.dao.MemberDAO;
 import com.corner.camp.member.vo.MemberVO;
-
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class MemberJoinOkAction implements Action {
 
@@ -23,16 +21,26 @@ public class MemberJoinOkAction implements Action {
         
         vo.setMemberId(req.getParameter("memberId"));
         vo.setMemberPw(req.getParameter("memberPw"));
+//        vo.setMemberName(req.getParameter("memberName"));
+//        vo.setMemberAge(Integer.parseInt(req.getParameter("memberAge")));
+//        vo.setMemberGender(req.getParameter("memberGender"));
         vo.setMemberEmail(req.getParameter("memberEmail"));
+//        vo.setMemberZipcode(req.getParameter("memberZipcode"));
+//        vo.setMemberAddress(req.getParameter("memberAddress"));
+//        vo.setMemberAddressDetail(req.getParameter("memberAddressDetail"));
+//        vo.setMemberAddressEtc(req.getParameter("memberAddressEtc"));
+        
         
         System.out.println("회원가입 체크--");
 
         if (!dao.join(vo)) {
         	System.out.println("회원가입 실패");
-            PrintWriter out = resp.getWriter();
-            resp.setContentType("text/html;charset=utf-8");
-            out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.')</script>");
-            out.close();
+//            PrintWriter out = resp.getWriter();
+//            resp.setContentType("text/html;charset=utf-8");
+//            out.println("<script>alert('서버가 불안정합니다. 잠시 후 다시 시도해주세요.')</script>");
+//            out.close();
+        	forward.setRedirect(false);
+        	forward.setPath("/user/MemberJoin.me?join=false");
         } else {
             	System.out.println("회원가입 성공");
 				forward = new ActionForward();

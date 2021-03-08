@@ -1,15 +1,12 @@
 package com.corner.camp.member.controller;
 
-import com.corner.action.Action;
-import com.corner.action.ActionForward;
-import com.corner.camp.member.dao.MemberDAO;
-import com.corner.camp.member.vo.MemberVO;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.PrintWriter;
-import java.util.HashMap;
+
+import com.corner.action.Action;
+import com.corner.action.ActionForward;
+import com.corner.camp.member.dao.MemberDAO;
 
 public class MemberLoginOkAction implements Action {
     @Override

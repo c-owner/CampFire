@@ -5,6 +5,7 @@ font-family: 'Nanum Brush Script', cursive; */
 /* font-family: 'Nanum Brush Script', cursive; */
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600, 600i");
+ 
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -4338,7 +4339,7 @@ table.alt tbody tr td {
 @media screen and (max-width: 1680px) {
 
     #header {
-        height: 20rem;
+        height: 10rem;
         padding: 3rem 0;
     }
 
@@ -4355,7 +4356,7 @@ table.alt tbody tr td {
 @media screen and (max-width: 1280px) {
 
     #header {
-        height: 18rem;
+        height: 10rem;
         padding: 2rem 0;
     }
 
@@ -4388,7 +4389,7 @@ table.alt tbody tr td {
         -webkit-justify-content: center;
         -ms-justify-content: center;
         justify-content: center;
-        height: 15rem;
+        height: 10rem;
         line-height: 15rem;
         padding: 0;
     }
@@ -4423,7 +4424,7 @@ table.alt tbody tr td {
 @media screen and (max-width: 736px) {
 
     #header {
-        height: 44px;
+        height: 10rem;
         line-height: 44px;
         padding: 0;
     }
