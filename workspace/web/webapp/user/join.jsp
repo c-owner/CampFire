@@ -45,7 +45,7 @@ request.setCharacterEncoding("utf-8");
             <input type="text" name="memberId" id="memberId" maxlength="12"/>
             <font id="idCheck2_text" size="3"></font>
             <font id="idCheck_text" size="2"></font>
-            <br>
+           
             <span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
             <span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
 					(* 영문+숫자+대소문자 조합 8자이상 입력) </span>
@@ -55,7 +55,7 @@ request.setCharacterEncoding("utf-8");
             <span style="color: #ff0000;">* </span><span style="font-weight: bold;">비밀번호 확인 </span>
             <input type="password" name="memberPw2" id="memberPw2" />
              <font id="pwCheck_text" size="3"></font>
-            <br>
+
             <span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
             <input type="email" name="memberEmail" placeholder="abc@gmail.com"/>
             <div class="col-6 col-12-small">

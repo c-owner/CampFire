@@ -38,9 +38,8 @@ function formSubmit() {
 		  } 
 		});
 
-	if (check == true ) { 
+
 		form.submit();
-	}
 }
 	$(function() {
 		$('#memberId').keyup(function() {

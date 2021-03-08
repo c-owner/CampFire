@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.corner.camp.member.vo.MemberVO;
 import com.corner.mybatis.config.SqlMapConfig;
+import com.corner.util.SHA256;
 
 public class MemberDAO {
 
@@ -26,6 +27,8 @@ public class MemberDAO {
      */
 	public boolean join(MemberVO member) {
 		member.setMemberPw(encrypt(member.getMemberPw()));
+		member.setMemberEmailHash(SHA256.getSHA256(member.getMemberEmail()));
+		member.setMemberEmailChecked(0);
 		return session.insert("Member.join", member) == 1;
 	}
 
@@ -68,6 +71,5 @@ public class MemberDAO {
 		member.put("pw", encrypt(pw));
 		return (Integer)session.selectOne("Member.login", member) == 1;
 	}
-	
 }
 

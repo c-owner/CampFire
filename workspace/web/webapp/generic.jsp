@@ -15,19 +15,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="stylesheet" href="../../../../Camp_Corner/myWEB/WebContent/assets/css/main.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../Camp_Corner/myWEB/WebContent/images/title-icon.png">
+    <link rel="stylesheet" href="../assets/css/main.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
 </head>
 <body class="is-preload">
 
 <!-- Header -->
-<jsp:include page="./assets/public/header.jsp"></jsp:include>
+<jsp:include page="../assets/public/header.jsp"></jsp:include>
 
 <!-- Main -->
 <div id="main">
     <div class="wrapper">
         <div class="inner">
-            <span class="image fit"><img src="../../../../Camp_Corner/myWEB/WebContent/images/pic11.jpg" alt=""/></span>
+            <span class="image fit"><img src="../images/pic11.jpg" alt=""/></span>
             <header>
                 <h2>Phasellus pellentesque</h2>
             </header>
@@ -88,15 +88,15 @@
 </section>
 
 <!-- Footer -->
-<jsp:include page="./assets/public/footer.jsp"></jsp:include>
+<jsp:include page="../assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/jquery.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/browser.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/jquery.dropotron.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/breakpoints.min.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/util.js"></script>
-<script src="../../../../Camp_Corner/myWEB/WebContent/assets/js/main.js"></script>
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/browser.min.js"></script>
+<script src="../assets/js/jquery.dropotron.min.js"></script>
+<script src="../assets/js/breakpoints.min.js"></script>
+<script src="../assets/js/util.js"></script>
+<script src="../assets/js/main.js"></script>
 
 </body>
 </html>

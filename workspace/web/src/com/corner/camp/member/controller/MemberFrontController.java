@@ -43,6 +43,7 @@ public class MemberFrontController extends HttpServlet {
         } else if (command.equals("/user/MemberJoinOk.me")) {
             try {
                 forward = new MemberJoinOkAction().execute(req, resp);
+//                forward = new MemberEmailAcceptAction().execute(req, resp);
             } catch (Exception e) {
                 ;
             }
@@ -69,7 +70,7 @@ public class MemberFrontController extends HttpServlet {
             try {
                 forward = new ActionForward();
                 forward.setRedirect(false);
-                forward.setPath("./index.jsp");
+                forward.setPath("/index.jsp");
             } catch (Exception e) {
                 ;
             }

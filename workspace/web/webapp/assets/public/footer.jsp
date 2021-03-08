@@ -102,9 +102,9 @@
                         <li><a href="#" class="icon brands fa-facebook-f"><span>광고 및 제휴 문의</span></a></li>
                         <li><a href="#" class="icon brands fa-linkedin-in"><span>고객센터</span></a></li>
                         <li class="actions stacked" style=" width: fit-content;">
-                            <a href="${pageContext.request.contextPath}/MemberJoin.me">회원가입</a></li>
+                            <a href="${pageContext.request.contextPath}/user/MemberJoin.me">회원가입</a></li>
                         <li class="actions stacked" style=" width: fit-content;">
-                            <a href="${pageContext.request.contextPath}/MemberLogin.me">로그인</a></li>
+                            <a href="${pageContext.request.contextPath}/user/MemberLogin.me">로그인</a></li>
                     </ul>
                     <ul>
                         <li><a href="#" class="icon solid fa-phone"><span>전화 (031) 211-0000</span></a></li>

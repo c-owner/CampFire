@@ -17,9 +17,10 @@
     <!-- Nav -->
     <nav id="nav">
         <ul class="navbar">
-            <a href="${pageContext.request.contextPath}/Main.me">
-                <img class="current" src="../images/menu-icon.png" alt="홈 바로가기" height="50"></a>
-
+                
+			<li><a href="${pageContext.request.contextPath}/Main.me">HOME</a>
+			<img class="current" src="../images/menu-icon.png" alt="홈 바로가기" height="50">
+			</li>
             <li class=""><a href="#">전체</a></li>
             <li><a href="#" class="dropdown">계정 메뉴</a>
                 <ul>
@@ -27,6 +28,8 @@
                         <a href="${pageContext.request.contextPath}/user/MemberJoin.me">회원가입</a></li>
                     <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
                         <a href="${pageContext.request.contextPath}/user/MemberLogin.me">로그인</a></li>
+                    <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
+                        <a href="${pageContext.request.contextPath}/user/MemberLogout.me">로그아웃</a></li>
                 </ul>
             </li>
             <li><a href="#">공지사항</a></li>

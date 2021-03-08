@@ -22,7 +22,7 @@ DROP TABLE CAMP_USER CASCADE CONSTRAINTS;
 CREATE TABLE CAMP_USER
 (
 	memberId VARCHAR2(300),
-	memberPw VARCHAR2(300),
+	memberPw VARCHAR2(300)
 --	memberName VARCHAR2(200),
 --	memberAge NUMBER(3),
 --	memberGender VARCHAR2(20),
@@ -34,25 +34,29 @@ CREATE TABLE CAMP_USER
   CONSTRAINT CAMP_USER_PK PRIMARY KEY (memberId)
 );
 
+CREATE TABLE CAMP_USER
+(
+	memberId VARCHAR2(300),
+	memberPw VARCHAR2(300),
+	memberEmail VARCHAR2(200),
+	memberEmailHash VARCHAR2(200),
+	memberEmailChecked char(1),
+  CONSTRAINT CAMP_USER_PK PRIMARY KEY (memberId)
+);
+
 SELECT * FROM CAMP_USER;
+
 SELECT * FROM HR.TABLE_MEMBER;
 
 ---
-
-DROP TABLE MEMBER;
-
-CREATE TABLE MEMBER(
-                             memberId VARCHAR2(300),
-                             memberPw VARCHAR2(300),
-                             memberEmail VARCHAR2(200) unique,
-                             CONSTRAINT MEMBER_PK PRIMARY KEY(memberId)
-);
+ 
 
 -- 제약조건 삭제
 -- ALTER TABLE TABLE_MEMBER DROP CONSTRAINT MEMBER_PK;
 --
 -- SELECT * FROM TABLE_MEMBER;
+SELECT * FROM CAMP_USER;
 
 INSERT INTO CAMP_USER
-(MEMBERID, MEMBERPW, MEMBEREMAIL)
-VALUES('asd1234', '1234', 'ddd');
+(MEMBERID, MEMBERPW, MEMBEREMAIL, MEMBEREMAILHASH, MEMBEREMAILCHECKED)
+VALUES('asd1235', '1234', 'ddd', 'asd', 0);

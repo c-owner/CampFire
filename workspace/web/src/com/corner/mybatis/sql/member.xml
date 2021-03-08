@@ -2,12 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Member">
-	<insert id="join" parameterType="memberVO" >
-		INSERT INTO CAMP_USER  
-		VALUES(
-			#{memberId}, #{memberPw}, #{memberEmail}
-		)
+	<insert id="join" parameterType="memberVO">
+		INSERT INTO CAMP_USER 
+		VALUES(	#{memberId}, #{memberPw}, #{memberEmail}, #{memberEmailHash}, #{memberEmailChecked})	
 	</insert>
+	
 
     <select id="checkId" parameterType="string" resultType="_int">
         SELECT COUNT(*) FROM CAMP_USER WHERE MEMBERID = #{memberId}

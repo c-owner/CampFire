@@ -4,6 +4,8 @@ public class MemberVO {
     private String memberId;
     private String memberPw;
     private String memberEmail;
+    private String memberEmailHash;
+    private int memberEmailChecked; // 0,1
 //    private String memberName;
 //    private int memberAge;
 //    private String memberGender;
@@ -16,6 +18,16 @@ public class MemberVO {
     public MemberVO() {
         ;
     }
+    
+	public MemberVO(String memberId, String memberPw, String memberEmail, String memberEmailHash,
+		int memberEmailChecked) {
+	this.memberId = memberId;
+	this.memberPw = memberPw;
+	this.memberEmail = memberEmail;
+	this.memberEmailHash = memberEmailHash;
+	this.memberEmailChecked = memberEmailChecked;
+}
+
 
 	public String getMemberId() {
 		return memberId;
@@ -39,6 +51,22 @@ public class MemberVO {
 
 	public void setMemberEmail(String memberEmail) {
 		this.memberEmail = memberEmail;
+	}
+
+	public String getMemberEmailHash() {
+		return memberEmailHash;
+	}
+
+	public void setMemberEmailHash(String memberEmailHash) {
+		this.memberEmailHash = memberEmailHash;
+	}
+
+	public int getMemberEmailChecked() {
+		return memberEmailChecked;
+	}
+
+	public void setMemberEmailChecked(int memberEmailChecked) {
+		this.memberEmailChecked = memberEmailChecked;
 	}
 
    
