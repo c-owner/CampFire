@@ -1,16 +1,19 @@
 <%--
-  Created by IntelliJ IDEA.
   User: corne
   Date: 2021-03-05
   Time: 오후 5:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%
+request.setCharacterEncoding("utf-8");
+%>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>회원가입</title>
+    <meta charset="UTF-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
@@ -27,31 +30,32 @@
 
 <h3 style="text-align: center; font-size: 56px;">회원가입</h3>
 <p></p>
-<form name="joinForm" method="post" action="${pageContext.request.contextPath}/MemberJoinAction.me">
+<form name="joinForm" action="${pageContext.request.contextPath}/user/MemberJoinOk.me" method="post" >
     <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             <span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 				font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span>
-            <input type="text" name="memberId" minlength="4" maxlength="12"/>
-            <p id="idCheck_text"></p>
+            <input type="text" name="memberId" maxlength="12"/>
+            <font id="idCheck_text" size="3"></font>
 
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
             <span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
 					(* 영문+숫자+대소문자 조합 8자이상 입력) </span>
-            <input type="password" name="memberPw"/>
+            <input type="password" name="memberPw" id="memberPw"/>
 
             <br>
             <span style="color: #ff0000;">* </span><span style="font-weight: bold;">비밀번호 확인 </span>
-            <input type="password" name="memberPw"/>
+            <input type="password" name="memberPw2" id="memberPw2" />
+             <font id="pwCheck_text" size="3"></font>
             <br>
             <span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
-            <input type="email" name="memberEmail" placeholder="abc@gmail.com"/>
+            <input type="text" name="memberEmail" placeholder="abc@gmail.com"/>
             <div class="col-6 col-12-small">
-                <input type="checkbox" id="email-push" name="email-push" onclick="checkOnlyOne(this)">
+                <input type="radio" id="email-push" name="email-push">
                 [선택]
                 <label for="email-push">수신거부</label>
-                <input type="checkbox" id="email-push2" name="email-push" onclick="checkOnlyOne(this)" checked>
+                <input type="radio" id="email-push2" name="email-push" checked>
                 <label for="email-push2">수신동의</label>
             </div>
 
@@ -196,21 +200,8 @@
 <script src="../assets/js/breakpoints.min.js"></script>
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
-<script src="../assets/js/join.js"></script>
-<sciprt> var contextPath = "${pageContext.request.contextPath};</sciprt>
+<script>var contextPath = "${pageContext.request.contextPath}";</script>
+<script src="${pageContext.request.contextPath}/user/join.js"></script>
 <%--<script> $(function(){$("#postcodify_search_button").postcodifyPopUp();});</script>--%>
-<script>
-    function checkOnlyOne(element) {
-
-        const checkboxes
-            = document.getElementsByName("email-push");
-
-        checkboxes.forEach((cb) => {
-            cb.checked = false;
-        })
-
-        element.checked = true;
-    }
-</script>
 </body>
 </html>

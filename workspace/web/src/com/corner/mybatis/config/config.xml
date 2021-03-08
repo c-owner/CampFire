@@ -4,17 +4,17 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias alias="memberVO" type="com.corner.camp.member.vo.MemberVO"/>
+        <typeAlias type="com.corner.camp.member.vo.MemberVO" alias="memberVO"/>
     </typeAliases>
 
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property value="oracle.jdbc.OracleDriver" name="driver"/>
-                <property value="jdbc:oracle:thin:@localhost:1600:XE" name="url"/>
-                <property value="corner" name="username"/>
-                <property value="0008" name="password"/>
+                <property name="driver" value="oracle.jdbc.OracleDriver" />
+                <property name="url" value="jdbc:oracle:thin:@localhost:1600:XE"/>
+                <property name="username" value="corner" />
+                <property name="password" value="0008"/>
             </dataSource>
         </environment>
     </environments>

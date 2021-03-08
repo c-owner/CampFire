@@ -1,15 +1,16 @@
 package com.corner.camp.member.dao;
 
-import com.corner.camp.member.vo.MemberVO;
-import com.corner.mybatis.config.SqlMapConfig;
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import java.util.HashMap;
+import com.corner.camp.member.vo.MemberVO;
+import com.corner.mybatis.config.SqlMapConfig;
 
 public class MemberDAO {
 
-    private static int KEY = 3;
+    private static final int KEY = 3;
 
     SqlSessionFactory sessionFactory = SqlMapConfig.getSqlMapInstance();
     SqlSession session;
@@ -52,9 +53,27 @@ public class MemberDAO {
 		return en_pw;
 	}
 
-    public MemberVO login(HashMap<String, String> datas) {
-        return session.selectOne("Member.login", datas);
-    }
-
+	/*
+	 * public MemberVO login(HashMap<String, String> datas) { return
+	 * session.selectOne("Member.login", datas); }
+	 */
+	
+	//로그인
+	/**
+	 * 
+	 * @param id
+	 * @param pw
+	 * @return
+	 * true (1) : success <br> false (!1) : failed 
+	 */
+	public boolean login(String id, String pw) {
+		HashMap<String, String> member = new HashMap<>();
+		
+		member.put("id", id);
+//		member.put("pw", encrypt(pw));
+		member.put("pw", pw);
+		return (Integer)session.selectOne("Member.login", member) == 1;
+	}
+	
 }
 

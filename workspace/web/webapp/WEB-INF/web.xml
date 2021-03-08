@@ -11,9 +11,7 @@
 
     <servlet>
         <servlet-name>MemberFrontController</servlet-name>
-        <servlet-class>
-            com.corner.camp.member.controller.MemberFrontController
-        </servlet-class>
+        <servlet-class>com.corner.camp.member.controller.MemberFrontController</servlet-class>
     </servlet>
     
     <servlet-mapping>

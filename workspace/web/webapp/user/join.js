@@ -13,7 +13,6 @@ function formSubmit() {
         
         return false;
     }
-	check = true;
     form.submit();
 }
 
@@ -23,7 +22,7 @@ function checkId(id) {
         $("#idCheck_text").text("아이디를 작성 하십시오. ");
     } else {
         $.ajax({
-            url: "MemberCheckIdOkAction.me?id="+id,
+            url: contextPath + "/user/MemberCheckIdOkAction.me?id="+id,
             type: "GET",
             dataType: "text",
             success: function(result){
@@ -31,7 +30,6 @@ function checkId(id) {
                     check = true;
                     $("#idCheck_text").text("✔사용 가능");
                 } else {
-                    check = false;
                     $("#idCheck_text").text("❌사용 불가");
                 }
             },
@@ -47,4 +45,19 @@ $("input[name='memberId']").keyup(function(event){
     checkId(id);
 })
 
+$(function(){
+    $('#memberPw').keyup(function(){
+      $('#pwCheck_text').html('');
+    });
 
+    $('#memberPw2').keyup(function(){
+        if($('#memberPw').val() != $('#memberPw2').val()){
+          $('#pwCheck_text').html('❌일치하지 않음!<br><br>');
+          $('#pwCheck_text').attr('color', '#f82a2aa3');
+        } else{
+          $('#pwCheck_text').html('✔확인 완료<br><br>');
+          $('#pwCheck_text').attr('color', '#199894b3');
+        }
+
+    });
+});

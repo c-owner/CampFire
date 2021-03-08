@@ -4,15 +4,20 @@
 <mapper namespace="Member">
 
 	<insert id="join" parameterType="MemberVO">
-	INSERT INTO MEMBER VALUES( #{memberId}, #{memberPw}, #{memberEmail} )
+	INSERT INTO CAMP_USER VALUES ( 
+	#{memberId}, #{memberPw}, #{memberEmail} 
+	)
 	</insert>
 
     <select id="checkId" parameterType="string" resultType="_int">
-        SELECT COUNT(*) FROM MEMBER WHERE MEMBERID = #{memberId}
+        SELECT COUNT(*) FROM CAMP_USER WHERE MEMBERID = #{memberId}
     </select>
 
-    <select id="login" parameterType="hashmap" resultType="MemberVO">
+<!--    <select id="login" parameterType="hashmap" resultType="MemberVO">
         SELECT COUNT(*) FROM MEMBER WHERE MEMBERID = #{memberId} AND MEMBERPW = #{memberPw}
-    </select>
-
+    </select>-->
+	<select id="login" parameterType="map" resultType="_int">
+		SELECT COUNT(*) FROM CAMP_USER 
+		WHERE MEMBERID = #{id} AND MEMBERPW = #{pw}
+	</select>
 </mapper>

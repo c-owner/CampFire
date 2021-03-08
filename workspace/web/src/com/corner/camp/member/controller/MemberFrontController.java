@@ -30,40 +30,42 @@ public class MemberFrontController extends HttpServlet {
         ActionForward forward = null;
         System.out.println("uri " + requestURI);
 
-        if (command.equals("/MemberJoin.me")) {
+        if (command.equals("/user/MemberJoin.me")) {
             try {
                 forward = new ActionForward();
                 forward.setRedirect(false);
-                forward.setPath("./user/join.jsp");
-
+                forward.setPath("/user/join.jsp");
             } catch (Exception e) {
                 ;
             }
-        } else if (command.equals("/MemberJoinAction.me")) {
+        } else if (command.equals("/user/MemberJoinOk.me")) {
             try {
-                forward = new MemberJoinAction().execute(req, resp);
+                forward = new MemberJoinOkAction().execute(req, resp);
+                System.out.println("프론트 컨트롤러 : 회원가입 forward");
             } catch (Exception e) {
                 ;
             }
-        }  else if (command.equals("/MemberCheckIdOkAction.me")) {
+        }  else if (command.equals("/user/MemberCheckIdOkAction.me")) {
             try {
                 forward = new MemberCheckIdOkAction().execute(req, resp);
+                System.out.println("중복 검사 끝");
             } catch (Exception e) {
                 ;
             }
-        } else if (command.equals("/MemberLogin.me")) {
+        } else if (command.equals("/user/MemberLogin.me")) {
         	try {
-				forward = new ActionForward();
-				forward.setRedirect(false);
-				forward.setPath("./user/login.jsp");
+        		String login = req.getParameter("login");
+    			forward = new ActionForward();
+    			forward.setRedirect(false);
+				forward.setPath("/user/login.jsp" +  (login != null ? "?login=false" : ""));
 			} catch (Exception e) {;}
-        } else if (command.equals("/MemberLoginOkAction.me")) {
+        } else if (command.equals("/user/MemberLoginOk.me")) {
             try {
                 forward = new MemberLoginOkAction().execute(req, resp);
             } catch (Exception e) {
                 ;
             }
-        } else if (command.equals("/MainForm.me")) {
+        } else if (command.equals("/Main.me")) {
             try {
                 forward = new ActionForward();
                 forward.setRedirect(false);
@@ -76,15 +78,12 @@ public class MemberFrontController extends HttpServlet {
             forward.setRedirect(false);
             forward.setPath("/404error.jsp");
         }
-        System.out.println("forward 끝 ");
         if (forward != null) {
             if (forward.isRedirect()) {
-        System.out.println("if ");
                 resp.sendRedirect(forward.getPath());
             } else {
                 RequestDispatcher dispatcher = req.getRequestDispatcher(forward.getPath());
                 dispatcher.forward(req, resp);
-        System.out.println("else ");
             }
         }
 

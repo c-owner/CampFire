@@ -5,9 +5,10 @@
   Time: 오후 5:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta charset="UTF-8">
@@ -28,14 +29,19 @@
 <!-- 로그인 부분 -->
 
 <h3 style="text-align: center; font-size: 56px;">로그인</h3>
-<form method="post" action="${pageContext.request.contextPath}/MemberLoginOkAction.me">
+   	<c:if test="${not empty param.login }">
+   		<c:if test="${not param.login}">
+   				<script>alert("아이디 또는 비밀번호를 다시 확인해주세요.");</script>
+   		</c:if>
+   	</c:if>
+<form method="post" action="${pageContext.request.contextPath}/user/MemberLoginOk.me">
     <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             아이디
-            <input type="text" name="id" id="id" maxlength="12"/>
+            <input type="text" name="memberId" id="memberId" maxlength="12"/>
             <br>
-            비밀번호 <input type="password" name="pw" id="pw"/>
-            <a href="#"><span style="font-size: 28px;"> </span></a>
+            비밀번호 <input type="password" name="memberPw" id="memberPw"/>
+            <!-- <a href="#"><span style="font-size: 28px;"> </span></a> -->
             <br>
         </div>
 
@@ -43,7 +49,7 @@
     <div class="col-12">
         <ul class="actions">
             <li style="margin: 0 auto;">
-                <a href="${pageContext.request.contextPath}/MemberJoin.me" class="button">회원가입 </a>
+                <a href="${pageContext.request.contextPath}/user/MemberJoin.me" class="button">회원가입 </a>
               <input type="submit" value="로그인" class="primary"/>
             </li>
         </ul>

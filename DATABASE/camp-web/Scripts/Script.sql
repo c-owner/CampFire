@@ -1,8 +1,8 @@
 -- id, pw, email,
 -- 이름, 나이, 성별, 휴대폰번호, 주소
-DROP TABLE MEMBER CASCADE CONSTRAINTS;
-
-CREATE TABLE MEMBER
+DROP TABLE CAMP_USER CASCADE CONSTRAINTS;
+ 
+CREATE TABLE CAMP_MEMBER
 (
     memberId            VARCHAR2(100) NOT NULL,
     memberPw            VARCHAR2(100) NOT NULL,
@@ -15,18 +15,24 @@ CREATE TABLE MEMBER
     memberAddress       VARCHAR2(300),
     memberAddressDETAIL VARCHAR2(300),
     memberAddressEtc    VARCHAR2(100),
-    CONSTRAINT MEMBER_PK PRIMARY KEY (memberId)
+    CONSTRAINT CAMP_USER_PK PRIMARY KEY (memberId)
 );
-CREATE TABLE MEMBER
+CREATE TABLE CAMP_USER
 (
-    memberId            VARCHAR2(100) null,
-    memberPw            VARCHAR2(100) NULL,
-    memberEmail         VARCHAR2(200) NULL,
-       CONSTRAINT MEMBER_PK PRIMARY KEY (memberId)
+	memberId VARCHAR2(300),
+	memberPw VARCHAR2(300),
+--	memberName VARCHAR2(200),
+--	memberAge NUMBER(3),
+--	memberGender VARCHAR2(20),
+	memberEmail VARCHAR2(200),
+--	memberZipcode VARCHAR2(20),
+--	memberAddress VARCHAR2(300),
+--	memberAddressDetail VARCHAR2(300),
+--	memberAddressEtc VARCHAR2(100),
+  CONSTRAINT CAMP_USER_PK PRIMARY KEY (memberId)
 );
 
-SELECT * FROM MEMBER;
-SELECT * FROM HR.MEMBER;
+SELECT * FROM CAMP_USER;
 SELECT * FROM HR.TABLE_MEMBER;
 
 ---
@@ -45,6 +51,6 @@ CREATE TABLE MEMBER(
 --
 -- SELECT * FROM TABLE_MEMBER;
 
-INSERT INTO MEMBER
+INSERT INTO CAMP_USER
 (MEMBERID, MEMBERPW, MEMBEREMAIL)
 VALUES('asd1234', '1234', 'ddd');

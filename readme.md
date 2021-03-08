@@ -4,13 +4,31 @@
 
 <img src="https://images.unsplash.com/photo-1492648272180-61e45a8d98a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" weight="700px" height="500px">
 
+# Info
+
+- **MVC model2 디자인 패턴 기반**
+
+- **캠핑 정보 모음 사이트**
+- **커뮤니티**
+- 
+
+
+
+
+
+---
+
+
+
 ## commit🌱
 
 
 
 **version : 0.01c**
 
-- 회원가입 구현 (id가 false, true로 들어감)
+- **회원가입 구현 완료**
+
+- **로그인 기능 구현 완료** 
 
   
 

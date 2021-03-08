@@ -31,8 +31,8 @@
             <p> 방문하시려는 페이지의 주소가 잘못 입력되었거나,
                 <br>페이지의 주소가 변경 혹은 삭제되어
                 <br>요청하신 페이지를 찾을 수 없습니다.</p>
-            <form method="post" action="#" class="combined">
-                <a href="${pageContext.request.contextPath}/Main.me" class="button" value="메인"/>
+            <form method="post" action="${pageContext.request.contextPath}/Main.me" class="combined">
+            <button type="submit">메인</button>
             </form>
         </div>
     </div>
