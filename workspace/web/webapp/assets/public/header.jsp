@@ -30,16 +30,33 @@
             <li class=""><a href="#">전체</a></li>
             <li><a href="#" class="dropdown">계정 메뉴</a>
                 <ul>
+                        <c:if test="${userStatus eq false}">
                     <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
                         <a href="${pageContext.request.contextPath}/user/MemberJoin.me">회원가입</a></li>
                     <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
                         <a href="${pageContext.request.contextPath}/user/MemberLogin.me">로그인</a></li>
+                        </c:if>
+
                         <c:if test="${userStatus eq true}">
+                    <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
+                        <a href="${pageContext.request.contextPath}/user/MemberEdit.me">마이페이지</a></li>
+                        
                     <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
                         <a href="${pageContext.request.contextPath}/user/MemberLogout.me">로그아웃</a></li>
                         </c:if>
                 </ul>
             </li>
+              <c:if test="${userStatus eq true}">
+               <li><a href="#" class="dropdown">게시판 메뉴</a>
+               		<ul>
+			            <li><a href="#">자유게시판</a></li>
+			            <li><a href="#">캠핑리뷰</a></li>
+			            <li><a href="#">캠핑음식</a></li>
+			            <li><a href="#">캠핑팁</a></li>
+			            
+		            </ul>
+               </li>
+              </c:if>
             <li><a href="#">공지사항</a></li>
             <li><a href="../../elements.jsp">고객센터</a></li>
             <!-- <li><a href="generic.html">Generic</a></li> -->

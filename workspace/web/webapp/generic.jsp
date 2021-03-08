@@ -21,7 +21,7 @@
 <body class="is-preload">
 
 <!-- Header -->
-<jsp:include page="../assets/public/header.jsp"></jsp:include>
+<jsp:include page="./assets/public/header.jsp"></jsp:include>
 
 <!-- Main -->
 <div id="main">
@@ -88,7 +88,7 @@
 </section>
 
 <!-- Footer -->
-<jsp:include page="../assets/public/footer.jsp"></jsp:include>
+<jsp:include page="./assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
 <script src="../assets/js/jquery.min.js"></script>
