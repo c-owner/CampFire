@@ -71,5 +71,32 @@ public class MemberDAO {
 		member.put("pw", encrypt(pw));
 		return (Integer)session.selectOne("Member.login", member) == 1;
 	}
+	
+	public String getUserEmail(String id) {
+		return session.selectOne("getEmail", id);
+	}
+	
+	/**
+	 * 
+	 * @param id
+	 * @return 
+	 * boolean : true(1) : access // false(!1) : none 
+	 */
+	public boolean getUserEmailChecked(String id) {
+		// 1 이면 인증된 회원 true, 0 이면 미인증 회원 false
+		// 이메일이 없다면
+		return (Integer) session.selectOne("emailChecked", id) == 1;
+	}
+	/**
+	 * 
+	 * @param id
+	 * @apiNote memberEmailChecked = 1로 업데이트 해주는 메소드
+	 * @return boolean => true : Update Success <br> false : Update Failed
+	 */
+	public boolean setUserEmailChecked(String id) {
+		return (Integer) session.update("emailCheckUpdate", id) == 1;
+	}
+
+	
 }
 

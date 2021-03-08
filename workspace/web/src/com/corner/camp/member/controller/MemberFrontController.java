@@ -30,7 +30,8 @@ public class MemberFrontController extends HttpServlet {
         String command = requestURI.substring(contextPath.length());
         
         ActionForward forward = null;
-
+        
+     
         if (command.equals("/user/MemberJoin.me")) {
             try {
             	String join = req.getParameter("join");
@@ -43,7 +44,6 @@ public class MemberFrontController extends HttpServlet {
         } else if (command.equals("/user/MemberJoinOk.me")) {
             try {
                 forward = new MemberJoinOkAction().execute(req, resp);
-//                forward = new MemberEmailAcceptAction().execute(req, resp);
             } catch (Exception e) {
                 ;
             }
@@ -68,17 +68,30 @@ public class MemberFrontController extends HttpServlet {
             }
         } else if (command.equals("/Main.me")) {
             try {
+            	String type = req.getParameter("type");
                 forward = new ActionForward();
                 forward.setRedirect(false);
-                forward.setPath("/index.jsp");
-            } catch (Exception e) {
-                ;
-            }
+				forward.setPath("/index.jsp" +  (type != null ? "?type=login" : ""));
+            } catch (Exception e) {;}
+        } else if (command.equals("/user/emailAccess.me")) {
+        	try {
+        		   String code = null;
+        			if(req.getParameter("code") != null ) {
+        				code = req.getParameter("code");
+        				forward = new MemberEmailAccessAction().execute(req, resp);
+        			}
+			} catch (Exception e) {;}
+        }  else if(command.equals("/user/emailSend.me")) { 
+        	try {
+				forward = new MemberEmailSendAction().execute(req, resp);
+			} catch (Exception e) {;}
         } else {
             forward = new ActionForward();
             forward.setRedirect(false);
             forward.setPath("/404error.jsp");
         }
+        
+        
         if (forward != null) {
             if (forward.isRedirect()) {
                 resp.sendRedirect(forward.getPath());

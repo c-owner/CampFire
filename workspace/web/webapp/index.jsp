@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
-
 <html>
 <head>
     <title>캠퍼들 모여 </title>
@@ -24,11 +24,15 @@
 </head>
 <body class="is-preload" onload="printClock()">
 
+<c:set var = 'userStatus' value = "false"></c:set>
+<c:if test="${param.type eq 'login' }">
+	<c:set var = 'userStatus' value = 'true'/>
+</c:if>
+
 <!-- Header -->
 <jsp:include page="./assets/public/header.jsp"></jsp:include>
 
 <!-- Banner -->
-
 <section id="banner">
     <article class="full">
         <div class="image" data-position="center">

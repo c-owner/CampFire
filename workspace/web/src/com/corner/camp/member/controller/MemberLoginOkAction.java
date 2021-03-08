@@ -23,13 +23,11 @@ public class MemberLoginOkAction implements Action {
         resp.setContentType("text/html;charset=utf-8");
         if (dao.login(id, pw)) {
         	session.setAttribute("memberId", id);
-        	System.out.println("로그인 성공");
         	forward.setRedirect(true);
-        	forward.setPath(req.getContextPath()+"/Main.me");
+        	forward.setPath(req.getContextPath()+"/Main.me?type=login");
         } else {
-        	System.out.println("로그인 실패");
         	forward.setRedirect(false);
-        	forward.setPath("/user/MemberLogin.me?login=false");
+        	forward.setPath("/user/MemberLogin.me?type=false");
         }
 
         return forward;

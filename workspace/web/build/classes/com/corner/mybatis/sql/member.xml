@@ -16,4 +16,18 @@
 		SELECT COUNT(*) FROM CAMP_USER 
 		WHERE MEMBERID = #{id} AND MEMBERPW = #{pw}
 	</select>
+	
+	<select id="getEmail" parameterType="string" resultType="string">
+	SELECT MEMBEREMAIL FROM CAMP_USER WHERE MEMBERID = #{memberId}
+	</select>
+	
+	<select id="emailChecked" parameterType="string" resultType="_int">
+	SELECT MEMBEREMAILCHECKED FROM CAMP_USER WHERE MEMBERID = #{memberId}
+	</select>
+	
+	<!-- 이메일 코드가 일치하다면 이메일 인증 컬럼값을 0에서 1로 바꿔준다. -->
+	<update id="emailCheckUpdate" parameterType="string">
+	UPDATE CAMP_USER SET MEMBEREMAILCHECKED = 1 WHERE MEMBERID = #{memberId}
+	</update>
+	
 </mapper>
