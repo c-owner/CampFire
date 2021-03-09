@@ -138,22 +138,28 @@ public class MemberDAO {
 	 * @return boolean (true:임시 비밀번호 갱신 성공)<br>(false:실패)
 	 * <br> note : 사용자 임시 비밀번호 갱신 
 	 */
-	public boolean tempPassword(int len) {
+	public boolean tempPassword(String id, String email) {
 		char[] charSet = new char[] { '0', '1', '2', '3', '4',
 				'5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
 				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
 				'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 				};
-		
+		int len = 6;
 		int idx = 0;
 		StringBuffer sb = new StringBuffer();
-		
+		String temp_pw = null;
 		for(int i = 0; i < len; i++ ) {
 			idx = (int) (charSet.length * Math.random());
 			sb.append(charSet[idx]);
 		}
+		HashMap<String, String> member = new HashMap<>();
 		
-		return (Integer)session.update("Member.updatePw", len) == 1;
+		member.put("memberId", id);
+		member.put("memberEmail", email);
+		System.out.println("\n\n임시 비밀번호 : " + sb.toString() + " \n\n");
+		temp_pw += sb.toString();
+		
+		return (Integer) session.update("Member.tempPw", member) == 1;
 	}
 	
 	
@@ -164,10 +170,8 @@ public class MemberDAO {
 	 * @return String (임시비밀번호를 반환)
 	 * <br>Note : 사용자 임시 비밀번호 보여주기
 	 */
-	public String getUserPw(MemberVO member) {
-		member.setMemberPw(decrypt(member.getMemberPw()));
-		String pw = member.getMemberPw();
-		return session.selectOne("Member.getPw", pw);
+	public String getUserPw(String email) {
+		return session.selectOne("getPw", email);
 	}
 	
 	public boolean emailFindPwCheck(String email) {

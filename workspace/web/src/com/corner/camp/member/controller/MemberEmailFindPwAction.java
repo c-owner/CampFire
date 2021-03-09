@@ -24,38 +24,37 @@ public class MemberEmailFindPwAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
+
 		ActionForward forward = null;
-		
+		MemberDAO dao = new MemberDAO();
 		
 		String memberEmail = null;
 		String memberId = null;
+		String temp_pw = null;
+		
 		if(req.getParameter("email") != null ) {
 			memberEmail = req.getParameter("email");
+			memberId = dao.getUserId(memberEmail);
 		} 
 	 System.out.println("이메일 체크1");
-		MemberDAO dao = new MemberDAO();
-		MemberVO vo = new MemberVO();
-		// id와 이메일을 불러왔다면 임시 비밀번호 갱신
-		vo.setMemberPw(dao.encrypt("null"));
-		String temp_pw = vo.getMemberPw();
+		// 이메일을 불러왔다면 임시 비밀번호 갱신
 		
-		memberId = vo.getMemberId();
-		System.out.println("이메일 체크2");
-		
-		if(dao.tempPassword(temp_pw.length())) {
-			// 만약 임시 비밀번호 길이를 갱신했다면 
-		// 임시 비밀번호를 보여주어야한다.
-			System.out.println("이메일 체크3 -if");
-			temp_pw = dao.getUserPw(vo);
+		dao.tempPassword(memberId, memberEmail); // 비밀번호 컬럼에 임시 비밀번호 저장을 완료했다면
+			System.out.println("이메일 체크2");
+			// 임시 비밀번호 꺼내기 
+			temp_pw = dao.getUserPw(memberEmail);
+			System.out.println(memberEmail + "\n"+ memberId +"\n"+temp_pw);
 			
-		} else {
-			System.out.println("이메일 체크3 -else");
-			// 임시 비밀번호 갱신이 되지 않았다면 
-			// id , email이 존재하지 않거나, 틀리거나, DB update 문제
-			return null;
-		}
+/*			PrintWriter out = resp.getWriter();
+			out.println("<script>");
+			out.println("alert('아이디와 이메일을 조회하지 못하였습니다. 잠시 후 다시 시도바랍니다.');");
+			out.println("location.href='/user/MemberLogin.me' ");
+			out.println("</script>");
+			out.close();
+			return forward;
+*/		
 		
-		System.out.println(memberEmail + "\n"+ memberId);
+		
 		
 		System.out.println("이메일 체크4");
 		String host = "http://corner-camp.kro.kr/";
