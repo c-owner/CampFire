@@ -30,7 +30,7 @@
             <p> 이메일로 인증 메일을 발송 하였습니다.
                 <br>가입하신 이메일에 접속하여 인증을 해주시길 바랍니다.
                 <br>감사합니다.</p>
-            <a href="${pageContext.request.contextPath}/user/emailAccess.me" class="btn-right">메인
+            <a href="${pageContext.request.contextPath}/Main.me" class="btn-right">메인
             <span class="arrow-right"></span>
             </a>
             <!-- <button type="submit">메인</button> -->

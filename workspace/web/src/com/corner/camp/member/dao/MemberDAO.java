@@ -120,49 +120,22 @@ public class MemberDAO {
 		return (Integer)session.selectOne("Member.emailFindCheck", email) == 1;
 	}
 	
+
 	/**
 	 * 
 	 * @param MemberVO member
 	 * @return boolean : true(갱신완료) & false(갱신실패)
 	 */
-	public boolean updateUserPw(MemberVO member) {
-		member.setMemberPw(encrypt(member.getMemberPw()));
+	public boolean setUserPw(String id, String email) {
+		System.out.println("updateUserPw 들어옴 ");
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("memberId", id);
+		String memberPw = encrypt(tempPassword());
+		datas.put("memberPw", memberPw);
+		datas.put("memberEmail", email);
 		
-		return (Integer)session.update("Member.updatePw", member) == 1;
+		return (Integer)session.update("Member.updatePw", datas) == 1;
 	}
-	
-	
-	/**
-	 * 
-	 * @param pw
-	 * @return boolean (true:임시 비밀번호 갱신 성공)<br>(false:실패)
-	 * <br> note : 사용자 임시 비밀번호 갱신 
-	 */
-	public boolean tempPassword(String id, String email) {
-		char[] charSet = new char[] { '0', '1', '2', '3', '4',
-				'5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
-				'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-				};
-		int len = 6;
-		int idx = 0;
-		StringBuffer sb = new StringBuffer();
-		String temp_pw = null;
-		for(int i = 0; i < len; i++ ) {
-			idx = (int) (charSet.length * Math.random());
-			sb.append(charSet[idx]);
-		}
-		HashMap<String, String> member = new HashMap<>();
-		
-		member.put("memberId", id);
-		member.put("memberEmail", email);
-		System.out.println("\n\n임시 비밀번호 : " + sb.toString() + " \n\n");
-		temp_pw += sb.toString();
-		
-		return (Integer) session.update("Member.tempPw", member) == 1;
-	}
-	
-	
 	
 	/**
 	 * 
@@ -173,6 +146,35 @@ public class MemberDAO {
 	public String getUserPw(String email) {
 		return session.selectOne("getPw", email);
 	}
+	
+	
+	/**
+	 * 
+	 * @param pw
+	 * @return boolean (true:임시 비밀번호 갱신 성공)<br>(false:실패)
+	 * <br> note : 사용자 임시 비밀번호 갱신 
+	 */
+	public String tempPassword() {
+		char[] charSet = new char[] { '0', '1', '2', '3', '4',
+				'5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+				'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				};
+		final int len = 6;
+		int idx = 0;
+		StringBuffer sb = new StringBuffer();
+		String temp_pw = "";
+		for(int i = 0; i < len; i++ ) {
+			idx = (int) (charSet.length * Math.random());
+			sb.append(charSet[idx]);
+		}
+		temp_pw += sb.toString();
+		
+		return temp_pw;
+	}
+	
+	
+	
 	
 	public boolean emailFindPwCheck(String email) {
 		return (Integer)session.selectOne("Member.emailFindCheck", email) == 1;

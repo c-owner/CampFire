@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.corner.action.Action;
 import com.corner.action.ActionForward;
 import com.corner.camp.member.dao.MemberDAO;
-import com.corner.camp.member.vo.MemberVO;
 import com.corner.util.Gmail;
 
 public class MemberEmailFindPwAction implements Action{
@@ -24,35 +23,39 @@ public class MemberEmailFindPwAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
 
 		ActionForward forward = null;
 		MemberDAO dao = new MemberDAO();
 		
 		String memberEmail = null;
 		String memberId = null;
-		String temp_pw = null;
+		String memberPw = null;
 		
 		if(req.getParameter("email") != null ) {
 			memberEmail = req.getParameter("email");
 			memberId = dao.getUserId(memberEmail);
 		} 
-	 System.out.println("이메일 체크1");
-		// 이메일을 불러왔다면 임시 비밀번호 갱신
-		
-		dao.tempPassword(memberId, memberEmail); // 비밀번호 컬럼에 임시 비밀번호 저장을 완료했다면
+		System.out.println(memberEmail +"\n"+memberId);
+			System.out.println("이메일 체크1");
+		boolean check = dao.setUserPw(memberId, memberEmail);
+		System.out.println("이메일 체크1-1");
+		if(check) {
 			System.out.println("이메일 체크2");
-			// 임시 비밀번호 꺼내기 
-			temp_pw = dao.getUserPw(memberEmail);
-			System.out.println(memberEmail + "\n"+ memberId +"\n"+temp_pw);
+			memberPw = dao.getUserPw(memberEmail);
+			System.out.println(memberEmail + "\n"+ memberId +"\n"+memberPw);
 			
-/*			PrintWriter out = resp.getWriter();
+		} else {
+			PrintWriter out = resp.getWriter();
 			out.println("<script>");
 			out.println("alert('아이디와 이메일을 조회하지 못하였습니다. 잠시 후 다시 시도바랍니다.');");
 			out.println("location.href='/user/MemberLogin.me' ");
 			out.println("</script>");
 			out.close();
-			return forward;
-*/		
+		}
+		
+		System.out.println("이메일 체크3");
+		// 임시 비밀번호 꺼내기 
 		
 		
 		
@@ -62,7 +65,7 @@ public class MemberEmailFindPwAction implements Action{
 		String to = dao.getUserEmail(memberId);
 		String subject = "CampCorner 사이트 비밀번호 찾기 이메일입니다.";
 		String content = "다음 링크에 접속하여 로그인을 진행하세요."
-				+ "\n사용자 임시 비밀번호 : "+temp_pw+"\n ";
+				+ "\n사용자 임시 비밀번호 : "+memberPw+"\n ";
 		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);

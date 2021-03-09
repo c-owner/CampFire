@@ -39,9 +39,13 @@
 	</select>
 	
 	<update id="tempPw" parameterType="map">
+	UPDATE CAMP_USER SET MEMBERPW = {#temp_pw} 
+	WHERE MEMBERID = #{id}
+	</update>
+	
+	<update id="updatePw" parameterType="map">
 	UPDATE CAMP_USER SET MEMBERPW = {#memberPw} 
-	WHERE MEMBERID = #{memberId}
-	AND MEMBEREMAIL = #{memberEmail} 
+	WHERE MEMBERID = #{memberId} AND MEMBEREMAIL = #{memberEmail} 
 	</update>
 	
 	<select id="getPw" parameterType="string" resultType="string">
