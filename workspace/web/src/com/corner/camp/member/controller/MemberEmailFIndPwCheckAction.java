@@ -17,7 +17,6 @@ public class MemberEmailFIndPwCheckAction implements Action {
         req.setCharacterEncoding("UTF-8");
 
         String email = req.getParameter("email");
-        
         MemberDAO dao = new MemberDAO();
         
         PrintWriter out = resp.getWriter();

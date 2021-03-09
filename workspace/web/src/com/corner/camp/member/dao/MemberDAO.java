@@ -126,15 +126,8 @@ public class MemberDAO {
 	 * @param MemberVO member
 	 * @return boolean : true(갱신완료) & false(갱신실패)
 	 */
-	public boolean setUserPw(String id, String email) {
-		System.out.println("updateUserPw 들어옴 ");
-		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("memberId", id);
-		String memberPw = encrypt(tempPassword());
-		datas.put("memberPw", memberPw);
-		datas.put("memberEmail", email);
-		
-		return (Integer)session.update("Member.updatePw", datas) == 1;
+	public boolean setUserPw(String id) {
+		return (Integer) session.update("updatePw", id) == 1;
 	}
 	
 	/**

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.corner.action.Action;
 import com.corner.action.ActionForward;
 import com.corner.camp.member.dao.MemberDAO;
+import com.corner.camp.member.vo.MemberVO;
 import com.corner.util.Gmail;
 
 public class MemberEmailFindPwAction implements Action{
@@ -27,6 +28,7 @@ public class MemberEmailFindPwAction implements Action{
 
 		ActionForward forward = null;
 		MemberDAO dao = new MemberDAO();
+		MemberVO vo = new MemberVO();
 		
 		String memberEmail = null;
 		String memberId = null;
@@ -36,12 +38,12 @@ public class MemberEmailFindPwAction implements Action{
 			memberEmail = req.getParameter("email");
 			memberId = dao.getUserId(memberEmail);
 		} 
-		System.out.println(memberEmail +"\n"+memberId);
-			System.out.println("이메일 체크1");
-		boolean check = dao.setUserPw(memberId, memberEmail);
 		System.out.println("이메일 체크1-1");
-		if(check) {
-			System.out.println("이메일 체크2");
+		vo.setMemberId(req.getParameter("memberId"));
+		vo.setMemberEmail(req.getParameter("memberEmail"));
+		vo.setMemberPw(dao.encrypt(dao.tempPassword()));
+		System.out.println("이메일 체크2");
+		if(dao.setUserPw(memberId)) {
 			memberPw = dao.getUserPw(memberEmail);
 			System.out.println(memberEmail + "\n"+ memberId +"\n"+memberPw);
 			
@@ -54,12 +56,11 @@ public class MemberEmailFindPwAction implements Action{
 			out.close();
 		}
 		
+		
 		System.out.println("이메일 체크3");
 		// 임시 비밀번호 꺼내기 
+		memberPw = dao.getUserPw(dao.decrypt(memberPw));
 		
-		
-		
-		System.out.println("이메일 체크4");
 		String host = "http://corner-camp.kro.kr/";
 		String from = "qwe133553@gmail.com"; 
 		String to = dao.getUserEmail(memberId);

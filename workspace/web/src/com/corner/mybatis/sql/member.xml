@@ -6,9 +6,8 @@
 		INSERT INTO CAMP_USER 
 		VALUES(	#{memberId}, #{memberPw}, #{memberEmail}, #{memberEmailHash}, #{memberEmailChecked})	
 	</insert>
-	
 
-    <select id="checkId" parameterType="string" resultType="_int">
+	<select id="checkId" parameterType="string" resultType="_int">
         SELECT COUNT(*) FROM CAMP_USER WHERE MEMBERID = #{memberId}
     </select>
 
@@ -16,42 +15,39 @@
 		SELECT COUNT(*) FROM CAMP_USER 
 		WHERE MEMBERID = #{id} AND MEMBERPW = #{pw}
 	</select>
-	
+
 	<select id="getEmail" parameterType="string" resultType="string">
 	SELECT MEMBEREMAIL FROM CAMP_USER WHERE MEMBERID = #{memberId}
 	</select>
-	
+
 	<select id="emailChecked" parameterType="string" resultType="_int">
 	SELECT MEMBEREMAILCHECKED FROM CAMP_USER WHERE MEMBERID = #{memberId}
 	</select>
-	
+
 	<!-- 이메일 코드가 일치하다면 이메일 인증 컬럼값을 0에서 1로 바꿔준다. -->
 	<update id="emailCheckUpdate" parameterType="string">
 	UPDATE CAMP_USER SET MEMBEREMAILCHECKED = 1 WHERE MEMBERID = #{memberId}
 	</update>
-	
+
 	<select id="getId" parameterType="string" resultType="string">
 	SELECT MEMBERID FROM CAMP_USER WHERE MEMBEREMAIL = #{memberEmail}
 	</select>
-	
-	<select id="emailFindCheck" parameterType="string" resultType="_int">
-	SELECT COUNT(*) FROM CAMP_USER WHERE MEMBEREMAIL = #{memberEmail}
-	</select>
-	
-	<update id="tempPw" parameterType="map">
-	UPDATE CAMP_USER SET MEMBERPW = {#temp_pw} 
-	WHERE MEMBERID = #{id}
-	</update>
-	
-	<update id="updatePw" parameterType="map">
-	UPDATE CAMP_USER SET MEMBERPW = {#memberPw} 
-	WHERE MEMBERID = #{memberId} AND MEMBEREMAIL = #{memberEmail} 
-	</update>
-	
+
 	<select id="getPw" parameterType="string" resultType="string">
 	SELECT MEMBERPW FROM CAMP_USER WHERE MEMBEREMAIL = #{memberEmail};
 	</select>
-	
+
+	<select id="emailFindCheck" parameterType="string" resultType="_int">
+	SELECT COUNT(*) FROM CAMP_USER 
+	WHERE MEMBEREMAIL = #{email}
+	</select>
+
+	<update id="updatePw" parameterType="memberVO">
+	UPDATE CAMP_USER SET MEMBERPW = {#memberPw} 
+	WHERE MEMBERID = #{memberId}
+	</update>
+
+
 	<select id="emailFindPwCheck" parameterType="string" resultType="_int">
 	SELECT MEMBERID, MEMBEREMAIL FROM CAMP_USER 
 	WHERE MEMBEREMAIL = #{memberEmail} 
@@ -59,6 +55,6 @@
 	<!--
 	WHERE MEMBERID = #{memberId} AND MEMBEREMAIL = #{memberEmail} 
 	-->
-	
-	
+
+
 </mapper>

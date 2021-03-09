@@ -40,15 +40,17 @@ function emailFindId(){
 	
 }
 
-	
-		var	id = $("input[name='memberId']").val();
-		
+
 function sendEmailPw(email) {
+	var id = $("input[name='memberId2']").val();
 	var email = $("input[name='memberEmail2']").val();
 	if (email == "") {
-		alert('이메일과 아이디는 빈 칸 없이 입력해주세요.');
+		alert('이메일을 입력해주세요.');
 		return false;
-	} else {
+	} else if (id == "") {  
+		alert('아이디를 입력해주세요.');
+		return false;
+	}else {
 		$.ajax({
 /*			url: "/user/MemberFindPwCheck.me?id=" + id +"?email="+email,*/
 			url: "/user/MemberFindPwCheck.me?email=" + email,
@@ -69,7 +71,7 @@ function sendEmailPw(email) {
 	}
 
 }
-	$("input[name='memberEmail2']").on('click', 'button', function(event) {
+	$("form[name='pwFindForm']").on('click', 'button', function(event) {
 		var email = $("input[name='memberEmail2']").val();
 		sendEmailPw(email);
 	})

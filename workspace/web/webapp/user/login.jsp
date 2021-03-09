@@ -89,12 +89,12 @@
                 <div class="form-inline form-group findPw">
                     <h3>🔍 패스워드 찾기</h3>
                     <div class="msg">ID 와 E-MAIL 을 입력하여 임시비밀번호를 받을수 있습니다.</div>
-                    <div style="width: 60%; margin: 0 0 20 auto;">
-                        아이디 <input type="text" name="memberId" id="memberId" placeholder="🕵️‍아이디"/>
+                    <form name="pwFindForm" style="width: 60%; margin: 0 0 20 auto;" action="${pageContext.request.contextPath}/user/MemberFindPw.me">
+                        아이디 <input type="text" name="memberId2" id="memberId2" placeholder="🕵️‍아이디"/>
                         이메일 <input type="email" name="memberEmail2" id="memberEmail" placeholder="📧이메일">
-                        <input type="button" class="button primary fit small" value="패스워드 찾기"
+                        <input type="button" name="idEmailBtn" class="button primary fit small" value="패스워드 찾기"
                               onclick="sendEmailPw()" style="display: inline;  "/>
-                    </div>
+                              </form>
                     <a class="btn-close fa-find" href="#" style="font-size:13px; text-align: right; color: grey;">로그인
                         <i class="quit" aria-hidden="true"></i>
                     </a>
