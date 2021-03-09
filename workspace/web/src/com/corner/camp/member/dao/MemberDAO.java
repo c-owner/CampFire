@@ -55,7 +55,14 @@ public class MemberDAO {
 		}
 		return en_pw;
 	}
-
+	public String decrypt(String en_pw) { 
+		String de_pw = "";
+		for(int i = 0; i < en_pw.length(); i++ ) {
+			de_pw += (char)(en_pw.charAt(i) / KEY);
+		}
+		return de_pw;
+	}
+	
 	//로그인
 	/**
 	 * 
@@ -73,7 +80,7 @@ public class MemberDAO {
 	}
 	
 	public String getUserEmail(String id) {
-		return session.selectOne("getEmail", id);
+		return session.selectOne("Member.getEmail", id);
 	}
 	
 	/**
@@ -84,8 +91,7 @@ public class MemberDAO {
 	 */
 	public boolean getUserEmailChecked(String id) {
 		// 1 이면 인증된 회원 true, 0 이면 미인증 회원 false
-		// 이메일이 없다면
-		return (Integer) session.selectOne("emailChecked", id) == 1;
+		return (Integer) session.selectOne("Member.emailChecked", id) == 1;
 	}
 	/**
 	 * 
@@ -94,9 +100,79 @@ public class MemberDAO {
 	 * @return boolean => true : Update Success <br> false : Update Failed
 	 */
 	public boolean setUserEmailChecked(String id) {
-		return (Integer) session.update("emailCheckUpdate", id) == 1;
+		return (Integer) session.update("Member.emailCheckUpdate", id) == 1;
 	}
 
+	/**
+	 * @param email(String) 
+	 * @return String(id)
+	 */
+	public String getUserId(String email) {
+		return session.selectOne("getId", email);
+	}
+	
+	/**
+	 * 
+	 * @param email
+	 * @return boolean : true(email존재) & false (email없음)
+	 */
+	public boolean emailFindCheck(String email) {
+		return (Integer)session.selectOne("Member.emailFindCheck", email) == 1;
+	}
+	
+	/**
+	 * 
+	 * @param MemberVO member
+	 * @return boolean : true(갱신완료) & false(갱신실패)
+	 */
+	public boolean updateUserPw(MemberVO member) {
+		member.setMemberPw(encrypt(member.getMemberPw()));
+		
+		return (Integer)session.update("Member.updatePw", member) == 1;
+	}
+	
+	
+	/**
+	 * 
+	 * @param pw
+	 * @return boolean (true:임시 비밀번호 갱신 성공)<br>(false:실패)
+	 * <br> note : 사용자 임시 비밀번호 갱신 
+	 */
+	public boolean tempPassword(int len) {
+		char[] charSet = new char[] { '0', '1', '2', '3', '4',
+				'5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+				'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				};
+		
+		int idx = 0;
+		StringBuffer sb = new StringBuffer();
+		
+		for(int i = 0; i < len; i++ ) {
+			idx = (int) (charSet.length * Math.random());
+			sb.append(charSet[idx]);
+		}
+		
+		return (Integer)session.update("Member.updatePw", len) == 1;
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param member
+	 * @return String (임시비밀번호를 반환)
+	 * <br>Note : 사용자 임시 비밀번호 보여주기
+	 */
+	public String getUserPw(MemberVO member) {
+		member.setMemberPw(decrypt(member.getMemberPw()));
+		String pw = member.getMemberPw();
+		return session.selectOne("Member.getPw", pw);
+	}
+	
+	public boolean emailFindPwCheck(String email) {
+		return (Integer)session.selectOne("Member.emailFindCheck", email) == 1;
+	}
 	
 }
 

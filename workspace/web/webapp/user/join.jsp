@@ -208,7 +208,7 @@ request.setCharacterEncoding("utf-8");
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
 <script>var contextPath = "${pageContext.request.contextPath}";</script>
-<script src="${pageContext.request.contextPath}/user/join.js"></script>
+<script src="../assets/js/join.js"></script>
 <%--<script> $(function(){$("#postcodify_search_button").postcodifyPopUp();});</script>--%>
 </body>
 </html>

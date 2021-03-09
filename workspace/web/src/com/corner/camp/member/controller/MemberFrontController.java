@@ -81,9 +81,30 @@ public class MemberFrontController extends HttpServlet {
         				forward = new MemberEmailAccessAction().execute(req, resp);
         			}
 			} catch (Exception e) {;}
+        } else if (command.equals("/user/MemberLogout.me")) {
+        	try {
+				forward = new MemberLogoutAction().execute(req, resp);
+			} catch (Exception e) {;}
+        	
         }  else if(command.equals("/user/emailSend.me")) { 
         	try {
 				forward = new MemberEmailSendAction().execute(req, resp);
+			} catch (Exception e) {;}
+        } else if (command.equals("/user/MemberFindIdCheck.me")) {
+        	try {
+					forward = new MemberEmailFindIdCheckAction().execute(req, resp);
+			} catch (Exception e) {;}
+        } else if(command.equals("/user/MemberFindId.me")) { 
+        	try {
+				forward = new MemberEmailFindIdAction().execute(req, resp);
+			} catch (Exception e) {;}
+        } else if (command.equals("/user/MemberFindPwCheck.me")) {  
+        	try {
+				forward = new MemberEmailFIndPwCheckAction().execute(req, resp);
+			} catch (Exception e) {;}
+        } else if (command.equals("/user/MemberFindPw.me")) { 
+        	try {
+				forward = new MemberEmailFindPwAction().execute(req, resp);
 			} catch (Exception e) {;}
         } else {
             forward = new ActionForward();

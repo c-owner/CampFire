@@ -30,4 +30,30 @@
 	UPDATE CAMP_USER SET MEMBEREMAILCHECKED = 1 WHERE MEMBERID = #{memberId}
 	</update>
 	
+	<select id="getId" parameterType="string" resultType="string">
+	SELECT MEMBERID FROM CAMP_USER WHERE MEMBEREMAIL = #{memberEmail}
+	</select>
+	
+	<select id="emailFindCheck" parameterType="string" resultType="_int">
+	SELECT COUNT(*) FROM CAMP_USER WHERE MEMBEREMAIL = #{memberEmail}
+	</select>
+	
+	<update id="updatePw" parameterType="string">
+	UPDATE CAMP_USER SET MEMBERPW = {#memberPw} 
+	WHERE MEMBERID = #{memberId} AND MEMBEREMAIL = #{memberEmail}
+	</update>
+	
+	<select id="getPw" parameterType="memberVO" resultType="string">
+	SELECT MEMBERPW FROM CAMP_USER WHERE MEMBERID = #{memberId};
+	</select>
+	
+	<select id="emailFindPwCheck" parameterType="string" resultType="_int">
+	SELECT MEMBERID, MEMBEREMAIL FROM CAMP_USER 
+	WHERE MEMBEREMAIL = #{memberEmail} 
+	</select>
+	<!--
+	WHERE MEMBERID = #{memberId} AND MEMBEREMAIL = #{memberEmail} 
+	-->
+	
+	
 </mapper>

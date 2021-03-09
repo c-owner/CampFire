@@ -40,12 +40,13 @@
             아이디
             <input type="text" name="memberId" id="memberId" maxlength="12"/>
             <br>
-            비밀번호 <input type="password" name="memberPw" id="memberPw"/>
+            비밀번호 
+            <input type="password" name="memberPw" id="memberPw"/>
             <!-- <a href="#"><span style="font-size: 28px;"> </span></a> -->
             <br>
         </div>
-
     </div>
+    
     <div class="col-12">
         <ul class="actions">
             <li style="margin: 0 auto;">
@@ -74,24 +75,25 @@
             <div class="good-job">
                 <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                 <!-- <h2>Find your ID & Password!</h2> -->
-                <div class="form-inline form-group">
+                <div class="form-inline form-group findId">
                     <h3> 🔍아이디 찾기</h3>
-                    <div class="msg">E-MAIL 을 입력하면 ID 일부를 확인할 수 있습니다.</div>
+                    <div class="msg">E-MAIL 을 입력하면 ID를 확인할 수 있습니다.</div>
                     <div style="width: 60%; margin: 0 0 20 auto;">
-                        <input type="email" name="email" id="email" value="" placeholder="📧이메일"
+                        <input type="email" name="memberEmail" id="memberEmail" placeholder="📧이메일"
                                style=" display: inline;"/>
-                        <input type="button" class="button primary fit small" value="아이디 찾기" style="display: inline;"/>
+                        <input type="button" class="button primary fit small" value="아이디 찾기" 
+                        onclick="sendEmailId()" style="display: inline;"/>
                     </div>
                 </div>
 
-                <div class="form-inline form-group">
+                <div class="form-inline form-group findPw">
                     <h3>🔍 패스워드 찾기</h3>
                     <div class="msg">ID 와 E-MAIL 을 입력하여 임시비밀번호를 받을수 있습니다.</div>
                     <div style="width: 60%; margin: 0 0 20 auto;">
-                        아이디 <input type="text" name="id" id="id" value="" placeholder="🕵️‍아이디"/>
-                        이메일 <input type="email" name="email" id="email" value="" placeholder="📧이메일">
+                        아이디 <input type="text" name="memberId" id="memberId" placeholder="🕵️‍아이디"/>
+                        이메일 <input type="email" name="memberEmail2" id="memberEmail" placeholder="📧이메일">
                         <input type="button" class="button primary fit small" value="패스워드 찾기"
-                               style="display: inline;  "/>
+                              onclick="sendEmailPw()" style="display: inline;  "/>
                     </div>
                     <a class="btn-close fa-find" href="#" style="font-size:13px; text-align: right; color: grey;">로그인
                         <i class="quit" aria-hidden="true"></i>
@@ -115,7 +117,8 @@
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/account.js"></script>
-
+<script>var contextPath = "${pageContext.request.contextPath}";</script>
+<script src="../assets/js/findIdPw.js"></script>
 <script>
 
 </script>

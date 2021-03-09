@@ -27,7 +27,7 @@ public class SHA256 {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(" 오류  : "+e.getMessage() + " ");
+			System.out.println(" 오류  : "+e.getMessage());
 			e.printStackTrace();
 		}
 		
