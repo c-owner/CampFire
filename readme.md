@@ -21,7 +21,9 @@
 
 ### [VERSION LOG](VERSION-log.md)
 
-####   
+####   [PROJECT SETTING](projectSetting.md)
+
+[developer-log](developer-log.md)
 
 ---
 

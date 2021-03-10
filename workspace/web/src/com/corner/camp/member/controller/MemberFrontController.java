@@ -106,6 +106,8 @@ public class MemberFrontController extends HttpServlet {
         	try {
 				forward = new MemberEmailFindPwAction().execute(req, resp);
 			} catch (Exception e) {;}
+        } else if (command.equals("/user/MemberUpdate.me")) { 
+        	
         } else {
             forward = new ActionForward();
             forward.setRedirect(false);

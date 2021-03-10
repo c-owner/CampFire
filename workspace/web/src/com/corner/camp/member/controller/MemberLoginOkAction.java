@@ -29,7 +29,6 @@ public class MemberLoginOkAction implements Action {
         	forward.setRedirect(false);
         	forward.setPath("/user/MemberLogin.me?type=false");
         }
-
         return forward;
 
 

@@ -49,9 +49,7 @@ public class MemberEmailFindPwAction implements Action{
 		boolean check = dao.setTempPw(vo);
 String memberPw = null;
 		if(check) {
-			System.out.println("들어옴");
 			memberPw = dao.decrypt(vo.getMemberPw());
-			System.out.println("들어옴2");
 			System.out.println(memberPw);
 		} else {
 			PrintWriter script = resp.getWriter();

@@ -34,7 +34,7 @@
    				<script>alert("아이디 또는 비밀번호를 다시 확인해주세요.");</script>
    		</c:if>
    	</c:if>
-<form method="post" action="${pageContext.request.contextPath}/user/MemberLoginOk.me">
+<form name="loginForm" method="post" action="${pageContext.request.contextPath}/user/MemberLoginOk.me">
     <div class="row gtr-uniform">
         <div class="col-6 col-12-xsmall" style="margin: 0 auto;">
             아이디
@@ -46,11 +46,12 @@
             <br>
         </div>
     </div>
-    
+ 
     <div class="col-12">
         <ul class="actions">
             <li style="margin: 0 auto;">
                 <a href="${pageContext.request.contextPath}/user/MemberJoin.me" class="button">회원가입 </a>
+                <!-- <a href="javascript:loginCheck()" class="button">로그인 </a> -->
               <input type="submit" value="로그인" class="primary"/>
             </li>
         </ul>
@@ -117,6 +118,7 @@
 <script src="../assets/js/util.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/account.js"></script>
+<script src="../assets/js/login.js"></script>
 <script>var contextPath = "${pageContext.request.contextPath}";</script>
 <script src="../assets/js/findIdPw.js"></script>
 <script>

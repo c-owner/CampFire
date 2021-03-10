@@ -23,9 +23,9 @@
     <!-- Nav -->
     <nav id="nav">
         <ul class="navbar">
-                
-			<li><a href="${pageContext.request.contextPath}/Main.me">HOME</a>
-			<img class="current" src="../images/menu-icon.png" alt="홈 바로가기" height="50">
+           <img class="current" src="../images/menu-icon.png" alt="홈 바로가기" height="50">     
+			<li>
+			<a href="${pageContext.request.contextPath}/Main.me">HOME</a>
 			</li>
             <li class=""><a href="#">전체</a></li>
             <li><a href="#" class="dropdown">계정 메뉴</a>
