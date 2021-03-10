@@ -17,6 +17,11 @@
 </head>
 <body class="is-preload">
 
+<c:set var = 'userStatus' value = "false"></c:set>
+<c:if test="${param.type eq 'login' }">
+	<c:set var = 'userStatus' value = 'true'/>
+</c:if>
+
 <!-- Header -->
 <jsp:include page="../assets/public/header.jsp"></jsp:include>
  
@@ -26,9 +31,9 @@
         <div class="inner" style="margin: 0 auto;">
             <h2 class="alt"> 회원가입을 축하 드립니다! </h2>
             <hr>
-            <h3>이메일 인증</h3>
-            <p> 이메일로 인증 메일을 발송 하였습니다.
-                <br>가입하신 이메일에 접속하여 인증을 해주시길 바랍니다.
+            <h3>회원가입이 성공적으로 끝났습니다.</h3>
+            <p>
+                <br>가입하신 계정으로 로그인하여 주시고 즐거운 시간 되시길 바랍니다.
                 <br>감사합니다.</p>
             <a href="${pageContext.request.contextPath}/Main.me" class="btn-right">메인
             <span class="arrow-right"></span>

@@ -41,6 +41,10 @@ public class MemberDAO {
     public boolean checkId(String id) {
         return (Integer) session.selectOne("Member.checkId", id) == 1;
     }
+    
+    public boolean checkEmail(String email) {
+    	return (Integer) session.selectOne("Member.checkEmail", email) == 1;
+    }
 
     /**
      * Password Encrypt
@@ -126,12 +130,10 @@ public class MemberDAO {
 	 * @param MemberVO member
 	 * @return boolean : true(갱신완료) & false(갱신실패)
 	 */
-//	public boolean setUserPw(String id) {
-//		HashMap<String, String> datas = new HashMap<String, String>();
-//		String pw = getUserPw(id);
-//		datas.put("memberPw", pw);
-//		return (Integer) session.update("updatePw", datas) == 1;
-//	}
+	public boolean setUserPw(MemberVO vo) {
+		return (Integer) session.update("setUserPw", vo) == 1;
+	}
+	
 	public boolean setTempPw(MemberVO vo) {
 		return (Integer)session.update("Member.setTempPw", vo) == 1;
 	}

@@ -28,9 +28,9 @@ public class MemberEmailAccessAction implements Action {
 		MemberDAO dao = new MemberDAO();
 		String memberId = (String) session.getAttribute("memberId");
 		
-//		if(session.getAttribute("memberId") != null ) { 
-//		memberId = (String) req.getAttribute("memberId");
-//		}
+		if(session.getAttribute("memberId") != null ) { 
+		memberId = (String) req.getAttribute("memberId");
+		}
 		
 		if(memberId == null ) {
 			PrintWriter out = resp.getWriter();

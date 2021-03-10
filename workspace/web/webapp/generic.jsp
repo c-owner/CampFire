@@ -20,6 +20,11 @@
 </head>
 <body class="is-preload">
 
+<c:set var = 'userStatus' value = "false"></c:set>
+<c:if test="${param.type eq 'login' }">
+	<c:set var = 'userStatus' value = 'true'/>
+</c:if>
+
 <!-- Header -->
 <jsp:include page="./assets/public/header.jsp"></jsp:include>
 

@@ -21,9 +21,15 @@ request.setCharacterEncoding("utf-8");
     <meta name="keywords" content=""/>
     <link rel="stylesheet" href="../assets/css/main.css"/>
     <link rel="stylesheet" href="../assets/css/layout.css"/>
+    <link rel="stylesheet" href="../assets/css/join.css"/>
     <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
 </head>
 <body class="is-preload">
+
+<c:set var = 'userStatus' value = "false"></c:set>
+<c:if test="${param.type eq 'login' }">
+	<c:set var = 'userStatus' value = 'true'/>
+</c:if>
 
 <!-- Header -->
 <jsp:include page="../assets/public/header.jsp"></jsp:include>
@@ -55,19 +61,35 @@ request.setCharacterEncoding("utf-8");
             <span style="color: #ff0000;">* </span><span style="font-weight: bold;">비밀번호 확인 </span>
             <input type="password" name="memberPw2" id="memberPw2" />
              <font id="pwCheck_text" size="3"></font>
-
+             
+			<br>
             <span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
-            <input type="email" name="memberEmail" placeholder="abc@gmail.com"/>
-            <div class="col-6 col-12-small">
-                <br> [선택]
+           <br>
+           
+			<td>
+            <input type="email" name="memberEmail" style="width:60%; float:left" placeholder="abc@gmail.com" />
+             <a href="javascript:EmailCheck();" class="btn-right"
+             type="submit" style="float:left; font-size: 15px;">
+             인증번호 전송</a>
+             <br><br>
+             <div class="mail_verify_input_box" id="mail_verify_input_box_false">
+             <input type="text" name="verify" id="verify" class="verify" style="width:30%; float:left" placeholder="7자리" disabled="disabled" />
+             <a href="javascript:verifyCheck();" class="btn-right"
+              type="submit" style="float:left; font-size: 15px;">
+             인증번호 확인</a>
+             </div>
+             <font id="verify_check" size="3"></font>
+             </td>
+            <div class="col-6 col-12-small" >
+                <br><br>
+                [*광고 메일 수신여부]
                 <input type="radio" id="email-push" name="email-push">
                 <label for="email-push">수신거부</label>
                 <input type="radio" id="email-push2" name="email-push" checked>
                 <label for="email-push2">수신동의</label>
             </div>
-
-
         </div>
+        
         <div class="col-12">
             <br>
             <input type="checkbox" id="Agree" name="Agree">

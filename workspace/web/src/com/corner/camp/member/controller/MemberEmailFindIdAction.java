@@ -17,7 +17,6 @@ import com.corner.action.Action;
 import com.corner.action.ActionForward;
 import com.corner.camp.member.dao.MemberDAO;
 import com.corner.util.Gmail;
-import com.corner.util.SHA256;
 
 public class MemberEmailFindIdAction implements Action{
 	

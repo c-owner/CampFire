@@ -22,4 +22,6 @@
     <mappers>
         <mapper resource="com/corner/mybatis/sql/member.xml"/>
     </mappers>
+
+
 </configuration>

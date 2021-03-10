@@ -30,7 +30,7 @@ public class MemberFrontController extends HttpServlet {
         String command = requestURI.substring(contextPath.length());
         
         ActionForward forward = null;
-        
+        String type = req.getParameter("type");
      
         if (command.equals("/user/MemberJoin.me")) {
             try {
@@ -53,22 +53,34 @@ public class MemberFrontController extends HttpServlet {
             } catch (Exception e) {
                 ;
             }
+        } else if (command.equals("/user/checkEmail.me")) {
+        	try {
+        		forward = new MemberVerifyCheckAction().execute(req, resp);
+        		
+			} catch (Exception e) {;}
+        } else if (command.equals("/user/verifyEmail.me")) { 
+				try {
+					forward = new MemberVerifyEmailAction().execute(req, resp);
+				} catch (Exception e) {;}
+        } else if (command.equals("/user/verifyCheck.me")) { 
+        		try {
+					forward = new MemberVerifyEmailCheckAction().execute(req, resp);
+				} catch (Exception e) {;}
         } else if (command.equals("/user/MemberLogin.me")) {
         	try {
         		String login = req.getParameter("login");
     			forward = new ActionForward();
     			forward.setRedirect(false);
-				forward.setPath("/user/login.jsp" +  (login != null ? "?login=false" : ""));
+//				forward.setPath("/user/login.jsp" +  (login != null ? "?login=false" : ""));
+				forward.setPath("/user/login.jsp" +  (type != null ? "?type=login" : ""));
 			} catch (Exception e) {;}
         } else if (command.equals("/user/MemberLoginOk.me")) {
             try {
                 forward = new MemberLoginOkAction().execute(req, resp);
-            } catch (Exception e) {
-                ;
-            }
+            } catch (Exception e) {;}
         } else if (command.equals("/Main.me")) {
             try {
-            	String type = req.getParameter("type");
+            	type = req.getParameter("type");
                 forward = new ActionForward();
                 forward.setRedirect(false);
 				forward.setPath("/index.jsp" +  (type != null ? "?type=login" : ""));
@@ -106,8 +118,17 @@ public class MemberFrontController extends HttpServlet {
         	try {
 				forward = new MemberEmailFindPwAction().execute(req, resp);
 			} catch (Exception e) {;}
-        } else if (command.equals("/user/MemberUpdate.me")) { 
-        	
+        } else if (command.equals("/user/MemberEdit.me")) { 
+        	try {
+				forward = new ActionForward();
+				forward.setRedirect(false);
+				type=req.getParameter("type");
+				forward.setPath("/user/modification.jsp" +(type != null ? "?type=login" : ""));
+			} catch (Exception e) {;}
+        } else if (command.equals("/user/MemberEditAction.me")) { 
+        	try {
+				forward = new MemberEditAction().execute(req, resp);
+			} catch (Exception e) {;}
         } else {
             forward = new ActionForward();
             forward.setRedirect(false);

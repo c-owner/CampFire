@@ -11,6 +11,10 @@
         SELECT COUNT(*) FROM CAMP_USER WHERE MEMBERID = #{memberId}
     </select>
 
+	<select id="checkEmail" parameterType="string" resultType="_int">
+        SELECT COUNT(*) FROM CAMP_USER WHERE MEMBEREMAIL = #{memberEmail}
+    </select>
+
 	<select id="login" parameterType="map" resultType="_int">
 		SELECT COUNT(*) FROM CAMP_USER 
 		WHERE MEMBERID = #{id} AND MEMBERPW = #{pw}
@@ -47,7 +51,11 @@
 	SET MEMBERPW = #{memberPw}
 	WHERE MEMBERID = #{memberId}
 	</update>
-
+	<update id="setUserPw" parameterType="memberVO">
+	UPDATE CAMP_USER 
+	SET MEMBERPW = #{memberPw}
+	WHERE MEMBERID = #{memberId}
+	</update>
 
 	<select id="emailFindPwCheck" parameterType="string" resultType="_int">
 	SELECT MEMBERID, MEMBEREMAIL FROM CAMP_USER 

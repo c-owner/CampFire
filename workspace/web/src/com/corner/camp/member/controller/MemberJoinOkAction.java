@@ -27,7 +27,7 @@ public class MemberJoinOkAction implements Action {
         vo.setMemberPw(req.getParameter("memberPw"));
         vo.setMemberEmail(req.getParameter("memberEmail"));
         vo.setMemberEmailHash(req.getParameter("memberEmail"));
-        vo.setMemberEmailChecked(0);
+        vo.setMemberEmailChecked(1);
         
         if (!dao.join(vo)) {
         	System.out.println("회원가입 실패");

@@ -14,13 +14,13 @@ public class MemberLogoutAction implements Action{
 		req.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = req.getSession();
+		String type = req.getParameter("type");
 		
 		session.invalidate();
 		
 		ActionForward forward = new ActionForward();
-		
 		forward.setRedirect(true);
-		forward.setPath("/Main.me");
+		forward.setPath("/Main.me"+(type != null ? "?type=login" : ""));
 		
 		return forward;
 	}

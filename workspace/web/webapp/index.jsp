@@ -28,7 +28,7 @@
 <c:if test="${param.type eq 'login' }">
 	<c:set var = 'userStatus' value = 'true'/>
 </c:if>
-
+ 
 <!-- Header -->
 <jsp:include page="./assets/public/header.jsp"></jsp:include>
 
