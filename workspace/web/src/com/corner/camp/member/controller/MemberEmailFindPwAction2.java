@@ -20,54 +20,65 @@ import com.corner.camp.member.vo.MemberVO;
 import com.corner.util.Gmail;
 import com.corner.util.SHA256;
 
-public class MemberEmailFindPwAction implements Action{
-	
+public class MemberEmailFindPwAction2 implements Action{
+
 	@Override
 	public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=utf-8");
+
 		ActionForward forward = null;
-		
-		String memberEmail = null;
-		if(req.getParameter("email") != null ) {
-			memberEmail = req.getParameter("email");
-		}
-		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = new MemberVO();
 		
+		String memberEmail = null;
 		String memberId = null;
-		memberId = dao.getUserId(memberEmail);
-
+		String memberPw = null;
+		
+		if(req.getParameter("email") != null ) {
+			memberEmail = req.getParameter("email");
+			memberId = dao.getUserId(memberEmail);
+		} 
+		
 		vo.setMemberId(memberId);
-		vo.setMemberPw(dao.encrypt(dao.tempPassword()));
-		vo.setMemberEmail(memberEmail);
-		vo.setMemberEmailHash(SHA256.getSHA256(memberEmail));
+		vo.setMemberEmail(req.getParameter("email"));
+		vo.setMemberPw(dao.tempPassword());
+		vo.setMemberEmailHash(SHA256.getSHA256(dao.getUserEmail(memberId)));
 		vo.setMemberEmailChecked(1);
 		
+		System.out.println(vo.getMemberEmail());
+		System.out.println(vo.getMemberId());
+		System.out.println(vo.getMemberPw());
+		System.out.println(vo.getMemberEmailHash());
+		System.out.println(vo.getMemberEmailChecked());
 		
-		boolean check = dao.setTempPw(vo);
-String memberPw = null;
+		System.out.println("이메일 체크2");
+		
+		boolean check = dao.setUserPw(memberId);
 		if(check) {
-			System.out.println("들어옴");
-			memberPw = dao.decrypt(vo.getMemberPw());
-			System.out.println("들어옴2");
-			System.out.println(memberPw);
+			memberPw = dao.getUserPw(memberEmail);
+			System.out.println(memberEmail + "\n"+ memberId +"\n"+memberPw);
+			
 		} else {
-			PrintWriter script = resp.getWriter();
-			script.println("<script>");
-			script.println("alert('오류가 발생했습니다.');");
-			script.println("history.back();");
-			script.println("</script>");
-			script.close();
+			PrintWriter out = resp.getWriter();
+			out.println("<script>");
+			out.println("alert('아이디와 이메일을 조회하지 못하였습니다. 잠시 후 다시 시도바랍니다.');");
+			out.println("location.href='/user/MemberLogin.me' ");
+			out.println("</script>");
+			out.close();
 		}
+		
+		
+		System.out.println("이메일 체크3");
+		// 임시 비밀번호 꺼내기 
+		memberPw = dao.getUserPw(dao.decrypt(memberPw));
 		
 		String host = "http://corner-camp.kro.kr/";
 		String from = "qwe133553@gmail.com"; 
 		String to = dao.getUserEmail(memberId);
-		String subject = "CampCorner 사이트 PW찾기 이메일입니다.";
+		String subject = "CampCorner 사이트 비밀번호 찾기 이메일입니다.";
 		String content = "다음 링크에 접속하여 로그인을 진행하세요."
-				+ "\n사용자 임시 비밀번호  : "+memberPw+"\n ";
+				+ "\n사용자 임시 비밀번호 : "+memberPw+"\n ";
 		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
@@ -110,5 +121,6 @@ String memberPw = null;
 		return forward;
 		
 	}
+
 
 }

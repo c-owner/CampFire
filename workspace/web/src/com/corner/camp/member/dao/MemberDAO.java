@@ -126,8 +126,14 @@ public class MemberDAO {
 	 * @param MemberVO member
 	 * @return boolean : true(갱신완료) & false(갱신실패)
 	 */
-	public boolean setUserPw(String id) {
-		return (Integer) session.update("updatePw", id) == 1;
+//	public boolean setUserPw(String id) {
+//		HashMap<String, String> datas = new HashMap<String, String>();
+//		String pw = getUserPw(id);
+//		datas.put("memberPw", pw);
+//		return (Integer) session.update("updatePw", datas) == 1;
+//	}
+	public boolean setTempPw(MemberVO vo) {
+		return (Integer)session.update("Member.setTempPw", vo) == 1;
 	}
 	
 	/**
@@ -148,12 +154,12 @@ public class MemberDAO {
 	 * <br> note : 사용자 임시 비밀번호 갱신 
 	 */
 	public String tempPassword() {
+		final int len = 6;
 		char[] charSet = new char[] { '0', '1', '2', '3', '4',
 				'5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
 				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
 				'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 				};
-		final int len = 6;
 		int idx = 0;
 		StringBuffer sb = new StringBuffer();
 		String temp_pw = "";
@@ -172,6 +178,7 @@ public class MemberDAO {
 	public boolean emailFindPwCheck(String email) {
 		return (Integer)session.selectOne("Member.emailFindCheck", email) == 1;
 	}
+	
 	
 }
 

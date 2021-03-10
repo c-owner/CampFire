@@ -42,8 +42,9 @@
 	WHERE MEMBEREMAIL = #{email}
 	</select>
 
-	<update id="updatePw" parameterType="memberVO">
-	UPDATE CAMP_USER SET MEMBERPW = {#memberPw} 
+	<update id="setTempPw" parameterType="memberVO">
+	UPDATE CAMP_USER 
+	SET MEMBERPW = #{memberPw}
 	WHERE MEMBERID = #{memberId}
 	</update>
 
