@@ -19,8 +19,8 @@ public class MemberLoginOkAction implements Action {
         
         String id = req.getParameter("memberId");
         String pw = req.getParameter("memberPw");
-        
         resp.setContentType("text/html;charset=utf-8");
+        
         if (dao.login(id, pw)) {
         	session.setAttribute("memberId", id);
         	forward.setRedirect(true);
@@ -29,7 +29,6 @@ public class MemberLoginOkAction implements Action {
         	forward.setRedirect(false);
         	forward.setPath("/user/MemberLogin.me?type=false");
         }
-
         return forward;
 
 
