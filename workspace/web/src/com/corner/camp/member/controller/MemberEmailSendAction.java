@@ -53,7 +53,7 @@ public class MemberEmailSendAction implements Action {
 		try {
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath("/user/emailSendAction.jsp");
+			forward.setPath("/user/joinSuccess.jsp");
 		}catch (Exception e) {
 			e.printStackTrace();
 			PrintWriter script = resp.getWriter();
