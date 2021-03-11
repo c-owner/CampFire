@@ -3,7 +3,7 @@
 .DS_Store
 
 # Office
-*.pptx
+# *.pptx
 
 # OS Files #
 .DS_Store
