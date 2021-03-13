@@ -2,7 +2,6 @@ package com.corner.camp.member.controller;
 
 
 import java.io.PrintWriter;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,7 @@ import com.corner.action.Action;
 import com.corner.action.ActionForward;
 import com.corner.camp.member.dao.MemberDAO;
 
-public class MemberVerifyCheckAction implements Action {
+public class MemberEmailFindIdCheckAction implements Action {
 
     @Override
     public ActionForward execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
@@ -22,11 +21,11 @@ public class MemberVerifyCheckAction implements Action {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html;charset=utf-8");
         
-	  
-        if (dao.checkEmail(email)) {
-        	out.println("not-ok");
-        } else {
+        if (dao.emailFindCheck(email)) { 
+        	// email이 존재한다면
         	out.println("ok");
+        } else {
+        	out.println("not-ok");
         }
         out.close();
 
