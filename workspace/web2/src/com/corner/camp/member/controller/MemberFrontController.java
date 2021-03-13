@@ -79,7 +79,7 @@ public class MemberFrontController extends HttpServlet {
             } catch (Exception e) {;}
         } else if (command.equals("/Main.me")) {
             try {
-            	type = req.getParameter("type");
+            	type = req.getParameter("login");
                 forward = new ActionForward();
                 forward.setRedirect(false);
 				forward.setPath("/index.jsp" +  (type != null ? "?type=login" : ""));
@@ -121,8 +121,8 @@ public class MemberFrontController extends HttpServlet {
         	try {
 				forward = new ActionForward();
 				forward.setRedirect(false);
-				type=req.getParameter("type");
-				forward.setPath("/user/modification.jsp" +(type != null ? "?type=login" : ""));
+				String login=req.getParameter("login");
+				forward.setPath("/user/modification.jsp" +(login != null ? "?type=login" : ""));
 			} catch (Exception e) {;}
         } else if (command.equals("/user/MemberEditAction.me")) { 
         	try {

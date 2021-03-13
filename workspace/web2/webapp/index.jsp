@@ -32,6 +32,12 @@
 <!-- Header -->
 <jsp:include page="./assets/public/header.jsp"></jsp:include>
 
+<h3 style="text-align: center; font-size: 56px;">로그인</h3>
+   	<c:if test="${not empty param.login }">
+   		<c:if test="${not param.login}">
+   				<script>alert("아이디 또는 비밀번호를 다시 확인해주세요.");</script>
+   		</c:if>
+   	</c:if>
 <!-- Banner -->
 <section id="banner">
     <article class="full">
