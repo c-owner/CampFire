@@ -16,10 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
-    <link rel="stylesheet" href="assets/css/layout.css"/>
-    <link rel="stylesheet" href="assets/css/main-full.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/layout.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-full.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 
 </head>
 <body class="is-preload" onload="printClock()">
@@ -30,13 +30,13 @@
 </c:if>
  
 <!-- Header -->
-<jsp:include page="./assets/public/header.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 
 <!-- Banner -->
 <section id="banner">
     <article class="full">
         <div class="image" data-position="center">
-            <img src="images/bg01.jpg" alt=""/>
+            <img src="${pageContext.request.contextPath}/images/bg01.jpg" alt=""/>
         </div>
         <div class="content">
             <h1 class="alt"><a href="${pageContext.request.contextPath}/Main.me"> 캠핑 코너 </a></h1>
@@ -164,19 +164,19 @@
 
 
 <!-- Footer -->
-<jsp:include page="./assets/public/footer.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/./assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/jquery.dropotron.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/moment.js"></script>
-<script src="assets/js/moment-with-locales.js"></script>
-<script src="assets/js/account.js"></script>
-<sciprt> var contextPath = "${pageContext.request.contextPath};</sciprt>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moment.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moment-with-locales.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/account.js"></script>
+<script> var contextPath = "${pageContext.request.contextPath};</script>
 <script>
     var date = new Date();
     $('.dateview1').html(moment(date).format('MMMM Do YYYY,h:mm:ss a'));

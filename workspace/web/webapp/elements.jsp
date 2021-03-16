@@ -15,10 +15,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
-    <link rel="stylesheet" href="assets/css/layout.css"/>
-    <link rel="stylesheet" href="assets/css/main-full.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="images/title-icon.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/layout.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-full.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 </head>
 <body class="is-preload">
 
@@ -28,7 +28,7 @@
 </c:if>
 
 <!-- Header -->
-<jsp:include page="./assets/public/header.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/./assets/public/header.jsp"></jsp:include>
 
 <!-- Main -->
 <div id="main">
@@ -392,44 +392,44 @@
                     <!-- Image -->
                     <h3>Image</h3>
                     <h4>Fit</h4>
-                    <span class="image fit"><img src="../../../../Camp_Corner/myWEB/WebContent/images/pic01.jpg"
+                    <span class="image fit"><img src="${pageContext.request.contextPath}/images/pic01.jpg"
                                                  alt=""/></span>
                     <div class="box alt">
                         <div class="row gtr-50 gtr-uniform">
                             <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic04.jpg" alt=""/></span>
+                                    src="${pageContext.request.contextPath}/images/pic04.jpg" alt=""/></span>
                             </div>
                             <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic05.jpg" alt=""/></span>
+                                    src="${pageContext.request.contextPath}/images/pic05.jpg" alt=""/></span>
                             </div>
                             <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic06.jpg" alt=""/></span>
-                            </div>
-                            <!-- Break -->
-                            <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic10.jpg" alt=""/></span>
-                            </div>
-                            <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic08.jpg" alt=""/></span>
-                            </div>
-                            <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic09.jpg" alt=""/></span>
+                                    src="${pageContext.request.contextPath}/images/pic06.jpg" alt=""/></span>
                             </div>
                             <!-- Break -->
                             <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic06.jpg" alt=""/></span>
+                                    src="${pageContext.request.contextPath}/images/pic10.jpg" alt=""/></span>
                             </div>
                             <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic04.jpg" alt=""/></span>
+                                    src="${pageContext.request.contextPath}/images/pic08.jpg" alt=""/></span>
                             </div>
                             <div class="col-4"><span class="image fit"><img
-                                    src="../../../../Camp_Corner/myWEB/WebContent/images/pic05.jpg" alt=""/></span>
+                                    src="${pageContext.request.contextPath}/images/pic09.jpg" alt=""/></span>
+                            </div>
+                            <!-- Break -->
+                            <div class="col-4"><span class="image fit"><img
+                                    src="${pageContext.request.contextPath}/images/pic06.jpg" alt=""/></span>
+                            </div>
+                            <div class="col-4"><span class="image fit"><img
+                                    src="${pageContext.request.contextPath}/images/pic04.jpg" alt=""/></span>
+                            </div>
+                            <div class="col-4"><span class="image fit"><img
+                                    src="${pageContext.request.contextPath}/images/pic05.jpg" alt=""/></span>
                             </div>
                         </div>
                     </div>
                     <h4>Left &amp; Right</h4>
                     <p>
-                        <span class="image left"><img src="../../../../Camp_Corner/myWEB/WebContent/images/pic02.jpg"
+                        <span class="image left"><img src="${pageContext.request.contextPath}/images/pic02.jpg"
                                                       alt=""/></span>
                         Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget.
                         tempus euismod. Magna et cursus lorem faucibus vestibulum. Blandit adipiscing eu
@@ -443,7 +443,7 @@
                         sit amet dolor feugiat consequat.
                     </p>
                     <p>
-                        <span class="image right"><img src="../../../../Camp_Corner/myWEB/WebContent/images/pic02.jpg"
+                        <span class="image right"><img src="${pageContext.request.contextPath}/images/pic02.jpg"
                                                        alt=""/></span>
                         Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget.
                         tempus euismod. Magna et cursus lorem faucibus vestibulum. Blandit adipiscing eu
@@ -504,18 +504,18 @@ print 'It took ' + i + ' iterations to sort the deck.';
 </section>
 
 <!-- Footer -->
-<jsp:include page="./assets/public/footer.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/./assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/jquery.dropotron.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/moment.js"></script>
-<script src="assets/js/moment-with-locales.js"></script>
-<script src="assets/js/account.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moment.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moment-with-locales.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/account.js"></script>
 
 </body>
 </html>

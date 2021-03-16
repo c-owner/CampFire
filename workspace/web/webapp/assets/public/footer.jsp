@@ -26,9 +26,9 @@
 
                         <dl>
                             <dt class="sbj">
-                                <img src="../../images/community/bbsico_0.png" alt="" height="50"><br>
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_0.png" alt="" height="50"><br>
                                 캠핑 팁
-                                <a href="../..?c=info/camptip" class="fr more" title="더 보기">
+                                <a href="${pageContext.request.contextPath}/../..?c=info/camptip" class="fr more" title="더 보기">
                                     <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
                                          xml:space="preserve" width="16px" height="16px"><polygon
                                             points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
@@ -40,9 +40,9 @@
 
                         <dl>
                             <dt class="sbj">
-                                <img src="../../images/community/bbsico_1.png" alt="" height="50"><br>
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_1.png" alt="" height="50"><br>
                                 캠핑 음식
-                                <a href="../..?c=info/campfood" class="fr more" title="더 보기">
+                                <a href="${pageContext.request.contextPath}/../..?c=info/campfood" class="fr more" title="더 보기">
                                     <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
                                          xml:space="preserve" width="16px" height="16px"><polygon
                                             points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
@@ -55,9 +55,9 @@
 
                         <dl>
                             <dt class="sbj">
-                                <img src="../../images/community/bbsico_2.png" alt="" height="50"><br>
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_2.png" alt="" height="50"><br>
                                 캠핑리뷰
-                                <a href="../..?c=talk/review" class="fr more" title="더 보기">
+                                <a href="${pageContext.request.contextPath}/../..?c=talk/review" class="fr more" title="더 보기">
                                     <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
                                          xml:space="preserve" width="16px" height="16px"><polygon
                                             points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
@@ -70,9 +70,9 @@
 
                         <dl class="nomargin">
                             <dt class="sbj">
-                                <img src="../../images/community/bbsico_3.svg" alt="" height="50"><br>
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_3.svg" alt="" height="50"><br>
                                 자유게시판
-                                <a href="../..?c=talk/freeboard" class="fr more" title="더 보기">
+                                <a href="${pageContext.request.contextPath}/../..?c=talk/freeboard" class="fr more" title="더 보기">
                                     <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
                                          xml:space="preserve" width="16px" height="16px"><polygon
                                             points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
@@ -92,8 +92,8 @@
                 <header>
                     <h3></h3>
                 </header>
-                <a href="./index.html">
-                    <img class="current" src="../../images/menu-icon.png" alt="홈 바로가기" height="50"></a>
+                <a href="${pageContext.request.contextPath}/Main.me">
+                    <img class="current" src="${pageContext.request.contextPath}/../../images/menu-icon.png" alt="홈 바로가기" height="50"></a>
                 <div class="contact-icons">
                     <ul>
                         <li><a href="${pageContext.request.contextPath}"

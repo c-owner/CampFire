@@ -17,10 +17,10 @@ request.setCharacterEncoding("utf-8");
           content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="stylesheet" href="../assets/css/main.css"/>
-    <link rel="stylesheet" href="../assets/css/layout.css"/>
-    <link rel="stylesheet" href="../assets/css/join.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="../images/title-icon.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/layout.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/join.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
 </head>
 <body class="is-preload">
 
@@ -30,7 +30,7 @@ request.setCharacterEncoding("utf-8");
 </c:if>
 
 <!-- Header -->
-<jsp:include page="../assets/public/header.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
 
 <!-- 회원가입 부분 -->
 
@@ -71,16 +71,16 @@ request.setCharacterEncoding("utf-8");
 
 
 <!-- Footer -->
-<jsp:include page="../assets/public/footer.jsp"></jsp:include>
+<jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/browser.min.js"></script>
-<script src="../assets/js/jquery.dropotron.min.js"></script>
-<script src="../assets/js/breakpoints.min.js"></script>
-<script src="../assets/js/util.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <script>var contextPath = "${pageContext.request.contextPath}";</script>
-<script src="../assets/js/modification.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/modification.js"></script>
 </body>
 </html>

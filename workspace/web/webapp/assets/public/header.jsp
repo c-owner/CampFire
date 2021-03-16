@@ -23,11 +23,11 @@
     <!-- Nav -->
     <nav id="nav">
         <ul class="navbar">
-           <img class="current" src="../images/menu-icon.png" alt="홈 바로가기" height="50">     
+           <img class="current" src="${pageContext.request.contextPath}/../images/menu-icon.png" alt="홈 바로가기" height="50">     
 			<li>
 			<a href="${pageContext.request.contextPath}/Main.me">HOME</a>
 			</li>
-            <li class=""><a href="#">전체</a></li>
+            <li><a href="#">전체</a></li>
             <li><a href="#" class="dropdown">계정 메뉴</a>
                 <ul>
                         <c:if test="${userStatus eq false}">
@@ -58,7 +58,7 @@
                </li>
               </c:if>
             <li><a href="#">공지사항</a></li>
-            <li><a href="../../elements.jsp">고객센터</a></li>
+            <li><a href="${pageContext.request.contextPath}/../../elements.jsp">고객센터</a></li>
             <!-- <li><a href="generic.html">Generic</a></li> -->
             <!-- <li><a href="elements.html">Elements</a></li> -->
         </ul>
