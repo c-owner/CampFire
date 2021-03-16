@@ -4,6 +4,12 @@
 
 
 
+---
+
+## 해야 할 일
+
+${pageContext.request.contextPath} 경로 추가
+
 
 
 ## 기능 구현

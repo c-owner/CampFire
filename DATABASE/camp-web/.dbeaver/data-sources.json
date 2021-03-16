@@ -31,8 +31,20 @@
 					"@dbeaver-use-meta-optimizer@": "false",
 					"@dbeaver-meta-use-alternative-table-query@": "false"
 				},
-				"auth-model": "oracle_native",
-				"handlers": {}
+				"auth-model": "oracle_native"
+			}
+		}
+	},
+	"virtual-models": {
+		"oracle_thin-1780ff3365b-107c83e24fee1ee7": {
+			"CORNER": {
+				":CAMP_USER": {
+					"properties": {
+						"erd.diagram.state": {
+							"serialized": "<diagram version=\"1\" name=\"CAMP_USER\" time=\"202103101620\"><entities><data-source id=\"oracle_thin-1780ff3365b-107c83e24fee1ee7\"><entity id=\"1\" name=\"CAMP_USER\" fq-name=\"CORNER.CAMP_USER\" order=\"0\" color-bg=\"123,76,75\" border-width=\"3\" x=\"20\" y=\"20\"><path name=\"CORNER\"/></entity></data-source></entities><relations/></diagram>"
+						}
+					}
+				}
 			}
 		}
 	},
