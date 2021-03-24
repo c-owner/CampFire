@@ -73,7 +73,7 @@
 <div class="modal-wrapper">
     <div class="modal">
         <div class="head-pop"><h2>ID / PW 찾기</h2>
-            <a class="btn-close fa-find" href="#">❌
+            <a class="btn-close fa-find" href="#" style="text-decoration: none !important;">❌
                 <i class="quit" aria-hidden="true"></i>
             </a>
         </div>
@@ -101,7 +101,7 @@
                         <input type="button" name="idEmailBtn" class="button primary fit small" value="패스워드 찾기"
                               onclick="sendEmailPw()" style="display: inline;  "/>
                               </form>
-                    <a class="btn-close fa-find" href="#" style="font-size:13px; text-align: right; color: grey;">로그인
+                    <a class="btn-close fa-find" href="#" style="font-size:13px; text-align: right; color: grey; text-decoration: none !important;">로그인
                         <i class="quit" aria-hidden="true"></i>
                     </a>
                 </div>

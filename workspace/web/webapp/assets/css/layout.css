@@ -131,6 +131,7 @@ a.btn {
     .btn-close .fa-find {
         display: inline;
         color: red;
+           text-decoration: none !important;
     }
 }
 
@@ -153,6 +154,7 @@ a.btn {
     .btn-close {
         display: inline;
         color: red;
+               text-decoration: none !important;
     }
 }
 
