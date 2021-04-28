@@ -74,13 +74,7 @@ request.setCharacterEncoding("utf-8");
 <jsp:include page="${pageContext.request.contextPath}/assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <script>var contextPath = "${pageContext.request.contextPath}";</script>
-<script src="${pageContext.request.contextPath}/assets/js/modification.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/user/modification.js"></script>
 </body>
 </html>

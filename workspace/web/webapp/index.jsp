@@ -167,16 +167,10 @@
 <jsp:include page="${pageContext.request.contextPath}/./assets/public/footer.jsp"></jsp:include>
 
 <!-- Scripts -->
-<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/moment.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/moment-with-locales.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/account.js"></script>
+
+<script src="${pageContext.request.contextPath}/assets/js/user/account.js"></script>
 <script> var contextPath = "${pageContext.request.contextPath};</script>
+
 <script>
     var date = new Date();
     $('.dateview1').html(moment(date).format('MMMM Do YYYY,h:mm:ss a'));
