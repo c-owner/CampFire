@@ -1,10 +1,6 @@
-
 /.metadata/
 .DS_Store
-
-# Office
-# *.pptx
-
+=======
 # OS Files #
 .DS_Store
    
@@ -15,13 +11,7 @@
 # *.war
 # *.ear
 # *.db
-
-######################
-# intelliJ
-out/
-.idea/
-######################
-
+   
 ######################
 # Windows
 ######################
@@ -50,7 +40,8 @@ Desktop.ini
 ######################
 # Eclipse
 ######################
-   
+spring/resource/eclipse-jee-2020-12-R-win32-x86_64/
+Eclipse-han.app   
 *.pydevproject
 .metadata
 .project
@@ -80,4 +71,19 @@ local.properties
 # PDT-specific
 .buildpath
 #-------------
+#######################
+# Spring / Maven
+# #####################
+log/
+target/
+.target/
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+#####################
+# STS
+.springBeans
 
