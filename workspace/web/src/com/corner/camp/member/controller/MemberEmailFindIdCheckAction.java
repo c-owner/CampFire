@@ -22,7 +22,6 @@ public class MemberEmailFindIdCheckAction implements Action {
         resp.setContentType("text/html;charset=utf-8");
         
         if (dao.emailFindCheck(email)) { 
-        	// email이 존재한다면
         	out.println("ok");
         } else {
         	out.println("not-ok");
