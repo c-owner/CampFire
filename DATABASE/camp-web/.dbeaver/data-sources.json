@@ -10,9 +10,9 @@
 			"read-only": false,
 			"configuration": {
 				"host": "localhost",
-				"port": "1600",
+				"port": "1521",
 				"database": "XE",
-				"url": "jdbc:oracle:thin:@//localhost:1600/XE",
+				"url": "jdbc:oracle:thin:@//localhost:1521/XE",
 				"type": "dev",
 				"properties": {
 					"useFetchSizeWithLongColumn": "true",
@@ -31,7 +31,11 @@
 					"@dbeaver-use-meta-optimizer@": "false",
 					"@dbeaver-meta-use-alternative-table-query@": "false"
 				},
-				"auth-model": "oracle_native"
+				"auth-model": "oracle_native",
+				"handlers": {}
+			},
+			"custom-properties": {
+				"database.meta.separate.connection": "false"
 			}
 		}
 	},
