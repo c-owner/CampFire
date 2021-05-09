@@ -9,9 +9,9 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1600:XE"/> -->
+<!-- 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1600:XE"/>
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"/>
 		<property name="username" value="corner"/>
@@ -19,14 +19,14 @@
 	</bean>
 	
 	
-	<!-- DataSource dataSource = new DataSource(hikariConfig) -->
+	DataSource dataSource = new DataSource(hikariConfig)
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<!-- <property name="mapperLocations" value="classpath:/META-INF/com/camp/mapper/**/*.xml"/> -->
+		<property name="mapperLocations" value="classpath:/META-INF/com/camp/mapper/**/*.xml"/>
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
+	 -->
 	<context:component-scan base-package="com.camp.controller"></context:component-scan>
 </beans>

@@ -30,7 +30,7 @@
 </c:if>
  
 <!-- Header -->
-<jsp:include page="<c:url value='/resources/assets/public/header.jsp'/>">
+<jsp:include page="${pageContext.request.contextPath}/resources/assets/public/header.jsp"/>
 
 <!-- Banner -->
 <section id="banner">
@@ -164,7 +164,7 @@
 
 
 <!-- Footer -->
-<jsp:include page="<c:url value='/resources/assets/public/footer.jsp'/>">
+<jsp:include page="${pageContext.request.contextPath}/resources/assets/public/footer.jsp">
 
 <!-- Scripts -->
 

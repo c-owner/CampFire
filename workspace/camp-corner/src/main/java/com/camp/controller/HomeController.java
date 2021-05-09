@@ -25,4 +25,8 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/elements", method= {RequestMethod.GET, RequestMethod.POST})
+	public String element() {
+		return "elements";
+	}
 }
