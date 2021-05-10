@@ -41,14 +41,9 @@
         <div class="content">
             <h1 class="alt"><a href="${pageContext.request.contextPath}/Main.me"> 캠핑 코너 </a></h1>
             <!-- <h2 class="dateview1">MMMM Do YYYY, h:mm:ss a</h2> -->
-            <div id="clock" style=" width:350px;
-        height:250px; 
-        line-height:250px; 
-        color:#80deea;
-        font-size:65px;
-        margin: 0 auto; 
-        text-align:center;">
-            </div>
+            <!-- <div id="clock" style=" width:350px; height:250px; line-height:250px; 
+        color:#80deea; font-size:65px; margin: 0 auto; text-align:center;">
+            </div> -->
 
             <h2 class="alt" style="font-family: 'Nanum Brush Script', cursive;">오늘은 어디로 가볼까?</h2>
             <form method="post" action="#" class="combined">
@@ -170,7 +165,7 @@
 
 <script src="${pageContext.request.contextPath}/assets/js/user/account.js"></script>
 <script> var contextPath = "${pageContext.request.contextPath};</script>
-
+<!-- 
 <script>
     var date = new Date();
     $('.dateview1').html(moment(date).format('MMMM Do YYYY,h:mm:ss a'));
@@ -211,6 +206,6 @@
 
     
     
-</script>
+</script> -->
 </body>
 </html>
