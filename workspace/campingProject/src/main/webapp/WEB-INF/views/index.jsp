@@ -16,10 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/layout.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-full.css"/>
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/title-icon.png">
+    <link rel="stylesheet" href="/resources/assets/css/main.css"/>
+    <link rel="stylesheet" href="/resources/assets/css/layout.css"/>
+    <link rel="stylesheet" href="/resources/assets/css/main-full.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
 
 </head>
 <body class="is-preload" onload="printClock()">
@@ -30,25 +30,83 @@
 </c:if>
  
 <!-- Header -->
-<jsp:include page="${pageContext.request.contextPath}/assets/public/header.jsp"></jsp:include>
+<%-- <jsp:include page="/resources/assets/public/header.jsp" /> --%>
+
+<c:set var = 'userStatus' value = "false"></c:set>
+<c:if test="${param.type eq 'login' }">
+	<c:set var = 'userStatus' value = 'true'/>
+</c:if>
+
+<header id="header">
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="navbar">
+           <img class="current" src="${pageContext.request.contextPath}/../images/menu-icon.png" alt="홈 바로가기" height="50">     
+			<li>
+			<a href="${pageContext.request.contextPath}/Main.me">HOME</a>
+			</li>
+            <li><a href="#">전체</a></li>
+            <li><a href="#" class="dropdown">계정 메뉴</a>
+                <ul>
+                        <c:if test="${userStatus eq false}">
+                    <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
+                        <a href="${pageContext.request.contextPath}/user/MemberJoin.me">회원가입</a></li>
+                    <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
+                        <a href="${pageContext.request.contextPath}/user/MemberLogin.me">로그인</a></li>
+                        </c:if>
+
+                        <c:if test="${userStatus eq true}">
+                    <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
+                        <a href="${pageContext.request.contextPath}/user/MemberEdit.me">마이페이지</a></li>
+                        
+                    <li class="actions stacked" style="margin: 0 auto; width: fit-content;">
+                        <a href="${pageContext.request.contextPath}/user/MemberLogout.me">로그아웃</a></li>
+                        </c:if>
+                </ul>
+            </li>
+              <c:if test="${userStatus eq true}">
+               <li><a href="#" class="dropdown">게시판 메뉴</a>
+               		<ul>
+			            <li><a href="#">자유게시판</a></li>
+			            <li><a href="#">캠핑리뷰</a></li>
+			            <li><a href="#">캠핑음식</a></li>
+			            <li><a href="#">캠핑팁</a></li>
+			            
+		            </ul>
+               </li>
+              </c:if>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="${pageContext.request.contextPath}/../../elements.jsp">고객센터</a></li>
+            <!-- <li><a href="generic.html">Generic</a></li> -->
+            <!-- <li><a href="elements.html">Elements</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- Logo -->
+
+
+    <!-- <a class="logo" href="index.html">  <span>CORNER CAMP</span></a> -->
+</header>
+
 
 <!-- Banner -->
 <section id="banner">
     <article class="full">
         <div class="image" data-position="center">
-            <img src="${pageContext.request.contextPath}/images/bg01.jpg" alt=""/>
+            <img src="/resources/images/bg01.jpg" alt=""/>
         </div>
         <div class="content">
-            <h1 class="alt"><a href="${pageContext.request.contextPath}/Main.me"> 캠핑 코너 </a></h1>
+            <h1 class="alt"><a href="/resources/Main.me"> 캠핑 코너 </a></h1>
             <!-- <h2 class="dateview1">MMMM Do YYYY, h:mm:ss a</h2> -->
-            <div id="clock" style=" width:350px;
+           <!--  <div id="clock" style=" width:350px;
         height:250px; 
         line-height:250px; 
         color:#80deea;
         font-size:65px;
         margin: 0 auto; 
         text-align:center;">
-            </div>
+            </div> -->
 
             <h2 class="alt" style="font-family: 'Nanum Brush Script', cursive;">오늘은 어디로 가볼까?</h2>
             <form method="post" action="#" class="combined">
@@ -164,14 +222,138 @@
 
 
 <!-- Footer -->
-<jsp:include page="${pageContext.request.contextPath}/./assets/public/footer.jsp"></jsp:include>
+<%-- <jsp:include page="/resources/assets/public/footer.jsp"></jsp:include> --%>
+
+<section id="footer">
+    <div class="wrapper style3">
+        <div class="inner">
+            <div>
+                <header>
+                    <h3> 💡 Community</h3>
+                </header>
+                <div id="comm" class="maininfo">
+                    <div class="m-wrap">
+                        <!--community-->
+
+                        <dl>
+                            <dt class="sbj">
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_0.png" alt="" height="50"><br>
+                                캠핑 팁
+                                <a href="${pageContext.request.contextPath}/../..?c=info/camptip" class="fr more" title="더 보기">
+                                    <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+                                         xml:space="preserve" width="16px" height="16px"><polygon
+                                            points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
+                                            fill="#888"></polygon></svg>
+                                </a>
+                            </dt>
+                        </dl>
+
+
+                        <dl>
+                            <dt class="sbj">
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_1.png" alt="" height="50"><br>
+                                캠핑 음식
+                                <a href="${pageContext.request.contextPath}/../..?c=info/campfood" class="fr more" title="더 보기">
+                                    <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+                                         xml:space="preserve" width="16px" height="16px"><polygon
+                                            points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
+                                            fill="#888"></polygon></svg>
+                                </a>
+                            </dt>
+
+                        </dl>
+
+
+                        <dl>
+                            <dt class="sbj">
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_2.png" alt="" height="50"><br>
+                                캠핑리뷰
+                                <a href="${pageContext.request.contextPath}/../..?c=talk/review" class="fr more" title="더 보기">
+                                    <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+                                         xml:space="preserve" width="16px" height="16px"><polygon
+                                            points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
+                                            fill="#888"></polygon></svg>
+                                </a>
+                            </dt>
+
+                        </dl>
+
+
+                        <dl class="nomargin">
+                            <dt class="sbj">
+                                <img src="${pageContext.request.contextPath}/../../images/community/bbsico_3.svg" alt="" height="50"><br>
+                                자유게시판
+                                <a href="${pageContext.request.contextPath}/../..?c=talk/freeboard" class="fr more" title="더 보기">
+                                    <svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+                                         xml:space="preserve" width="16px" height="16px"><polygon
+                                            points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "
+                                            fill="#888"></polygon></svg>
+                                </a>
+                            </dt>
+                        </dl>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div>
+                <header>
+                    <h3></h3>
+                </header>
+                <a href="${pageContext.request.contextPath}/Main.me">
+                    <img class="current" src="${pageContext.request.contextPath}/../../images/menu-icon.png" alt="홈 바로가기" height="50"></a>
+                <div class="contact-icons">
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath}"
+                               class="icon solid fa-envelope"><span>개인정보취급방침</span></a></li>
+                        <li><a href="#" class="icon brands fa-twitter"><span>홈페이지 이용약관</span></a></li>
+                        <li><a href="#" class="icon brands fa-facebook-f"><span>광고 및 제휴 문의</span></a></li>
+                        <li><a href="#" class="icon brands fa-linkedin-in"><span>고객센터</span></a></li>
+                        <li class="actions stacked" style=" width: fit-content;">
+                            <a href="${pageContext.request.contextPath}/user/MemberJoin.me">회원가입</a></li>
+                        <li class="actions stacked" style=" width: fit-content;">
+                            <a href="${pageContext.request.contextPath}/user/MemberLogin.me">로그인</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#" class="icon solid fa-phone"><span>전화 (031) 211-0000</span></a></li>
+                        <li>
+                            <div class="icon solid fa-map-marker-alt">
+                                <address>
+                                    Pangyo-ro<br/>
+                                    Building, TN 1111-02230<br/>
+                                    Bundang-gu, Gyeonggi-do<br/>
+                                    Republic of Korea
+                                </address>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            &copy; Camp Corner, All rights reserved. .
+        </div>
+    </div>
+</section>
 
 <!-- Scripts -->
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moment.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/moment-with-locales.js"></script>
 
-<script src="${pageContext.request.contextPath}/assets/js/user/account.js"></script>
-<script> var contextPath = "${pageContext.request.contextPath};</script>
+<script src="/resources/assets/js/user/account.js"></script>
+<script> var contextPath = "/resources/";</script>
 
-<script>
+<!-- <script>
     var date = new Date();
     $('.dateview1').html(moment(date).format('MMMM Do YYYY,h:mm:ss a'));
 
@@ -211,6 +393,6 @@
 
     
     
-</script>
+</script> -->
 </body>
 </html>

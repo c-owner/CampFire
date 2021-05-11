@@ -34,15 +34,16 @@ CREATE TABLE CAMP_USER
   CONSTRAINT CAMP_USER_PK PRIMARY KEY (memberId)
 );
 
+DROP TABLE CAMP_USER;
 CREATE TABLE CAMP_USER
 (
-	memberId VARCHAR2(300),
-	memberPw VARCHAR2(300),
-	memberEmail VARCHAR2(200),
-	memberEmailHash VARCHAR2(200),
-	memberEmailChecked char(1),
+	id VARCHAR2(300),
+	password VARCHAR2(300),
+	email VARCHAR2(200),
+--	memberEmailHash VARCHAR2(200),
+--	memberEmailChecked char(1),
   CONSTRAINT CAMP_USER_PK PRIMARY KEY (memberId)
-);
+);;
 
 SELECT * FROM CAMP_USER;
 UPDATE CAMP_USER SET MEMBERPW = 'SDFWER' WHERE MEMBERID = 'corner3499' AND MEMBEREMAIL = 'corner3499@gmail.com';
