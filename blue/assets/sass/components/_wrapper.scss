@@ -1,0 +1,44 @@
+///
+/// Momentum by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* wrapper */
+
+	.wrapper {
+		@include padding(8rem, 0);
+
+		&.style1 {
+			background: _palette(bg-alt);
+		}
+
+		&.style2 {
+			@include color(invert);
+			background: _palette(accent);
+		}
+
+		&.style3 {
+			@include color(invert);
+		}
+
+		&.special {
+			text-align: center;
+		}
+
+		@include breakpoint('<=large') {
+			@include padding(6rem, 0);
+		}
+
+		@include breakpoint('<=medium') {
+			@include padding(5rem, 0);
+		}
+
+		@include breakpoint('<=small') {
+			@include padding(4rem, 0);
+		}
+
+		@include breakpoint('<=xsmall') {
+			@include padding(3rem, 0);
+		}
+	}

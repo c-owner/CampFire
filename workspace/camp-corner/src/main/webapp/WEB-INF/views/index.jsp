@@ -30,16 +30,15 @@
 </c:if>
  
 <!-- Header -->
-<jsp:include page="${pageContext.request.contextPath}/resources/assets/public/header.jsp"/>
 
 <!-- Banner -->
 <section id="banner">
     <article class="full">
         <div class="image" data-position="center">
-            <img src="${pageContext.request.contextPath}/images/bg01.jpg" alt=""/>
+            <img src="/resources/images/bg01.jpg" alt=""/>
         </div>
         <div class="content">
-            <h1 class="alt"><a href="${pageContext.request.contextPath}/Main.me"> 캠핑 코너 </a></h1>
+            <h1 class="alt"><a href="/resources/Main.me"> 캠핑 코너 </a></h1>
             <!-- <h2 class="dateview1">MMMM Do YYYY, h:mm:ss a</h2> -->
             <div id="clock" style=" width:350px;
         height:250px; 
@@ -164,12 +163,11 @@
 
 
 <!-- Footer -->
-<jsp:include page="${pageContext.request.contextPath}/resources/assets/public/footer.jsp">
 
 <!-- Scripts -->
 
-<script src="${pageContext.request.contextPath}/assets/js/user/account.js"></script>
-<script> var contextPath = "${pageContext.request.contextPath};</script>
+<script src="/resources/assets/js/user/account.js"></script>
+<script> var contextPath = "/resources";</script>
 
 <script>
     var date = new Date();
