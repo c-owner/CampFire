@@ -1,5 +1,51 @@
 ## commit🌱
 
+
+
+##### 0.01a 
+
+- MVC Model2 디자인 패턴 -> Spring MVC 프로젝트 변경
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
+
+## DROP
+
 03-17-2021 hot_fix
 
 - Path modified !
