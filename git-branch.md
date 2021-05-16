@@ -191,5 +191,18 @@ command Line : `mkdir test.txt`
 
 `ll`
 
+![img](https://blog.kakaocdn.net/dn/bEhtre/btq4ZgxZlas/asmiDIbvUsJHBKobWV1Yc1/img.png)
 
 
+
+#### 5) c브랜치에서 작업하였던 파일을 master 브랜치로 병합 해본다.
+
+command Line : `git merge 브랜치명`
+
+```shell
+git merge c
+```
+
+
+
+-
