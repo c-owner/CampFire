@@ -162,7 +162,7 @@ $ git push -u origin 브랜치명(test)
 
 파일명 : `test.txt`
 
-command Line : `mkdir test.txt`
+command Line : `vi test.txt` -> `test text`
 
 ![img](https://blog.kakaocdn.net/dn/kY6vZ/btq4Yjbnduj/sq5Ua2EcMMGsjNM479esK1/img.png)
 
