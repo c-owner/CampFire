@@ -1,4 +1,17 @@
+---
+layout: post
+title:  "Git Branch 사용 & 병합하기 / Git merge 병합하기 매뉴얼"
+date: 2021-05-16 20:00:21 +0900
+categories: git
+---
+
+참고 사이트 [Git Branch 사용 & 병합(merge)하기 / Conflict 해결하기](https://iu-corner.tistory.com/entry/Git-Branch-사용-병합하기)
+
+
+
 # Git Branch 사용 & 병합하기
+
+
 
 ![img](https://blog.kakaocdn.net/dn/5WVI1/btqKC959HKv/iNdTGEFKuFygShxWNTM4a1/img.jpg)
 
