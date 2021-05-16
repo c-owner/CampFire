@@ -223,3 +223,116 @@ git merge c
 
 #### 1) c 브랜치로 이동
 
+\- 임의로 간단한 소스 충돌 상황을 만든다.
+
+```
+git checkout c
+```
+
+####  
+
+#### 2) 텍스트 내용을 변경 (c 브랜치에서)
+
+\- 메모장 또는 vi 편집기를 이용하여 다음과 같이 이름을 변경해본다.
+
+![img](https://blog.kakaocdn.net/dn/opoLD/btq4XfNRFs3/vupgSMTRQYSDVDrfAHVYm0/img.png)
+
+![img](https://blog.kakaocdn.net/dn/uAt82/btq44cawmna/41L9spy2b36k2s98MCbKQk/img.png)
+
+
+
+#### 3) 수정한 내용 커밋
+
+```
+git add .
+git commit -m "change test text.txt"
+```
+
+![img](https://blog.kakaocdn.net/dn/uF2fm/btq4YtxODBe/5J4Ufx6ix2OlhpW9NSCJ30/img.png)
+
+이 후 master 브랜치로 이동한다.
+
+```
+git checkout master
+```
+
+####  
+
+#### 4) 파일 확인
+
+\- 당연히 master branch로 확인해보면 c 브랜치에서 수정한 내용은 반영되어있지 않다.
+
+```
+cat test.txt
+```
+
+![img](https://blog.kakaocdn.net/dn/bMajds/btq4544nbVs/LZPBAw2U1aRkrvQB7kCxL1/img.png)
+
+
+
+#### 5) 함수 이름을 변경 (master 브랜치)
+
+\- 메모장 또는 vi 편집기를 활용하여 다음과 같이 내용을 변경하고, 커밋한다.
+
+![img](https://blog.kakaocdn.net/dn/bvOUPf/btq4ZRyrtI7/FLNTi3YxhGixEpIkoBKY41/img.png)
+
+![img](https://blog.kakaocdn.net/dn/bYY2pC/btq4XDVc9Hd/3qGBnLbUOddBp5z29VZ241/img.png)
+
+
+
+#### 6) branch 병합
+
+\- 머지(merge) 작업을 해본다.
+
+```
+git merge c
+```
+
+-> 메세지를 살펴보면 영어 버전인 경우 CONFLICT라는 단어가 포함되어 있을 것이다. 충돌이 발생한 것이다.
+
+![img](https://blog.kakaocdn.net/dn/JptO6/btq4ZRLYhUU/u72bzR5nzf6LJ15YAtoB01/img.png)
+
+그럼 컨플릭트 상황이 발생하였다고 나와있는 파일을 살펴 본다.
+
+command Line : vi test.txt
+
+![img](https://blog.kakaocdn.net/dn/daljZT/btq454pMa21/XgMm0kbVk6uzbiTglXvkpk/img.png)
+
+ \- "=======" 을 기준으로
+
+  위 : HEAD로 표시되어 있는 내용이 master 브랜치에서 한 작업
+
+  아래 : test로 표시되어 있는 내용은 test 브랜치에서 한 작업
+
+ \- 각각의 브랜치에서 동일한 파일을 수정하였는데, merge를 하려고 했을때 git이 어떤 내용이 맞는지 판단할 수 없기 때문에 충돌이 발생하였다고 알려 준다. 
+이런 상황을 Conflict가 발생하였다고 한다.
+
+
+
+### 7) Conflict (충돌) 해결하기﻿
+
+#### 7.1) 직접 수정 
+
+\- 직접 양 브랜치간의 내용을 비교하여 수정 후 add, commit 처리 한다.
+
+ex) vi test.txt 하여  '<<<<<<<<  HEAD ' , ' >>>>>>>> 브랜치명 ' 까지 지운 뒤 ' merge text test '로 변경 후 커밋 처리
+
+
+
+#### 7.3) 머지(merge) 작업 취소﻿
+
+\- 머지를 하다가 conflict가 발생하였을 때, 일단은 merge 작업을 취소하고 이전 상태로 되돌아 갈 수 있다.
+
+Command Line :
+
+```
+git merge --abort
+```
+
+
+
+![img](https://blog.kakaocdn.net/dn/b49vJs/btq4335XSNk/oN1n4jAayt396PscoVmcz1/img.png)
+
+머지 시도 이전 파일내용과 똑같은 것을 볼 수 있다.
+
+이 후 작업을 다시 하고 병합하거나, 아니면 c 브랜치의 내용으로 그냥 merge처리 하는 등의 선택을 할 수 있다.
