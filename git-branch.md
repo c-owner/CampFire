@@ -191,6 +191,7 @@ command Line : `mkdir test.txt`
 
 `ll`
 
+<<<<<<< HEAD
 ![img](https://blog.kakaocdn.net/dn/bEhtre/btq4ZgxZlas/asmiDIbvUsJHBKobWV1Yc1/img.png)
 
 
@@ -203,3 +204,7 @@ command Line : `git merge 브랜치명`
 git merge c
 ```
 
+=======
+
+
+>>>>>>> c
