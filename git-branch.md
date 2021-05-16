@@ -191,10 +191,6 @@ command Line : `mkdir test.txt`
 
 `ll`
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> c
 ![img](https://blog.kakaocdn.net/dn/bEhtre/btq4ZgxZlas/asmiDIbvUsJHBKobWV1Yc1/img.png)
 
 
@@ -207,13 +203,23 @@ command Line : `git merge 브랜치명`
 git merge c
 ```
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> c
-=======
+![img](https://blog.kakaocdn.net/dn/bI3jZT/btq4Zf6VE9z/1f48ssdO40yyY2baidW5IK/img.png)
+
+- `c` 브랜치에서 했던 작업 내용이 복사된 것을 볼 수 있다. 즉, 다른 브랜치에서 했던 작업 내용을 가져오고 싶을 때 merge를 사용할 수 있다.
 
 
--
->>>>>>> c
+
+
+
+---
+
+
+
+## ➡ Git Conflict(컨플릭트) 상황 해결 하기
+
+컨플릭트 : 충돌
+
+#### 1) c 브랜치로 이동
+
