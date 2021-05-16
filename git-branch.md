@@ -169,3 +169,27 @@ command Line : `mkdir test.txt`
 
 
 #### 3) 신규 txt 파일 커밋
+
+`git add .`
+
+`git status`
+
+`git commit -m "add test txt"`
+
+![img](https://blog.kakaocdn.net/dn/olxgy/btq4XXzC8BU/eCvdN9KcMImhkJnGf6CuAk/img.png)
+
+
+
+ \- c 브랜치에 신규 txt 파일이 추가 되었고 충분히 테스트 되어 문제가 없다는 가정하에 master 브랜치에도 똑같은 txt 파일을 생성 하려 한다.
+이때 내가 작성한 파일을 master branch로 이동하여 그대로 작성해도 되지만, merge 기능을 사용하여 c 브랜치에서 합칠 수 있다.
+
+
+
+#### 4) master branch로 이동
+
+`git checkout master`
+
+`ll`
+
+
+
