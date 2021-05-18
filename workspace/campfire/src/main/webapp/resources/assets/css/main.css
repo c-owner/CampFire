@@ -4833,7 +4833,8 @@ input, select, textarea {
 			}
 
 				#banner > article.full .content {
-					width: 50rem;
+					/* width: 50rem; */
+					height: 55%;
 				}
 
 				@media screen and (min-width: 1281px) and (max-width: 1680px) {
@@ -4841,7 +4842,10 @@ input, select, textarea {
 					#banner > article.full {
 						min-height: 70vh;
 					}
-
+					#banner > article.full .content {
+						/* width: 50rem; */
+						height: 55%;
+					}
 				}
 
 			#banner > article.half {

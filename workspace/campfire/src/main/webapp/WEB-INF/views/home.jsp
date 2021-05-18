@@ -24,8 +24,8 @@
 				object-fit: cover;
 			}
 			.testDiv{
-			width: 190px;
-			height: 190px;
+			width: 300px;
+			height: 300px;
 			}
 		</style>
 	</head>
