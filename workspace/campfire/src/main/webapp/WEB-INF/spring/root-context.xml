@@ -12,9 +12,9 @@
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@132.226.169.45:1521:XE"/> -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@132.226.169.45:1521:XE"/>
-		<property name="username" value="hr"/>
-		<property name="password" value="hr"/>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@camp-fire.kro.kr:1521:XE"/>
+		<property name="username" value="camp"/>
+		<property name="password" value="camp"/>
 	</bean>
 	
 	<!-- DataSource dataSource = new DataSource(hikariConfig) -->
