@@ -17,6 +17,8 @@
 
 		<link rel="stylesheet" type="text/css" href="/resources/slick/slick.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/slick/slick-theme.css"/>
+
+		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
 		<style>
 			img {
 				width: 90%;
