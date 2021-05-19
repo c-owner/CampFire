@@ -132,6 +132,10 @@
 			<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 			<script type="text/javascript" src="/resources/slick/slick.min.js"></script>
+			
+			<!-- 휠이동 -->
+			<script src="/resources/assets/js/jquery.mousewheel.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	</body>
 	
 	
@@ -177,7 +181,20 @@
 		})
 	});
 	</script>
-	
+	<script>
+	$(".is-preload").on("mousewheel DOMMouseScroll", function(event, delta){
+		if(delta>0){
+	  	//마우스 휠 up
+	  	$('html, body').animate({scrollTop: 0}, 900, 'easeOutExpo');
+	  	//$('html, body').animate({
+    	//scrollTop: 0}, 800);
+	  }else if(delta<0){
+	  	//마우스 휠 down
+	  	$('html, body').animate({scrollTop: '1000px'}, 900, 'easeOutExpo');
+	  	//$(document).height()
+	  }  
+	});
+	</script>
 <!-- 	<script>
 		$('.responsive').slick({
 		  dots: true,
@@ -213,6 +230,5 @@
 		    // settings: "unslick"
 		    // instead of a settings object
 		  ]
-		});
-	</script> -->
+		}); -->
 </html>
