@@ -9,10 +9,10 @@
 			"show-system-objects": true,
 			"read-only": false,
 			"configuration": {
-				"host": "localhost",
+				"host": "camp-fire.kro.kr",
 				"port": "1521",
 				"database": "XE",
-				"url": "jdbc:oracle:thin:@//localhost:1521/XE",
+				"url": "jdbc:oracle:thin:@//camp-fire.kro.kr:1521/XE",
 				"type": "dev",
 				"properties": {
 					"useFetchSizeWithLongColumn": "true",
@@ -31,43 +31,11 @@
 					"@dbeaver-use-meta-optimizer@": "false",
 					"@dbeaver-meta-use-alternative-table-query@": "false"
 				},
-				"auth-model": "oracle_native"
+				"auth-model": "oracle_native",
+				"handlers": {}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
-			}
-		},
-		"oracle_thin-1795a2c2d17-1228d29e13586385": {
-			"provider": "oracle",
-			"driver": "oracle_thin",
-			"name": "XE",
-			"save-password": true,
-			"show-system-objects": true,
-			"read-only": false,
-			"configuration": {
-				"host": "localhost",
-				"port": "1521",
-				"database": "XE",
-				"url": "jdbc:oracle:thin:@localhost:1521:XE",
-				"type": "dev",
-				"properties": {
-					"useFetchSizeWithLongColumn": "true",
-					"loginTimeout": "20",
-					"oracle.jdbc.fanEnabled": "false"
-				},
-				"provider-properties": {
-					"@dbeaver-check-schema-content@": "false",
-					"@dbeaver-always-show-dba@": "false",
-					"@dbeaver-always-use-dba-views@": "false",
-					"@dbeaver-meta-use-sys-schema@": "false",
-					"@dbeaver-meta-use-simple-constraints@": "false",
-					"@dbeaver-use-rule-hint@": "false",
-					"@dbeaver-use-meta-optimizer@": "false",
-					"@dbeaver-meta-use-alternative-table-query@": "false",
-					"@dbeaver-connection-type@": "BASIC",
-					"@dbeaver-sid-service@": "SID"
-				},
-				"auth-model": "oracle_native"
 			}
 		}
 	},
