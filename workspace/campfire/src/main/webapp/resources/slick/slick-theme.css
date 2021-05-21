@@ -80,11 +80,11 @@
 .slick-prev
 {
 	z-index: 9999;
-    /* left: -25px; */
+    left: -32px;
 }
 [dir='rtl'] .slick-prev
 {
-    /* right: -25px; */
+    right: -25px;
     left: auto;
 }
 .slick-prev:before
@@ -97,14 +97,13 @@
 }
 
 .slick-next
-{
-	margin-left: 97%;	
-    /* right: -25px; */
+{	
+    right: -10px;
 }
 [dir='rtl'] .slick-next
 {
     right: auto;
-    /* left: -25px; */
+    left: -25px;
 }
 .slick-next:before
 {
