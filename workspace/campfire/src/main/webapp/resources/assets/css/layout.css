@@ -3,19 +3,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+ 
+
+/* 
+===================================================
+ */
     .btn-right {
     margin: 0 auto;
     text-align: center;
   text-decoration: none;
-  font-family: "jua";
+  font-family: "NIXGONL-Vb";
   position: relative;
   color: white;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: -0.03em;
   display: inline-block;
   color: #fff;
-  background-color: #f48fb1;
+  background-color: #2388FA;
   padding: 0.9em 2.8em 0.9em 2.25em;
   border-radius: 2rem;
 }
@@ -110,10 +115,25 @@ a.btn {
     background: rgb(255, 255, 255);
     opacity: 1.0;
     transition: all 0.5s ease-in-out;
+    z-index: 999;
 
 }
 
 /* 반응형 */
+
+@media screen and (min-width:981px) {
+ 	
+ 	/* a.btn-right{
+ 		
+ 	} */
+ 	.col-10.col-11-xsmall{
+ 		margin-top: 6% !important;
+ 	}	
+ 	
+ 	#submit {
+ 		font-size:15px;
+ 	}
+ }
 
 @media screen and (max-width: 580px) {
     .modal {
@@ -133,14 +153,19 @@ a.btn {
         color: red;
            text-decoration: none !important;
     }
+    
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 408px) {
+	.modal-wrapper.open .modal {
+    	margin-top: -270px !important;
+	}
     .modal {
         margin-top: -90%;
         /* opacity: 0.8; */
         margin-left: -50%;
         width: 100%;
+        height: 700px;
     }
 
     .head-pop h2 {
@@ -156,6 +181,14 @@ a.btn {
         color: red;
                text-decoration: none !important;
     }
+    
+    .mediaInput, .btn-right {
+    	width:100% !important;
+    }
+    
+    .head-pop{
+    	margin-left:2rem;
+    }
 }
 
 
@@ -164,14 +197,14 @@ a.btn {
 
 }
 
+
 .head-pop {
-    width: 100%;
-    text-align: center;
-    padding-top: 5%;
-    /* height: 50px; */
+    /* width: 100%;
+    height: 50px; */
     /* padding: 0px 20px 5px 30%; */
+    padding-top: 5%;
     overflow: hidden;
-    /* background-color: deepskyblue; */
+    text-align: center;
 
 }
 
@@ -257,5 +290,3 @@ a.btn {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-  
