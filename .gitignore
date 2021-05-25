@@ -48,7 +48,7 @@ Eclipse-han.app
  bin/**
 .classpath
 .settings/
-# resource/*
+resource/*
 Servers
 tmp/**
 tmp/**/*
