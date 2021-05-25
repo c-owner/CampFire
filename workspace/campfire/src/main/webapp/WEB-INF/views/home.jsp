@@ -91,7 +91,7 @@
 						</div>
 							<form method="post" action="#" class="combined">
 								<input type="text" name="search" id="search" placeholder="캠핑장 검색" class="invert" />
-								 <a href="#" class="button primary icon solid fa-search">&nbsp;</a>
+								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find">&nbsp;</a>
 							</form>
 							<div class="test1" style="text-align:left; margin-top: 20%;">
 								<h2 id="category" style="margin:0;">유/무료 캠핑장</h2>
