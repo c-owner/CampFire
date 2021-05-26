@@ -46,37 +46,50 @@
 </style>
 </head>
 <body>
-	<!-- Header -->
-			<header id="header" style="height: 7em; position: absolute; background:#00000000;">
+			<!-- Header -->
+			<header id="header" style="height: 7em; position: absolute; background:#0000008b;">
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li class="current"><a href="index.html">Home</a></li>
+							<li class="current">
+								<a href="/">
+									<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
+								</a></li>
+	 
+							<li><a href="#">전체</a></li>
+							<li><a href="#">유/무료 캠핑장</a></li>
+							<li><a href="#">난이도 캠핑장</a></li>
+							<li><a href="#">글램핑/카라반</a></li>
+							<li><a href="#">테마검색</a></li>
+							<li><a href="#">장작장터</a></li>
 							<li>
-								<a href="#" class="dropdown">Dropdown</a>
+								<a href="#" class="dropdown">모닥불</a>
 								<ul>
-									<li><a href="#">Option One</a></li>
-									<li><a href="#">Option Two</a></li>
-									<li><a href="#">Option Three</a></li>
+									<li><a href="#">자유게시판</a></li>
+									<li><a href="#">캠핑 리뷰</a></li>
+									<li><a href="#">캠핑 팁</a></li>
+									<li><a href="#">캠핑 음식</a></li>
+									<li><a href="#">캠핑 가이드</a></li>
 									<li>
-										<a href="#">Submenu</a>
+										<a href="#">계정</a>
 										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
+											<li><a href="#" class="signup">회원가입</a></li>
+											<li><a href="#" class="signin">로그인</a></li>
 										</ul>
 									</li>
 								</ul>
 							</li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							
+							<li>
+								<a href="#" class="dropdown">고객센터</a>
+								<ul>
+									<li><a href="/generic">고객센터</a></li>
+									<li><a href="/elements">Elements</a></li>
+								</ul>
+							</li>
 						</ul>
 					</nav>
-				<!-- Logo -->
-					<!-- <a class="logo" href="index.html">Momentum <span>by Pixelarity</span></a> -->
-			</header>
-			
+			</header>			
 			
 			<div class="modal-wrapper">
 				<div class="modal loginModal">
@@ -208,64 +221,7 @@
 			</div>
 </body>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-			<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-$(document).ready(function () {
-    $('.fa-find').on('click', function () {
-        $('.modal-wrapper').toggleClass('open');
-        $('.page-wrapper').toggleClass('blur-it');
-        return false;
-    });
-
-	$('#findIdPw').on('click', function(e){
-		e.preventDefault();
-		$('.loginModal').hide();
-		$('.findModal').show();
-	})
-	
-	$('#findPwBtn').on('click', function(e){
-		e.preventDefault();
-		$("#findIdBtn").children().css("color", "black");
-		$("#findPwBtn").children().css("color", "#2388fa");
-	
-		$("form[name='findIdForm']").hide();
-		$("form[name='findPwForm']").show();
-	})
-	$('#findIdBtn').on('click', function(e){
-		e.preventDefault();
-		$("#findPwBtn").children().css("color", "black");
-		$("#findIdBtn").children().css("color", "#2388fa");
-	
-		$("form[name='findPwForm']").hide();
-		$("form[name='findIdForm']").show();
-	})
-	$('#goSignUpBtn').on('click', function(e){
-		e.preventDefault();
-		$(".loginModal").hide();
-		$(".signUpModal").show();
-	})
-
-	$('.fa-signup').on('click', function () {
-		$('.modal-wrapper').toggleClass('open');
-		$('.page-wrapper').toggleClass('blur-it');
-		return false;
-	});
-	
-	
-	$(document).mouseup(function (e){
-		  var LayerPopup = $('.modal-wrapper');
-		  if(LayerPopup.has(e.target).length === 0){
-			  $(".signUpModal").hide();
-			  $(".findModal").hide();
-			  $(".loginModal").show();
-			  $("form[name='findPwForm']").hide();
-			  $("form[name='findIdForm']").show();
-			  LayerPopup.removeClass("open");
-		  }
-		});
-});
-
-
-</script>
+<script src="/resources/assets/js/modal.js"></script>
 </html>

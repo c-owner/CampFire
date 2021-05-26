@@ -2,6 +2,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600, 600i");
  
 @font-face {
+    font-family: 'Handletter';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Handletter.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
      font-family: 'NIXGONL-Vb';
      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/NIXGONL-Vb.woff') format('woff');
      font-weight: normal;
@@ -24,7 +30,7 @@ section, summary, time, mark, audio, video {
     border: 0;
     font-size: 100%;
     font: inherit;
-    font-family: 'NIXGONL-Vb', sans-serif;
+    font-family: 'NIXGONL-Vb';
     vertical-align: baseline;
 }
 
@@ -161,7 +167,7 @@ body {
 }
 
 body, input, select, textarea {
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: "NIXGONL-Vb";
     font-weight: 300;
     font-size: 1rem;
     line-height: 2.5;
@@ -4323,7 +4329,7 @@ table.alt tbody tr td {
 }
 
 #header > .navbar {
-    font-family: 'Nanum Brush Script', cursive;
+    font-family: 'NIXGONL-Vb';
 }
 
 #header > .navPanelToggle:hover {

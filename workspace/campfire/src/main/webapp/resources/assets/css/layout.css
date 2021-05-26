@@ -91,9 +91,8 @@ a.btn {
     position: fixed;
     top: 0;
     left: 0;
-    background: black;
+    background: rgba(0, 0, 0, 0.462);
     visibility: hidden;
-    opacity: 1.0;
     transition: all 0.25s ease-in-out;
     z-index: 10005;
 }

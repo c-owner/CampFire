@@ -125,6 +125,7 @@
    <!-- Google font -->
    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
    <title>error</title>
+   <link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 </head>
 <body>
    <div id="notfound">
