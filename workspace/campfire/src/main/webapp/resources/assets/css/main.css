@@ -166,8 +166,14 @@ body {
     color: #545454;
 }
 
-body, input, select, textarea {
+body, select, textarea {
     font-family: "NIXGONL-Vb";
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 2.5;
+}
+input {
+    font-family: initial;
     font-weight: 300;
     font-size: 1rem;
     line-height: 2.5;
@@ -2086,6 +2092,7 @@ form.combined select {
     border-top-left-radius: 2rem;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+    font-family: initial !important;
 }
 
 form.combined input[type="submit"],
