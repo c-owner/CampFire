@@ -42,12 +42,7 @@
 				font-size: 70px; font-weight: bold;
 			}
 	/* modal */
-	.loginModal {
-		height: 500px;
-	}
-	.findModal {
-		height: 500px;
-	}
+
 	#kakaoImageLarge {
 		display: none;
 	}
@@ -149,7 +144,7 @@
 								<input type="text" name="search" id="search" placeholder="캠핑장 검색" class="invert" />
 								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find">&nbsp;</a>
 							</form>
-							<div class="test1" style="text-align:left; margin-top: 20%;">
+							<div class="test1" style="text-align:left; margin-top: 40%;">
 								<h2 id="category" style="margin:0;">유/무료 캠핑장</h2>
 							</div>
 			  				<section class="slider">

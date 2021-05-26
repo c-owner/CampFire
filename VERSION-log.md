@@ -4,34 +4,26 @@
 
 ---
 
-## 2021-05-28-⚙️  0.01b
+## 2021-05-28-⚙️  0.01b - by corner
 
-`작업기간 : 1d 3h`
+`작업기간 : 1d 4h`
 
 - header.jsp 메뉴 수정 
-
 - 메인 & header 분리 완료 
-
   - 메인에서는 투명도 100%
   - 헤더에서는 투명도 50%
-
 - 컨트롤러 elements / generic 추가 
-
 - Default 폰트 교체, 감성 멘트 폰트 추가
-
 - CSS 스타일 수정 
-
   - 모달 투명도 50%
   - 반응형 수정 
   - 중복 스타일 제거
-
 - javascript 추가
-
   - modal.js
-
 - 슬라이더 제거
-
 - includes/modal.jsp 추가
+
+- signup 내부 버튼 사이즈 0.87rem -> **14px 고정**
 
   
 

@@ -118,13 +118,13 @@
 								<br>
 									<input class="mediaInput" type="email" name="memberEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
 									<a href="javascript:EmailCheck();" class="btn-right"
-									type="submit" style="font-size: 0.87rem; border-radius: 6px; width: 34%;">
+									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 전송</a>
 									<br><br>
 									<div class="mail_verify_input_box" id="mail_verify_input_box_false">
 									<input class="mediaInput" type="text" name="verify" id="verify" class="verify" style="width:66%; float:left" placeholder="7자리" disabled="disabled" />
 									<a href="javascript:verifyCheck();" class="btn-right"
-									type="submit" style="font-size: 0.87rem; border-radius: 6px; width: 34%;">
+									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 확인</a>
 									</div>
 									<font id="verify_check" size="3"></font>
