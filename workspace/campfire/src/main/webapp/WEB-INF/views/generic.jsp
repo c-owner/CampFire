@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
 	Momentum by Pixelarity
@@ -11,7 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -21,7 +23,7 @@
 			<div id="main">
 				<div class="wrapper">
 					<div class="inner">
-						<span class="image fit"><img src="images/pic11.jpg" alt="" /></span>
+						<span class="image fit"><img src="/resources/images/bg01.jpg" alt="" /></span>
 						<header>
 							<h2>Phasellus pellentesque</h2>
 						</header>
@@ -94,7 +96,8 @@
 				</div>
 			</section>
 
-<%@include file="includes/footer.jsp" %>
+			<jsp:include page="includes/footer.jsp" flush="false" />
+			<%-- <%@include file="includes/footer.jsp" %> --%>
 
 	</body>
 </html>

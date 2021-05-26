@@ -512,6 +512,7 @@ print 'It took ' + i + ' iterations to sort the deck.';
 					</div>
 				</div>
 			</section>
-            <%@include file="includes/footer.jsp" %>
+            <jsp:include page="includes/footer.jsp" flush="false" />
+            <%-- <%@include file="includes/footer.jsp" %> --%>
 	</body>
 </html>

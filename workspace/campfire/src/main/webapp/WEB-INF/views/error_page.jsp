@@ -138,5 +138,9 @@
          <a href="/board/list">Go TO Board</a>
       </div>
    </div>
+   
+   <jsp:include page="includes/modal.jsp" />
+<jsp:include page="includes/footer.jsp" flush="false" />
+<%-- <%@include file="includes/footer.jsp" %> --%>
 </body>
 </html>
