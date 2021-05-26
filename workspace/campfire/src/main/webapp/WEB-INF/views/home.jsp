@@ -133,7 +133,7 @@
 							<img src="/resources/images/bg01.jpg" alt="" />
 						</div>
 						<div class="content">
-						<div align="center">
+						<div align="center" style="margin-top: 50px;">
 							<h2 class="alt" style="text-align: center; margin: 0; margin-top: -10%;">
 								<span id="mainMessage">모</span>험심을 가지고 
 								<span id="mainMessage">닥</span>치는대로 도전하면 
@@ -144,7 +144,7 @@
 								<input type="text" name="search" id="search" placeholder="캠핑장 검색" class="invert" />
 								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find">&nbsp;</a>
 							</form>
-							<div class="test1" style="text-align:left; margin-top: 40%;">
+							<div class="test1" style="text-align:left; margin-top: 20%;">
 								<h2 id="category" style="margin:0;">유/무료 캠핑장</h2>
 							</div>
 			  				<section class="slider">
