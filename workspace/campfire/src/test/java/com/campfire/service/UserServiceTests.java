@@ -22,7 +22,7 @@ public class UserServiceTests {
 	public void testRegister() {
 		log.info("register..............");
 		UserVO user = new UserVO();
-		user.setUserId("test234");
+		user.setUserId("test688");
 		user.setUserPw("1234");
 		user.setUserEmail("zxc@naver.com");
 		log.info(service.register(user));
