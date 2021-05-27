@@ -22,7 +22,7 @@
 						</div>
 						<form name="" action="#" method="" >
 							<div class="row gtr-uniform">
-								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 10%;">
+								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 10%; padding:0;">
 									<label for="userId">아이디</label>
 									<input type="text" name="userId" id="userId" placeholder="ID">
 									<label for="userPw" style="margin-top: 15px;">비밀번호</label>
