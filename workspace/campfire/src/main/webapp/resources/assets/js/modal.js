@@ -60,11 +60,6 @@ $(document).ready(function () {
 	$(document).mouseup(function (e){
 		  var LayerPopup = $('.modal-wrapper');
 		  if(LayerPopup.has(e.target).length === 0){
-			  $(".signUpModal").hide();
-			  $(".findModal").hide();
-			  $(".loginModal").show();
-			  $("form[name='findPwForm']").hide();
-			  $("form[name='findIdForm']").show();
 			  LayerPopup.removeClass("open");
 		  }
 		});

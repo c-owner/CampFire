@@ -28,7 +28,7 @@
 									<label for="userPw" style="margin-top: 15px;">비밀번호</label>
 									<input type="password" name="userPw" id="userPw" placeholder="PASSWARD">
 									<div><a href="javascript:void(0);" id="goSignUpBtn" style="text-decoration: none;">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#" id="findIdPw" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
-									<ul class="actions" style="margin-top: 5%;">
+									<ul class="actions">
 										<li style="margin-left: auto;">
 											<a><img id="kakaoImage" style="height: 46px;" src="/resources/images/kakaoLogin.png"></a>
 											<a><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
@@ -59,7 +59,7 @@
 									<h3 class="cautionMsg" style="text-align: center;">가입에 등록한 이메일을 입력해주세요.</h3>
 									<label for="userEmail2">이메일</label>
 									<input type="email" name="userEmail" id="userEmail2" placeholder="EMAIL">
-									<ul class="actions" style="margin-top: 5%;">
+									<ul class="actions">
 										<li style="margin-left: auto;">
 											<a class="button primary" class="goLoginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>
@@ -79,7 +79,7 @@
 									<input type="text" name="userId" id="userId3" placeholder="ID">
 									<label for="userEmail3">이메일</label>
 									<input type="email" name="userEmail" id="userEmail3" placeholder="EMAIL">
-									<ul class="actions" style="margin-top: 5%;">
+									<ul class="actions">
 										<li style="margin-left: auto;">
 											<a class="button primary" class="goLoginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>

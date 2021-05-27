@@ -103,8 +103,8 @@
 									<li>
 										<a href="#">계정</a>
 										<ul>
-											<li><a href="#" class="signup">회원가입</a></li>
-											<li><a href="#" class="signin">로그인</a></li>
+											<li><a href="javascript:void(0)" class="signup">회원가입</a></li>
+											<li><a href="javascript:void(0)" class="signin">로그인</a></li>
 										</ul>
 									</li>
 								</ul>
@@ -124,7 +124,6 @@
 			
 		
 		<!-- END header -->
-
 		<!-- Banner -->
 			<section id="banner">
 					<article class="full" style="min-height: 100vh;">
