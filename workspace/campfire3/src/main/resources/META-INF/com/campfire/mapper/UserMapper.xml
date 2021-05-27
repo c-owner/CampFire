@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.UserMapper">
+	<select id="selectId">
+		SELECT COUNT(USERID) FROM CF_USER 
+		WHERE USERID = #{userId}
+	</select>
+	<select id="selectEmail">
+		SELECT COUNT(USEREMAIL) FROM CF_USER 
+		WHERE USEREMAIL = #{userEmail}
+	</select>
+	<insert id="insert">
+		INSERT INTO CF_USER (USERID, USERPW, USEREMAIL) 
+		VALUES (#{userId}, #{userPw}, #{userEmail})
+	</insert>
+	<select id="selectPw" resultType="string">
+		SELECT USERPW FROM CF_USER 
+		WHERE USERID = #{userId}
+	</select>
+</mapper>

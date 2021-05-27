@@ -1,0 +1,64 @@
+///
+/// Momentum by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+// Misc.
+	$misc: (
+		z-index-base:		10000,
+		max-banners:		10
+	);
+
+// Duration.
+	$duration: (
+		menu:				0.5s,
+		transition:			0.2s,
+		banner:				2.25s,
+		banner-delay:		0.375s
+	);
+
+// Size.
+	$size: (
+		border-radius:		.25rem,
+		border-radius-alt:	2rem,
+		element-height:		3.25rem,
+		element-margin:		2.5rem,
+		gutter:				2.75rem,
+		gutter-medium:		2rem,
+		gutter-small:		1rem,
+		inner:				80rem,
+		header:				25rem,
+		header-small:		10rem,
+		navPanel:			22rem
+	);
+
+// Font.
+	$font: (
+		family:				('Open Sans', Arial, Helvetica, sans-serif),
+		family-fixed:		('Courier New', monospace),
+		weight:				300,
+		weight-bold:		400
+	);
+
+// Palette.
+	$palette: (
+		bg:					#ffffff,
+		bg-alt:				#f8f8f8,
+		fg:					#545454,
+		fg-bold:			#000000,
+		fg-light:			#545454,
+		border:				rgba(144,144,144,0.25),
+		border-bg:			rgba(144,144,144,0.075),
+		accent:				#2388fa,
+
+		invert: (
+			bg:				#0d0d0d,
+			fg:				transparentize(#ffffff, 0.35),
+			fg-bold:		#ffffff,
+			fg-light:		transparentize(#ffffff, 0.35),
+			border:			rgba(255,255,255,0.25),
+			border-bg:		rgba(255,255,255,0.25),
+			border-bg-alt:	rgba(255,255,255,0.075)
+		)
+	);

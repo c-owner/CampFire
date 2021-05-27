@@ -1,0 +1,67 @@
+///
+/// Momentum by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Contact Icons */
+
+	.contact-icons {
+		@include fixed-grid((
+			columns:			2,
+			gutters:			5rem
+		));
+
+		ul {
+			cursor: default;
+			list-style: none;
+			padding-left: 0;
+
+			li {
+				clear: both;
+				display: block;
+				margin-bottom: 1rem;
+				position: relative;
+
+				span, address {
+					display: inline-block;
+					padding-left: 1rem;
+				}
+
+				.icon {
+					&:before {
+						float: left;
+						line-height: inherit;
+						width: 25px;
+					}
+				}
+			}
+		}
+
+		@include breakpoint('<=xlarge') {
+			@include fixed-grid((
+				columns:			2,
+				gutters:			4rem
+			));
+
+			ul {
+				li {
+					span, address {
+						padding-left: 0.25rem;
+					}
+				}
+			}
+		}
+
+		@include breakpoint('<=large') {
+			@include fixed-grid((
+				columns:			1,
+				gutters:			4rem,
+				prev-columns:	2
+			));
+
+			ul {
+				margin-bottom: 0;
+			}
+		}
+	}

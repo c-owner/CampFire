@@ -4,7 +4,7 @@
 		"oracle_thin-1780ff3365b-107c83e24fee1ee7": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "Oracle - XE",
+			"name": "campFire-",
 			"save-password": true,
 			"show-system-objects": true,
 			"read-only": false,
@@ -59,8 +59,7 @@
 			"description": "Regular development database",
 			"auto-commit": true,
 			"confirm-execute": false,
-			"confirm-data-change": false,
-			"auto-close-transactions": false
+			"confirm-data-change": false
 		}
 	}
 }
