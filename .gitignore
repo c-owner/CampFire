@@ -90,3 +90,5 @@ buildNumber.properties
 # STS
 .springBeans
 
+.dbeaver-data-sources.xml
+.dbeaver/
