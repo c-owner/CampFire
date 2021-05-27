@@ -29,6 +29,10 @@
 				<property name="mapUnderscoreToCamelCase" value="true"/>
 			</bean>
 		</property>
+		<property name="mapperLocations" value="classpath:/META-INF/com/campfire/mapper/**/*.xml"/>
 		<!-- <property name="configLocation" value="classpath:/META-INF/com/koreait/config/MapperConfig.xml"/> -->
 	</bean>
+	
+	<mybatis-spring:scan base-package="com.campfire.mapper"/>
+	<context:component-scan base-package="com.campfire.service"/>
 </beans>
