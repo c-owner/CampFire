@@ -61,6 +61,12 @@ $(document).ready(function () {
 		  var LayerPopup = $('.modal-wrapper');
 		  if(LayerPopup.has(e.target).length === 0){
 			  LayerPopup.removeClass("open");
+			  $(".signUpModal").hide();
+			  $(".findModal").hide();
+			  $(".loginModal").show();
+			  $("form[name='findPwForm']").hide();
+			  $("form[name='findIdForm']").show();
+			  LayerPopup.removeClass("open");
 		  }
 		});
 });
