@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campfire.mapper.UserMapper">
-	<select id="selectId">
+	<select id="selectId" resultType="_int">
 		SELECT COUNT(USERID) FROM CF_USER 
 		WHERE USERID = #{userId}
 	</select>
-	<select id="selectEmail">
+	<select id="selectEmail" resultType="_int">
 		SELECT COUNT(USEREMAIL) FROM CF_USER 
 		WHERE USEREMAIL = #{userEmail}
 	</select>
