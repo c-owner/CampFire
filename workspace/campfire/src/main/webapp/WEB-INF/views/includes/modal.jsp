@@ -61,7 +61,7 @@
 									<input type="email" name="userEmail" id="userEmail2" placeholder="EMAIL">
 									<ul class="actions">
 										<li style="margin-left: auto;">
-											<a class="button primary" class="goLoginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
+											<a href="javascript:goSignIn2()" class="button primary" class="goLoginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>
 										<li style="margin-right: auto;">
 											<a class="button primary" id="goFindIdBtn" style="border-radius: 6px; height: 46px;">아이디 찾기</a>
@@ -81,10 +81,10 @@
 									<input type="email" name="userEmail" id="userEmail3" placeholder="EMAIL">
 									<ul class="actions">
 										<li style="margin-left: auto;">
-											<a class="button primary" class="goLoginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
+											<a href="javascript:goSignIn2()" class="button primary" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>
 										<li style="margin-right: auto;">
-											<a class="button primary" id="goFindIdBtn" style="border-radius: 6px; height: 46px;">이메일 발송</a>
+											<a class="button primary" style="border-radius: 6px; height: 46px;">이메일 발송</a>
 										</li>
 									</ul>
 								</div>        
