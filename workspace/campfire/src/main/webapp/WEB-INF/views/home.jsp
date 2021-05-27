@@ -103,8 +103,8 @@
 									<li>
 										<a href="#">계정</a>
 										<ul>
-											<li><a href="javascript:void(0)" class="signup">회원가입</a></li>
-											<li><a href="javascript:void(0)" class="signin">로그인</a></li>
+											<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+											<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
 										</ul>
 									</li>
 								</ul>

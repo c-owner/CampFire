@@ -5,12 +5,36 @@
 *************************
 
 */
+function goSignUp(){
+	$(".loginModal").hide();
+	$(".signUpModal").show();
+	$('.modal-wrapper').toggleClass('open');
+    $('.page-wrapper').toggleClass('blur-it');
+}
+
+function goSignIn(){
+    $('.modal-wrapper').toggleClass('open');
+    $('.page-wrapper').toggleClass('blur-it');
+}
+function goSignIn2(){
+	$("#findPwBtn").children().css("color", "black");
+	$("#findIdBtn").children().css("color", "#2388fa");
+
+	$("form[name='findPwForm']").hide();
+	$("form[name='findIdForm']").show();
+	
+	$(".findModal").hide();
+	$(".signUpModal").hide();
+	$(".loginModal").show();
+}
+
 $(document).ready(function () {
-    $('.signin').on('click', function () {
+    /*$('.signin').on('click', function () {
         $('.modal-wrapper').toggleClass('open');
         $('.page-wrapper').toggleClass('blur-it');
         return false;
     });
+	*/
 
 	$('#findIdPw').on('click', function(e){
 		e.preventDefault();
@@ -39,17 +63,16 @@ $(document).ready(function () {
 		$(".loginModal").hide();
 		$(".signUpModal").show();
 	})
+	/*
 	$('.signup').on('click', function(e){
 		e.preventDefault();
 		$(".loginModal").hide();
 		$(".signUpModal").show();
-	})
-	$('.signup').on('click', function () {
 		$('.modal-wrapper').toggleClass('open');
         $('.page-wrapper').toggleClass('blur-it');
-		return false;
-    });
-
+	})
+	*/
+	
 	// $('.signup').on('click', function () {
 	// 	$('.modal-wrapper').toggleClass('open');
 	// 	$('.page-wrapper').toggleClass('blur-it');
