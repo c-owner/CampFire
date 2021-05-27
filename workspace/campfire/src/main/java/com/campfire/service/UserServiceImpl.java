@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 public class UserServiceImpl implements UserService{
+	private static final int KEY = 3;
 	private UserMapper mapper;
 
 	/**
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean register(UserVO user) {
+		user.setUserPw(encrypt(user.getUserPw()));
 		return mapper.insert(user) == 1;
 	}
 
@@ -40,10 +42,19 @@ public class UserServiceImpl implements UserService{
 	public boolean login(String userId, String userPw) {
 		boolean check = false;
 		String realPw = mapper.selectPw(userId);
-		if(realPw.equals(userPw)) {
+		if(encrypt(realPw).equals(userPw)) {
 			check = true;
 		}
 		return check;
+	}
+
+	@Override
+	public String encrypt(String pw) {
+		String en_pw = "";
+		for (int i = 0; i < pw.length(); i++) {
+			en_pw += (char)(pw.charAt(i) * KEY);
+		}
+		return en_pw;
 	}
 	
 }
