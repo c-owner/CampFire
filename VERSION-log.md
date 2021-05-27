@@ -10,6 +10,35 @@
 
 >  
 
+---
+
+## 2021-05-29-⚙️  0.01c - by corner
+
+- width 1281 ~ 1680 사이즈  && 1700 이상 사이즈까지 모달 하단부 margin 적용 (no media screen)
+
+- 타 페이지에서 헤더 메뉴에서 모달 동작 안되는 문제  - 해결
+
+- modal.jsp에 아래  li태그 `<li style="">` 인라인 스타일 코드들 전부 제거 
+
+  ```jsp
+  <ul class="actions">
+    <li style="margin-left: auto;">
+      <a href="javascript:goSignIn2()" class="button primary" style="border-radius: 6px; height: 46px;">로그인</a>
+    </li>
+    <li style="margin-right: auto;">
+      <a class="button primary" style="border-radius: 6px; height: 46px;">이메일 발송</a>
+    </li>
+  </ul>
+  ```
+
+  - id 부여 및 글자 중앙정렬 스타일 적용 - 간격 정렬
+
+- `home.jsp` `header.jsp` 에 있는 `<style>` 태그 /* modal */ 부분 `layout.css`로 이동 
+
+
+
+
+
 
 
 
