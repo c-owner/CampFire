@@ -1,10 +1,12 @@
-package campfire;
+package com.campfire.mapper;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.campfire.domain.UserVO;
 import com.campfire.mapper.UserMapper;
 
 import lombok.Setter;
@@ -17,6 +19,15 @@ public class UserMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private UserMapper mapper;
 	
+	@Test
+	public void testInsert() {
+		UserVO user = new UserVO();
+		user.setUserEmail("test@test.com");
+		user.setUserId("tester");
+		user.setUserPw("testerPw");
+		
+		log.info(mapper.insert(user));
+	}
 	
 	
 }
