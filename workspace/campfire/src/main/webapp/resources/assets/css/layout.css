@@ -9,7 +9,39 @@
 ===================================================
  */
 
-
+	/* modal */
+	#kakaoImageLarge {
+		display: none;
+	}
+	#kakaoImage {
+		display: inline;
+	}
+	#loginBtn {
+		width: 187px;
+	}
+	.signUpModal {
+		margin-top: -280px !important;
+	}
+	@media screen and (max-width:480px) {
+		#kakaoImageLarge {
+			display: inline;
+		}
+		#kakaoImage {
+			display: none;
+		}
+		#loginBtn {
+			width: 100%;
+		}
+		.cautionMsg {
+			font-size: 1em;
+		}
+	}
+    li > a.button.primary {
+        line-height: 2.5em;
+    }
+    #centerBtn {
+        margin: auto;
+    }
 /* 
 ===================================================
  */

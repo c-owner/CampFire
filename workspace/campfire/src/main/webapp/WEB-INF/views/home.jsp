@@ -12,11 +12,11 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 		
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
+		<link rel="stylesheet" href="/resources/assets/css/layout.css"/>
 
 		<link rel="stylesheet" type="text/css" href="/resources/slick/slick.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/slick/slick-theme.css"/>
 
-		<link rel="stylesheet" href="/resources/assets/css/layout.css"/>
 		<style>
 	 
 			.slider .slick-slide img {
@@ -41,37 +41,7 @@
 			.alt > span {
 				font-size: 70px; font-weight: bold;
 			}
-	/* modal */
 
-	#kakaoImageLarge {
-		display: none;
-	}
-	#kakaoImage {
-		display: inline;
-	}
-	#loginBtn {
-		width: 187px;
-	}
-
-	.signUpModal {
-		margin-top: -280px !important;
-		
-	}
-
-	@media screen and (max-width:480px) {
-		#kakaoImageLarge {
-			display: inline;
-		}
-		#kakaoImage {
-			display: none;
-		}
-		#loginBtn {
-			width: 100%;
-		}
-		.cautionMsg {
-			font-size: 1em;
-		}
-	}
 		</style>
 	</head>
 	
@@ -186,9 +156,24 @@
 			
 
 
-<jsp:include page="includes/modal.jsp" />
-<jsp:include page="includes/footer.jsp" flush="false" />
-<%-- <%@include file="includes/footer.jsp" %> --%>
+<jsp:include page="includes/modal.jsp"/>
+<!-- 
+	화면 레이아웃의 일부분을 모듈화 할 때 주로 사용된다. 
+	하지만, get 방식으로 파라미터를 전달 할 수 없다.
+	동적인 페이지 할당이 가능하다.
+
+	flush="true" : 문서의 출력 결과를 항상 버퍼내에서 갱신 하라는 의미이다
+	즉, 따로따로 실행 된 후 그 결과만을 가지고 include한다.
+-->
+<%@include file="includes/footer.jsp" %>
+<!-- 
+	<%-- <%@include %>  --%>
+	-. 서버측 include 라고 생각하면 된다
+	즉 소스 실행전에 include가 된다고 보자
+	-. 소스 실행전 포함됨으로 변수를 같이 사용할 수 있다
+	-. 동적으로 페이지 할당을 할 수가 없다  == 정적 페이지용
+	자바 소스로 변환할 때 처리, 
+-->
 			
 			
 

@@ -29,11 +29,11 @@
 									<input type="password" name="userPw" id="userPw" placeholder="PASSWARD">
 									<div><a href="javascript:void(0);" id="goSignUpBtn" style="text-decoration: none;">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#" id="findIdPw" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
 									<ul class="actions">
-										<li style="margin-left: auto;">
+										<li>
 											<a><img id="kakaoImage" style="height: 46px;" src="/resources/images/kakaoLogin.png"></a>
 											<a><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
 										</li>
-										<li style="margin-right: auto;">
+										<li>
 											<a class="button primary" id="loginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>
 									</ul>
@@ -60,10 +60,10 @@
 									<label for="userEmail2">이메일</label>
 									<input type="email" name="userEmail" id="userEmail2" placeholder="EMAIL">
 									<ul class="actions">
-										<li style="margin-left: auto;">
+										<li id="centerBtn">
 											<a href="javascript:goSignIn2()" class="button primary" class="goLoginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>
-										<li style="margin-right: auto;">
+										<li id="centerBtn">
 											<a class="button primary" id="goFindIdBtn" style="border-radius: 6px; height: 46px;">아이디 찾기</a>
 										</li>
 									</ul>
@@ -80,10 +80,10 @@
 									<label for="userEmail3">이메일</label>
 									<input type="email" name="userEmail" id="userEmail3" placeholder="EMAIL">
 									<ul class="actions">
-										<li style="margin-left: auto;">
+										<li id="centerBtn">
 											<a href="javascript:goSignIn2()" class="button primary" style="border-radius: 6px; height: 46px;">로그인</a>
 										</li>
-										<li style="margin-right: auto;">
+										<li id="centerBtn">
 											<a class="button primary" style="border-radius: 6px; height: 46px;">이메일 발송</a>
 										</li>
 									</ul>
