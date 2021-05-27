@@ -433,7 +433,7 @@ hr {
 }
 
 .row.gtr-uniform > * > :last-child {
-    margin-bottom: 0;
+    margin: 5%;
 }
 
 .row.aln-left {
@@ -921,7 +921,7 @@ hr {
     }
 
     .row.gtr-uniform > * > :last-child {
-        margin-bottom: 0;
+        margin-bottom: 5%;
     }
 
     .row.aln-left {
@@ -1166,7 +1166,7 @@ hr {
     }
 
     .row.gtr-uniform > * > :last-child {
-        margin-bottom: 0;
+        margin-bottom: 5%;
     }
 
     .row.aln-left {
@@ -1411,7 +1411,7 @@ hr {
     }
 
     .row.gtr-uniform > * > :last-child {
-        margin-bottom: 0;
+        margin-bottom: 5%;
     }
 
     .row.aln-left {
@@ -1656,7 +1656,7 @@ hr {
     }
 
     .row.gtr-uniform > * > :last-child {
-        margin-bottom: 0;
+        margin-bottom: 5%;
     }
 
     .row.aln-left {
