@@ -42,16 +42,17 @@
 				font-size: 70px; font-weight: bold;
 			}
 			
-		form.combined{
-			display: -webkit-box !important;
-		}
 		@media screen and (max-width: 736px) {
-			form.combined input[type="text"]{
-				width: 67%;
+			#search{
+			    border-bottom-right-radius: 2rem;
+    			border-top-right-radius: 2rem;
+				width: 100%;
 			}
 		
-			form.combined .button{
-				width: 33% !important;
+			#searchBtn{
+			    border-bottom-left-radius: 2rem;
+    			border-top-left-radius: 2rem;
+				width: 100%;
 			}
 		}
 		</style>
@@ -123,7 +124,7 @@
 						</div>
 							<form method="post" action="#" class="combined">
 								<input type="text" name="search" id="search" placeholder="캠핑장 검색" class="invert" />
-								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find">&nbsp;</a>
+								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find" id="searchBtn">&nbsp;</a>
 							</form>
 							<div class="test1" style="text-align:left; margin-top: 20%;">
 								<h2 id="category" style="margin:0;">유/무료 캠핑장</h2>
