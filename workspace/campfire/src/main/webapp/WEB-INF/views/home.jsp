@@ -63,8 +63,9 @@
 			span.top1{text-align: left;}
 			span.top2{text-align: center;}
 			span.top3{text-align: right;}
-			
 		}
+
+		
 		</style>
 	</head>
 	
@@ -73,26 +74,31 @@
 			<!-- Header -->
 			<header id="header" style="height: 7em; position: absolute; background:#00000000;">
 				<!-- Nav -->
-				<nav id="smallNav">
+				<nav class="smallNav" style="margin: 0; text-align: right;">
 					<ul>
-						<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
-						<li><a href="javascript:void(0)" class="signup">Home</a></li>
 						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
 						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
-						<li><a href="javascript:void(0)" class="signup">고객센터</a></li>
+						<li><a href="/elements">고객센터</a></li>
 					</ul>
 				</nav>
-					<nav id="nav">
-						<ul>
-							<li class="current">
-								<a href="/">
-									<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
-								</a></li>
-	 
-							<li><a href="#">전체</a></li>
-							<li><a href="#">유/무료 캠핑장</a></li>
-							<li><a href="#">난이도 캠핑장</a></li>
-							<li><a href="#">글램핑/카라반</a></li>
+				<nav id="nav">
+					<ul>
+						<li class="current">
+							<a href="/">
+								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
+							</a></li>
+							
+							<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
+							<li>
+								<a href="#" class="dropdown">캠핑장</a> 
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">유/무료 캠핑장</a></li>
+									<li><a href="#">난이도 캠핑장</a></li>
+									<li><a href="#">글램핑/카라반</a></li>
+								</ul>
+							</li>
+							
 							<li><a href="#">테마검색</a></li>
 							<li><a href="#">장작장터</a></li>
 							<li>
@@ -103,23 +109,9 @@
 									<li><a href="#">캠핑 팁</a></li>
 									<li><a href="#">캠핑 음식</a></li>
 									<li><a href="#">캠핑 가이드</a></li>
-									<li>
-										<a href="#">계정</a>
-										<ul>
-											<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
-											<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
-										</ul>
-									</li>
 								</ul>
 							</li>
 							
-							<li>
-								<a href="#" class="dropdown">고객센터</a>
-								<ul>
-									<li><a href="/generic">고객센터</a></li>
-									<li><a href="/elements">Elements</a></li>
-								</ul>
-							</li>
 						</ul>
 					</nav>
 			</header>	

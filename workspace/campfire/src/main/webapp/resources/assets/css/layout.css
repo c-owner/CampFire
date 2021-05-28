@@ -7,10 +7,12 @@
  ****************************************************
  smallNav ( 최상단 우측 메뉴 )
  *****************************************************/
- #smallNav {
+ .smallNav {
      margin: 0;
+     font-size: 11px;
+     padding: 0;
  }
- #smallNav > ul {
+ .smallNav > ul {
     text-align: right;
 }
 
