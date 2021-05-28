@@ -59,9 +59,19 @@
 	</head>
 	
 	<body class="is-preload">
+
 			<!-- Header -->
 			<header id="header" style="height: 7em; position: absolute; background:#00000000;">
 				<!-- Nav -->
+				<nav id="smallNav">
+					<ul>
+						<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
+						<li><a href="javascript:void(0)" class="signup">Home</a></li>
+						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+						<li><a href="javascript:void(0)" class="signup">고객센터</a></li>
+					</ul>
+				</nav>
 					<nav id="nav">
 						<ul>
 							<li class="current">
