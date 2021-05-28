@@ -325,24 +325,24 @@ a.btn {
     
     .head-pop{
     	margin-left: 0;
+    	font-size: 0;
     }
     
     .backFa {
     	display: block !important;
+    	height: 0;
     }
-}
-
-@media screen and (max-width: 408px) {
 	label {
 		margin: 0;
 	}
-    
-    input[type="text"], input[type="password"], input[type="email"] {
-    	height: 3rem;
-    }
-
+	
+	input[type="text"], input[type="password"], input[type="email"] {
+		height: 3rem;
+	}
+	
 	.btn-right {
 		font-size: 14px;
 	}
 }
+
  

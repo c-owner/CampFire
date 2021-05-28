@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/assets/css/layout.css"/>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	
@@ -136,12 +136,15 @@
 					</div>
 		
 					<div class="modal signUpModal" style="display:none;">
+						<div class="backFa" style="display: none; text-align: right; margin-right: 2%;">
+							<span class="fa fa-hand-point-up" style="font-size: 12px;">나가기</span>
+						</div>
 						<div class="head-pop">
 							<div style="width: 49%; display: inline-block;"><h2>회원가입</h2></div>
 						</div>
 						<form name="" action="#" method="">
 							<div class="row gtr-uniform">
-								<div class="col-10 col-11-xsmall" style="margin: 0 auto;">
+								<div class="col-10 col-11-xsmall" style="margin: 0 auto; padding: 0;">
 									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 										font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span>
 									<input type="text" name="memberId" id="memberId" maxlength="12"/>
