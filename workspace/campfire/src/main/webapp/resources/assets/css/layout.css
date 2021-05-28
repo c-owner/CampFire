@@ -332,7 +332,7 @@ a.btn {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 408px) {
 	label {
 		margin: 0;
 	}
