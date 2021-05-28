@@ -29,16 +29,16 @@
 			height: 300px;
 			}
 			h2.alt{
-			    font-family: 'Handletter';
 			    margin: 0 auto;
 			    text-align: center;
 			    top: -35%;
 			    padding: 0;
 			}
-			span#mainMessage{
-				font-family: 'Handletter';
+			span.mainMessageWrapper{
+			    font-family: 'Handletter';
 			}
-			.alt > span {
+			span.mainMessage{
+				font-family: 'Handletter';
 				font-size: 70px; font-weight: bold;
 			}
 			
@@ -54,6 +54,16 @@
     			border-top-left-radius: 2rem;
 				width: 100%;
 			}
+			span.mainMessageWrapper {
+			    display: flow-root;
+			}
+			span.top2, span.top1{
+				height:70px;
+			}
+			span.top1{text-align: left;}
+			span.top2{text-align: center;}
+			span.top3{text-align: right;}
+			
 		}
 		</style>
 	</head>
@@ -127,9 +137,9 @@
 						<div class="content">
 						<div align="center" style="margin-top: 50px;">
 							<h2 class="alt" style="text-align: center; margin: 0; margin-top: -10%;">
-								<span id="mainMessage">모</span>험심을 가지고 
-								<span id="mainMessage">닥</span>치는대로 도전하면 
-								<span id="mainMessage">불</span>가능은 없다.
+								<span class="mainMessageWrapper top1"><span class="mainMessage">모</span>험심을 가지고</span>
+								<span class="mainMessageWrapper top2"><span class="mainMessage">닥</span>치는대로 도전하면</span> 
+								<span class="mainMessageWrapper top3"><span class="mainMessage">불</span>가능은 없다.</span>
 							</h2>
 						</div>
 							<form method="post" action="#" class="combined">
