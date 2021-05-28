@@ -329,8 +329,25 @@ a.btn {
     }
     
     .head-pop{
-    	margin-left:2rem;
+    	margin-left: 0;
+    	font-size: 0;
     }
+    
+    .backFa {
+    	display: block !important;
+    	height: 0;
+    }
+	label {
+		margin: 0;
+	}
+	
+	input[type="text"], input[type="password"], input[type="email"] {
+		height: 3rem;
+	}
+	
+	.btn-right {
+		font-size: 14px;
+	}
 }
 
  
