@@ -41,7 +41,19 @@
 			.alt > span {
 				font-size: 70px; font-weight: bold;
 			}
-
+			
+		form.combined{
+			display: -webkit-box !important;
+		}
+		@media screen and (max-width: 736px) {
+			form.combined input[type="text"]{
+				width: 67%;
+			}
+		
+			form.combined .button{
+				width: 33% !important;
+			}
+		}
 		</style>
 	</head>
 	
