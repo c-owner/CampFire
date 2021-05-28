@@ -36,6 +36,11 @@
 			font-size: 1em;
 		}
 	}
+
+    ul.actions{
+        margin: 5% auto;
+    }
+    
     li > a.button.primary {
         line-height: 2.5em;
     }
