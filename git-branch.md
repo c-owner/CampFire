@@ -9,70 +9,6 @@ categories: git
 
 
 
----
-
-------
-# 풀 리퀘스트 (Git Pull Request 병합 요청)
-
-## 1. Fork  
-  
-- 타겟 프로젝트의 저장소를 자신의 저장소로 Fork 한다.
-![image](https://user-images.githubusercontent.com/68332735/119927963-8538a580-bfb5-11eb-8e70-28c07ccf993e.png)
-
-포크(Fork)가 완료되면 자신의 계정에 새로운 저장소가 생긴다.
-
-------
-  
-## 2. clone, remote 설정
-
-- fork로 생성한 본인 계정의 저장소에서 **clone or download** 버튼을 누르고 표시되는 url을 복사한다. (중요 - 브라우저 url을 그냥 복사하면 안 된다)
-- ![image](https://user-images.githubusercontent.com/68332735/119933893-e6657680-bfbf-11eb-8a32-41956af08acf.png)
-
-- 자신의 컴퓨터에서 작업을 하기 위해서 Fork한 저장소를 로컬에 clone 한다.
-
-
-```
-git clone https://github.com/자신의계정/campfire.git
-```
-
-
-
-- 로컬 저장소에 원격 저장소를 추가한다. 위 작업과 동일하게 github 저장소에서 clone or download 메뉴를 통해서 확인한 URL을 사용한다. 
-  - 원본 프로젝트 저장소 (직접 추가 )
-  - fork한 로컬 프로젝트 (origin 이라는 별명으로 기본으로 추가되어 있다. 따로 추가할 필요가 없음)
-
-```shell
-# 원본 프로젝트 저장소를 원격 저장소로 추가
-git remote add origin https://github.com/원본계정/campfire.git
-
-# 원격 저장소 설정 현황 확인 방법
-git remote -v
-```
-
----
-
-브랜치 생성 및 checkout 브랜치 변경 -> 수정 후 add , commit , push  (아래 브랜치 설명서 참고)
-
----  
-
-## 3. Pull Request 생성 
-- push 완료 후 본인 계정의 github 저장소에 들어오면 Compare & pull reqeust 버튼이 활성화 되어 있다.  
-- 해당 버튼을 선택하여 메시지를 작성하고 PR을 생성한다.
-
-<img width="965" alt="KakaoTalk_Photo_2021-05-28-14-26-42" src="https://user-images.githubusercontent.com/68332735/119934463-c6828280-bfc0-11eb-9d67-718548c5da21.png">
-
-깃허브 원격 저장소에 가서 자신의 브랜치로 설정 후 Pull Request 버튼을 클릭한다.
-
-
-<img width="959" alt="KakaoTalk_Photo_2021-05-28-14-26-48" src="https://user-images.githubusercontent.com/68332735/119934466-c7b3af80-bfc0-11eb-9997-7183cc0a6e27.png">
-
-
-제목과 내용을 작성한 뒤 병합 요청(Create Pull Request)
-
----
-
-
-
 # Git Branch 사용 & 병합하기
 
 
@@ -485,4 +421,5 @@ $ git commit -m "..."  #되돌린 것으로 commit
 $ git push origin +master #remote repository를 강제로 revert
 ```
 
+------
 
