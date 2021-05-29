@@ -63,26 +63,41 @@
 			span.top1{text-align: left;}
 			span.top2{text-align: center;}
 			span.top3{text-align: right;}
-			
 		}
+
 		</style>
 	</head>
 	
 	<body class="is-preload">
+
 			<!-- Header -->
 			<header id="header" style="height: 7em; position: absolute; background:#00000000;">
 				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li class="current">
-								<a href="/">
-									<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
-								</a></li>
-	 
-							<li><a href="#">전체</a></li>
-							<li><a href="#">유/무료 캠핑장</a></li>
-							<li><a href="#">난이도 캠핑장</a></li>
-							<li><a href="#">글램핑/카라반</a></li>
+				<nav class="smallNav" style="margin: 0; text-align: right;">
+					<ul>
+						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+						<li><a href="/elements">고객센터</a></li>
+					</ul>
+				</nav>
+				<nav id="nav">
+					<ul>
+						<li class="current">
+							<a href="/">
+								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
+							</a></li>
+							
+							<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
+							<li>
+								<a href="#" class="dropdown">캠핑장</a> 
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">유/무료 캠핑장</a></li>
+									<li><a href="#">난이도 캠핑장</a></li>
+									<li><a href="#">글램핑/카라반</a></li>
+								</ul>
+							</li>
+							
 							<li><a href="#">테마검색</a></li>
 							<li><a href="#">장작장터</a></li>
 							<li>
@@ -93,23 +108,16 @@
 									<li><a href="#">캠핑 팁</a></li>
 									<li><a href="#">캠핑 음식</a></li>
 									<li><a href="#">캠핑 가이드</a></li>
-									<li>
-										<a href="#">계정</a>
-										<ul>
-											<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
-											<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
-										</ul>
-									</li>
 								</ul>
 							</li>
-							
-							<li>
-								<a href="#" class="dropdown">고객센터</a>
+							<li class="smallMenu">
+								<a href="#" class="dropdown">계정</a>
 								<ul>
-									<li><a href="/generic">고객센터</a></li>
-									<li><a href="/elements">Elements</a></li>
+									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+									<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+									<li><a href="/elements">고객센터</a></li>
 								</ul>
-							</li>
+							</li>	
 						</ul>
 					</nav>
 			</header>	
@@ -180,23 +188,22 @@
 
 
 <jsp:include page="includes/modal.jsp"/>
-<!-- 
+<%-- 
 	화면 레이아웃의 일부분을 모듈화 할 때 주로 사용된다. 
 	하지만, get 방식으로 파라미터를 전달 할 수 없다.
 	동적인 페이지 할당이 가능하다.
 
 	flush="true" : 문서의 출력 결과를 항상 버퍼내에서 갱신 하라는 의미이다
 	즉, 따로따로 실행 된 후 그 결과만을 가지고 include한다.
--->
+--%>
 <%@include file="includes/footer.jsp" %>
-<!-- 
-	<%-- <%@include %>  --%>
+	<%-- <%@include %>  
 	-. 서버측 include 라고 생각하면 된다
 	즉 소스 실행전에 include가 된다고 보자
 	-. 소스 실행전 포함됨으로 변수를 같이 사용할 수 있다
 	-. 동적으로 페이지 할당을 할 수가 없다  == 정적 페이지용
 	자바 소스로 변환할 때 처리, 
--->
+	--%>
 			
 			
 
@@ -252,5 +259,7 @@
 		i++;
 	}, 2000);
 </script>
+
+
 
 </html>
