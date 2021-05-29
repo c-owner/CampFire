@@ -29,49 +29,75 @@
 			height: 300px;
 			}
 			h2.alt{
-			    font-family: 'Handletter';
 			    margin: 0 auto;
 			    text-align: center;
 			    top: -35%;
 			    padding: 0;
 			}
-			span#mainMessage{
-				font-family: 'Handletter';
+			span.mainMessageWrapper{
+			    font-family: 'Handletter';
 			}
-			.alt > span {
+			span.mainMessage{
+				font-family: 'Handletter';
 				font-size: 70px; font-weight: bold;
 			}
 			
-		form.combined{
-			display: -webkit-box !important;
-		}
 		@media screen and (max-width: 736px) {
-			form.combined input[type="text"]{
-				width: 67%;
+			#search{
+			    border-bottom-right-radius: 2rem;
+    			border-top-right-radius: 2rem;
+				width: 100%;
 			}
 		
-			form.combined .button{
-				width: 33% !important;
+			#searchBtn{
+			    border-bottom-left-radius: 2rem;
+    			border-top-left-radius: 2rem;
+				width: 100%;
 			}
+			span.mainMessageWrapper {
+			    display: flow-root;
+			}
+			span.top2, span.top1{
+				height:70px;
+			}
+			span.top1{text-align: left;}
+			span.top2{text-align: center;}
+			span.top3{text-align: right;}
 		}
+
 		</style>
 	</head>
 	
 	<body class="is-preload">
+
 			<!-- Header -->
 			<header id="header" style="height: 7em; position: absolute; background:#00000000;">
 				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li class="current">
-								<a href="/">
-									<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
-								</a></li>
-	 
-							<li><a href="#">전체</a></li>
-							<li><a href="#">유/무료 캠핑장</a></li>
-							<li><a href="#">난이도 캠핑장</a></li>
-							<li><a href="#">글램핑/카라반</a></li>
+				<nav class="smallNav" style="margin: 0; text-align: right;">
+					<ul>
+						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+						<li><a href="/elements">고객센터</a></li>
+					</ul>
+				</nav>
+				<nav id="nav">
+					<ul>
+						<li class="current">
+							<a href="/">
+								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
+							</a></li>
+							
+							<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
+							<li>
+								<a href="#" class="dropdown">캠핑장</a> 
+								<ul>
+									<li><a href="#">전체</a></li>
+									<li><a href="#">유/무료 캠핑장</a></li>
+									<li><a href="#">난이도 캠핑장</a></li>
+									<li><a href="#">글램핑/카라반</a></li>
+								</ul>
+							</li>
+							
 							<li><a href="#">테마검색</a></li>
 							<li><a href="#">장작장터</a></li>
 							<li>
@@ -82,23 +108,16 @@
 									<li><a href="#">캠핑 팁</a></li>
 									<li><a href="#">캠핑 음식</a></li>
 									<li><a href="#">캠핑 가이드</a></li>
-									<li>
-										<a href="#">계정</a>
-										<ul>
-											<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
-											<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
-										</ul>
-									</li>
 								</ul>
 							</li>
-							
-							<li>
-								<a href="#" class="dropdown">고객센터</a>
+							<li class="smallMenu">
+								<a href="#" class="dropdown">계정</a>
 								<ul>
-									<li><a href="/generic">고객센터</a></li>
-									<li><a href="/elements">Elements</a></li>
+									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+									<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+									<li><a href="/elements">고객센터</a></li>
 								</ul>
-							</li>
+							</li>	
 						</ul>
 					</nav>
 			</header>	
@@ -116,14 +135,14 @@
 						<div class="content">
 						<div align="center" style="margin-top: 50px;">
 							<h2 class="alt" style="text-align: center; margin: 0; margin-top: -10%;">
-								<span id="mainMessage">모</span>험심을 가지고 
-								<span id="mainMessage">닥</span>치는대로 도전하면 
-								<span id="mainMessage">불</span>가능은 없다.
+								<span class="mainMessageWrapper top1"><span class="mainMessage">모</span>험심을 가지고</span>
+								<span class="mainMessageWrapper top2"><span class="mainMessage">닥</span>치는대로 도전하면</span> 
+								<span class="mainMessageWrapper top3"><span class="mainMessage">불</span>가능은 없다.</span>
 							</h2>
 						</div>
 							<form method="post" action="#" class="combined">
 								<input type="text" name="search" id="search" placeholder="캠핑장 검색" class="invert" />
-								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find">&nbsp;</a>
+								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find" id="searchBtn">&nbsp;</a>
 							</form>
 							<div class="test1" style="text-align:left; margin-top: 20%;">
 								<h2 id="category" style="margin:0;">유/무료 캠핑장</h2>
@@ -169,23 +188,22 @@
 
 
 <jsp:include page="includes/modal.jsp"/>
-<!-- 
+<%-- 
 	화면 레이아웃의 일부분을 모듈화 할 때 주로 사용된다. 
 	하지만, get 방식으로 파라미터를 전달 할 수 없다.
 	동적인 페이지 할당이 가능하다.
 
 	flush="true" : 문서의 출력 결과를 항상 버퍼내에서 갱신 하라는 의미이다
 	즉, 따로따로 실행 된 후 그 결과만을 가지고 include한다.
--->
+--%>
 <%@include file="includes/footer.jsp" %>
-<!-- 
-	<%-- <%@include %>  --%>
+	<%-- <%@include %>  
 	-. 서버측 include 라고 생각하면 된다
 	즉 소스 실행전에 include가 된다고 보자
 	-. 소스 실행전 포함됨으로 변수를 같이 사용할 수 있다
 	-. 동적으로 페이지 할당을 할 수가 없다  == 정적 페이지용
 	자바 소스로 변환할 때 처리, 
--->
+	--%>
 			
 			
 
@@ -241,5 +259,7 @@
 		i++;
 	}, 2000);
 </script>
+
+
 
 </html>

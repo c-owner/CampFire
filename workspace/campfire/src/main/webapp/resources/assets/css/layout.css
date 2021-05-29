@@ -3,7 +3,28 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
- 
+ /********************************************************
+ ****************************************************
+ smallNav ( 최상단 우측 메뉴 )
+ *****************************************************/
+ .smallNav {
+     margin: 0;
+     font-size: 11px;
+     padding: 0;
+ }
+ .smallNav > ul {
+    text-align: right;
+}
+.smallMenu > a.dropdown{
+    display: none;
+}
+@media screen and (max-width: 980 px){
+    .smallMenu{
+        display: block;
+    }
+}
+
+
 
 /* 
 ===================================================
