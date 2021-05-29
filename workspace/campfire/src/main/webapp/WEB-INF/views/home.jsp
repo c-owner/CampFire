@@ -65,7 +65,6 @@
 			span.top3{text-align: right;}
 		}
 
-		
 		</style>
 	</head>
 	
@@ -111,7 +110,14 @@
 									<li><a href="#">캠핑 가이드</a></li>
 								</ul>
 							</li>
-							
+							<li class="smallMenu">
+								<a href="#" class="dropdown">계정</a>
+								<ul>
+									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+									<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+									<li><a href="/elements">고객센터</a></li>
+								</ul>
+							</li>	
 						</ul>
 					</nav>
 			</header>	
@@ -182,23 +188,22 @@
 
 
 <jsp:include page="includes/modal.jsp"/>
-<!-- 
+<%-- 
 	화면 레이아웃의 일부분을 모듈화 할 때 주로 사용된다. 
 	하지만, get 방식으로 파라미터를 전달 할 수 없다.
 	동적인 페이지 할당이 가능하다.
 
 	flush="true" : 문서의 출력 결과를 항상 버퍼내에서 갱신 하라는 의미이다
 	즉, 따로따로 실행 된 후 그 결과만을 가지고 include한다.
--->
+--%>
 <%@include file="includes/footer.jsp" %>
-<!-- 
-	<%-- <%@include %>  --%>
+	<%-- <%@include %>  
 	-. 서버측 include 라고 생각하면 된다
 	즉 소스 실행전에 include가 된다고 보자
 	-. 소스 실행전 포함됨으로 변수를 같이 사용할 수 있다
 	-. 동적으로 페이지 할당을 할 수가 없다  == 정적 페이지용
 	자바 소스로 변환할 때 처리, 
--->
+	--%>
 			
 			
 
@@ -254,5 +259,7 @@
 		i++;
 	}, 2000);
 </script>
+
+
 
 </html>
