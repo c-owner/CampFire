@@ -137,13 +137,38 @@
 								 <a href="javascript:void(0);" class="button primary icon solid fa-search fa-find" id="searchBtn">&nbsp;</a>
 							</form>
 							<div class="test1" style="text-align:left; margin-top: 20%;">
-								<h2 id="category" style="margin:0;">유/무료 캠핑장</h2>
+								<h2 id="category" style="margin:0;">HOT & NEW</h2>
 							</div>
 			  				<section class="slider">
-								<div class="test1"><span id="t11"></span><img src="/resources/images/camping1.png" ></div>
-								<div><img src="/resources/images/camping8.png" ></div>
-								<div><img src="/resources/images/camping8.png" ></div>
-								<div><img src="/resources/images/camping8.png" ></div>
+								<div>
+									<img src="/resources/images/camping1.png" >
+									<div class="slideInfo">
+										<p>카테고리</p>
+										<p>캠핑장 이름</p>
+									</div>
+								</div>
+								<div>
+									<img src="/resources/images/camping8.png" >
+									<div class="slideInfo">
+										<p>카테고리</p>
+										<p>캠핑장 이름</p>
+									</div>
+								</div>
+									
+								<div>
+									<img src="/resources/images/camping8.png" >
+									<div class="slideInfo">
+										<p>카테고리</p>
+										<p>캠핑장 이름</p>
+									</div>
+								</div>
+								<div>
+									<img src="/resources/images/camping8.png" >
+									<div class="slideInfo">
+										<p>카테고리</p>
+										<p>캠핑장 이름</p>
+									</div>
+								</div>
 								<div class="test2"><span id="t22"></span><img src="/resources/images/camping11.png" ></div>
 								<div><img src="/resources/images/camping8.png" ></div>
 								<div><img src="/resources/images/camping8.png" ></div>
@@ -214,7 +239,7 @@
 		  speed: 100,
 		  slidesToShow: 4,
 		  slidesToScroll: 4,
-  		  autoplay: true,
+  		  autoplay: false,
 		  autoplaySpeed: 2000,
 		  responsive: [
 		    {
@@ -243,14 +268,14 @@
 		    // instead of a settings object
 		  ]
 		});
-	
+/* 	
 	var i = 0;
 	var category = ["인기 캠핑장", "난이도별 캠핑장", "유/무료 캠핑장"]
 	var timer = setInterval(function(){
 		if(i == 3) {i=0;}
 		$("#category").text(category[i]);
 		i++;
-	}, 2000);
+	}, 2000); */
 </script>
 
 </html>

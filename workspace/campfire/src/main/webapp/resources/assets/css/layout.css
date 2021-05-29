@@ -47,6 +47,26 @@
     #centerBtn {
         margin: auto;
     }
+    
+    /* 
+    	슬라이드 하단 내
+     */
+     
+     .slideInfo{
+     	width: 90%;
+     	background: black;
+     	opacity: 50%;
+     }
+     
+     .slideInfo p{
+     	margin: 0;
+     }
+     .slideInfo p:first-child{
+     	color: #34ff01;
+     }
+     .slideInfo p:nth-child(2){
+     	color: white;
+     }
 /* 
 ===================================================
  */
