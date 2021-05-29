@@ -106,7 +106,7 @@
 								<a href="#" class="dropdown">모닥불</a>
 								<ul>
 									<li><a href="#">자유게시판</a></li>
-									<li><a href="#">캠핑 리뷰</a></li>
+									<li><a href="/campfire/review">캠핑 리뷰</a></li>
 									<li><a href="#">캠핑 팁</a></li>
 									<li><a href="#">캠핑 음식</a></li>
 									<li><a href="#">캠핑 가이드</a></li>
