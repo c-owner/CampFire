@@ -16,6 +16,13 @@
 
 	<%@include file="includes/header.jsp" %>
 
+	<div id="main">
+		<div class="wrapper">
+			<div class="inner">
+				
+			</div>
+		</div>
+	</div>
 		
 
 
