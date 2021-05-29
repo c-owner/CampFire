@@ -16,12 +16,13 @@
 
 
 
-## 2021-05-29 v0.01c-alpha - by corner
+## 2021-05-30🌨 v0.01c-alpha - by corner
 
 - 메뉴 헤더 목록 변경 
 - smallNav (계정) 메뉴 수정 
-
-
+- 헤더 사이즈 변경
+- header 인라인 style들 정리
+- 캠핑 리뷰 게시판 초안 레이아웃 (샘플)
 
 
 

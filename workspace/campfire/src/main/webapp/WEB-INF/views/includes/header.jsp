@@ -9,13 +9,34 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/assets/css/layout.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	#header {
+		position: absolute;
+		background:#00000076;
+	}
+	@media screen and (max-width: 980px) {
+		#header {
+			background: #00000000;
+		}
+		#header > .navPanelToggle {
+			display: block;
+			color: black;
+    	}
+	}
+	@media screen and (max-width: 736px) {
+		#header > .navPanelToggle span {
+			display: none;
+			color: black;
+		}    
+	}
+</style>
 </head>
 <body>
 	
 			<!-- Header -->
-			<header id="header" style="height: 7em; position: absolute; background:#00000079;">
+			<header id="header" style="position: absolute;">
 				<!-- Nav -->
-				<nav class="smallNav" style="margin: 0; text-align: right;">
+				<nav class="smallNav">
 					<ul>
 						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
 						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
@@ -28,8 +49,7 @@
 							<a href="/">
 								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
 							</a></li>
-							
-							<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
+							<li><a href="/generic">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>
@@ -46,13 +66,14 @@
 								<a href="#" class="dropdown">모닥불</a>
 								<ul>
 									<li><a href="#">자유게시판</a></li>
-									<li><a href="#">캠핑 리뷰</a></li>
+									<li><a href="/campfire/review">캠핑 리뷰</a></li>
 									<li><a href="#">캠핑 팁</a></li>
 									<li><a href="#">캠핑 음식</a></li>
 									<li><a href="#">캠핑 가이드</a></li>
 								</ul>
 							</li>
 							<li class="smallMenu">
+								<a href="/" class="dropdown">Home</a>
 								<a href="#" class="dropdown">계정</a>
 								<ul>
 									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>

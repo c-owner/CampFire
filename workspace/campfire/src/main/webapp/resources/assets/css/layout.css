@@ -8,6 +8,7 @@
  smallNav ( 최상단 우측 메뉴 )
  *****************************************************/
  .smallNav {
+    text-align: right;
      margin: 0;
      font-size: 11px;
      padding: 0;
@@ -151,7 +152,7 @@ html, body {
     filter: blur(4px);
 }
 
-a.btn {
+/* a.btn {
     width: 200px;
     padding: 18px 0;
     position: absolute;
@@ -166,7 +167,7 @@ a.btn {
     color: #fff;
     border-radius: 0;
     background: #e2525c;
-}
+} */
 
 .modal-wrapper {
     width: 100%;
