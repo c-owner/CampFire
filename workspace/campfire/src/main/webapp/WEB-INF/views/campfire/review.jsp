@@ -269,6 +269,33 @@
 				font-size: 0.857em;
 			}
 			
+			.imgDiv {
+				width: 100%;
+				height: 340px;
+				margin: 0 auto;
+			}
+			
+			.reviewImg {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; 
+			}
+			
+			@media screen and (max-width: 980px){
+				.imgDiv {
+					width: 80%;
+					height: 300px; 
+				}
+				
+				.info {
+					width: 80%;
+					margin: 0 auto;
+				}
+				
+				.main-banner-container {
+					margin-bottom: 5%;
+				}
+			}
 		</style>
 		
 	</head>
@@ -430,7 +457,7 @@
 			<section class="main">
 				<div class="posts">
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg05.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -456,7 +483,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg06.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg06.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -482,7 +509,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg07.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg07.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -508,7 +535,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg08.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg08.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -534,7 +561,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg09.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg09.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -560,7 +587,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg10.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg10.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
