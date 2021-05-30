@@ -20,10 +20,27 @@
 		<style>
 	 
 			.slider .slick-slide img {
-				width: 90%;
-				height: 15em;
+				/* width: 100%; */
+				/* height: 15em; */
+				/* max-width:160px;
+				max-height:160px; */
+				width:180px;
+				height:180px;
 				object-fit: cover;
 			}
+			.imgWrapper{
+				width:180px;
+				height:180px;
+				background: cyan;
+				position: relative;
+			}
+			.imgWrapper img{
+				position: absolute;
+				top: 50%;
+				left:50%;
+				transform: translate(-50%,-50%);
+			}
+			
 			.testDiv{
 			width: 300px;
 			height: 300px;
@@ -152,14 +169,20 @@
 							</div>
 			  				<section class="slider">
 								<div>
-									<img src="/resources/images/camping1.png" >
-									<div class="slideInfo">
-										<p>카테고리</p>
-										<p>캠핑장 이름</p>
+									<div>
+										<div class="imgWrapper">
+											<img src="/resources/images/camping1.png">
+										</div>
+										<div class="slideInfo">
+											<p>카테고리</p>
+											<p>캠핑장 이름</p>
+										</div>
 									</div>
 								</div>
 								<div>
-									<img src="/resources/images/camping8.png" >
+									<div class="imgWrapper">
+										<img src="/resources/images/camping8.png" >
+									</div>
 									<div class="slideInfo">
 										<p>카테고리</p>
 										<p>캠핑장 이름</p>
@@ -167,14 +190,18 @@
 								</div>
 									
 								<div>
-									<img src="/resources/images/camping8.png" >
+									<div class="imgWrapper">
+										<img src="/resources/images/camping8.png" >
+									</div>
 									<div class="slideInfo">
 										<p>카테고리</p>
 										<p>캠핑장 이름</p>
 									</div>
 								</div>
 								<div>
-									<img src="/resources/images/camping8.png" >
+									<div class="imgWrapper">
+										<img src="/resources/images/camping8.png" >
+									</div>
 									<div class="slideInfo">
 										<p>카테고리</p>
 										<p>캠핑장 이름</p>
