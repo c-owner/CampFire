@@ -10,13 +10,15 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
-
-
+		
+		
 		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+		<link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap.min.css" />
+		
 		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap-theme.min.css" />
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
 		
 		
 		<style>
@@ -90,6 +92,11 @@
 				font-weight: bold;
 				text-decoration: none;
 			}
+
+			.hidden-xs {
+				display: inline-block !important;
+			}
+
 			.inner-image {
 				width: 40%;
 			}
@@ -250,6 +257,11 @@
 				box-shadow: none;
 				z-index: 99;
 			}
+			@media screen and (max-width: 447px) {
+				.filter-mobile{
+					display: flex;
+				}
+			}
 			.bootstrap-select.btn-group .dropdown-menu.inner {
 				position: static;
 				border: 0;
@@ -268,6 +280,37 @@
 				letter-spacing: -0.25px;
 				font-size: 0.857em;
 			}
+			
+			.imgDiv {
+				width: 100%;
+				height: 340px;
+				margin: 0 auto;
+			}
+			
+			.reviewImg {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; 
+			}
+			
+			@media screen and (max-width: 980px){
+				.imgDiv {
+					width: 80%;
+					height: 300px; 
+				}
+				
+				.info {
+					width: 80%;
+					margin: 0 auto;
+				}
+				
+				.main-banner-container {
+					margin-bottom: 5%;
+				}
+			}
+
+			
+
 			
 		</style>
 		
@@ -312,7 +355,7 @@
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
 							<div class="filter profile-filters">
-								<div>
+								<div class="filter-mobile">
 									<div class="btn btn-sort btn-soft-pink btn-none-background active" >캠퍼 픽</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
@@ -430,7 +473,7 @@
 			<section class="main">
 				<div class="posts">
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg05.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -456,7 +499,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg06.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg06.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -482,7 +525,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg07.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg07.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -508,7 +551,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg08.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg08.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -534,7 +577,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg09.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg09.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -560,7 +603,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg10.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg10.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -613,5 +656,5 @@
 
 	</body>
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="/resources/assets/bootstrap-js/bootstrap.min.js"></script>
 </html>
