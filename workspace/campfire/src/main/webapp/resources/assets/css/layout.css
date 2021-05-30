@@ -193,7 +193,7 @@ html, body {
     display: block;
     margin: 50% 0 0 -300px;
     position: relative;
-    top: 40%;
+    top: 30%;
     left: 50%;
     background: rgb(255, 255, 255);
     opacity: 1.0;
@@ -306,6 +306,13 @@ html, body {
 */ 
 
 /* 반응형 */
+
+@media screen and (max-width:1680px) {
+	.modal {
+		top: 40%;
+	}
+}
+
 @media screen and (min-width:981px) {
  	
     /* a.btn-right{
