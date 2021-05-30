@@ -18,13 +18,34 @@ public class UserServiceTests {
 	@Setter(onMethod_ = @Autowired)
 	private UserService service;
 	
+//	@Test
+//	public void test() {
+//		log.info(service);
+//	}
+	
+//	@Test
+//	public void testRegister() {
+//		log.info("register..............");
+//		UserVO user = new UserVO();
+//		user.setUserId("Juno");
+//		user.setUserPw("1234");
+//		user.setUserEmail("darktraces@nate.com");
+//		log.info(service.register(user));
+//	}
+	
+//	@Test
+//	public void testCheckEmail() {
+//		log.info(service.checkEmail("darktraces@nate.com"));
+//	}
+	
+//	@Test
+//	public void testCheckId() {
+//		log.info(service.checkId("Juno"));
+//	}
+	
 	@Test
-	public void testRegister() {
-		log.info("register..............");
-		UserVO user = new UserVO();
-		user.setUserId("test688");
-		user.setUserPw("1234");
-		user.setUserEmail("zxc@naver.com");
-		log.info(service.register(user));
+	public void testLogin() {
+		log.info(service.login("Juno", "1234"));
 	}
+	
 }
