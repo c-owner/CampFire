@@ -3,7 +3,29 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
- 
+ /********************************************************
+ ****************************************************
+ smallNav ( 최상단 우측 메뉴 )
+ *****************************************************/
+ .smallNav {
+    text-align: right;
+     margin: 0;
+     font-size: 11px;
+     padding: 0;
+ }
+ .smallNav > ul {
+    text-align: right;
+}
+.smallMenu > a.dropdown{
+    display: none;
+}
+@media screen and (max-width: 980 px){
+    .smallMenu{
+        display: block;
+    }
+}
+
+
 
 /* 
 ===================================================
@@ -36,12 +58,37 @@
 			font-size: 1em;
 		}
 	}
+
+    ul.actions{
+        margin: 5% auto;
+    }
+    
     li > a.button.primary {
         line-height: 2.5em;
     }
     #centerBtn {
         margin: auto;
     }
+    
+    /* 
+    	슬라이드 하단 내용
+     */
+     
+     .slideInfo{
+     	width: 90%;
+     	background: black;
+     	opacity: 50%;
+     }
+     
+     .slideInfo p{
+     	margin: 0;
+     }
+     .slideInfo p:first-child{
+     	color: #34ff01;
+     }
+     .slideInfo p:nth-child(2){
+     	color: white;
+     }
 /* 
 ===================================================
  */
@@ -105,7 +152,7 @@ html, body {
     filter: blur(4px);
 }
 
-a.btn {
+/* a.btn {
     width: 200px;
     padding: 18px 0;
     position: absolute;
@@ -120,7 +167,7 @@ a.btn {
     color: #fff;
     border-radius: 0;
     background: #e2525c;
-}
+} */
 
 .modal-wrapper {
     width: 100%;
