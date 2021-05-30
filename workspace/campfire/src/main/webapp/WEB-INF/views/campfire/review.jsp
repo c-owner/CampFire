@@ -283,7 +283,7 @@
 			
 			.imgDiv {
 				width: 100%;
-				height: 340px;
+				height: 550px;
 				margin: 0 auto;
 			}
 			
@@ -293,6 +293,11 @@
 				object-fit: cover; 
 			}
 			
+			@media screen and (max-width: 1980px){
+				.imgDiv {
+					height: 340px; 
+				}
+			}
 			@media screen and (max-width: 980px){
 				.imgDiv {
 					width: 80%;
