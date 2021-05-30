@@ -75,7 +75,8 @@
      */
      
      .slideInfo{
-     	width: 90%;
+     	/* width: 90%; */
+     	width:180px;
      	background: black;
      	opacity: 50%;
      }
