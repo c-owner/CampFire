@@ -321,12 +321,12 @@ html, body {
 }
 
 @media screen and (max-width:736px) {
-	.icon {
+	/* .icon {
 		border-radius: 0;
 	}
 	#search {
 		border-radius: 0;
-	}
+	} */
 }
 
 @media screen and (max-width: 580px) {
