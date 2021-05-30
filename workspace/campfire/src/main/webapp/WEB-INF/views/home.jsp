@@ -41,6 +41,8 @@
 				font-family: 'Handletter';
 				font-size: 70px; font-weight: bold;
 			}
+
+		 
 			
 		@media screen and (max-width: 736px) {
 			#search{
@@ -71,9 +73,9 @@
 	<body class="is-preload">
 
 			<!-- Header -->
-			<header id="header" style="height: 7em; position: absolute; background:#00000000;">
+			<header id="header" style="position: absolute; background:#00000000;">
 				<!-- Nav -->
-				<nav class="smallNav" style="margin: 0; text-align: right;">
+				<nav class="smallNav">
 					<ul>
 						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
 						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
@@ -87,7 +89,7 @@
 								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
 							</a></li>
 							
-							<li><a href="javascript:void(0)" class="signup">공지사항</a></li>
+							<li><a href="/generic">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>
@@ -104,13 +106,14 @@
 								<a href="#" class="dropdown">모닥불</a>
 								<ul>
 									<li><a href="#">자유게시판</a></li>
-									<li><a href="#">캠핑 리뷰</a></li>
+									<li><a href="/campfire/review">캠핑 리뷰</a></li>
 									<li><a href="#">캠핑 팁</a></li>
 									<li><a href="#">캠핑 음식</a></li>
 									<li><a href="#">캠핑 가이드</a></li>
 								</ul>
 							</li>
 							<li class="smallMenu">
+								<a href="/" class="dropdown">Home</a>
 								<a href="#" class="dropdown">계정</a>
 								<ul>
 									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
