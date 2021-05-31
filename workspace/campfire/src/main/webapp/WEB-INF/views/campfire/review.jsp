@@ -102,13 +102,20 @@
 			}
 			select#category {
 				width: 30%;
+				height: 30px;
 			}
 			@media screen and (min-width: 546px ) {
 				select#category {
 					width: 40%;
 				}
 			}
-
+			@media screen and (min-width: 1660px ) {
+				select#category {
+					width: 40%;
+					height: 50px;
+				}
+			}
+			
 /*         */
 			.inner-image {
 				width: 40%;
@@ -230,6 +237,7 @@
 				color: #f85272;
 				background-color: #ffffff;
 				position: relative;
+				cursor: pointer;
 			}
 			.project .filter-side-divider {
 				height: 14px;
@@ -340,14 +348,12 @@
 <%@include file="../includes/header.jsp" %>
 
 <div id="main">
-	<div class="wrapper">
 
 		<!-- Post -->
-		<section class="main special">
+		<section class="main special" style="margin-top: 30px;">
 			<div class="inner banner">
 					<header class="major">
 						<span class="category">캠핑 리뷰</span>
-						<h2><a href="#">샘플</a></h2>
 					</header>
 					<div class="main-banner-container">
 						<div class="description">
@@ -370,7 +376,7 @@
 
 			<div class="project original-main hidden-sm hidden-xs" style="margin-top: 0px;">
 				<div class="filters-container">
-					<form name="list" method="get">
+					<form name="list" method="get" style="margin: 2rem 0;">
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
 							<div class="filter profile-filters">
@@ -586,7 +592,6 @@
 				
 			 
 				
-	</div>
 </div>
 
 
@@ -595,6 +600,4 @@
 <%-- <%@include file="includes/footer.jsp" %> --%>
 
 	</body>
-	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="/resources/assets/bootstrap-js/bootstrap.min.js"></script>
 </html>
