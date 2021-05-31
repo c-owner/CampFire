@@ -36,14 +36,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UserController {
 	private UserService service;
- 
 
-	@PostMapping(value="/signUp", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> signUp(UserVO user) {
-		
-		return null;
-	}
-	
 	@PostMapping(value="/signIn", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
 	public ResponseEntity<String> signIn(@RequestBody UserVO user, HttpServletRequest req){
@@ -65,26 +58,35 @@ public class UserController {
 		String title = "모닥불 인증메일입니다.";
 		String code = "";
 		String content = "";
-		
+
 		Random rnd =new Random();
 		StringBuffer buf =new StringBuffer();
 		for(int i=0;i<7;i++){
-		    if(rnd.nextBoolean()){
-		        buf.append((char)((int)(rnd.nextInt(26))+97));
-		    }else{
-		        buf.append((rnd.nextInt(10))); 
-		    }
+			if(rnd.nextBoolean()){
+				buf.append((char)((int)(rnd.nextInt(26))+97));
+			}else{
+				buf.append((rnd.nextInt(10))); 
+			}
 		}
 		code = buf.toString();
-		
+
 		content = "모닥불 회원가입을 위한 인증코드입니다.\nCODE : "+code;
-		
+
 		boolean sendResult = new MailDTO(email, title, content).sendmail();
-		
+
 		if(sendResult) {
 			return new ResponseEntity<String>(code, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<String>("error", HttpStatus.OK);
-    }
+		}
+	}
+
+	@PostMapping(value="/signUp", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> register(@RequestBody UserVO user){
+		String result = "";
+		if(service.signUp(user)) {
+			result = "success";
+		}
+		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 }
