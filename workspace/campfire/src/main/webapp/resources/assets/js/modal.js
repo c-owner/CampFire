@@ -99,7 +99,7 @@ $(document).ready(function () {
 		}
 		$.ajax({
 			type:"get",
-			url:contextPath + "/account/checkId?userId="+id,
+			url:contextPath + "/account/checkId/"+id,
 			dataType:"text",
 			contentType:"charset=utf-8",
 			success: function(result){
@@ -119,28 +119,7 @@ $(document).ready(function () {
 		})
 	});
 	
-	function formSubmit(){
-		//유효성검사체크
-		if(!checkId){
-			alert("아이디 중복확인 후 시도해주세요.");
-			return false;
-		}
-		if(!checkEmail){
-			alert("이메일 본인인증 후 시도해주세요.");
-			return false;
-		}
-		if(!checkPw1){
-			alert("비밀번호는 영문(대+소문자)+숫자포함 8자이상으로 입력해주세요.");
-			return false;
-		}
-		if(!checkPw2){
-			alert("비밀번호 확인이 일치하지 않습니다.");
-			return false;
-		}
-		
-		signUpForm.submit();
-		
-	}
+	
 	
 	$(document).mouseup(function (e){
 	  var LayerPopup = $('.modal-wrapper');
@@ -159,42 +138,9 @@ $(document).ready(function () {
 		checkEmail = false;
 	});
 	
-	function EmailCheck(){
-		var email = $("#memberEmail").val();
-		
-		$.ajax({
-			type:"get",
-			url:contextPath + "/account/sendMailCode?email="+email,
-			dataType:"text",
-			contentType:"charset=utf-8",
-			success: function(result){
-				console.log(result);
-				if(result.trim() == "error"){
-					alert("이메일 확인 후 다시 시도해주세요.");
-				}else{
-					alert("인증번호가 전송되었습니다.");
-					code = result;
-				}
-			},
-			error: function(xhr, status, err){
-				console.log(xhr);
-				console.log(err);
-			}
-		})
-	}
 	
-	function verifyCheck(){
-		var verifyCode = $("#verify").val();
-		if(verifyCode == code){
-			alert("인증되었습니다.");
-			checkEmail = true;
-			$("#memberEmail").attr("readonly", "readonly");
-			$("#verify").attr("readonly", "readonly");
-		}else{
-			alert("인증번호가 다릅니다.\n다시 시도해주세요.");
-			checkEmail = false;
-		}
-	}
+	
+	
 	
 	$("#memberPw").on("keyup", function(e){
 		var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
@@ -225,5 +171,62 @@ $(document).ready(function () {
 	
 	
 });
+function EmailCheck(){
+	var email = $("#memberEmail").val();
+	
+	$.ajax({
+		type:"get",
+		url:contextPath + "/account/sendMailCode?email="+email,
+		dataType:"text",
+		contentType:"charset=utf-8",
+		success: function(result){
+			console.log(result);
+			if(result.trim() == "error"){
+				alert("이메일 확인 후 다시 시도해주세요.");
+			}else{
+				alert("인증번호가 전송되었습니다.");
+				code = result;
+			}
+		},
+		error: function(xhr, status, err){
+			console.log(xhr);
+			console.log(err);
+		}
+	})
+}
 
+function verifyCheck(){
+	var verifyCode = $("#verify").val();
+	if(verifyCode == code){
+		alert("인증되었습니다.");
+		checkEmail = true;
+		$("#memberEmail").attr("readonly", "readonly");
+		$("#verify").attr("readonly", "readonly");
+	}else{
+		alert("인증번호가 다릅니다.\n다시 시도해주세요.");
+		checkEmail = false;
+	}
+}
 
+function formSubmit(){
+	//유효성검사체크
+	if(!checkId){
+		alert("아이디 중복확인 후 시도해주세요.");
+		return false;
+	}
+	if(!checkEmail){
+		alert("이메일 본인인증 후 시도해주세요.");
+		return false;
+	}
+	if(!checkPw1){
+		alert("비밀번호는 영문(대+소문자)+숫자포함 8자이상으로 입력해주세요.");
+		return false;
+	}
+	if(!checkPw2){
+		alert("비밀번호 확인이 일치하지 않습니다.");
+		return false;
+	}
+	
+	signUpForm.submit();
+	
+}
