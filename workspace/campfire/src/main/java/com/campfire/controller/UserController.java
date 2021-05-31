@@ -82,13 +82,10 @@ public class UserController {
 		}
 	}
 
-	@PostMapping(value="/signUp", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> signUp(@RequestBody UserVO user){
-		String result = "";
-		if(service.signUp(user)) {
-			result = "success";
-		}
-		return new ResponseEntity<String>(result, HttpStatus.OK);
+	@PostMapping(value="/signUp", consumes="application/json")
+	public String signUp(@RequestBody UserVO user){
+		service.signUp(user);
+		return "redirect:/home";
 	}
 
 	@GetMapping(value="/checkId/{userId}", produces = MediaType.TEXT_PLAIN_VALUE)
@@ -104,6 +101,7 @@ public class UserController {
 	}
 
 	@GetMapping(value="/findId/{userEmail}", produces= "application/text; charset=utf-8")
+	@ResponseBody
 	public ResponseEntity<String> findId(@PathVariable String userEmail){
 		String result = "";
 		String title = "모닥불 - 회원님의 아이디 찾기 결과입니다.";
@@ -129,6 +127,7 @@ public class UserController {
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 	@GetMapping(value="/findPw/{userId}/{userEmail}", produces= "application/text; charset=utf-8")
+	@ResponseBody
 	public ResponseEntity<String> findPw(@PathVariable String userId, @PathVariable String userEmail){
 		String result = "";
 		String title = "모닥불 - 회원님의 비밀번호 찾기입니다.";
