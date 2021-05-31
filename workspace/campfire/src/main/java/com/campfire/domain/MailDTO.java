@@ -26,8 +26,8 @@ public class MailDTO {
 	}
 	
 	public boolean sendmail() {
-		final String user = "구글이메일"; //발신자의 이메일 아이디를 입력
-		final String password = "구글패스워드"; //발신자 이메일의 패스워드를 입력
+		final String user = "rhkd1769@gmail.com"; //발신자의 이메일 아이디를 입력
+		final String password = "!@dlwlsfl1!"; //발신자 이메일의 패스워드를 입력
 		
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -53,6 +53,7 @@ public class MailDTO {
 			
 			Transport.send(message);
 		} catch (Exception e) {
+			log.info(e.getMessage());
 			return false;
 		}
 		return true;
