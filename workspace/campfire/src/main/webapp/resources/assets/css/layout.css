@@ -64,7 +64,7 @@
     }
     
     li > a.button.primary {
-        line-height: 2.5em;
+        /* line-height: 2.5em; */
     }
     #centerBtn {
         margin: auto;
