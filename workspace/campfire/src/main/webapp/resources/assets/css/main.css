@@ -3309,9 +3309,14 @@ table.alt tbody tr td {
         padding-right: 0;
     }
 
-    .posts > :nth-child(1n + 1),
+    /* .posts > :nth-child(1n + 1),
     .posts > :nth-child(1n) {
         width: calc(100% + 0.5rem);
+    } */
+    .posts > :nth-child(2n + 1), 
+    .posts > :nth-child(2n) {
+        padding: 7.33333px 0;
+         width: calc(48% + 0.5rem);
     }
 
     .posts article {
