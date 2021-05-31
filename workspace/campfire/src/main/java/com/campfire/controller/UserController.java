@@ -83,8 +83,8 @@ public class UserController {
 		}
 	}
 
-	@PostMapping(value="/signUp", consumes="application/json")
-	public String signUp(@RequestBody UserVO user){
+	@PostMapping(value="/signUp")
+	public String signUp(UserVO user){
 		service.signUp(user);
 		return "redirect:/home";
 	}
