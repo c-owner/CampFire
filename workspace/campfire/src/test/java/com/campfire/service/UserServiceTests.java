@@ -45,7 +45,7 @@ public class UserServiceTests {
 	
 	@Test
 	public void testLogin() {
-		log.info(service.login("Juno", "1234"));
+		log.info(service.signIn("Juno", "1234"));
 	}
 	
 }

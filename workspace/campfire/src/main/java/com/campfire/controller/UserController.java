@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.campfire.domain.MailDTO;
 import com.campfire.domain.UserVO;
 import com.campfire.service.UserService;
 
@@ -54,7 +57,7 @@ public class UserController {
 			result = "";
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
-
+	}
 	@GetMapping(value = "/sendMailCode", produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
 	public ResponseEntity<String> sendMailCode(@RequestParam("email") String email) {
