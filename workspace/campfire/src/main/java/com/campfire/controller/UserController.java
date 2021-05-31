@@ -17,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,11 +83,75 @@ public class UserController {
 	}
 
 	@PostMapping(value="/signUp", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> register(@RequestBody UserVO user){
+	public ResponseEntity<String> signUp(@RequestBody UserVO user){
 		String result = "";
 		if(service.signUp(user)) {
 			result = "success";
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
+
+	@GetMapping(value="/checkId/{userId}", produces = MediaType.TEXT_PLAIN_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> checkId(@PathVariable("userId") String userId){
+		String result = null;
+		if(service.checkId(userId)) {
+			result = "no";
+		}else {
+			result = "yes";
+		}
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
+
+	@GetMapping(value="/findId/{userEmail}", produces= "application/text; charset=utf-8")
+	public ResponseEntity<String> findId(@PathVariable String userEmail){
+		String result = "";
+		String title = "모닥불 - 회원님의 아이디 찾기 결과입니다.";
+		String userId = service.findId(userEmail);
+
+		if(userId != "") {
+			for(int i=0; i<userId.length(); i++) {
+				if(i >= 3) {
+					userId += "*";
+				}
+				userId += userId.charAt(i);
+			}
+			String content = "회원님의 아이디는 "+userId+"입니다.";
+			MailDTO mailDTO = new MailDTO(userEmail, title, content);
+			if(mailDTO.sendmail()) {
+				result = "아이디 찾기 메일이 발송되었습니다.";
+			}else {
+				result = "이메일 주소를 다시 확인해주세요.";
+			}
+		}else {
+			result = "이메일 주소를 다시 확인해주세요.";
+		}
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
+	@GetMapping(value="/findPw/{userId}/{userEmail}", produces= "application/text; charset=utf-8")
+	public ResponseEntity<String> findPw(@PathVariable String userId, @PathVariable String userEmail){
+		String result = "";
+		String title = "모닥불 - 회원님의 비밀번호 찾기입니다.";
+		
+		if(service.findPw(userId, userEmail)) {
+			for(int i=0; i<userId.length(); i++) {
+				if(i >= 3) {
+					userId += "*";
+				}
+				userId += userId.charAt(i);
+			}
+			String content = "아래의 링크를 통해 새로운 비밀번호를 입력해 주십시오.\n";
+			content += "비밀번호 변경 링크";
+			MailDTO mailDTO = new MailDTO(userEmail, title, content);
+			if(mailDTO.sendmail()) {
+				result = "비밀번호 찾기 메일이 발송되었습니다.";
+			}else {
+				result = "이메일 주소를 다시 확인해주세요.";
+			}
+		}else {
+			result = "아이디 혹은 이메일 주소를 다시 확인해주세요.";
+		}
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
+
 }
