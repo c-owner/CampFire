@@ -1,5 +1,6 @@
 package com.campfire.mapper;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -41,5 +42,13 @@ public class UserMapperTests {
 //		log.info(mapper.insert(user));
 //	}
 //	
+//	@Test
+//	public void testFindId() {
+//		log.info(mapper.findId("abc@naver.com"));
+//	}
 	
+//	@Test
+//	public void testFindPw() {
+//		log.info(mapper.findPw("test123", "ac@naver.com"));
+//	}
 }
