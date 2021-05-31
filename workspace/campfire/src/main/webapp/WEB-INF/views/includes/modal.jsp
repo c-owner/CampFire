@@ -21,7 +21,7 @@
 					<div class="modal loginModal">
 						<div class="head-pop"><h2>로그인</h2>
 						</div>
-						<form name="" action="#" method="" >
+						<form >
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 10%; padding:0;">
 									<label for="userId">아이디</label>
@@ -155,6 +155,11 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!-- modal -->
 <script src="/resources/assets/js/modal.js"></script>
+<script>
+	var pageContext = "${pageContext.request.contextPath}";
+	var sessionId = "${sessionId}";
+</script>
+<script src="/resources/assets/js/user.js"></script>
 <!-- modal end -->
 
 </html>

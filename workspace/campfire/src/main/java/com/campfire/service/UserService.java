@@ -6,6 +6,6 @@ public interface UserService {
 	public boolean checkId(String userId);
 	public boolean checkEmail(String userEmail);
 	public String encrypt(String pw);
-	public boolean register(UserVO user);
-	public boolean login(String userId, String userPw);
+	public boolean signUp(UserVO user);
+	public boolean signIn(String userId, String userPw);
 }
