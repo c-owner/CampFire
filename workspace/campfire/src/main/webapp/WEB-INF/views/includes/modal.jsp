@@ -120,9 +120,8 @@
 									<br>
 									<span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
 								<br>
-									<input class="mediaInput" type="email" name="memberEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
-									<a href="javascript:EmailCheck();" class="btn-right"
-									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									<input class="mediaInput" type="email" id="memberEmail" name="memberEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
+									<a href="javascript:EmailCheck();" class="btn-right" type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 전송</a>
 									<br><br>
 									<div class="mail_verify_input_box" id="mail_verify_input_box_false">
@@ -156,5 +155,30 @@
 	<!-- modal -->
 <script src="/resources/assets/js/modal.js"></script>
 <!-- modal end -->
-
+<script>
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	function EmailCheck(){
+		var email = $("#memberEmail").val();
+		
+		$.ajax({
+			type:"get",
+			url:contextPath + "/account/sendMailCode?email="+email,
+			dataType:"text",
+			contentType:"charset=utf-8",
+			success: function(result){
+				console.log(result);
+				if(result.trim() == "error"){
+					alert("이메일 확인 후 다시 시도해주세요.");
+				}else{
+					alert("인증번호가 전송되었습니다.");
+				}
+			},
+			error: function(xhr, status, err){
+				console.log(xhr);
+				console.log(err);
+			}
+		})
+	}
+</script>
 </html>
