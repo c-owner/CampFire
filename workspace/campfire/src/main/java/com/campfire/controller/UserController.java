@@ -1,17 +1,27 @@
 package com.campfire.controller;
 
+
+import javax.print.attribute.standard.Media;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.http.HttpRequest;
+
 import java.util.Random;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.campfire.domain.MailDTO;
+import com.campfire.domain.UserVO;
 import com.campfire.service.UserService;
 
 import lombok.AllArgsConstructor;
@@ -24,6 +34,27 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
 	private UserService service;
  
+
+	@PostMapping(value="/signUp", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> signUp(UserVO user) {
+		
+		return null;
+	}
+	
+	@PostMapping(value="/signIn", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> signIn(@RequestBody UserVO user, HttpServletRequest req){
+		log.info("login....." + user);
+		String result = null;
+		if(service.signIn(user.getUserId(), user.getUserPw())) {
+			HttpSession session = req.getSession();
+			session.setAttribute("sessionId", user.getUserId());
+			result = user.getUserId();		
+		}else {
+			result = "";
+		}
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+
 	@GetMapping(value = "/sendMailCode", produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
 	public ResponseEntity<String> sendMailCode(@RequestParam("email") String email) {
@@ -51,6 +82,6 @@ public class UserController {
 			return new ResponseEntity<String>(code, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<String>("error", HttpStatus.OK);
-		}
+    }
 	}
 }
