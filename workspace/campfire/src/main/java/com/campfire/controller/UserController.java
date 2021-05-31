@@ -58,6 +58,7 @@ public class UserController {
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
+	
 	@GetMapping(value = "/sendMailCode", produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
 	public ResponseEntity<String> sendMailCode(@RequestParam("email") String email) {

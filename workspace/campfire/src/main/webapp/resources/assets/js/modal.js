@@ -81,15 +81,40 @@ $(document).ready(function () {
 	
 	
 	$(document).mouseup(function (e){
-		  var LayerPopup = $('.modal-wrapper');
-		  if(LayerPopup.has(e.target).length === 0){
-			  LayerPopup.removeClass("open");
-			  $(".signUpModal").hide();
-			  $(".findModal").hide();
-			  $(".loginModal").show();
-			  $("form[name='findPwForm']").hide();
-			  $("form[name='findIdForm']").show();
-			  LayerPopup.removeClass("open");
-		  }
-		});
+	  var LayerPopup = $('.modal-wrapper');
+	  if(LayerPopup.has(e.target).length === 0){
+		  LayerPopup.removeClass("open");
+		  $(".signUpModal").hide();
+		  $(".findModal").hide();
+		  $(".loginModal").show();
+		  $("form[name='findPwForm']").hide();
+		  $("form[name='findIdForm']").show();
+		  LayerPopup.removeClass("open");
+	  }
+	});
+
 });
+
+function EmailCheck(){
+	var email = $("#memberEmail").val();
+	
+	$.ajax({
+		type:"get",
+		url:contextPath + "/account/sendMailCode?email="+email,
+		dataType:"text",
+		contentType:"charset=utf-8",
+		success: function(result){
+			console.log(result);
+			if(result.trim() == "error"){
+				alert("이메일 확인 후 다시 시도해주세요.");
+			}else{
+				alert("인증번호가 전송되었습니다.");
+			}
+		},
+		error: function(xhr, status, err){
+			console.log(xhr);
+			console.log(err);
+		}
+	})
+}
+
