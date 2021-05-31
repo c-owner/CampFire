@@ -14,7 +14,7 @@
 		
 		<!-- 합쳐지고 최소화된 최신 CSS -->
 		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-		<link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap.min.css" />
+		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap.min.css" /> -->
 		
 		<!-- 부가적인 테마 -->
 		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap-theme.min.css" /> -->
@@ -92,11 +92,24 @@
 				font-weight: bold;
 				text-decoration: none;
 			}
-
-			.hidden-xs {
-				display: inline-block !important;
+			a.btn.btn-secondary-show {
+				position: absolute;
+			}
+			/* 카테고리 바 */
+			.filter-mobile{
+				display: flex;
+				margin: 0 auto;
+			}
+			select#category {
+				width: 30%;
+			}
+			@media screen and (min-width: 546px ) {
+				select#category {
+					width: 40%;
+				}
 			}
 
+/*         */
 			.inner-image {
 				width: 40%;
 			}
@@ -182,6 +195,7 @@
 			/* 포스트 카테고리 바 post category bar */
 			.original-main.project .filters-container {
 				border-bottom: solid 1px #f1f1f1;
+				border-top: solid 1px #f1f1f1;
 			}
 			.original-main .filters-container {
 				margin: 48px 0px 20px 0px;
@@ -207,7 +221,7 @@
 				font-family: 'NIXGONL-Vb';
 				background-color: #ffffff;
 				padding: 0 !important;
-				width: unset !important;
+				/* width: unset !important; */
 				margin-right: 32px;
 				border: 0px;
 			}
@@ -374,43 +388,8 @@
 										<option value="month">최근 1달</option>
 										<option value="month3">최근 3달</option>
 									</select>
-									<div class="btn-group bootstrap-select select">
-										<button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="from">
-											<div class="filter-option pull-left">전체기간</div>&nbsp;
-											<div class="caret"></div>
-										</button>
-										<div class="dropdown-menu open">
-											<ul class="dropdown-menu inner selectpicker" role="menu">
-												<li rel="0" class="selected">
-													<a tabindex="0" class="" style="">
-														<span class="text">전체기간</span>
-													</a>
-												</li>
-												<li rel="1">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 24시간</span>
-													</a>
-												</li>
-												<li rel="2">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 1주일</span>
-													</a>
-												</li>
-												<li rel="3">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 1달</span>
-													</a>
-												</li>
-												<li rel="4">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 3달</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
 		
-									<select class="categories" name="category" id="category" style="display: none;">
+									<select class="categories" name="category" id="category" >
 										<option selected="" value="">전체분야</option>
 										<option value="A7">유료 캠핑장</option>
 										<option value="B7">무료 캠핑장</option>
@@ -419,51 +398,7 @@
 										<option value="E7">글램핑 캠핑장</option>
 										<option value="F7">카라반 캠핑장</option>
 									</select>
-									<div class="btn-group bootstrap-select categories">
-										<button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="category">
-											<div class="filter-option pull-left">전체분야</div>&nbsp;
-											<div class="caret"></div>
-										</button>
-										<div class="dropdown-menu open">
-											<ul class="dropdown-menu inner selectpicker" role="menu">
-												<li rel="0" class="selected">
-													<a tabindex="0" class="" style="">
-														<span class="text">전체분야</span>
-													</a>
-												</li>
-												<li rel="1">
-													<a tabindex="0" class="" style="">
-														<span class="text">유료 캠핑장</span>
-													</a>
-												</li>
-												<li rel="2">
-													<a tabindex="0" class="" style="">
-														<span class="text">무료 캠핑장</span>
-													</a>
-												</li>
-												<li rel="3">
-													<a tabindex="0" class="" style="">
-														<span class="text">노지 캠핑장</span>
-													</a>
-												</li>
-												<li rel="4">
-													<a tabindex="0" class="" style="">
-														<span class="text">난이도 캠핑장</span>
-													</a>
-												</li>
-												<li rel="5">
-													<a tabindex="0" class="" style="">
-														<span class="text">글램핑 캠핑장</span>
-													</a>
-												</li>
-												<li rel="6">
-													<a tabindex="0" class="" style="">
-														<span class="text">카라반 캠핑장</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 		
