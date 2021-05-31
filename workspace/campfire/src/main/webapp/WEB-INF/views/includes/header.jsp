@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 	#header {
-		position: absolute;
 		background:#00000076;
 	}
 	@media screen and (max-width: 980px) {
@@ -34,7 +33,7 @@
 <body>
 	
 			<!-- Header -->
-			<header id="header" style="position: absolute;">
+			<header id="header">
 				<!-- Nav -->
 				<nav class="smallNav">
 					<ul>
