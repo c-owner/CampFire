@@ -4231,22 +4231,6 @@ table.alt tbody tr td {
     display: none;
 }
 
-#header > nav > ul > li.current > a {
-    color: #ffffff;
-    font-weight: 400;
-}
-
-#header > nav > ul > li.current:after {
-    background-color: #2388fa;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 0.1rem;
-    left: -0.75rem;
-    position: absolute;
-    width: calc(100% + 1.5rem);
-}
-
 #header > nav > ul > li.active > a {
     color: #ffffff;
 }
