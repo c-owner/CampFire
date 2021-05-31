@@ -100,17 +100,17 @@
 				display: flex;
 				margin: 0 auto;
 			}
-			select#category {
+			select#category, select#from {
 				width: 30%;
 				height: 30px;
 			}
 			@media screen and (min-width: 546px ) {
-				select#category {
+				select#category, select#from {
 					width: 40%;
 				}
 			}
 			@media screen and (min-width: 1660px ) {
-				select#category {
+				select#category, select#from {
 					width: 40%;
 					height: 50px;
 				}
@@ -231,6 +231,7 @@
 				/* width: unset !important; */
 				margin-right: 32px;
 				border: 0px;
+				width: 70px;
 			}
 			.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
 				font-weight: bold;
@@ -238,6 +239,15 @@
 				background-color: #ffffff;
 				position: relative;
 				cursor: pointer;
+				width: 70px;
+			}
+			@media screen and (max-width: 435px){
+				.project .btn.btn-soft-pink.btn-none-background {
+					width: auto;
+				}
+				.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
+					width: auto;
+				}
 			}
 			.project .filter-side-divider {
 				height: 14px;
@@ -387,7 +397,7 @@
 		
 									<span class="filter-side-divider"></span>
 		
-									<select name="from" class="select " id="from" style="display: none;">
+									<select name="from" class="select " id="from">
 										<option value="all" selected="">전체기간</option>
 										<option value="day">최근 24시간</option>
 										<option value="week">최근 1주일</option>
