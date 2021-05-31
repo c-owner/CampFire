@@ -3309,9 +3309,14 @@ table.alt tbody tr td {
         padding-right: 0;
     }
 
-    .posts > :nth-child(1n + 1),
+    /* .posts > :nth-child(1n + 1),
     .posts > :nth-child(1n) {
         width: calc(100% + 0.5rem);
+    } */
+    .posts > :nth-child(2n + 1), 
+    .posts > :nth-child(2n) {
+        padding: 7.33333px 0;
+         width: calc(48% + 0.5rem);
     }
 
     .posts article {
@@ -4229,22 +4234,6 @@ table.alt tbody tr td {
 
 #header > nav > ul > li > ul {
     display: none;
-}
-
-#header > nav > ul > li.current > a {
-    color: #ffffff;
-    font-weight: 400;
-}
-
-#header > nav > ul > li.current:after {
-    background-color: #2388fa;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 0.1rem;
-    left: -0.75rem;
-    position: absolute;
-    width: calc(100% + 1.5rem);
 }
 
 #header > nav > ul > li.active > a {

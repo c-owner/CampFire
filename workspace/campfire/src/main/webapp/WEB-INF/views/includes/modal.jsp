@@ -21,7 +21,7 @@
 					<div class="modal loginModal">
 						<div class="head-pop"><h2>로그인</h2>
 						</div>
-						<form name="" action="#" method="" >
+						<form >
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 10%; padding:0;">
 									<label for="userId">아이디</label>
@@ -103,12 +103,20 @@
 						<form name="" action="#" method="">
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; padding: 0;">
+<<<<<<< HEAD
 									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
 										font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span><br>
 									<input class="mediaInput" type="text" name="userId" style="width:66%; float:left" maxlength="12"/>
 									<a href="#" class="btn-right"
 									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 전송</a>
+=======
+									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red; 
+									font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span><br>
+									<input class="mediaInput" type="text" name="userId" style="width:66%; float:left" maxlength="12"/>
+									<a href="#" class="btn-right" type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									중복 확인</a>
+>>>>>>> 01bd65fe1065dfa6c903495671c077fa3a1fc5e0
 									<br>
 									<font id="idCheck2_text" size="3"></font> 
 									<font id="idCheck_text" size="2"></font>
@@ -124,9 +132,8 @@
 									<br>
 									<span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
 								<br>
-									<input class="mediaInput" type="email" name="memberEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
-									<a href="javascript:EmailCheck();" class="btn-right"
-									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									<input class="mediaInput" type="email" id="memberEmail" name="memberEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
+									<a href="javascript:EmailCheck();" class="btn-right" type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 전송</a>
 									<br><br>
 									<div class="mail_verify_input_box" id="mail_verify_input_box_false">
@@ -159,6 +166,10 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!-- modal -->
 <script src="/resources/assets/js/modal.js"></script>
+<script>
+	var pageContext = "${pageContext.request.contextPath}";
+	var sessionId = "${sessionId}";
+</script>
+<script src="/resources/assets/js/user.js"></script>
 <!-- modal end -->
-
 </html>
