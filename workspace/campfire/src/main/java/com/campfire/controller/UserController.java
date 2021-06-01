@@ -1,16 +1,10 @@
 package com.campfire.controller;
 
 
-import javax.print.attribute.standard.Media;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.ibatis.annotations.Param;
-import org.springframework.http.HttpRequest;
-
 import java.util.Random;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -153,5 +147,9 @@ public class UserController {
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
+	
+//	체인지 pw
+	@GetMapping(value="/changePW")
+	public void changePW() {}
 
 }
