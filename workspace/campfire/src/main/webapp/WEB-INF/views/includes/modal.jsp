@@ -21,7 +21,7 @@
 					<div class="modal loginModal">
 						<div class="head-pop"><h2>로그인</h2>
 						</div>
-						<form name="" action="#" method="" >
+						<form >
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 10%; padding:0;">
 									<label for="userId">아이디</label>
@@ -100,19 +100,22 @@
 						<div class="head-pop">
 							<div style="width: 49%; display: inline-block;"><h2>회원가입</h2></div>
 						</div>
-						<form name="" action="#" method="">
+						<form name="signUpForm" action="/account/signUp" method="post">
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; padding: 0;">
-									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
-										font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span>
-									<input type="text" name="memberId" id="memberId" maxlength="12"/>
+									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red; 
+									font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span><br>
+									<input class="mediaInput" type="text" name="userId" id="userId2" style="width:66%; float:left" maxlength="12"/>
+									<a href="#" class="btn-right" id="checkId" type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									중복 확인</a>
+									<br>
 									<font id="idCheck2_text" size="3"></font> 
 									<font id="idCheck_text" size="2"></font>
 									<br>
 									<span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
 									<span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
 											(* 영문+숫자+대소문자 조합 8자이상 입력) </span>
-									<input type="password" name="memberPw" id="memberPw"/>
+									<input type="password" name="userPw" id="memberPw"/>
 									<br>
 									<span style="color: #ff0000;">* </span><span style="font-weight: bold;">비밀번호 확인 </span>
 									<input type="password" name="memberPw2" id="memberPw2" />
@@ -120,13 +123,12 @@
 									<br>
 									<span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
 								<br>
-									<input class="mediaInput" type="email" name="memberEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
-									<a href="javascript:EmailCheck();" class="btn-right"
-									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									<input class="mediaInput" type="email" id="memberEmail" name="userEmail" style="width:66%; float:left" placeholder="abc@gmail.com" />
+									<a href="javascript:EmailCheck();" class="btn-right" type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 전송</a>
 									<br><br>
 									<div class="mail_verify_input_box" id="mail_verify_input_box_false">
-									<input class="mediaInput" type="text" name="verify" id="verify" class="verify" style="width:66%; float:left" placeholder="7자리" disabled="disabled" />
+									<input class="mediaInput" type="text" name="verify" id="verify" class="verify" style="width:66%; float:left" placeholder="7자리" />
 									<a href="javascript:verifyCheck();" class="btn-right"
 									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
 									인증번호 확인</a>
@@ -139,7 +141,7 @@
 									</label> 
 								<br>
 								<div style="text-align: center;">
-									<a id="submit" href="javascript:formSubmit()" class="btn-right" type="submit" 
+									<a id="submit" href="javascript:formSubmit()" class="btn-right" type="button" 
 									style="border-radius: 6px; margin: 0 auto;">가입하기</a>
 								</div>
 								</div>        
@@ -155,6 +157,13 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!-- modal -->
 <script src="/resources/assets/js/modal.js"></script>
+<script>
+	var pageContext = "${pageContext.request.contextPath}";
+	var sessionId = "${sessionId}";
+</script>
+<script src="/resources/assets/js/user.js"></script>
 <!-- modal end -->
-
+<script>
+	var contextPath = "${pageContext.request.contextPath}";
+</script>
 </html>

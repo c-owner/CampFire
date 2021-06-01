@@ -28,7 +28,7 @@
 
 
 /* 
-===================================================
+=================================================== layout
  */
 
 	/* modal */
@@ -64,7 +64,7 @@
     }
     
     li > a.button.primary {
-        line-height: 2.5em;
+        /* line-height: 2.5em; */
     }
     #centerBtn {
         margin: auto;
@@ -75,7 +75,8 @@
      */
      
      .slideInfo{
-     	width: 90%;
+     	/* width: 90%; */
+     	width:180px;
      	background: black;
      	opacity: 50%;
      }
@@ -118,7 +119,7 @@
   border-right: 8px solid transparent;
   border-bottom: 8px solid transparent;
   border-left: 8px solid white;
-  margin-top: 8px;
+  margin-top: 1rem;
   margin-left: 9px;
   animation: horizontal 0.7s ease-in-out infinite;
 }
@@ -193,7 +194,7 @@ html, body {
     display: block;
     margin: 50% 0 0 -300px;
     position: relative;
-    top: 40%;
+    top: 30%;
     left: 50%;
     background: rgb(255, 255, 255);
     opacity: 1.0;
@@ -306,6 +307,13 @@ html, body {
 */ 
 
 /* 반응형 */
+
+@media screen and (max-width:1680px) {
+	.modal {
+		top: 40%;
+	}
+}
+
 @media screen and (min-width:981px) {
  	
     /* a.btn-right{
@@ -318,6 +326,15 @@ html, body {
     #submit {
        font-size:15px;
     }
+}
+
+@media screen and (max-width:736px) {
+	/* .icon {
+		border-radius: 0;
+	}
+	#search {
+		border-radius: 0;
+	} */
 }
 
 @media screen and (max-width: 580px) {

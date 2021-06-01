@@ -10,13 +10,15 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
-
-
+		
+		
 		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap.min.css" /> -->
+		
 		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap-theme.min.css" /> -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
 		
 		
 		<style>
@@ -90,6 +92,31 @@
 				font-weight: bold;
 				text-decoration: none;
 			}
+			a.btn.btn-secondary-show {
+				position: absolute;
+			}
+			/* 카테고리 바 */
+			.filter-mobile{
+				display: flex;
+				margin: 0 auto;
+			}
+			select#category, select#from {
+				width: 30%;
+				height: 30px;
+			}
+			@media screen and (min-width: 546px ) {
+				select#category, select#from {
+					width: 40%;
+				}
+			}
+			@media screen and (min-width: 1660px ) {
+				select#category, select#from {
+					width: 40%;
+					height: 50px;
+				}
+			}
+			
+/*         */
 			.inner-image {
 				width: 40%;
 			}
@@ -175,6 +202,7 @@
 			/* 포스트 카테고리 바 post category bar */
 			.original-main.project .filters-container {
 				border-bottom: solid 1px #f1f1f1;
+				border-top: solid 1px #f1f1f1;
 			}
 			.original-main .filters-container {
 				margin: 48px 0px 20px 0px;
@@ -200,15 +228,26 @@
 				font-family: 'NIXGONL-Vb';
 				background-color: #ffffff;
 				padding: 0 !important;
-				width: unset !important;
+				/* width: unset !important; */
 				margin-right: 32px;
 				border: 0px;
+				width: 70px;
 			}
 			.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
 				font-weight: bold;
 				color: #f85272;
 				background-color: #ffffff;
 				position: relative;
+				cursor: pointer;
+				width: 70px;
+			}
+			@media screen and (max-width: 435px){
+				.project .btn.btn-soft-pink.btn-none-background {
+					width: auto;
+				}
+				.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
+					width: auto;
+				}
 			}
 			.project .filter-side-divider {
 				height: 14px;
@@ -250,6 +289,11 @@
 				box-shadow: none;
 				z-index: 99;
 			}
+			@media screen and (max-width: 447px) {
+				.filter-mobile{
+					display: flex;
+				}
+			}
 			.bootstrap-select.btn-group .dropdown-menu.inner {
 				position: static;
 				border: 0;
@@ -269,6 +313,42 @@
 				font-size: 0.857em;
 			}
 			
+			.imgDiv {
+				width: 100%;
+				height: 550px;
+				margin: 0 auto;
+			}
+			
+			.reviewImg {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; 
+			}
+			
+			@media screen and (max-width: 1980px){
+				.imgDiv {
+					height: 340px; 
+				}
+			}
+			@media screen and (max-width: 980px){
+				.imgDiv {
+					width: 80%;
+					height: 300px; 
+				}
+				
+				.info {
+					width: 80%;
+					margin: 0 auto;
+				}
+				
+				.main-banner-container {
+					margin-bottom: 5%;
+				}
+			}
+
+			
+
+			
 		</style>
 		
 	</head>
@@ -278,14 +358,12 @@
 <%@include file="../includes/header.jsp" %>
 
 <div id="main">
-	<div class="wrapper">
 
 		<!-- Post -->
-		<section class="main special">
+		<section class="main special" style="margin-top: 30px;">
 			<div class="inner banner">
 					<header class="major">
 						<span class="category">캠핑 리뷰</span>
-						<h2><a href="#">샘플</a></h2>
 					</header>
 					<div class="main-banner-container">
 						<div class="description">
@@ -308,61 +386,26 @@
 
 			<div class="project original-main hidden-sm hidden-xs" style="margin-top: 0px;">
 				<div class="filters-container">
-					<form name="list" method="get">
+					<form name="list" method="get" style="margin: 2rem 0;">
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
 							<div class="filter profile-filters">
-								<div>
+								<div class="filter-mobile">
 									<div class="btn btn-sort btn-soft-pink btn-none-background active" >캠퍼 픽</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
 		
 									<span class="filter-side-divider"></span>
 		
-									<select name="from" class="select " id="from" style="display: none;">
+									<select name="from" class="select " id="from">
 										<option value="all" selected="">전체기간</option>
 										<option value="day">최근 24시간</option>
 										<option value="week">최근 1주일</option>
 										<option value="month">최근 1달</option>
 										<option value="month3">최근 3달</option>
 									</select>
-									<div class="btn-group bootstrap-select select">
-										<button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="from">
-											<div class="filter-option pull-left">전체기간</div>&nbsp;
-											<div class="caret"></div>
-										</button>
-										<div class="dropdown-menu open">
-											<ul class="dropdown-menu inner selectpicker" role="menu">
-												<li rel="0" class="selected">
-													<a tabindex="0" class="" style="">
-														<span class="text">전체기간</span>
-													</a>
-												</li>
-												<li rel="1">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 24시간</span>
-													</a>
-												</li>
-												<li rel="2">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 1주일</span>
-													</a>
-												</li>
-												<li rel="3">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 1달</span>
-													</a>
-												</li>
-												<li rel="4">
-													<a tabindex="0" class="" style="">
-														<span class="text">최근 3달</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
 		
-									<select class="categories" name="category" id="category" style="display: none;">
+									<select class="categories" name="category" id="category" >
 										<option selected="" value="">전체분야</option>
 										<option value="A7">유료 캠핑장</option>
 										<option value="B7">무료 캠핑장</option>
@@ -371,51 +414,7 @@
 										<option value="E7">글램핑 캠핑장</option>
 										<option value="F7">카라반 캠핑장</option>
 									</select>
-									<div class="btn-group bootstrap-select categories">
-										<button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="category">
-											<div class="filter-option pull-left">전체분야</div>&nbsp;
-											<div class="caret"></div>
-										</button>
-										<div class="dropdown-menu open">
-											<ul class="dropdown-menu inner selectpicker" role="menu">
-												<li rel="0" class="selected">
-													<a tabindex="0" class="" style="">
-														<span class="text">전체분야</span>
-													</a>
-												</li>
-												<li rel="1">
-													<a tabindex="0" class="" style="">
-														<span class="text">유료 캠핑장</span>
-													</a>
-												</li>
-												<li rel="2">
-													<a tabindex="0" class="" style="">
-														<span class="text">무료 캠핑장</span>
-													</a>
-												</li>
-												<li rel="3">
-													<a tabindex="0" class="" style="">
-														<span class="text">노지 캠핑장</span>
-													</a>
-												</li>
-												<li rel="4">
-													<a tabindex="0" class="" style="">
-														<span class="text">난이도 캠핑장</span>
-													</a>
-												</li>
-												<li rel="5">
-													<a tabindex="0" class="" style="">
-														<span class="text">글램핑 캠핑장</span>
-													</a>
-												</li>
-												<li rel="6">
-													<a tabindex="0" class="" style="">
-														<span class="text">카라반 캠핑장</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 		
@@ -430,7 +429,7 @@
 			<section class="main">
 				<div class="posts">
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg05.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -456,7 +455,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg06.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg06.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -482,7 +481,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg07.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg07.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -508,7 +507,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg08.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg08.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -534,7 +533,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg09.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg09.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -560,7 +559,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg10.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg10.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -603,7 +602,6 @@
 				
 			 
 				
-	</div>
 </div>
 
 
@@ -612,6 +610,4 @@
 <%-- <%@include file="includes/footer.jsp" %> --%>
 
 	</body>
-	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </html>
