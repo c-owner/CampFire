@@ -26,8 +26,8 @@ public class MailDTO {
 	}
 	
 	public boolean sendmail() {
-		final String user = "gmail"; //발신자의 이메일 아이디를 입력
-		final String password = "password"; //발신자 이메일의 패스워드를 입력
+		final String user = "campfire2105"; //발신자의 이메일 아이디를 입력
+		final String password = "Modak555%"; //발신자 이메일의 패스워드를 입력
 		
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.gmail.com");
