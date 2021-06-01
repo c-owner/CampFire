@@ -18,6 +18,9 @@
     .wrapper.style2 {
       background: #0d0d0d !important;
     }
+    #header{
+      position: absolute;
+    }
     
   </style>
 </head>

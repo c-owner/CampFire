@@ -9,7 +9,7 @@
 <style>
 	dl {
 		float: left;
-		padding: 1.5rem;
+		padding: 1rem;
 	}
 	.wrapper.style3 { 
 		padding: 10px 0 0 0;
@@ -19,7 +19,7 @@
 	}
 	@media screen and (min-width: 1280px){
 		dl { 
-			padding: 2.5rem; 
+			padding: 2rem; 
 		}
 	}
 	
@@ -45,6 +45,10 @@
                                 <img src="/resources/images/community/bbsico_0.png" alt="" height="50"><br>
                                 캠핑 팁
 								<a href="/campfire/tip" class="fr more" title="더 보기">
+									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+									xml:space="preserve" width="16px" height="16px">
+									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
+									</polygon></svg>
                                 </a>
                             </dt>
                         </dl>
@@ -55,6 +59,10 @@
                                 <img src="/resources/images/community/bbsico_1.png" alt="" height="50"><br>
                                 캠핑 음식
 								<a href="/campfire/food" class="fr more" title="더 보기">
+									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+									xml:space="preserve" width="16px" height="16px">
+									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
+									</polygon></svg>
                                 </a>
                             </dt>
                         </dl>
@@ -65,6 +73,10 @@
                                 <img src="/resources/images/community/bbsico_2.png" alt="" height="50"><br>
                                 캠핑리뷰
                                 <a href="/campfire/review" class="fr more" title="더 보기">
+									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+									xml:space="preserve" width="16px" height="16px">
+									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
+									</polygon></svg>
                                 </a>
                             </dt>
                         </dl>
@@ -75,6 +87,10 @@
                                 <img src="/resources/images/community/bbsico_3.svg" alt="" height="50"><br>
                                 자유게시판
                                 <a href="/campfire/freetalk" class="fr more" title="더 보기">
+									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
+									xml:space="preserve" width="16px" height="16px">
+									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
+									</polygon></svg>
                                 </a>
                             </dt>
                         </dl>
