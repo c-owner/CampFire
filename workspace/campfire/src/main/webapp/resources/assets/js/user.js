@@ -29,6 +29,8 @@ $("#loginBtn").on("click", function(e){
 		success: function(result){
 			if(result != ""){
 				alert( result + "님 환영합니다.");
+				$("#userId").val("");
+				$("#userPw").val("");
 				$('.modal-wrapper').removeClass("open");
 			}else {
 				alert("아이디 혹은 비밀번호를 다시 확인해 주십시오.");

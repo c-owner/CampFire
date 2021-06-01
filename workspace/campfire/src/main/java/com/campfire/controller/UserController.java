@@ -83,9 +83,9 @@ public class UserController {
 		return "redirect:/home";
 	}
 
-	@GetMapping(value="/checkId/{userId}", produces = MediaType.TEXT_PLAIN_VALUE)
+	@GetMapping(value="/checkId", produces = MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
-	public ResponseEntity<String> checkId(@PathVariable("userId") String userId){
+	public ResponseEntity<String> checkId(String userId){
 		String result = null;
 		if(service.checkId(userId)) {
 			result = "no";
@@ -95,9 +95,9 @@ public class UserController {
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 
-	@GetMapping(value="/findId/{userEmail}", produces= "application/text; charset=utf-8")
+	@GetMapping(value="/findId", produces= "application/text; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<String> findId(@PathVariable String userEmail){
+	public ResponseEntity<String> findId(String userEmail){
 		String result = "";
 		String title = "모닥불 - 회원님의 아이디 찾기 결과입니다.";
 		String userId = service.findId(userEmail);
@@ -121,9 +121,9 @@ public class UserController {
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
-	@GetMapping(value="/findPw/{userId}/{userEmail}", produces= "application/text; charset=utf-8")
+	@GetMapping(value="/findPw", produces= "application/text; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<String> findPw(@PathVariable String userId, @PathVariable String userEmail){
+	public ResponseEntity<String> findPw(String userId, String userEmail){
 		String result = "";
 		String title = "모닥불 - 회원님의 비밀번호 찾기입니다.";
 		
