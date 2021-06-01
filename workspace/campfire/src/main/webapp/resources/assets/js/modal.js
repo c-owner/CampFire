@@ -94,12 +94,12 @@ $(document).ready(function () {
 		var id = $("#userId2").val();
 		var reg = /^[a-z0-9_]{8,12}$/;
 		if(!reg.test(id)){
-			console.log("아이디는 8자에서 12자로 입력해주세요.");
+			alert("아이디는 8자에서 12자로 입력해주세요.");
 			return false;
 		}
 		$.ajax({
 			type:"get",
-			url:contextPath + "/account/checkId/"+id,
+			url:contextPath + "/account/checkId?userId="+id,
 			dataType:"text",
 			contentType:"charset=utf-8",
 			success: function(result){
