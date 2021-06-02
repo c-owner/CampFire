@@ -64,8 +64,8 @@
       </div>
     </div>
   </div>
-<jsp:include page="../includes/footer.jsp"/>
 <jsp:include page="../includes/campingFooter.jsp"/>
+<jsp:include page="../includes/footer.jsp"/>
 <%-- <%@include file="includes/footer.jsp" %> --%>
 	</body>
 </html>

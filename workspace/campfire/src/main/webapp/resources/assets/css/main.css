@@ -4433,7 +4433,7 @@ table.alt tbody tr td {
 @media screen and (max-width: 736px) {
 
     #header {
-        height: 10rem;
+        height: 5rem;
         line-height: 44px;
         padding: 0;
     }
