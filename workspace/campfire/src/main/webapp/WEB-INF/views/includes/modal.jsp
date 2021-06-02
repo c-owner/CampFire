@@ -103,6 +103,12 @@
 						<form name="signUpForm" action="/account/signUp" method="post">
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; padding: 0;">
+									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
+										font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span><br>
+									<input class="mediaInput" type="text" name="userId" style="width:66%; float:left" maxlength="12"/>
+									<a href="#" class="btn-right"
+									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									인증번호 전송</a>
 									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red; 
 									font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span><br>
 									<input class="mediaInput" type="text" name="userId" id="userId2" style="width:66%; float:left" maxlength="12"/>
@@ -115,10 +121,16 @@
 									<span style="color: red;">* </span><span style="font-weight: bold;">비밀번호</span>
 									<span style="font-size: 12px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: red;">
 											(* 영문+숫자+대소문자 조합 8자이상 입력) </span>
-									<input type="password" name="userPw" id="memberPw"/>
+									<span style="color: red;">* </span><span style="font-weight: bold;">아이디</span><span style="font-size: small; color: red;
+										font-family:sans-serif;"> (* 영문 혹은 영문+숫자 조합, 12길이)</span><br>
+									<input class="mediaInput" type="text" name="userId" style="width:66%; float:left" maxlength="12"/>
+									<a href="#" class="btn-right"
+									type="submit" style="font-size: 14px; border-radius: 6px; width: 34%;">
+									인증번호 전송</a>
+									<input type="password" name="userPw" id="userPw"/>
 									<br>
 									<span style="color: #ff0000;">* </span><span style="font-weight: bold;">비밀번호 확인 </span>
-									<input type="password" name="memberPw2" id="memberPw2" />
+									<input type="password" name="userPw2" id="userPw2" />
 									<font id="pwCheck_text" size="3" style="text-align: right;"></font>
 									<br>
 									<span style="color: red;">* </span><span style="font-weight: bold;">이메일</span>
