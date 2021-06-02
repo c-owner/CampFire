@@ -231,7 +231,7 @@
 				/* width: unset !important; */
 				margin-right: 32px;
 				border: 0px;
-				width: 70px;
+				width: 5em;
 			}
 			.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
 				font-weight: bold;
@@ -239,7 +239,7 @@
 				background-color: #ffffff;
 				position: relative;
 				cursor: pointer;
-				width: 70px;
+				width: 5em;
 			}
 			@media screen and (max-width: 435px){
 				.project .btn.btn-soft-pink.btn-none-background {
