@@ -19,6 +19,10 @@ public class CampfireController {
 	
 	@GetMapping(value="/changePW")
 	public void changePW() {}
+	
 	@GetMapping(value="/reviewDetail")
 	public void reviewDetail() {}
+	
+	@GetMapping(value="/freeBoard")
+	public void freeBoard() {}
 }
