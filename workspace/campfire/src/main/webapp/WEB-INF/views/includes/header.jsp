@@ -10,13 +10,8 @@
 <link rel="stylesheet" href="/resources/assets/css/layout.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-	#header {
-		background:#00000076;
-	}
+	
 	@media screen and (max-width: 980px) {
-		#header {
-			background: #00000000;
-		}
 		#header > .navPanelToggle {
 			display: block;
 			color: black;

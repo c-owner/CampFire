@@ -251,7 +251,7 @@
 	flush="true" : 문서의 출력 결과를 항상 버퍼내에서 갱신 하라는 의미이다
 	즉, 따로따로 실행 된 후 그 결과만을 가지고 include한다.
 --%>
-<%@include file="includes/footer.jsp" %>
+<%-- <%@include file="includes/footer.jsp" %> --%>
 	<%-- <%@include %>  
 	-. 서버측 include 라고 생각하면 된다
 	즉 소스 실행전에 include가 된다고 보자
@@ -265,6 +265,16 @@
 </body>
 
 <!-- 슬라이더 -->
+		<!-- Scripts -->
+		<script src="/resources/assets/js/jquery.min.js"></script>
+		<script src="/resources/assets/js/browser.min.js"></script>
+		<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+		<script src="/resources/assets/js/breakpoints.min.js"></script>
+		<script src="/resources/assets/js/util.js"></script>
+		<script src="/resources/assets/js/main.js"></script>
+		<script src="/resources/assets/js/moment.js"></script>
+		<script src="/resources/assets/js/moment-with-locales.js"></script>
+
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="/resources/slick/slick.min.js"></script>
