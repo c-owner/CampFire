@@ -114,10 +114,6 @@
                         <li><a href="#" class="icon brands fa-twitter"><span>홈페이지 이용약관</span></a></li>
                         <li><a href="#" class="icon brands fa-facebook-f"><span>광고 및 제휴 문의</span></a></li>
                         <li><a href="#" class="icon brands fa-linkedin-in"><span>고객센터</span></a></li>
-                        <li class="actions stacked" style=" width: fit-content;">
-                            <a href="">회원가입</a></li>
-                        <li class="actions stacked" style=" width: fit-content;">
-                            <a href="">로그인</a></li>
                     </ul>
                     <ul>
                         <li><a href="#" class="icon solid fa-phone"><span>전화 (031) 211-0000</span></a></li>
