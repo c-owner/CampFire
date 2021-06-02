@@ -17,4 +17,6 @@ public class CampfireController {
 	@GetMapping(value = "/sample")
 	public void sample() {}
 	
+	@GetMapping(value="/changePW")
+	public void changePW() {}
 }

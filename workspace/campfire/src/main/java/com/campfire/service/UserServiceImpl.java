@@ -56,5 +56,15 @@ public class UserServiceImpl implements UserService{
 		}
 		return en_pw;
 	}
+
+	@Override
+	public String findId(String userEmail) {
+		return mapper.findId(userEmail);
+	}
+
+	@Override
+	public boolean findPw(String userId, String userEmail) {
+		return mapper.findPw(userId, userEmail) == 1;
+	}
 	
 }

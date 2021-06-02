@@ -465,51 +465,7 @@ print 'It took ' + i + ' iterations to sort the deck.';
 				</div>
 			</section>
 
-		<!-- Footer -->
-			<section id="footer">
-				<div class="wrapper style3">
-					<div class="inner">
-						<div>
-							<header>
-								<h3>Ipsum sed tristique</h3>
-							</header>
-							<p>Nunc et lorem mauris, fringilla in aliquam at, euismod in habitant morbi tristique senectus amet malesuada commodo lorem ipsum dolor amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi massa.</p>
-							<ul class="actions">
-								<li><a href="#" class="button">Learn More</a></li>
-							</ul>
-						</div>
-						<div>
-							<header>
-								<h3>Get in touch</h3>
-							</header>
-							<div class="contact-icons">
-								<ul>
-									<li><a href="#" class="icon solid fa-envelope"><span>information@untitled.tld</span></a></li>
-									<li><a href="#" class="icon brands fa-twitter"><span>@untitled-tld</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span>facebook.com/untitled-tld</span></a></li>
-									<li><a href="#" class="icon brands fa-linkedin-in"><span>linkedin.com/untitled-tld</span></a></li>
-								</ul>
-								<ul>
-									<li><a href="#" class="icon solid fa-phone"><span>(000) 000-0000</span></a></li>
-									<li>
-										<div class="icon solid fa-map-marker-alt">
-											<address>
-												Untitled Incorporated<br />
-												1234 Fictional Avenue Suite 5432<br />
-												Nashville, TN 00000-0000<br />
-												United States
-											</address>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="copyright">
-						&copy; Untitled Incorporated, All rights reserved. Lorem ipsum dolor sit amet nullam.
-					</div>
-				</div>
-			</section>
+		 
             <jsp:include page="includes/footer.jsp" flush="false" />
             <%-- <%@include file="includes/footer.jsp" %> --%>
 	</body>

@@ -17,4 +17,12 @@
 		SELECT USERPW FROM CF_USER 
 		WHERE USERID = #{userId}
 	</select>
+	<select id="findId" resultType="string">
+		SELECT USERID FROM CF_USER
+		WHERE USEREMAIL = #{userEmail}
+	</select>
+	<select id="findPw" resultType="_int">
+		SELECT COUNT(USERID) FROM CF_USER
+		WHERE USERID = #{userId} AND USEREMAIL = #{userEmail}
+	</select>
 </mapper>
