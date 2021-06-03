@@ -49,14 +49,7 @@
   padding-left: 30px;
 }
 
-@media screen and (max-width: 670px){
-	.fa-search {
-		width: 35%;
-	}
-	#category {
-		display: none;
-	}
-}
+ 
 
 .hashTag{
 	font-family: 'Jua', sans-serif;

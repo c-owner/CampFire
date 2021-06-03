@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 	<head>
 		<title>리뷰게시판 | 모닥불🏕 </title>
@@ -10,341 +11,9 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="stylesheet" href="/resources/assets/css/search.css" />
+		<link rel="stylesheet" href="/resources/assets/css/review.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 		
-		
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap.min.css" /> -->
-		
-		<!-- 부가적인 테마 -->
-		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap-theme.min.css" /> -->
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-		
-		
-		<style>
-			@media screen and (min-width: 1px) {
-				.inner.banner {
-					width: 100%;
-					max-width: 95%;
-				}
-			}
-			@media screen and (max-width: 1440px) {
-				.inner.banner {
-					padding: 0 30px;
-				}
-			}
-			
-			/* 최상단 배너 */
-			.main-banner-container {
-				display: flex;
-				align-items: center;
-			}
-			.main-banner-container > .description{
-				width: 60%;
-			}
-
-			.main-banner-container > .description > .text-1 {
-				font-size: 40px;
-				font-weight: bold;
-				color: #222;
-				word-break: keep-all;
-			}
-			.main-banner-container > .description > .text-2 {
-				font-size: 32px;
-				font-weight: bold;
-				color: #222;
-				margin-top: 2px;
-				word-break: keep-all;
-			}
-			.main-banner-container > .description > .text-3 {
-				font-size: 17px;
-				color: #666;
-				margin-top: 18px;
-			}	
-			.main-banner-container > .description > .tools {
-				margin-top: 40px;
-			}	
-			.main-banner-container > .btn.btn-secondary {
-				background: #f85272;
-				color: #fff;
-				font-size: 13px;
-				padding: 8px 16px;
-				border-radius: 17px;
-				font-weight: bold;
-			}	
-			.main-banner-container > .btn.btn-secondary.hero-upload {
-				padding: 8px 24px;
-			}
-			.btn.btn-secondary-show {
-				background-color: transparent;
-				color: #f85272;
-				text-decoration: none;
-			}
-			.btn.btn-secondary.hero-upload {
-				padding: 8px 24px;
-			}
-			.btn.btn-secondary {
-				background: #f85272;
-				color: #fff;
-				font-size: 13px;
-				/* padding: 8px 16px; */
-				border-radius: 17px;
-				font-weight: bold;
-				text-decoration: none;
-			}
-			a.btn.btn-secondary-show {
-				position: absolute;
-			}
-			/* 카테고리 바 */
-			.filter-mobile{
-				display: flex;
-				margin: 0 auto;
-			}
-			select#category, select#from {
-				width: 30%;
-				height: 30px;
-			}
-			@media screen and (min-width: 546px ) {
-				select#category, select#from {
-					width: 40%;
-				}
-			}
-			@media screen and (min-width: 1660px ) {
-				select#category, select#from {
-					width: 40%;
-					line-height: initial;
-				}
-			}
-			
-/*         */
-			.inner-image {
-				width: 40%;
-			}
-			.posts {
-				padding: 0 30px;
-			}
-			.posts > article .image img {
-				width: 100%;
-				border-radius: 6px;
-			}
-			a.image:hover img {
-				border-radius: 6px;
-			}
-
-			/* post info 정보 */
-			.info {
-			/* padding: 18px 13px; */
-				position: relative;
-			}
-			/* post title */
-			.title {
-				color: #222;
-				padding: 0;
-				/* position: absolute; */
-				width: 100%;
-				font-size: 14px;
-				font-weight: bold;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				white-space: nowrap;
-				word-wrap: normal !important;
-				display: block;
-			}
-			/* profile icon 아이콘은 원형으로 */
-			img.icon-round {
-				border-radius: 50%;
-			}
-			
-			/* post bottom */
-			
-			.bottom {
-				width: 100%;
-				display: flex;
-				flex-direction: row;
-				padding: 5px 0;
-				margin-top: 10px;
-				position: relative;
-				min-width: 0;
-			}	
-			.bottom > div {
-				flex: 1;
-				display: flex;
-			}
-			.username img {
-				width: 24px;
-				height: 24px;
-			}
-			.bottom .social-info {
-				width: 100%;
-				display: flex;
-				flex-direction: row;
-				justify-content: flex-end;
-				color: #777777;
-			}
-			.bottom .social-info .hit-cnt img {
-				width: 16px !important;
-				height: 11px;
-			}
-			.bottom .social-info .like-cnt {
-				margin-left: 16px;
-			}
-			.bottom .social-info .like-cnt img {
-				width: 14px !important;
-				height: 13px;
-			}
-				@media screen and (min-width: 1px) {
-					.view-icon, .love-icon, .comment-icon {
-						vertical-align: middle;
-						margin-right: 0px;
-					}
-				}
-				
-			/* 포스트 카테고리 바 post category bar */
-			.original-main.project .filters-container {
-				border-bottom: solid 1px #f1f1f1;
-				border-top: solid 1px #f1f1f1;
-				display: flex;
-			}
-			.original-main .filters-container {
-				margin: 48px 0px 20px 0px;
-			}
-			.filters-container .container {
-					width: 100%;
-					max-width: 1500px;
-			}
-			.filters-container .container {
-				width: 100%;
-				max-width: 1500px;
-			}
-			.filters-container .profile-filters {
-				/* text-align: center; */
-				display: flex;
-				justify-content: space-between;
-			}
-			.project .btn.btn-soft-pink.btn-none-background {
-				font-size: 1em;
-				letter-spacing: -0.25px;
-				font-weight: normal;
-				color: #777777;
-				font-family: 'NIXGONL-Vb';
-				background-color: #ffffff;
-				padding: 0 !important;
-				/* width: unset !important; */
-				margin-right: 32px;
-				border: 0px;
-				width: 5em;
-			}
-			.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
-				font-weight: bold;
-				color: #f85272;
-				background-color: #ffffff;
-				position: relative;
-				cursor: pointer;
-				width: 5em;
-			}
-			@media screen and (max-width: 435px){
-				.project .btn.btn-soft-pink.btn-none-background {
-					width: auto;
-				}
-				.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
-					width: auto;
-				}
-			}
-			.project .filter-side-divider {
-				height: 14px;
-				background-color: #e1e1e1;
-				width: 1px;
-				display: inline-block;
-				position: relative;
-				top: 3px;
-			}
-			
-			.project .filter .bootstrap-select .btn-default {
-				color: #222222;
-				letter-spacing: -0.25px;
-				font-size: 0.929em;
-				font-family: 'NIXGONL-Vb';
-			}
-			.project .filter .bootstrap-select .btn-default .caret {
-				/* border-top: 4px solid #222222; */
-				/* border-bottom: none; */
-
-				/* 왜 안떠 ,,, */
-				background: url("/resources/images/down-arrow.png"); 
-				
-				border: none;
-				top: 30%;
-				width: 14px;
-				height: 14px;
-			}
-			.project .dropdown-menu.open {
-				border: 1px solid #e1e1e1;
-				border-radius: 4px;
-				box-shadow: none;
-				z-index: 99;
-			}
-			@media screen and (max-width: 447px) {
-				.filter-mobile{
-					display: flex;
-				}
-			}
-			.bootstrap-select.btn-group .dropdown-menu.inner {
-				position: static;
-				border: 0;
-				padding: 0;
-				margin: 0;
-				-webkit-border-radius: 0;
-				-moz-border-radius: 0;
-				border-radius: 0;
-				-webkit-box-shadow: none;
-				-moz-box-shadow: none;
-				box-shadow: none;
-			}
-			.dropdown-menu li {
-				text-align: left;
-				font-family: 'NIXGONL-Vb';
-				letter-spacing: -0.25px;
-				font-size: 0.857em;
-			}
-			
-			.imgDiv {
-				width: 100%;
-				height: 550px;
-				margin: 0 auto;
-			}
-			
-			.reviewImg {
-				width: 100%;
-				height: 100%;
-				object-fit: cover; 
-			}
-			
-			@media screen and (max-width: 1980px){
-				.imgDiv {
-					height: 340px; 
-				}
-			}
-			@media screen and (max-width: 980px){
-				.imgDiv {
-					width: 80%;
-					height: 300px; 
-				}
-				
-				.info {
-					width: 80%;
-					margin: 0 auto;
-				}
-				
-				.main-banner-container {
-					margin-bottom: 5%;
-				}
-			}
-
-			
-
-			
-		</style>
 		
 	</head>
 	
@@ -389,6 +58,7 @@
 									<div class="btn btn-sort btn-soft-pink btn-none-background active" >캠퍼 픽</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
+								</div>
 		
 									<!-- <span class="filter-side-divider"></span> -->
 		
@@ -410,7 +80,6 @@
 										<option value="F7">카라반 캠핑장</option>
 									</select>
 									
-								</div>
 							</div>
 		
 						</div>
@@ -431,177 +100,92 @@
 		<!-- Posts -->
 			<section class="main">
 				<div class="posts">
+					<c:forEach var="review" items="${list}" begin="1" step="1">
 					<article>
-						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
+						<div class="imgDiv"><a href="/review/reviewView?bno=${review.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image">
+						<img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
-								<div class="title">test</div>
+								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
 								<div class="bottom">
 									<div class="username">
 										<span class="go-profile-area" data-username="MoonSH">
 											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/icon.png">
-											TangTang
+											${review.writer}
 										</span>
 									</div>
 									
 									<div class="social-info">
 										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 145.1k
+											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> ${review.readCnt}k
 										</div>
 										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 2.1k
+											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> ${review.likeCnt}k
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</article>
-					<article>
-						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg06.jpg" alt="" /></a></div>
-						
-						<div class="info">
-							<div class="info-detail">
-								<div class="title">test</div>
-								<div class="bottom">
-									<div class="username">
-										<span class="go-profile-area" data-username="MoonSH">
-											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/profile-icon.png">
-											TangTang
-										</span>
-									</div>
-									
-									<div class="social-info">
-										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 145.1k
-										</div>
-										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 2.1k
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article>
-						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg07.jpg" alt="" /></a></div>
-						
-						<div class="info">
-							<div class="info-detail">
-								<div class="title">test</div>
-								<div class="bottom">
-									<div class="username">
-										<span class="go-profile-area" data-username="MoonSH">
-											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/profile-icon.png">
-											TangTang
-										</span>
-									</div>
-									
-									<div class="social-info">
-										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 145.1k
-										</div>
-										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 2.1k
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article>
-						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg08.jpg" alt="" /></a></div>
-						
-						<div class="info">
-							<div class="info-detail">
-								<div class="title">test</div>
-								<div class="bottom">
-									<div class="username">
-										<span class="go-profile-area" data-username="MoonSH">
-											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/profile-icon.png">
-											TangTang
-										</span>
-									</div>
-									
-									<div class="social-info">
-										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 145.1k
-										</div>
-										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 2.1k
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article>
-						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg09.jpg" alt="" /></a></div>
-						
-						<div class="info">
-							<div class="info-detail">
-								<div class="title">test</div>
-								<div class="bottom">
-									<div class="username">
-										<span class="go-profile-area" data-username="MoonSH">
-											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/profile-icon.png">
-											TangTang
-										</span>
-									</div>
-									
-									<div class="social-info">
-										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 145.1k
-										</div>
-										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 2.1k
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-					<article>
-						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg10.jpg" alt="" /></a></div>
-						
-						<div class="info">
-							<div class="info-detail">
-								<div class="title">test</div>
-								<div class="bottom">
-									<div class="username">
-										<span class="go-profile-area" data-username="MoonSH">
-											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/profile-icon.png">
-											TangTang
-										</span>
-									</div>
-									
-									<div class="social-info">
-										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 145.1k
-										</div>
-										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 2.1k
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
+					</c:forEach>
+					
 				</div>
-				<footer class="major">
-					<ul class="pagination">
-						<!--<li><a href="#" class="previous">Prev</a></li>-->
-						<li><a href="#" class="page active">1</a></li>
-						<li><a href="#" class="page">2</a></li>
-						<li><a href="#" class="page">3</a></li>
-						<li><span class="extra">&hellip;</span></li>
-						<li><a href="#" class="page">19</a></li>
-						<li><a href="#" class="page">20</a></li>
-						<li><a href="#" class="next">Next</a></li>
-					</ul>
-				</footer>
+				<div class="big-width" style="text-align: center;">
+					<footer class="major">
+						<ul class="pagination" id="pagination_prev">
+							<c:if test="${pageMaker.prev}">
+								<li><a class="changePage" id="previous" href="${1}">&lt;&lt;First</a></li>
+								<li><a class="changePage" id="previous" href="${pageMaker.startPage - 1}">&lt;PREV</a></li>
+							</c:if>
+						</ul>
+						<ul class="pagination">
+							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+								<c:choose>
+									<c:when test="${num eq pageMaker.cri.pageNum}">
+										<li><a class="page active">${num}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a class="changePage" id="page" href="${num}">${num}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</ul>
+						<ul class="pagination" id="pagination_next">
+							<c:if test="${pageMaker.next}">
+								<li><a class="changePage" id="next" href="${pageMaker.endPage + 1}">NEXT</a></li>
+								<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END</a></li>
+							</c:if>
+						</ul>
+					</footer>
+				</div>
+	
+				<div class="small-width" style="text-align: center;">
+					<footer class="major">
+						<ul class="pagination" id="pagination_prev">
+							<c:if test="${pageMaker.cri.pageNum > 1}">
+								<li><a id="previous" class="changePage" href="${1}">First</a></li>
+								<li><a id="previous" class="changePage" href="${pageMaker.cri.pageNum - 1}">PREV</a></li>
+							</c:if>
+						</ul>
+						<ul class="pagination">
+							<li><a class="page active">${pageMaker.cri.pageNum}</a></li>
+						</ul>
+						<ul class="pagination" id="pagination_next">
+							<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
+								<li><a class="changePage" id="next" href="${pageMaker.cri.pageNum + 1}">NEXT</a></li>
+								<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END</a></li>
+							</c:if>
+						</ul>
+					</footer>
+				</div>
 			</section>
-				
+			<form id="actionForm" action="/review/reviewList">
+				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+				<input type="hidden" name="type" value="${pageMaker.cri.type}">
+				<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+			</form>
 				
 			 
 				
