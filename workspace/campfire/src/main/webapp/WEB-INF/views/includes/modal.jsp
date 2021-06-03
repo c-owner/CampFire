@@ -29,15 +29,15 @@
 									<label for="userPw" style="margin-top: 15px;">비밀번호</label>
 									<input type="password" name="userPw" id="userPw" placeholder="PASSWARD">
 									<div><a href="javascript:void(0);" id="goSignUpBtn" style="text-decoration: none;">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#" id="findIdPw" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
-									<ul class="actions">
-										<li>
-											<a><img id="kakaoImage" style="height: 46px;" src="/resources/images/kakaoLogin.png"></a>
+									<div class="row">
+										<div class="col-6 col-12-xsmall" style="padding:0;">
+											<a><img id="kakaoImage" style="height: 46px; width:100%;" src="/resources/images/kakaoLogin.png"></a>
 											<a><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
-										</li>
-										<li>
-											<a class="button primary" id="loginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
-										</li>
-									</ul>
+										</div>
+										<div class="col-6 col-12-xsmall" style="padding:0;">
+											<a class="button primary" id="loginBtn" style="width:100%; border-radius: 6px; height: 46px;">로그인</a>
+										</div>
+									</div>
 								</div>        
 							</div>
 						</form>
@@ -45,12 +45,12 @@
 		
 					<div class="modal findModal" style="display:none;">
 						<div class="head-pop">
-							<div style="width: 49%; display: inline-block;"><a href="javascript:void(0);" id="findIdBtn" style="text-decoration: none;">
-								<h2 style="color: #2388fa;">아이디 찾기</h2>
-							</a></div>
-							<div style="width: 49%; display: inline-block;"><a href="javascript:void(0);" id="findPwBtn" style="text-decoration: none;">
-								<h2>비밀번호 찾기</h2>
-							</a></div>
+							<div style="width: 49%; display: inline-block;"><h2 style="color: #2388fa;"><a href="javascript:void(0);" id="findIdBtn" style="text-decoration: none;">
+								아이디 찾기
+							</a></h2></div>
+							<div style="width: 49%; display: inline-block;"><h2><a href="javascript:void(0);" id="findPwBtn" style="text-decoration: none;">
+								비밀번호 찾기
+							</a></h2></div>
 						</div>
 						<hr style="margin: 25px;">
 						<!-- 아이디찾기 -->
