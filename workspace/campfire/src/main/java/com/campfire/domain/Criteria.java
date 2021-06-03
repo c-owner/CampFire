@@ -12,6 +12,7 @@ public class Criteria {
 	private int amount;
 	private String type;
 	private String keyword;
+	private String from;
 	
 	public Criteria() {
 		this(1, 12);
@@ -23,9 +24,14 @@ public class Criteria {
 	}
 	
 	//타입 배열로 만드는 메소드
-	public String[] getTypeList() {
+	public String[] getTypeArr() {
 		return type == null ? new String[] {} : type.split("");
 	}
+	public String[] getFromArr() {
+		return from == null ? new String[] {} : type.split("");
+	}
+	
+	
 	
 	public String getListLink() {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")

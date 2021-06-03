@@ -9,6 +9,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" href="/resources/assets/css/main.css" />
+	<link rel="stylesheet" href="/resources/assets/css/review.css" />
 	<link rel="stylesheet" href="/resources/assets/css/summernote-lite.css">
 	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
 </head>
@@ -26,6 +27,9 @@
 		font-size: 1.5rem;
 		color:#545454;
 		margin: 0;
+	}
+	button, .button {
+		box-shadow: none;
 	}
 </style>
 
@@ -46,7 +50,13 @@
 							<input type="text">
 							<label>캠핑장 주소</label>
 								<input type="text" name="" class="postcodify_postcode5" value="" placeholder="우편번호" style="width:30%; display:inline;" readonly />
-								<a class="button" id="postcodify_search_button">검색</a><br />
+								<div class="hidden-xs">
+									<div class="tools">
+										<div class="hidden-xs">
+											<a class="btn btn-secondary hero-upload" id="postcodify_search_button">검색</a>
+										</div>
+									</div>
+								</div>
 								<input type="text" name="" class="postcodify_address" value="" placeholder="주소" readonly/><br />
 								<input type="text" name="" class="postcodify_details" value="" placeholder="상세주소"/><br />
 								<input type="text" name="" class="postcodify_extra_info" value="" /><br />
@@ -55,6 +65,11 @@
 							<input type="text">
 							<label>내용</label>
 							<textarea class="summernote"></textarea>
+							<div class="tools">
+								<div class="hidden-xs">
+									<a class="btn btn-secondary hero-upload" href="javascript:reviewForm.submit();">등록하기</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</form>

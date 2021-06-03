@@ -36,7 +36,7 @@
 							<div class="text-3">모닥불은 모든 캠퍼들의 활동을 응원합니다.</div>
 							<div class="tools">
 								<div class="hidden-xs">
-									<a class="btn btn-secondary hero-upload" href="/review/reviewWrite">지금 업로드 해보기</a>
+									<a class="btn btn-secondary hero-upload" href="/review/reviewWrite${pageMaker.cri.getListLink()}">지금 업로드 해보기</a>
 									<!-- <a class="btn btn-secondary-show" href="#">보러가기</a> -->
 								</div>
 							</div>
@@ -50,12 +50,6 @@
 
 			<div class="project original-main hidden-sm hidden-xs" style="margin-top: 0px;">
 				<div class="filters-container">
-					<form id="actionForm" action="/review/reviewList">
-						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="type" value="${pageMaker.cri.type}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-					</form>
 					<form name="list" action="/review/reviewList" style="margin: 2rem 0;">
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
@@ -76,7 +70,7 @@
 										<option value="month3">최근 3달</option>
 									</select>
 		
-									<select class="categories" name="category" id="category" >
+									<select class="categories" name="type" id="category" >
 										<option selected="" value="">전체분야</option>
 										<option value="A7">유료 캠핑장</option>
 										<option value="B7">무료 캠핑장</option>
@@ -96,7 +90,7 @@
 							<input type="hidden" name="category2" value="recent">
 							<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
 							style="border-radius: initial; height:30px; width: 100%; ">
-							<a href="javascript:searchForm2.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a>
+							<a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a>
 						</form>
 					</div>
 				</div>
@@ -116,7 +110,7 @@
 								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
 								<div class="bottom">
 									<div class="username">
-										<span class="go-profile-area" data-username="MoonSH">
+										<span class="go-profile-area" data-username="">
 											<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/icon.png">
 											${review.writer}
 										</span>
@@ -141,8 +135,8 @@
 					<footer class="major">
 						<ul class="pagination" id="pagination_prev">
 							<c:if test="${pageMaker.prev}">
-								<li><a class="changePage" id="previous" href="${1}">&lt;&lt;First</a></li>
-								<li><a class="changePage" id="previous" href="${pageMaker.startPage - 1}">&lt;PREV</a></li>
+								<li><a class="changePage" id="previous" href="${1}">처음</a></li>
+								<li><a class="changePage" id="previous" href="${pageMaker.startPage - 1}">이전</a></li>
 							</c:if>
 						</ul>
 						<ul class="pagination">
@@ -159,8 +153,8 @@
 						</ul>
 						<ul class="pagination" id="pagination_next">
 							<c:if test="${pageMaker.next}">
-								<li><a class="changePage" id="next" href="${pageMaker.endPage + 1}">NEXT</a></li>
-								<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END</a></li>
+								<li><a class="changePage" id="next" href="${pageMaker.endPage + 1}">다음</a></li>
+								<li><a class="changePage" id="next" href="${pageMaker.realEnd}">끝</a></li>
 							</c:if>
 						</ul>
 					</footer>
@@ -170,8 +164,8 @@
 					<footer class="major">
 						<ul class="pagination" id="pagination_prev">
 							<c:if test="${pageMaker.cri.pageNum > 1}">
-								<li><a id="previous" class="changePage" href="${1}">First</a></li>
-								<li><a id="previous" class="changePage" href="${pageMaker.cri.pageNum - 1}">PREV</a></li>
+								<li><a id="previous" class="changePage" href="${1}">처음</a></li>
+								<li><a id="previous" class="changePage" href="${pageMaker.cri.pageNum - 1}">이전</a></li>
 							</c:if>
 						</ul>
 						<ul class="pagination">
@@ -179,12 +173,18 @@
 						</ul>
 						<ul class="pagination" id="pagination_next">
 							<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
-								<li><a class="changePage" id="next" href="${pageMaker.cri.pageNum + 1}">NEXT</a></li>
-								<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END</a></li>
+								<li><a class="changePage" id="next" href="${pageMaker.cri.pageNum + 1}">다음</a></li>
+								<li><a class="changePage" id="next" href="${pageMaker.realEnd}">끝</a></li>
 							</c:if>
 						</ul>
 					</footer>
 				</div>
+				<form id="actionForm" action="/review/reviewList">
+						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<input type="hidden" name="type" value="${pageMaker.cri.type}">
+						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+					</form>
 			</section>
 
 				
