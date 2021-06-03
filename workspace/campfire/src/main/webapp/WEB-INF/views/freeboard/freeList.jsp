@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
    <head>
-      <title>Board</title>
+      <title>자유게시판 | 모닥불🏕 </title>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
       <meta name="description" content="" />
