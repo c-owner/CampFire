@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.FreeBoardAttachMapper">
+	<select id="findByBno" resultType="com.campfire.domain.freeBoard.FreeBoardAttachVO">
+		SELECT UUID, UPLOADPATH, FILENAME, FILETYPE, BNO
+		FROM TBL_FREE_ATTACH
+		WHERE BNO = #{bno}
+	</select>
+	
+	<select id="getOldFiles" resultType="com.campfire.domain.freeBoard.FreeBoardAttachVO">
+		SELECT UUID, UPLOADPATH, FILENAME, FILETYPE, BNO
+		FROM TBL_FREE_ATTACH
+		WHERE UPLOADPATH = TO_CHAR(SYSDATE - 1, 'YYYY\MM\DD')
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO TBL_FREE_ATTACH(UUID, UPLOADPATH, FILENAME, FILETYPE, BNO)
+		VALUES(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM TBL_FREE_ATTACH WHERE UUID = #{uuid}
+	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM TBL_FREE_ATTACH WHERE BNO = #{bno}
+	</delete>
+</mapper>
