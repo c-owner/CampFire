@@ -18,11 +18,11 @@ public class ReviewMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ReviewBoardMapper mapper;
 	
-	@Test
-	public void testList() {
-		Criteria c = new Criteria(1, 10);
-		mapper.selectBoardList(c).forEach(log::info);
-	}
+//	@Test
+//	public void testList() {
+//		Criteria c = new Criteria(1, 10);
+//		mapper.selectBoardList(c).forEach(log::info);
+//	}
 	
 //	@Test
 //	public void testTotal() {
