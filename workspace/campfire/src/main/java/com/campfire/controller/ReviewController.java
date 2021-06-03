@@ -24,7 +24,9 @@ public class ReviewController {
 	private ReviewBoardService service; 
 	
 	@GetMapping("/reviewList")
-	public void list(Criteria cri, Model model) { 
+	public void reviewList(Criteria cri, Model model) { 
+		log.info("model........" + model);
+		log.info("cri .... : " + cri);
 		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}

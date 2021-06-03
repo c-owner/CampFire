@@ -69,6 +69,7 @@
   border-radius: 17px;
   font-weight: bold;
   text-decoration: none;
+  cursor: pointer;
 }
 a.btn.btn-secondary-show {
   position: absolute;
