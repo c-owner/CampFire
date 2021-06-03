@@ -12,9 +12,10 @@ public class Criteria {
 	private int amount;
 	private String type;
 	private String keyword;
+	private String from;
 	
 	public Criteria() {
-		this(1, 10);
+		this(1, 12);
 	}
 	
 	public Criteria(int pageNum, int amount) {
@@ -26,6 +27,8 @@ public class Criteria {
 	public String[] getTypeList() {
 		return type == null ? new String[] {} : type.split("");
 	}
+	
+	
 	
 	public String getListLink() {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")

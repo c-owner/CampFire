@@ -11,6 +11,10 @@ public class ReviewBoardVO {
 	private String writer;
 	private String regDate;
 	private String updateDate;
+	private String zipcode;
+	private String address;
+	private String addressDetail;
+	private String addressEtc;
 	
 	private int likeCnt;
 	private int readCnt;
