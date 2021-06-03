@@ -17,12 +17,70 @@
 	#footer {
 		font-family: 'NIXGONL-VB';
 	}
-	@media screen and (min-width: 1280px){
+	.footerTop {
+		width: 80%;
+		margin: 0 auto;
+		text-align: center;
+		padding: 0;
+	}
+	
+	.footerBottom {
+		margin: 0 auto;
+	}
+	
+	@media screen and (max-width: 1280px){
 		dl { 
 			padding: 1.5rem; 
 		}
+		
+		.nonfloat {
+			clear: both;
+		}
+		
+		.footerBottom {
+			padding-left: 10% !important;
+		}
+		
+		.iconDiv {
+			display: inline-block !important;
+		}
 	}
 	
+	@media screen and (max-width: 980px){
+		.address {
+			display: none !important;	
+		}
+		
+		.footerTop, .footerBottom {
+			width: 50% !important;
+			float: left;
+		}
+		
+		.bottomHead {
+			margin-top: 15%;
+		}
+	}
+
+	@media screen and (max-width: 550px){
+		.footerTop {
+			width: 60% !important;
+		}
+		.footerBottom {
+			padding-left: 0px !important;
+			width: 40% !important;
+		}
+	}	
+	
+	@media screen and (max-width: 494px){
+		.footerTop {
+			width: 100% !important;
+			float: none;
+		}
+		.footerBottom {
+			width: 187px !important;
+			float: none;
+		}
+	}
 </style>
 
 </head>
@@ -33,12 +91,12 @@
     <div class="wrapper style3">
         <div class="inner">
            
-            <div>
+            <div class="footerTop">
                 <header>
                     <h3> 🔥 모닥불</h3>
                 </header>
                 <div id="comm" class="maininfo">
-                    <div class="m-wrap">
+                    <div class="m-wrap iconDiv">
                         <!--community-->
 
                         <dl>
@@ -69,11 +127,11 @@
                         </dl>
 
 
-                        <dl>
+                        <dl class="nonfloat">
                             <dt class="sbj">
                                 <img src="/resources/images/community/bbsico_2.png" alt="" height="50"><br>
                                 캠핑리뷰
-                                <a href="/campfire/review" class="fr more" title="더 보기">
+                                <a href="/revew/reviewList" class="fr more" title="더 보기">
 									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
 									xml:space="preserve" width="16px" height="16px">
 									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
@@ -87,7 +145,7 @@
                             <dt class="sbj">
                                 <img src="/resources/images/community/bbsico_3.svg" alt="" height="50"><br>
                                 자유게시판
-                                <a href="/campfire/freetalk" class="fr more" title="더 보기">
+                                <a href="/free/freeList" class="fr more" title="더 보기">
 									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
 									xml:space="preserve" width="16px" height="16px">
 									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
@@ -101,8 +159,8 @@
             </div>
 
 
-            <div>
-                <header>
+            <div class="footerBottom">
+                <header class="bottomHead">
                     <h3></h3>
                 </header>
                 <a href="/">
@@ -117,7 +175,7 @@
                     </ul>
                     <ul>
                         <li><a href="#" class="icon solid fa-phone"><span>전화 (031) 211-0000</span></a></li>
-                        <li>
+                        <li class="address">
                             <div class="icon solid fa-map-marker-alt">
                                 <address>
                                     Pangyo-ro<br/>

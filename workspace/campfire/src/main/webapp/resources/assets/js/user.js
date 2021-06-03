@@ -8,7 +8,7 @@
 $("#loginBtn").on("click", function(e){
 	e.preventDefault();
 	var userId = $("#userId").val(); 
-	var userPw = $("#userPw").val();
+	var userPw = $("#userPw3").val();
 	if(userId == ""){
 		alert("아이디를 입력해 주십시오.");
 		$("#userId").focus();
@@ -16,7 +16,7 @@ $("#loginBtn").on("click", function(e){
 	}
 	if(userPw == ""){
 		alert("비밀번호를 입력해 주십시오.");
-		$("#userPw").focus();
+		$("#userPw3").focus();
 		return;
 	}
 	
@@ -30,7 +30,7 @@ $("#loginBtn").on("click", function(e){
 			if(result != ""){
 				alert( result + "님 환영합니다.");
 				$("#userId").val("");
-				$("#userPw").val("");
+				$("#userPw3").val("");
 				$('.modal-wrapper').removeClass("open");
 			}else {
 				alert("아이디 혹은 비밀번호를 다시 확인해 주십시오.");
