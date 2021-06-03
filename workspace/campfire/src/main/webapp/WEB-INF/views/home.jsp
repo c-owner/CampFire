@@ -110,10 +110,11 @@
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>
-									<li><a href="#">전체</a></li>
-									<li><a href="#">유/무료 캠핑장</a></li>
-									<li><a href="#">난이도 캠핑장</a></li>
-									<li><a href="#">글램핑/카라반</a></li>
+									<li><a href="/camp/search">전체</a></li>
+									<li><a href="/camp/pay">유료 캠핑장</a></li>
+									<li><a href="/camp/free">무료 캠핑장</a></li>
+									<li><a href="/camp/level">난이도 캠핑장</a></li>
+									<li><a href="/camp/glamping">글램핑/카라반</a></li>
 								</ul>
 							</li>
 							
@@ -122,11 +123,11 @@
 							<li>
 								<a href="#" class="dropdown">모닥불</a>
 								<ul>
-									<li><a href="#">자유게시판</a></li>
-									<li><a href="/campfire/review">캠핑 리뷰</a></li>
-									<li><a href="#">캠핑 팁</a></li>
-									<li><a href="#">캠핑 음식</a></li>
-									<li><a href="#">캠핑 가이드</a></li>
+									<li><a href="/free/freeList">자유게시판</a></li>
+									<li><a href="/review/reviewList">캠핑 리뷰</a></li>
+									<li><a href="/campfire/tip">캠핑 팁</a></li>
+									<li><a href="/campfire/food">캠핑 음식</a></li>
+									<li><a href="/campfire/guide">캠핑 가이드</a></li>
 								</ul>
 							</li>
 							<li class="smallMenu">
