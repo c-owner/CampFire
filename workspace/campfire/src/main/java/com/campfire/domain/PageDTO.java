@@ -1,5 +1,7 @@
 package com.campfire.domain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -10,6 +12,7 @@ public class PageDTO {
 	private int total;
 	private boolean prev, next;
 	private Criteria cri;
+	private List<ReviewReplyVO> reviewReplyList;
 	
 	public PageDTO(Criteria cri, int total) {
 		this.cri = cri;
@@ -25,5 +28,10 @@ public class PageDTO {
 		
 		this.prev = this.startPage > 1;
 		this.next = this.endPage < this.realEnd;
+	}
+	
+	public PageDTO(Criteria cri, int total, List<ReviewReplyVO> reviewReplyList) {
+		this(cri, total);
+		this.reviewReplyList = reviewReplyList;
 	}
 }
