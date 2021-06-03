@@ -2,6 +2,8 @@ package com.campfire.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.campfire.domain.Criteria;
 import com.campfire.domain.ReviewBoardVO;
 
@@ -12,5 +14,8 @@ public interface ReviewBoardMapper {
 	public void insertBoard(ReviewBoardVO board);
 	public int updateBoard(ReviewBoardVO board);
 	public int deleteBoard(Long bno);
+	public int updateReadCnt(Long bno);
+	public int updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
+	public int updateLikeCnt(@Param("bno") Long bno, @Param("amount") int amount);
 	
 }
