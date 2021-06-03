@@ -1,5 +1,7 @@
 package com.campfire.domain.freeBoard;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -12,4 +14,5 @@ public class FreeBoardVO {
 	private String updateDate;
 	private int likeCnt;
 	private int replyCnt;
+	private List<FreeBoardAttachVO> attachList;
 }
