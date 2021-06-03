@@ -10,6 +10,7 @@ import com.campfire.domain.ReviewBoardVO;
 public interface ReviewBoardMapper {
 	public List<ReviewBoardVO> selectBoardList(Criteria cri);
 	public int getTotal();
+	public int getTotal(Criteria cri);
 	public ReviewBoardVO selectBoard(Long bno);
 	public void insertBoard(ReviewBoardVO board);
 	public int updateBoard(ReviewBoardVO board);

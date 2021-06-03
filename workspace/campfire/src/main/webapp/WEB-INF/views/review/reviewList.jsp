@@ -50,7 +50,13 @@
 
 			<div class="project original-main hidden-sm hidden-xs" style="margin-top: 0px;">
 				<div class="filters-container">
-					<form name="list" method="get" style="margin: 2rem 0;">
+					<form id="actionForm" action="/review/reviewList">
+						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<input type="hidden" name="type" value="${pageMaker.cri.type}">
+						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+					</form>
+					<form name="list" action="/review/reviewList" style="margin: 2rem 0;">
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
 							<div class="filter profile-filters">
@@ -100,7 +106,7 @@
 		<!-- Posts -->
 			<section class="main">
 				<div class="posts">
-					<c:forEach var="review" items="${list}" begin="1" step="1">
+					<c:forEach var="review" items="${list}" begin="0" step="1">
 					<article>
 						<div class="imgDiv"><a href="/review/reviewView?bno=${review.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image">
 						<img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
@@ -180,12 +186,7 @@
 					</footer>
 				</div>
 			</section>
-			<form id="actionForm" action="/review/reviewList">
-				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-				<input type="hidden" name="type" value="${pageMaker.cri.type}">
-				<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-			</form>
+
 				
 			 
 				
