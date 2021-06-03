@@ -10,7 +10,23 @@
 
 
 
+---
 
+## 2021-06-03🏕 v0.01e-alpha
+
+- 프로젝트 폴더 및 페이지 이름&구조 변경 
+- Controller : ReviewController, FreeController 구현 및 매퍼 테스트 완료 
+- 테이블 수정 및 추가 구현 
+
+![ERD](https://github.com/Eight-Corner/CampFire/blob/master/ERD.png?raw=true)
+
+- 자유게시판, 등록, 뷰, 리스트 페이지 구현
+
+- 회원가입 / 로그인 디테일 수정 및 점검 
+
+- 헤더, 푸터 모든 링크 지정 
+
+  
 
 ---
 
