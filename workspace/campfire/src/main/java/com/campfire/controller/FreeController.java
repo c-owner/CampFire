@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /** 
- * 캠핑리뷰 컨트롤
+ * 자유게시판 컨트롤
  */
 @Controller
 @RequestMapping("/free/*")
