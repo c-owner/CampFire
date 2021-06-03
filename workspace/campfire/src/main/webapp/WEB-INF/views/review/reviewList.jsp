@@ -9,6 +9,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
+		<link rel="stylesheet" href="/resources/assets/css/search.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 		
 		
@@ -112,7 +113,7 @@
 			@media screen and (min-width: 1660px ) {
 				select#category, select#from {
 					width: 40%;
-					height: 50px;
+					line-height: initial;
 				}
 			}
 			
@@ -203,6 +204,7 @@
 			.original-main.project .filters-container {
 				border-bottom: solid 1px #f1f1f1;
 				border-top: solid 1px #f1f1f1;
+				display: flex;
 			}
 			.original-main .filters-container {
 				margin: 48px 0px 20px 0px;
@@ -257,14 +259,7 @@
 				position: relative;
 				top: 3px;
 			}
-			.project .filter-side-divider {
-				height: 14px;
-				background-color: #e1e1e1;
-				width: 1px;
-				display: inline-block;
-				position: relative;
-				top: 3px;
-			}			
+			
 			.project .filter .bootstrap-select .btn-default {
 				color: #222222;
 				letter-spacing: -0.25px;
@@ -372,8 +367,8 @@
 							<div class="text-3">모닥불은 모든 캠퍼들의 활동을 응원합니다.</div>
 							<div class="tools">
 								<div class="hidden-xs">
-									<a class="btn btn-secondary hero-upload" href="#">지금 업로드 해보기</a>
-									<a class="btn btn-secondary-show" href="#">보러가기</a>
+									<a class="btn btn-secondary hero-upload" href="/review/reviewWrite">지금 업로드 해보기</a>
+									<!-- <a class="btn btn-secondary-show" href="#">보러가기</a> -->
 								</div>
 							</div>
 						</div>
@@ -395,7 +390,7 @@
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
 		
-									<span class="filter-side-divider"></span>
+									<!-- <span class="filter-side-divider"></span> -->
 		
 									<select name="from" class="select " id="from">
 										<option value="all" selected="">전체기간</option>
@@ -419,8 +414,16 @@
 							</div>
 		
 						</div>
-		
 					</form>
+					<div class="navSearch" style="text-align: right;">
+						<form action="/review/reviewList?search=" name="searchForm" id="search" method="post">
+							<input type="hidden" name="category" value="지역별">
+							<input type="hidden" name="category2" value="recent">
+							<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
+							style="border-radius: initial; height:30px; width: 100%; ">
+							<a href="javascript:searchForm2.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a>
+						</form>
+					</div>
 				</div>
 			</div>
 			
