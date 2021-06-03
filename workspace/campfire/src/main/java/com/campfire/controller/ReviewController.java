@@ -23,7 +23,7 @@ public class ReviewController {
 	
 	private ReviewBoardService service; 
 	
-	@GetMapping("/reviewList")
+	@GetMapping(value = "/reviewList")
 	public void reviewList(Criteria cri, Model model) { 
 		log.info("model........" + model);
 		log.info("cri .... : " + cri);

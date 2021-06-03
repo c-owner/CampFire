@@ -4,7 +4,7 @@
 		<sql id="criteria">
 		<if test="type != null and keyword != null">
 			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
-				<foreach item="type" collection="typeArr">
+				<foreach item="type" collection="typeList">
 					<trim prefix="OR">
 						<choose>
 							<when test="type=='T'.toString()">
@@ -39,7 +39,12 @@
 	</select>
 	
 	<select id="getTotal" resultType="_int">
-		SELECT COUNT(BNO) FROM TBL_REVIEW_BOARD
+		SELECT COUNT(BNO) FROM TBL_REVIEW_BOARD 
+	<where>
+		<trim suffixOverrides="AND">
+	        <include refid="criteria"></include>
+		</trim>
+	</where>
 	</select>
 	
 	<insert id="insertBoard">
