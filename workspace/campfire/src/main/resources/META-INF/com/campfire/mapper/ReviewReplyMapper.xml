@@ -3,7 +3,7 @@
 <mapper namespace="com.campfire.mapper.ReviewReplyMapper">
 	<insert id="insertReply">
 		INSERT INTO TBL_REVIEW_REPLY (RNO, BNO, REPLY, REPLYER)
-		VALUES (SEQ_REVIEW_BOARD.NEXTVAL, #{bno}, #{reply}, #{replyer})
+		VALUES (SEQ_REVIEW_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
 	</insert>
 	
 	<select id="selectReply" resultType="com.campfire.domain.ReviewReplyVO">
