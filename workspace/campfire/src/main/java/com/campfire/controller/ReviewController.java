@@ -4,25 +4,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Handles requests for the application home page.
+/** 
+ * 캠핑리뷰 컨트롤
  */
 @Controller
 @RequestMapping("/campfire/*")
-public class CampfireController {
+public class ReviewController {
 	
 	@GetMapping(value = "/review")
 	public void review() {}
 	
-	@GetMapping(value = "/sample")
-	public void sample() {}
+	@GetMapping(value = "/writeReview")
+	public void writeReview() {}
 	
-	@GetMapping(value="/changePW")
-	public void changePW() {}
 	
 	@GetMapping(value="/reviewDetail")
 	public void reviewDetail() {}
 	
-	@GetMapping(value="/freeBoard")
-	public void freeBoard() {}
 }
