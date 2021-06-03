@@ -19,8 +19,11 @@
 	</select>
 	
 	<insert id="insertBoard">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT SEQ_REVIEW_BOARD.NEXTVAL FROM DUAL
+		</selectKey>
 		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER)
-		VALUES (SEQ_REVIEW_BOARD.NEXTVAL, #{title}, #{content}, #{writer})
+		VALUES (#{bno}, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.ReviewBoardVO">
@@ -39,4 +42,22 @@
 		DELETE TBL_REVIEW_BOARD
 		WHERE BNO = #{bno}
 	</delete>
+	
+	<update id="updateReadCnt">
+		UPDATE TBL_REVIEW_BOARD
+		SET READCNT = READCNT + 1
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateReplyCnt">
+		UPDATE TBL_REVIEW_BOARD
+		SET REPLYCNT = REPLYCNT + #{amount}
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateLikeCnt">
+		UPDATE TBL_REVIEW_BOARD
+		SET LIKECNT = LIKECNT + #{amount}
+		WHERE BNO = #{bno}
+	</update>
 </mapper>
