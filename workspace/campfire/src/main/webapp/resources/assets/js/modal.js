@@ -142,7 +142,7 @@ $(document).ready(function () {
 	
 	
 	
-	$("#memberPw").on("keyup", function(e){
+	$("#userPw").on("keyup", function(e){
 		var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 		if(reg.test($(this).val())){
 			checkPw1 = true;
@@ -150,22 +150,22 @@ $(document).ready(function () {
 			checkPw1 = false;
 		}
 		
-		if($("#memberPw").val() == $("#memberPw2").val()){
+		if($("#userPw").val() == $("#userPw2").val()){
 			checkPw2 = true;
-			$("#memberPw2").css("color", "green");
+			$("#userPw2").css("color", "green");
 		}else{
 			checkPw2 = false;
-			$("#memberPw2").css("color", "red");
+			$("#userPw2").css("color", "red");
 		}
 	});
 	
-	$("#memberPw2").on("keyup", function(e){
-		if($("#memberPw").val() == $("#memberPw2").val()){
+	$("#userPw2").on("keyup", function(e){
+		if($("#userPw").val() == $("#userPw2").val()){
 			checkPw2 = true;
-			$("#memberPw2").css("color", "green");
+			$("#userPw2").css("color", "green");
 		}else{
 			checkPw2 = false;
-			$("#memberPw2").css("color", "red");
+			$("#userPw2").css("color", "red");
 		}
 	});
 	
