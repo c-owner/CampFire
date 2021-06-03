@@ -2,6 +2,8 @@ package com.campfire.domain;
 
 import java.util.List;
 
+import com.campfire.domain.freeBoard.FreeBoardReplyVO;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,7 @@ public class PageDTO {
 	private boolean prev, next;
 	private Criteria cri;
 	private List<ReviewReplyVO> reviewReplyList;
+	private List<FreeBoardReplyVO> freeBoardReplyList;
 	
 	public PageDTO(Criteria cri, int total) {
 		this.cri = cri;
@@ -33,5 +36,10 @@ public class PageDTO {
 	public PageDTO(Criteria cri, int total, List<ReviewReplyVO> reviewReplyList) {
 		this(cri, total);
 		this.reviewReplyList = reviewReplyList;
+	}
+	
+	public PageDTO(Criteria cri, List<FreeBoardReplyVO> freeBoardReplyList ,int total) {
+		this(cri, total);
+		this.freeBoardReplyList = freeBoardReplyList;
 	}
 }

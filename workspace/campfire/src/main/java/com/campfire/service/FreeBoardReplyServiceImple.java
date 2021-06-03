@@ -22,7 +22,7 @@ public class FreeBoardReplyServiceImple implements FreeBoardReplyService{
 	
 	@Override
 	public PageDTO getList(Criteria cri, Long bno) {
-		return new PageDTO(cri, r_mapper.getTotal(bno), r_mapper.getListWidhPaging(cri, bno));
+		return new PageDTO(cri, r_mapper.getListWidhPaging(cri, bno), r_mapper.getTotal(bno));
 	}
 
 	@Transactional
