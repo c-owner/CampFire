@@ -2,6 +2,7 @@ package com.campfire.mapper;
 
 import java.util.List;
 
+import com.campfire.domain.Criteria;
 import com.campfire.domain.ReviewBoardVO;
 
 public interface ReviewBoardMapper {
