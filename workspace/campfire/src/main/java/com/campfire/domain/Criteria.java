@@ -24,11 +24,8 @@ public class Criteria {
 	}
 	
 	//타입 배열로 만드는 메소드
-	public String[] getTypeArr() {
+	public String[] getTypeList() {
 		return type == null ? new String[] {} : type.split("");
-	}
-	public String[] getFromArr() {
-		return from == null ? new String[] {} : type.split("");
 	}
 	
 	
