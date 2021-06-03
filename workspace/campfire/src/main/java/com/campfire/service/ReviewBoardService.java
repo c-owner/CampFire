@@ -12,4 +12,5 @@ public interface ReviewBoardService {
 	public boolean remove(Long bno);
 	public List<ReviewBoardVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
+	public int getTotal();
 }

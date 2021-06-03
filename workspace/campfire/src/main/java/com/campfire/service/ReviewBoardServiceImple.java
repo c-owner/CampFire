@@ -43,8 +43,12 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	}
 
 	@Override
-	public int getTotal(Criteria cri) {
+	public int getTotal() {
 		return mapper.getTotal();
+	}
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotal(cri);
 	}
 
 }
