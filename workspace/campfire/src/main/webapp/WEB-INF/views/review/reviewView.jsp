@@ -99,6 +99,19 @@
 						</li>
 					</ul>
 				</div>
+				<div>
+					<ul class="pagination">
+						<!-- <li><a class="changePage">이전</a></li> -->
+						<li><a class="page active">1</a></li>
+						<li><a class="changePage">2</a></li>
+						<li><a class="changePage">3</a></li>
+						<li><a class="changePage">4</a></li>
+						<li><a class="changePage">5</a></li>
+						<li><a class="changePage">6</a></li>
+						<li><a class="changePage">7</a></li>
+						<li><a class="changePage">다음</a></li>
+					</ul>
+				</div>
 			</div>
 		</section>
 </div>
