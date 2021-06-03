@@ -5608,7 +5608,6 @@ body.is-navPanel-visible #navPanel {
 #footer .copyright {
     color: #545454;
     text-align: center;
-    margin: 5rem auto 2.5rem auto;
 }
 
 @media screen and (max-width: 1680px) {
