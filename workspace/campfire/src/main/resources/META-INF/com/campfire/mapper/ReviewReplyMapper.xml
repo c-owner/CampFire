@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.ReviewReplyMapper">
+	<insert id="insertReply">
+		INSERT INTO TBL_REVIEW_REPLY (RNO, BNO, REPLY, REPLYER)
+		VALUES (SEQ_REVIEW_BOARD.NEXTVAL, #{bno}, #{reply}, #{replyer})
+	</insert>
+	
+	<select id="selectReply" resultType="com.campfire.domain.ReviewReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+		FROM TBL_REVIEW_REPLY
+		WHERE RNO = #{rno}
+	</select>
+	
+	<select id="selectReplyList" resultType="com.campfire.domain.ReviewReplyVO">
+		<![CDATA[
+			SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+			FROM (
+				SELECT /*+ INDEX_DESC(TBL_REVIEW_REPLY PK_REVIEW_REPLY */
+				ROWNUM rn, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+				FROM TBL_REVIEW_REPLY
+				WHERE BNO = #{bno} AND ROWNUM <= #{cri.pageNum} * ${cri.amount}
+			)
+			WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+	
+	<update id="updateReply">
+		UPDATE TBL_REVIEW_REPLY
+		SET REPLY = #{reply}, UPDATEDATE = SYSDATE
+		WHERE RNO = #{rno}
+	</update>
+	
+	<delete id="deleteReply">
+		DELETE TBL_REVIEW_REPLY
+		WHERE RNO = #{rno}
+	</delete>
+	
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(RNO) FROM TBL_REVIEW_REPLY
+		WHERE BNO = #{bno}
+	</select>
+</mapper>

@@ -22,8 +22,8 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			SELECT SEQ_REVIEW_BOARD.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER)
-		VALUES (#{bno}, #{title}, #{content}, #{writer})
+		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC)
+		VALUES (#{bno}, #{title}, #{content}, #{writer}, ${zipcode}, ${address}, ${addressDetail}, ${addressEtc})
 	</insert>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.ReviewBoardVO">
