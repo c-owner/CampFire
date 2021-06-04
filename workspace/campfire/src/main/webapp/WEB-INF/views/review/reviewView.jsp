@@ -58,7 +58,7 @@
 									<i style="font-size: 35px;" class="far fa-heart"></i>
 								</c:otherwise>
 							</c:choose>
-							${review.likeCnt}
+							<span id="likeCount">${review.likeCnt}</span>
 							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
@@ -145,13 +145,13 @@
 				}				
 				var heart = $(this).find(".fa-heart");
 				if(heart.hasClass("far")){ //하트아닐때
-					console.log("하트아니다 -> 하트로!");
-					
 					$.ajax({
 						type: "get",
 						url: contextPath + "/review/plusLike/"+bno+"/"+sessionId,
 						contentType:"application/text; charset=utf-8",
 						success: function(result){
+							getCount(bno);
+							
 							heart.toggleClass("far");
 							heart.toggleClass("fas");
 						},
@@ -161,15 +161,13 @@
 							console.log(c);
 						}
 					});
-					
-					
 				}else if(heart.hasClass("fas")){ //하트일때
-					console.log("하트다 -> 하트없애!");
 					$.ajax({
 						type: "get",
 						url: contextPath + "/review/minusLike/"+bno+"/"+sessionId,
 						contentType:"application/text; charset=utf-8",
 						success: function(result){
+							$("#likeCount").html(getCount(bno))
 							heart.toggleClass("far");
 							heart.toggleClass("fas");
 						},
@@ -179,9 +177,23 @@
 							console.log(c);
 						}
 					});
-					
 				}
 			});
+			function getCount(bno){
+				$.ajax({
+					type: "get",
+					url: contextPath + "/review/getLikeCnt/"+bno,
+					contentType:"application/text; charset=utf-8",
+					success: function(result){
+						$("#likeCount").text(result);
+					},
+					error: function(a, b, c){
+						console.log(a);
+						console.log(b);
+						console.log(c);
+					}
+				});
+			}
 		});
 	</script>
 </html>

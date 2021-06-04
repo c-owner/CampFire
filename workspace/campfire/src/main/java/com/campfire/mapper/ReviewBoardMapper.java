@@ -23,6 +23,6 @@ public interface ReviewBoardMapper {
 	public int deleteLike(@Param("bno") Long bno, @Param("userId") String userId);
 	public int minusLikeCnt(Long bno);
 	public int plusLikeCnt(Long bno);
-	
+	public int getLikeCnt(Long bno);
 	
 }

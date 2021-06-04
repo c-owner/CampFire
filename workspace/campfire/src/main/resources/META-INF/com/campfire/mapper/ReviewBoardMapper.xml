@@ -117,4 +117,8 @@
 		SET LIKECNT = LIKECNT - 1 
 		WHERE BNO = #{bno}
 	</update>
+	
+	<select id="getLikeCnt" resultType="_int">
+		SELECT LIKECNT FROM TBL_REVIEW_BOARD WHERE BNO = #{bno}
+	</select>
 </mapper>

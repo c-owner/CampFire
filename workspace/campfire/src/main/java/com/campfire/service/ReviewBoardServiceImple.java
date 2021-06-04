@@ -10,9 +10,11 @@ import com.campfire.domain.ReviewBoardVO;
 import com.campfire.mapper.ReviewBoardMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
 @AllArgsConstructor
+@Log4j
 public class ReviewBoardServiceImple implements ReviewBoardService {
 
 	private ReviewBoardMapper mapper;
@@ -72,6 +74,12 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int getLikeCnt(Long bno) {
+		log.info("service = " + bno);
+		return mapper.getLikeCnt(bno);
 	}
 	
 

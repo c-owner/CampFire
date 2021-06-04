@@ -16,4 +16,5 @@ public interface ReviewBoardService {
 	public boolean insertLike(Long bno, String userId);
 	public boolean deleteLike(Long bno, String userId);
 	public boolean checkLike(Long bno, String userId);
+	public int getLikeCnt(Long bno);
 }

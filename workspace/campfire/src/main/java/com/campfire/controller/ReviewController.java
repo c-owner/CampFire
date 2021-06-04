@@ -78,5 +78,13 @@ public class ReviewController {
 			new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@GetMapping(value="/getLikeCnt/{bno}", produces = MediaType.TEXT_PLAIN_VALUE)
+	@ResponseBody
+	public ResponseEntity<String> getLikeCnt(@PathVariable("bno") Long bno){
+		log.info("getLikeCnt....." + bno);
+		log.info("getLikeCntResult....." + service.getLikeCnt(bno));
+		return new ResponseEntity<String>(""+service.getLikeCnt(bno), HttpStatus.OK);
+	}
+	
 	
 }
