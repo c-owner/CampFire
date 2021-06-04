@@ -56,7 +56,7 @@
 	</insert>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT
 		FROM TBL_REVIEW_BOARD
 		WHERE BNO = #{bno}
 	</select>
@@ -89,4 +89,15 @@
 		SET LIKECNT = LIKECNT + #{amount}
 		WHERE BNO = #{bno}
 	</update>
+	
+	<insert id="insertLike">
+		INSERT INTO TBL_REVIEW_LIKE (BNO, USERID) 
+		VALUES (#{bno}, #{userId})
+	</insert>
+	
+	<select id="checkLike" resultType="_int">
+		SELECT COUNT(BNO) 
+		FROM TBL_REVIEW_LIKE 
+		WHERE BNO = #{bno} AND USERID = #{userId} 
+	</select>
 </mapper>

@@ -18,5 +18,6 @@ public interface ReviewBoardMapper {
 	public int updateReadCnt(Long bno);
 	public int updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
 	public int updateLikeCnt(@Param("bno") Long bno, @Param("amount") int amount);
-	
+	public int insertLike(@Param("bno") Long bno, @Param("userId") String userId);
+	public int checkLike(@Param("bno") Long bno, @Param("userId") String userId);
 }
