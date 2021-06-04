@@ -22,17 +22,24 @@
 				</header>
 			</div>
 			<div class="row" style="display:block;">
-				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">리뷰 상세보기</h2></div>
+				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">${review.title}</h2></div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
 					<div class="header">
-						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">
+						<%-- <h3 style="font-weight: bold; text-align: left; margin: 0 0;">
 							${review.title}
-						</h3>
-						<div style="position: absolute;">
-							<span>작성자 : ${review.writer}</span>
-						</div>
-						<div style="text-align: right;">
-							<span>조회수 : ${review.readCnt}</span>
+						</h3> --%>
+						<div class="row">
+							<div class="col-6" style="text-align: left;">
+								<h3>작성자 : ${review.writer}</h3>
+							</div>
+							<div class="col-6" style="text-align:right;">
+								<div class="row">
+									<span style="margin-left: auto;">작성일 : ${review.updateDate}</span>
+								</div>
+								<div class="row">
+									<span style="margin-left: auto;">조회수 : ${review.readCnt}</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div style="margin-bottom: 10px;">
