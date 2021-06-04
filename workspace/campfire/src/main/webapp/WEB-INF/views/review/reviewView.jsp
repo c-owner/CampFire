@@ -49,8 +49,17 @@
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 					<div class="row">
 						<div class="col-3" style="text-align:left; text-decoration: none;">
-							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>
-							${review.likeCnt}</a>
+							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;">
+							<c:choose>
+								<c:when test="${userLike == true}">
+									<i style="font-size: 35px;" class="fas fa-heart"></i>
+								</c:when>
+								<c:otherwise>
+									<i style="font-size: 35px;" class="far fa-heart"></i>
+								</c:otherwise>
+							</c:choose>
+							${review.likeCnt}
+							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
 							<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>

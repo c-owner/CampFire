@@ -1,5 +1,8 @@
 package com.campfire.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,9 +42,16 @@ public class ReviewController {
 	
 	
 	@GetMapping(value="/reviewView")
-	public void reviewView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+	public void reviewView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest req, Model model) {
 		log.info("reviewView....." + bno);
 		log.info("reviewView....." + cri);
+		HttpSession session = req.getSession();
+		String userId = (String)session.getAttribute("sessionId");
+		if(userId == null) {
+			model.addAttribute("userLike", false);
+		}else {
+			model.addAttribute("userLike", service.checkLike(bno, userId));
+		}
 		model.addAttribute("review", service.view(bno));
 	}
 	
