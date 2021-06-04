@@ -47,9 +47,16 @@
          .search{width: 18%;}
          
          @media (max-width: 918px){
-            .writer {display:none;}
+         	/* h1{
+         		font-size: 1.5rem;
+			    margin-left: 10%;
+         	} */
+         	.table-wrapper {
+			    width: 100%;
+			}
+            .bno {display:none;}
             .regDate {display:none;}
-            .updateDate {display:none;}
+            .readCnt {display:none;}
             .big-width{display:none;}
             .small-width{display:block;}
 			select{width: 100%;}
@@ -164,8 +171,8 @@
                                                 <option value="TW" ${pageMaker.cri.type == 'TW' ? 'selected' : ''}>제목 또는 작성자</option>
                                                 <option value="TCW" ${pageMaker.cri.type == 'TCW' ? 'selected' : ''}>전체</option>
                                              </select>
-                                             <input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
-                                             <a href="javascript:void(0)" class="search button primary icon solid" style="text-decoration: none;">검색</a>
+                                             <input id="keyword" type="text" name="keyword" style="margin-top: 1%;" value="${pageMaker.cri.keyword}">
+                                             <a href="javascript:void(0)" class="search button primary icon solid" style="text-decoration: none; margin-top: 1%;">검색</a>
                                           </div>
                                        </div>
                                     </div>

@@ -32,8 +32,13 @@
 				<!-- Nav -->
 				<nav class="smallNav">
 					<ul>
+						<c:if test="${sessionId eq null}">
 						<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
 						<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+						</c:if>	
+						<c:if test="${sessionId ne null}">
+						<li><a href="/logout" class="logout">로그아웃</a></li>
+						</c:if>
 						<li><a href="/elements">고객센터</a></li>
 					</ul>
 				</nav>
@@ -96,8 +101,8 @@
 									<div><a href="javascript:void(0);" id="goSignUpBtn" style="text-decoration: none;">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#" id="findIdPw" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
 									<ul class="actions">
 										<li>
-											<a><img id="kakaoImage" style="height: 46px;" src="/resources/images/kakaoLogin.png"></a>
-											<a><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
+											<a href="https://kauth.kakao.com/oauth/authorize?client_id=419eaf834a5ea45f350a4ab9e5406ab1&redirect_uri=http://localhost/login&response_type=code"><img id="kakaoImage" style="height: 46px; width:100%;" src="/resources/images/kakaoLogin.png"></a>
+											<a href="https://kauth.kakao.com/oauth/authorize?client_id=419eaf834a5ea45f350a4ab9e5406ab1&redirect_uri=http://localhost/login&response_type=code"><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
 											<%-- <c:if test="${sessionId ne null}">
 												 <h1>로그인 성공입니다, ${sessionId}</h1>
         										 <input type="button" value="로그아웃" onclick="location.href='/logout'">
@@ -225,6 +230,7 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <script src="/resources/assets/js/modal.js"></script>
+<script src="/resources/assets/js/user.js"></script>
 <script>
 	var pageContext = "${pageContext.request.contextPath}";
 	var sessionId = "${sessionId}";
