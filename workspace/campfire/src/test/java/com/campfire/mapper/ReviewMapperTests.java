@@ -1,12 +1,9 @@
 package com.campfire.mapper;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.campfire.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -17,6 +14,13 @@ import lombok.extern.log4j.Log4j;
 public class ReviewMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private ReviewBoardMapper mapper;
+	
+//	@Test
+//	public void viewTests() {
+//		mapper.updateReadCnt(404l);
+//		
+//		mapper.selectBoard(404l);
+//	}
 	
 //	@Test
 //	public void testList() {
