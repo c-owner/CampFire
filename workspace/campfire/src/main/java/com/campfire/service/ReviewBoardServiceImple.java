@@ -51,4 +51,15 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		return mapper.getTotal(cri);
 	}
 
+	@Override
+	public boolean insertLike(Long bno, String userId) {
+		return mapper.insertLike(bno, userId) == 1;
+	}
+
+	@Override
+	public boolean checkLike(Long bno, String userId) {
+		return mapper.checkLike(bno, userId) != 0;
+	}
+	
+
 }

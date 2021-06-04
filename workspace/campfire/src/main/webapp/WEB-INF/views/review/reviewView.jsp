@@ -22,29 +22,44 @@
 				</header>
 			</div>
 			<div class="row" style="display:block;">
-				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">리뷰 상세보기</h2></div>
+				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">${review.title}</h2></div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
 					<div class="header">
-						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">
-							테스트 제목입니다.
-						</h3>
-						<div style="position: absolute;">
-							<span>작성자 : ㅇㅇㅇ</span>
-						</div>
-						<div style="text-align: right;">
-							<span>조회수 : ㅇㅇㅇ</span>
+						<%-- <h3 style="font-weight: bold; text-align: left; margin: 0 0;">
+							${review.title}
+						</h3> --%>
+						<div class="row">
+							<div class="col-6" style="text-align: left;">
+								<h3>작성자 : ${review.writer}</h3>
+							</div>
+							<div class="col-6" style="text-align:right;">
+								<div class="row">
+									<span style="margin-left: auto;">작성일 : ${review.updateDate}</span>
+								</div>
+								<div class="row">
+									<span style="margin-left: auto;">조회수 : ${review.readCnt}</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div style="margin-bottom: 10px;">
-						<textarea rows="12" cols="">테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.
-						테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.
-						테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.</textarea>
+						<textarea rows="12" cols="" readonly>${review.content}</textarea>
 					</div>
 				</div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 					<div class="row">
 						<div class="col-3" style="text-align:left; text-decoration: none;">
-							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>123개</a>
+							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;">
+							<c:choose>
+								<c:when test="${userLike == true}">
+									<i style="font-size: 35px;" class="fas fa-heart"></i>
+								</c:when>
+								<c:otherwise>
+									<i style="font-size: 35px;" class="far fa-heart"></i>
+								</c:otherwise>
+							</c:choose>
+							${review.likeCnt}
+							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
 							<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>
