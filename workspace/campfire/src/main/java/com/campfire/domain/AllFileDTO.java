@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 
+import lombok.Data;
+
+@Data
 public class AllFileDTO {
 	List<FreeBoardAttachVO> f_succeedList;
 	List<FreeBoardAttachVO> f_failureList;
