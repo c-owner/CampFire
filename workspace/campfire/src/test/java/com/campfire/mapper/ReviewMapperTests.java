@@ -62,4 +62,14 @@ public class ReviewMapperTests {
 //	public void testReplyPlus() {
 //		mapper.updateReplyCnt(30L, 1);
 //	}
+	
+//	@Test
+//	public void testInsertLike() {
+//		log.info(mapper.insertLike(405L, "rhkd1769"));
+//	}
+	
+	@Test
+	public void testLikeCount() {
+		log.info(mapper.checkLike(405L, "rhkd1769"));
+	}
 }
