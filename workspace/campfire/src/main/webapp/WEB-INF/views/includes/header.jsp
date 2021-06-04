@@ -98,6 +98,10 @@
 										<li>
 											<a><img id="kakaoImage" style="height: 46px;" src="/resources/images/kakaoLogin.png"></a>
 											<a><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
+											<%-- <c:if test="${sessionId ne null}">
+												 <h1>로그인 성공입니다, ${sessionId}</h1>
+        										 <input type="button" value="로그아웃" onclick="location.href='/logout'">
+											</c:if> --%>
 										</li>
 										<li>
 											<a class="button primary" id="loginBtn" style="border-radius: 6px; height: 46px;">로그인</a>
@@ -221,4 +225,8 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <script src="/resources/assets/js/modal.js"></script>
+<script>
+	var pageContext = "${pageContext.request.contextPath}";
+	var sessionId = "${sessionId}";
+</script>
 </html>
