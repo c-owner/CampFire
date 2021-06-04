@@ -89,4 +89,15 @@
 		SET LIKECNT = LIKECNT + #{amount}
 		WHERE BNO = #{bno}
 	</update>
+	
+	<insert id="insertLike">
+		INSERT INTO TBL_REVIEW_LIKE (BNO, USERID) 
+		VALUES (#{bno}, #{userId})
+	</insert>
+	
+	<select id="checkLike" resultType="_int">
+		SELECT COUNT(BNO) 
+		FROM TBL_REVIEW_LIKE 
+		WHERE BNO = #{bno} AND USERID = #{userId} 
+	</select>
 </mapper>

@@ -13,4 +13,6 @@ public interface ReviewBoardService {
 	public List<ReviewBoardVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
 	public int getTotal();
+	public boolean insertLike(Long bno, String userId);
+	public boolean checkLike(Long bno, String userId);
 }
