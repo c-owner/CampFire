@@ -198,4 +198,13 @@
 <%-- <%@include file="includes/footer.jsp" %> --%>
 
 	</body>
+	<script>
+	$(".changePage").on("click", function(e){
+		e.preventDefault();
+		var actionForm = $("#actionForm");
+		var pageNum = $(this).attr("href");
+		actionForm.find("input[name='pageNum']").val(pageNum);
+		actionForm.submit();
+	});
+	</script>
 </html>
