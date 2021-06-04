@@ -133,11 +133,54 @@
 <jsp:include page="../includes/footer.jsp"/>
 	</body>
 	<script>
+		var contextPath = "${pageContext.request.contextPath}";
 		$(document).ready(function () {
 			$("#heartIcon").on("click", function(e){
 				e.preventDefault();
-				$(this).find(".fa-heart").toggleClass("far");
-				$(this).find(".fa-heart").toggleClass("fas");
+				var sessionId = "${sessionId}";
+				var bno = "${review.bno}";
+				if(sessionId == null){
+					console.log("로그인 후 이용할 수 있습니다.");
+					return false;
+				}				
+				var heart = $(this).find(".fa-heart");
+				if(heart.hasClass("far")){ //하트아닐때
+					console.log("하트아니다 -> 하트로!");
+					
+					$.ajax({
+						type: "get",
+						url: contextPath + "/review/plusLike/"+bno+"/"+sessionId,
+						contentType:"application/text; charset=utf-8",
+						success: function(result){
+							heart.toggleClass("far");
+							heart.toggleClass("fas");
+						},
+						error: function(a, b, c){
+							console.log(a);
+							console.log(b);
+							console.log(c);
+						}
+					});
+					
+					
+				}else if(heart.hasClass("fas")){ //하트일때
+					console.log("하트다 -> 하트없애!");
+					$.ajax({
+						type: "get",
+						url: contextPath + "/review/minusLike/"+bno+"/"+sessionId,
+						contentType:"application/text; charset=utf-8",
+						success: function(result){
+							heart.toggleClass("far");
+							heart.toggleClass("fas");
+						},
+						error: function(a, b, c){
+							console.log(a);
+							console.log(b);
+							console.log(c);
+						}
+					});
+					
+				}
 			});
 		});
 	</script>
