@@ -26,25 +26,24 @@
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
 					<div class="header">
 						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">
-							테스트 제목입니다.
+							${review.title}
 						</h3>
 						<div style="position: absolute;">
-							<span>작성자 : ㅇㅇㅇ</span>
+							<span>작성자 : ${review.writer}</span>
 						</div>
 						<div style="text-align: right;">
-							<span>조회수 : ㅇㅇㅇ</span>
+							<span>조회수 : ${review.readCnt}</span>
 						</div>
 					</div>
 					<div style="margin-bottom: 10px;">
-						<textarea rows="12" cols="" readonly>테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.
-						테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.
-						테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.테스트 내용입니다.</textarea>
+						<textarea rows="12" cols="" readonly>${review.content}</textarea>
 					</div>
 				</div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 					<div class="row">
 						<div class="col-3" style="text-align:left; text-decoration: none;">
-							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>123개</a>
+							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>
+							${review.likeCnt}</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
 							<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>
