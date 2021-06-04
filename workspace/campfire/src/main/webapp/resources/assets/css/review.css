@@ -304,7 +304,7 @@ img.icon-round {
 	select {width: 25%;	display: inline;}
 	input[name='keyword'] {	width: 54%; display: inline;}
 	.search {	width: 20%;	margin-top: 5%; }
-		@media ( max-width : 736px) {
+		@media ( max-width : 776px) {
 			#searhForm { width: 100%;	}
 			.writer { display: none;}
 			.newDate {display: none;}
