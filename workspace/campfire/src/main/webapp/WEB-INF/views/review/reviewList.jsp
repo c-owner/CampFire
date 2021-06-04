@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 	<head>
 		<title>리뷰게시판 | 모닥불🏕 </title>
@@ -120,30 +119,11 @@
 									<div class="social-info">
 										<div class="hit-cnt">
 											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 
-											<c:set var="r_cnt" value="${review.readCnt}"/>
-											<c:if test="${r_cnt >= 1000}">
-												${r_cnt}k
-											</c:if>
-											<c:if test="${r_cnt < 1000 }">
-												${r_cnt}k
-											</c:if>
+											${review.readCnt}
 										</div>
 										<div class="like-cnt">
 											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 
-											<c:set var="likeCnt" value="${review.likeCnt}"/>
-											<fmt:parseNumber var="likeCnt2" integerOnly="true" type="number" value="${likeCnt}">
-											
-											<fmt:formatNumber var="like_cnt" value="${likeCnt2}" type="number" pattern="#,###"/>
-											<fmt:formatNumber var="likeK_cnt" value="${likeCnt2}" type="number" pattern="#,#"/>
-											</fmt:parseNumber>
-											<c:choose>
-												<c:when test="${likeCnt < 1000}">
-													${like_cnt}
-												</c:when>
-												<c:when test="${likeCnt >= 1000}">
-													${likeK_cnt}k
-												</c:when>
-											</c:choose>
+											${review.likeCnt}
 										</div>
 									</div>
 								</div>

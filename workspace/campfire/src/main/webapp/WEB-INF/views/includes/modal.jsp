@@ -40,8 +40,8 @@
 									<div><a href="javascript:void(0);" id="goSignUpBtn" style="text-decoration: none;">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#" id="findIdPw" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
 									<div class="row">
 										<div class="col-6 col-12-xsmall" style="padding:0; margin-bottom: 5%;">
-											<a href="https://kauth.kakao.com/oauth/authorize?client_id=419eaf834a5ea45f350a4ab9e5406ab1&redirect_uri=http://localhost:8081/login&response_type=code"><img id="kakaoImage" style="height: 46px; width:100%;" src="/resources/images/kakaoLogin.png"></a>
-											<a href="https://kauth.kakao.com/oauth/authorize?client_id=419eaf834a5ea45f350a4ab9e5406ab1&redirect_uri=http://localhost:8081/login&response_type=code"><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
+											<a href="https://kauth.kakao.com/oauth/authorize?client_id=419eaf834a5ea45f350a4ab9e5406ab1&redirect_uri=http://localhost/login&response_type=code"><img id="kakaoImage" style="height: 46px; width:100%;" src="/resources/images/kakaoLogin.png"></a>
+											<a href="https://kauth.kakao.com/oauth/authorize?client_id=419eaf834a5ea45f350a4ab9e5406ab1&redirect_uri=http://localhost/login&response_type=code"><img id="kakaoImageLarge" style="height: 46px; width: 100%;" src="/resources/images/kakaoLoginLarge.png"></a>
 											<%-- <c:if test="${sessionId ne null}">
 												 <h1>로그인 성공입니다, ${sessionId}</h1>
         										 <input type="button" value="로그아웃" onclick="location.href='/logout'">

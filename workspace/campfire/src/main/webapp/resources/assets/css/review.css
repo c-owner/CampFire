@@ -152,6 +152,7 @@ img.icon-round {
 .username img {
   width: 24px;
   height: 24px;
+  vertical-align: bottom;
 }
 .bottom .social-info {
   width: 100%;
