@@ -64,8 +64,23 @@ public class ReviewMapperTests {
 //		log.info(mapper.insertLike(405L, "rhkd1769"));
 //	}
 	
+//	@Test
+//	public void testLikeCount() {
+//		log.info(mapper.checkLike(405L, "rhkd1769"));
+//	}
+	
+//	@Test
+//	public void testDeleteLike() {
+//		log.info(mapper.deleteLike(405L, "rhkd1769"));
+//	}
+	
+//	@Test
+//	public void testMinusLikeCnt() {
+//		log.info(mapper.minusLikeCnt(405L));
+//	}
 	@Test
-	public void testLikeCount() {
-		log.info(mapper.checkLike(405L, "rhkd1769"));
+	public void testPlusLikeCnt() {
+		log.info(mapper.plusLikeCnt(405L));
 	}
+	
 }
