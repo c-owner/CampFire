@@ -148,6 +148,8 @@ public class UserController {
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 	
+
+	
 //	체인지 pw
 	@GetMapping(value="/changePW")
 	public void changePW() {}

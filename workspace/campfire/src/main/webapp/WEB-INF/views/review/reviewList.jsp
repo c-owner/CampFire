@@ -118,10 +118,12 @@
 									
 									<div class="social-info">
 										<div class="hit-cnt">
-											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> ${review.readCnt}k
+											<img class="view-icon" src="/resources/images/view-gray.png" style="width:30%;"> 
+											${review.readCnt}
 										</div>
 										<div class="like-cnt">
-											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> ${review.likeCnt}k
+											<img class="love-icon" src="/resources/images/love-gray.png" style="width:30%;"> 
+											${review.likeCnt}
 										</div>
 									</div>
 								</div>
