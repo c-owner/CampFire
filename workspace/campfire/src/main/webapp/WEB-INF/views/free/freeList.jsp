@@ -106,7 +106,7 @@
                                     <tfoot>
                                     </tfoot>
                                  </table>
-                                 <h3 style="text-align: right;"><a href="/board/register${pageMaker.cri.getListLink()}" class="button small" style="border-radius: 0; text-decoration: none;">
+                                 <h3 style="text-align: right;"><a href="/free/freeWrite${pageMaker.cri.getListLink()}" class="button small" style="border-radius: 0; text-decoration: none;">
                                  	<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
                                  </h3>
                                  <!-- A -->

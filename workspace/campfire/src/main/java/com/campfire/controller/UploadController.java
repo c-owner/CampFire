@@ -70,7 +70,8 @@ public class UploadController {
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
-		
+		System.out.println(uploadFile.length);
+		System.out.println(voName);
 		String uploadFolder = "C:\\upload";
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
@@ -81,6 +82,7 @@ public class UploadController {
 		}
 		
 		for(MultipartFile multi : uploadFile) {
+			System.out.println(multi);
 			FreeBoardAttachVO f_vo = new FreeBoardAttachVO();
 			//ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
 			//MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
@@ -116,6 +118,8 @@ public class UploadController {
 		}
 		allFile.setF_succeedList(succeedList);
 		allFile.setF_failureList(failureList);
+		System.out.println(allFile.getF_succeedList().size());
+		System.out.println(allFile.getF_failureList().size());
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
 	}
 	
