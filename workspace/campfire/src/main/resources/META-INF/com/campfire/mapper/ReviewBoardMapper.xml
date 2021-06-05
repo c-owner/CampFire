@@ -100,4 +100,25 @@
 		FROM TBL_REVIEW_LIKE 
 		WHERE BNO = #{bno} AND USERID = #{userId} 
 	</select>
+	
+	<delete id="deleteLike">
+		DELETE TBL_REVIEW_LIKE 
+		WHERE BNO = #{bno} AND USERID = #{userId}
+	</delete>
+	
+	<update id="plusLikeCnt">
+		UPDATE TBL_REVIEW_BOARD 
+		SET LIKECNT = LIKECNT + 1 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="minusLikeCnt">
+		UPDATE TBL_REVIEW_BOARD 
+		SET LIKECNT = LIKECNT - 1 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<select id="getLikeCnt" resultType="_int">
+		SELECT LIKECNT FROM TBL_REVIEW_BOARD WHERE BNO = #{bno}
+	</select>
 </mapper>
