@@ -1,10 +1,7 @@
 package com.campfire.controller;
 
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withUnauthorizedRequest;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -45,7 +42,7 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		File file = new File(fileName);
+		File file = new File("C:\\upload\\"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -62,7 +59,7 @@ public class UploadController {
 	
 	@ResponseBody
 	@PostMapping(value="/upload/{vo}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<AllFileDTO> upload(MultipartFile[] uploadFile, @PathVariable("vo") String voName){
+	public ResponseEntity<AllFileDTO> upload(MultipartFile uploadFile, @PathVariable("vo") String voName){
 		int check = 0;
 		List<FreeBoardAttachVO> succeedList = new ArrayList<>();
 		List<FreeBoardAttachVO> failureList = new ArrayList<>();
@@ -70,9 +67,8 @@ public class UploadController {
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
-		System.out.println(uploadFile.length);
-		System.out.println(voName);
-		String uploadFolder = "/Users/upload";
+		String uploadFolder = "C:\\upload";
+		//String uploadFolder = "/Users/upload";
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
@@ -81,45 +77,36 @@ public class UploadController {
 			uploadPath.mkdirs();
 		}
 		
-		for(MultipartFile multi : uploadFile) {
-			System.out.println(multi);
-			FreeBoardAttachVO f_vo = new FreeBoardAttachVO();
-			//ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
-			//MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
+		FreeBoardAttachVO f_vo = new FreeBoardAttachVO();
+		//ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
+		//MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
+		
+		String uploadFileName = uploadFile.getOriginalFilename();
+		String temp = uploadFileName;
+		uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+		UUID uuid = UUID.randomUUID();
+		uploadFileName = uuid.toString() + "_" + uploadFileName;
+		InputStream in = null;
+		
+		try {
+			File saveFile = new File(uploadPath, uploadFileName);
+			uploadFile.transferTo(saveFile);
+			in = new FileInputStream(saveFile);
 			
-			String uploadFileName = multi.getOriginalFilename();
-			String temp = uploadFileName;
-			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-			UUID uuid = UUID.randomUUID();
-			uploadFileName = uuid.toString() + "_" + uploadFileName;
-			InputStream in = null;
-			
-			try {
-				File saveFile = new File(uploadPath, uploadFileName);
-				multi.transferTo(saveFile);
-				in = new FileInputStream(saveFile);
-				
-				if(checkImg(saveFile)) {
-					FileOutputStream out = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
-					//Thumbnailator.createThumbnail(in, out, 100, 100);
-					out.close();
-				}
-				if(check == 1) {
-					f_vo.setFileName(temp);
-					f_vo.setUuid(uuid.toString());
-					f_vo.setUploadPath(uploadFolderPath);
-					f_vo.setFileType(true);
-					succeedList.add(f_vo);
-				}
-			} catch (Exception e) {
-				failureList.add(f_vo);
-				log.error(e.getMessage());
+			if(check == 1) {
+				f_vo.setFileName(temp);
+				f_vo.setUuid(uuid.toString());
+				f_vo.setUploadPath(uploadFolderPath);
+				f_vo.setFileType(true);
+				succeedList.add(f_vo);
 			}
+		} catch (Exception e) {
+			failureList.add(f_vo);
+			log.error(e.getMessage());
 		}
+		
 		allFile.setF_succeedList(succeedList);
 		allFile.setF_failureList(failureList);
-		System.out.println(allFile.getF_succeedList().size());
-		System.out.println(allFile.getF_failureList().size());
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
 	}
 	
