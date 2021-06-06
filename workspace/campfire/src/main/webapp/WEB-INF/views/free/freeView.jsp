@@ -79,7 +79,7 @@
 						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">댓글</h3>
 					</div>
 					<ul class="alt replies">
-						<li>
+						<!-- <li>
 							<div style="position: absolute;">
 								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
 							</div>
@@ -100,9 +100,9 @@
 							<div style="text-align: left;">
 								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
 							</div>
-						</li>
+						</li> -->
 					</ul>
-					<div class="paging" style="text-align: center;">
+					<div class="paging" style="text-align: center; margin-bottom: 2%;">
 									
 					</div>
 				</div>
@@ -183,15 +183,31 @@
 								replyUL.html("등록된 댓글이 없습니다.");
 								return;
 							}
+							
+							/* <li>
+							<div style="position: absolute;">
+								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
+							</div>
+							<div style="text-align: right;">
+								<h5 style="margin: 0;">12분 전</h5>
+							</div>
+							<div style="text-align: left;">
+								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
+							</div>
+						</li> */
 							for(let i=0, len=list.length; i<len; i++){
 								str += "<li data-rno='" + list[i].rno + "'>";
-								str += "<strong>" + list[i].replyer + "</strong>";
-								str += "<p class='reply" + list[i].rno + "'>" + list[i].reply + "</p>";
-								str += "<div style='text-align:right;'>";
-								str += "<strong>" + replyService.displayTime(list[i].replyDate);
-								if(list[i].replyDate != list[i].updateDate){
-									str += "<br>수정된 날짜 " +replyService.displayTime(list[i].updateDate);
-								}
+								str += "<div style='position: absolute;'>";
+								str += "<h4 style='margin: 0; text-align: left;'>";
+								str += "작성자: " + list[i].replyer + "</h4></div><br>";
+								/* str += "<div style='text-align: right;'>";
+								str += "<h5 style='margin: 0;'>12분 전</h5></div>"; */
+								str += "<div style='text-align: left;'>";
+								str += "<span>" + list[i].reply + "</span></div>";
+								//str += "<strong>" + replyService.displayTime(list[i].replyDate);
+								//if(list[i].replyDate != list[i].updateDate){
+								//	str += "<br>수정된 날짜 " +replyService.displayTime(list[i].updateDate);
+								//}
 								str += "</strong><br><a class='modify' href='" + list[i].rno + "'>수정</a>";
 								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
 								str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
