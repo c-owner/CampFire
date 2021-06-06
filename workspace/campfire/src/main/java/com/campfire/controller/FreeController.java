@@ -49,17 +49,17 @@ public class FreeController {
 	@GetMapping("/freeWrite")
 	public void register(@ModelAttribute("cri") Criteria cri) {;}
 	
+	
 	//게시글 등록
 	@PostMapping("/freeWrite")
 	public String register(FreeBoardVO f_vo, RedirectAttributes rttr) {
-		log.info("글 등록하러 와봅시다 이게 되는 건가!");
-		log.info(f_vo);
+		System.out.println(f_vo.getTitle());
 		if(f_vo.getAttachList() != null) {
 			f_vo.getAttachList().forEach(log::info);
 		}
 		service.register(f_vo);
 		rttr.addFlashAttribute("result", f_vo.getBno());
-		return "redirect:/freeBoard/list";
+		return "redirect:/free/freeList";
 	}
 	
 	//상세보기로 이동

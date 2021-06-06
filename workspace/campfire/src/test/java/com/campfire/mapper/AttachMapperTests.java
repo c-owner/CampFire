@@ -36,7 +36,7 @@ public class AttachMapperTests {
 	
 	@Test
 	public void testFind() {
-		mapper.findByBno(23L).forEach(log::info);
+		mapper.findByBno(89L).forEach(log::info);
 	}
 	
 //	@Test

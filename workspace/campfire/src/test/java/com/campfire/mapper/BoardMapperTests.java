@@ -19,11 +19,11 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private FreeBoardMapper mapper;
 	
-//	@Test
-//	public void testList() {
-//		Criteria c = new Criteria(1, 10);
-//		mapper.getListWithPaging(c).forEach(log::info);
-//	}
+	@Test
+	public void testList() {
+		Criteria c = new Criteria(1, 10);
+		mapper.getListWithPaging(c).forEach(log::info);
+	}
 	
 //	@Test
 //	public void testTotal() {
@@ -54,8 +54,8 @@ public class BoardMapperTests {
 //		log.info("CNT : "+mapper.delete(31L));
 //	}
 	
-	@Test
-	public void testReplyPlus() {
-		mapper.updateReplyCnt(30L, 1);
-	}
+//	@Test
+//	public void testReplyPlus() {
+//		mapper.updateReplyCnt(30L, 1);
+//	}
 }

@@ -48,16 +48,16 @@
 				<header class="major">
                         <h2>자유게시판 글쓰기</h2>
                 </header>
-				<form name="freeForm" action="/free/freeWrite" method="post">
+				<form class="reviewForm" action="/free/freeWrite" method="post" name="freeForm">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
-							<input type="text" class="title_text" name="title" placeholder="제목을 입력해주세요." maxlength="30">
+							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
+							<input type="hidden" name="writer" value="test1">
 						</div>
 					</div>
 						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
-					<input type='hidden' name='writer' value='test1'>
 				</form>
 			</div>
 		</div>
@@ -104,22 +104,19 @@
 		callbacks : { 
 			onImageUpload : function(files, editor, welEditable) {
 			// 파일 업로드(다중업로드를 위해 반복문 사용)
-			//length 정상
-				for (var i = files.length - 1; i >= 0; i--) {
+				//length 정상
+				for (let i = files.length - 1; i >= 0; i--) {
 					uploadSummernoteImageFile(files[i], this);
 				}
 			}
 		}
 	});
-   
+    
 	var j = 0;
-	var k = 0;
 	function uploadSummernoteImageFile(file, el) {
-		console.log("몇 번을 도는 거야? j" +j);
-		console.log("몇 번을 도는 거야? k" + k++);
 		data = new FormData();
+		var freeForm = $("form[name=freeForm]");
 		data.append("uploadFile", file);
-		str = "";
 		$.ajax({
 			data : data,
 			type : "POST",
@@ -131,23 +128,18 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-/* 				var url = encodeURIComponent(data.f_succeedList[0].uploadPath
-						+ "\\" + data.f_succeedList[0].uuid + "_"
-						+ data.f_succeedList[0].fileName);
-				$(el).summernote('editor.insertImage', "/display?fileName=" + url); */
-				var url = encodeURIComponent(data.f_succeedList[0].uploadPath
-						+ "/" + data.f_succeedList[0].uuid + "_"
-						+ data.f_succeedList[0].fileName);
+				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
 				$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='"+data.f_succeedList[0].uploadPath+"'>";
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='"+data.f_succeedList[0].uuid+"'>";
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='"+data.f_succeedList[0].fileName+"'>";
-				str += "<input type='hidden' name='attachList["+j+"].fileType' value='"+data.f_succeedList[0].fileType+"'>";
-				$("form[name='freeForm']").append(str);
+				//$(el).summernote('editor.insertImage', "/display?fileName=/Users/upload/" + url);
+				var str = "";
+				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				freeForm.append(str);
 				j++;
 			}
 		});
 	};
-
 </script>
 </html>
