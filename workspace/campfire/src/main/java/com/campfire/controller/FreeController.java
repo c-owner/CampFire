@@ -52,6 +52,8 @@ public class FreeController {
 	//게시글 등록
 	@PostMapping("/freeWrite")
 	public String register(FreeBoardVO f_vo, RedirectAttributes rttr) {
+		log.info("글 등록하러 와봅시다 이게 되는 건가!");
+		log.info(f_vo);
 		if(f_vo.getAttachList() != null) {
 			f_vo.getAttachList().forEach(log::info);
 		}
