@@ -89,18 +89,18 @@
                                        </tr>
                                     </thead>
                                     <tbody>
-                                       <%-- <c:forEach var="board" items="${list}">
+                                       <c:forEach var="board" items="${list}">
                                           <tr class="tBody">
                                              <td class="bno">${board.bno}</td>
-                                             <td class="title"><a href="/board/get${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a>
+                                             <td class="title"><a href="/free/freeView${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a>
                                              	<i style="font-size: 35px;" class="far fa-heart"></i><span style="font-size: 0.5rem;">[${board.replyCnt}]</span><i className="material-icons">fiber_new</i><i class="fas fa-heart"></i><i class="material-icons">fiber_new</i>
                                              </td>
                                              <td class="writer">${board.writer}</td>
                                              <td class="regDate">${board.regDate}</td>
                                              <td class="updateDate">${board.updateDate}</td>
                                           </tr>
-                                       </c:forEach> --%>
-                                          <tr class="tBody">
+                                       </c:forEach>
+                                          <%-- <tr class="tBody">
                                              <td class="bno">1234567</td>
                                              <td class="title"><a href="#" style="color: black !important;">자유게시판 테스트용 제목입니다.</a>&nbsp;<span style="font-weight: bold; color: #ff2f3b;">[3]</span>
                                              	<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.25 12.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2V9H7.25zM9.5 15h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5V9h-4zm9.75-6v4.5h-1.12V9.99h-1.25v3.52h-1.13V9H14.5v5c0 .55.45 1 1 1h4c.55 0 1-.45 1-1V9h-1.25z"/></svg>
@@ -108,7 +108,7 @@
                                              <td class="writer">모닥불 테스터</td>
                                              <td class="regDate">2021.06.03</td>
                                              <td class="readCnt">27</td>
-                                          </tr>
+                                          </tr> --%>
                                     </tbody>
                                     <tfoot>
                                     </tfoot>

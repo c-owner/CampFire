@@ -27,8 +27,8 @@ public class ReplyMapperTests {
 //	@Test
 //	public void testInsert() {
 //		FreeBoardReplyVO vo = new FreeBoardReplyVO();
-//		vo.setBno(30L);
-//		vo.setReply("히위고");
+//		vo.setBno(89L);
+//		vo.setReply("댓글테스트용");
 //		vo.setReplyer("test1");
 //		mapper.insert(vo);
 //	}
@@ -41,7 +41,7 @@ public class ReplyMapperTests {
 	
 //	@Test
 //	public void testTotal() {
-//		log.info(mapper.getTotal(30L));
+//		log.info(mapper.getTotal(89L));
 //	}
 	
 //	@Test
