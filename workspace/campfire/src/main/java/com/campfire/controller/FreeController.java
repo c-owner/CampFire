@@ -49,6 +49,7 @@ public class FreeController {
 	@GetMapping("/freeWrite")
 	public void register(@ModelAttribute("cri") Criteria cri) {;}
 	
+	
 	//게시글 등록
 	@PostMapping("/freeWrite")
 	public String register(FreeBoardVO f_vo, RedirectAttributes rttr) {
