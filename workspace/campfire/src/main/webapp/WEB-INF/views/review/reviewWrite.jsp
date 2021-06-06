@@ -43,7 +43,7 @@
 				<header class="major">
 					<span class="category">캠핑 리뷰 작성</span>
 				</header>
-				<form class="reviewForm">
+				<form class="reviewForm" action="/upload/review" method="post">
 					<div class="row gtr-uniform">
 						<div class="col-10 col-11-xsmall" style="margin:0 auto;">							
 							<label>캠핑장 이름</label>
@@ -113,9 +113,36 @@ $('.summernote').summernote({
 		  // 추가한 글꼴
 		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
 		 // 추가한 폰트사이즈
-		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-		
+		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+	  
+	  	callbacks : { 
+			onImageUpload : function(files, editor, welEditable) {
+			// 파일 업로드(다중업로드를 위해 반복문 사용)
+				for (var i = files.length - 1; i >= 0; i--) {
+					uploadSummernoteImageFile(files[i], this);
+				}
+			}
+		}
 	});
+	
+function uploadSummernoteImageFile(file, el) {
+	data = new FormData();
+	data.append("uploadFile", file);
+	console.log("el ~~~~~~~~~~" + el);
+	$.ajax({
+		data : data,
+		type : "POST",
+		url : "/upload/free",
+		contentType : false,
+		enctype : 'multipart/form-data',
+		processData : false,
+		success : function(data) {
+			console.log("데이타~~~~~~~~" + data);
+			console.log("데이타~~~~~~~~url" + data.url);
+			$(el).summernote('insertImage', data.url);
+		}
+	});
+};
 	
 $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 </script>

@@ -45,7 +45,7 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		File file = new File("C:\\upload\\" + fileName);
+		File file = new File(fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -72,7 +72,7 @@ public class UploadController {
 		else if(voName.equals("market")) {check = 3;}
 		System.out.println(uploadFile.length);
 		System.out.println(voName);
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "/Users/upload";
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
@@ -91,7 +91,7 @@ public class UploadController {
 			String temp = uploadFileName;
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
 			UUID uuid = UUID.randomUUID();
-			uploadFileName = uuid.toString() + uploadFileName;
+			uploadFileName = uuid.toString() + "_" + uploadFileName;
 			InputStream in = null;
 			
 			try {
