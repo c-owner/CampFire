@@ -6,13 +6,13 @@
 		VALUES (SEQ_REVIEW_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
 	</insert>
 	
-	<select id="selectReply" resultType="com.campfire.domain.ReviewReplyVO">
+	<select id="selectReply" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
 		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
 		FROM TBL_REVIEW_REPLY
 		WHERE RNO = #{rno}
 	</select>
 	
-	<select id="selectReplyList" resultType="com.campfire.domain.ReviewReplyVO">
+	<select id="selectReplyList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
 		<![CDATA[
 			SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
 			FROM (

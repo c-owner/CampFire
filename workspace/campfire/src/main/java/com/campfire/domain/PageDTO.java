@@ -3,6 +3,7 @@ package com.campfire.domain;
 import java.util.List;
 
 import com.campfire.domain.freeBoard.FreeBoardReplyVO;
+import com.campfire.domain.reviewBoard.ReviewReplyVO;
 
 import lombok.Data;
 

@@ -2,7 +2,7 @@ package com.campfire.service;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
-import com.campfire.domain.ReviewReplyVO;
+import com.campfire.domain.reviewBoard.ReviewReplyVO;
 
 public interface ReviewReplyService {
 	public boolean register(ReviewReplyVO reply);

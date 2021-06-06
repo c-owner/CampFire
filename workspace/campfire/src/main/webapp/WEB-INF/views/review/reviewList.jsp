@@ -63,7 +63,7 @@
 									<!-- <span class="filter-side-divider"></span> -->
 		
 									<select name="from" class="select " id="from">
-										<option value="all" selected="">전체기간</option>
+										<option value="all" >전체기간</option>
 										<option value="day">최근 24시간</option>
 										<option value="week">최근 1주일</option>
 										<option value="month">최근 1달</option>
@@ -71,7 +71,7 @@
 									</select>
 		
 									<select class="categories" name="type" id="category" >
-										<option selected="" value="">전체분야</option>
+										<option value="all">전체분야</option>
 										<option value="A7">유료 캠핑장</option>
 										<option value="B7">무료 캠핑장</option>
 										<option value="C7">노지 캠핑장</option>

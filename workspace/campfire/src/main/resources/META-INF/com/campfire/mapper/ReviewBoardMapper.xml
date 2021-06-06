@@ -24,7 +24,7 @@
 	</sql>
 
 
-	<select id="selectBoardList" resultType="com.campfire.domain.ReviewBoardVO">
+	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT
 		FROM (
 			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT
@@ -55,7 +55,7 @@
 		VALUES (#{bno}, #{title}, #{content}, #{writer}, ${zipcode}, ${address}, ${addressDetail}, ${addressEtc})
 	</insert>
 	
-	<select id="selectBoard" resultType="com.campfire.domain.ReviewBoardVO">
+	<select id="selectBoard" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
 		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT
 		FROM TBL_REVIEW_BOARD
 		WHERE BNO = #{bno}

@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.campfire.domain.Criteria;
-import com.campfire.domain.ReviewBoardVO;
+import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
+import com.campfire.domain.reviewBoard.ReviewBoardVO;
+import com.campfire.mapper.ReviewBoardAttachMapper;
 import com.campfire.mapper.ReviewBoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -18,10 +20,20 @@ import lombok.extern.log4j.Log4j;
 public class ReviewBoardServiceImple implements ReviewBoardService {
 
 	private ReviewBoardMapper mapper;
+	private ReviewBoardAttachMapper attach;
 	
+	@Transactional
 	@Override
 	public void register(ReviewBoardVO board) {
 		mapper.insertBoard(board);
+		List<ReviewBoardAttachVO> attachList = board.getAttachList();
+		if(attachList == null || attachList.size() <= 0) {
+			return;
+		}
+		attachList.forEach(vo -> {
+			vo.setBno(board.getBno());
+			attach.insert(vo);
+		});
 	}
 
 	@Override
@@ -30,13 +42,27 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		return mapper.selectBoard(bno);
 	}
 
+	@Transactional
 	@Override
 	public boolean modify(ReviewBoardVO board) {
-		return mapper.updateBoard(board) == 1;
+		attach.deleteAll(board.getBno());
+		
+		boolean result = mapper.updateBoard(board) == 1;
+		if(result && board.getAttachList() != null ) {
+			if(board.getAttachList().size() != 0 ) {
+				board.getAttachList().forEach(vo -> {
+					vo.setBno(board.getBno());
+					attach.insert(vo);
+				});
+			}
+		}
+		return result;
 	}
 
+	@Transactional
 	@Override
 	public boolean remove(Long bno) {
+		attach.deleteAll(bno);
 		return mapper.deleteBoard(bno) == 1;
 	}
 
@@ -82,5 +108,9 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		return mapper.getLikeCnt(bno);
 	}
 	
+	@Override
+	public List<ReviewBoardAttachVO> getAttachList(Long bno) {
+		return attach.findByBno(bno);
+	}
 
 }

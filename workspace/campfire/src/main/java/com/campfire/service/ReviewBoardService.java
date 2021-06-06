@@ -3,7 +3,8 @@ package com.campfire.service;
 import java.util.List;
 
 import com.campfire.domain.Criteria;
-import com.campfire.domain.ReviewBoardVO;
+import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
+import com.campfire.domain.reviewBoard.ReviewBoardVO;
 
 public interface ReviewBoardService {
 	public void register(ReviewBoardVO board);
@@ -17,4 +18,7 @@ public interface ReviewBoardService {
 	public boolean deleteLike(Long bno, String userId);
 	public boolean checkLike(Long bno, String userId);
 	public int getLikeCnt(Long bno);
+	
+	public List<ReviewBoardAttachVO> getAttachList(Long bno);
+	
 }

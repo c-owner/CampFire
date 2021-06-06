@@ -1,4 +1,6 @@
-package com.campfire.domain;
+package com.campfire.domain.reviewBoard;
+
+import java.util.List;
 
 import lombok.Data;
 
@@ -21,5 +23,6 @@ public class ReviewBoardVO {
 	
 	private int replyCnt;
 	
+	private List<ReviewBoardAttachVO> attachList;
 
 }

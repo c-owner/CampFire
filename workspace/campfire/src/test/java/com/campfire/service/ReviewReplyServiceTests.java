@@ -7,8 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.campfire.domain.Criteria;
-import com.campfire.domain.ReviewReplyVO;
 import com.campfire.domain.freeBoard.FreeBoardReplyVO;
+import com.campfire.domain.reviewBoard.ReviewReplyVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;

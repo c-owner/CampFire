@@ -43,13 +43,13 @@
 				<header class="major">
 					<span class="category">캠핑 리뷰 작성</span>
 				</header>
-				<form class="reviewForm" action="/upload/review" method="post">
+				<form name="reviewForm" class="reviewForm" action="/upload/review" method="post">
 					<div class="row gtr-uniform">
 						<div class="col-10 col-11-xsmall" style="margin:0 auto;">							
 							<label>캠핑장 이름</label>
-							<input type="text">
+							<input type="text" name="campName">
 							<label>캠핑장 주소</label>
-								<input type="text" name="" class="postcodify_postcode5" value="" placeholder="우편번호" style="width:30%; display:inline;" readonly />
+								<input type="text" name="zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" style="width:30%; display:inline;" readonly />
 								<div class="hidden-xs">
 									<div class="tools">
 										<div class="hidden-xs">
@@ -57,17 +57,28 @@
 										</div>
 									</div>
 								</div>
-								<input type="text" name="" class="postcodify_address" value="" placeholder="주소" readonly/><br />
-								<input type="text" name="" class="postcodify_details" value="" placeholder="상세주소"/><br />
-								<input type="text" name="" class="postcodify_extra_info" value="" /><br />
+								<input type="text" name="address" class="postcodify_address" value="" placeholder="주소" readonly/><br />
+								<input type="text" name="addressDetail" class="postcodify_details" value="" placeholder="상세주소2"/><br />
+								<input type="text" name="addressEtc" class="postcodify_extra_info" value="" placeholder="상세주소1"/><br />
+								
+								<select class="categories" name="type" id="category" >
+										<option value="all">전체분야</option>
+										<option value="A7">유료 캠핑장</option>
+										<option value="B7">무료 캠핑장</option>
+										<option value="C7">노지 캠핑장</option>
+										<option value="D7">난이도 캠핑장</option>
+										<option value="E7">글램핑 캠핑장</option>
+										<option value="F7">카라반 캠핑장</option>
+								</select>
 							<br>
-							<label>제목</label>
-							<input type="text">
+							
+							<label>제목 <span style="color:#aaa;" id="titleCounter">(0 / 최대 40자)</span></label>
+							<input type="text" name="title" class="title" placeholder="제목을 입력해주세요. ">
 							<label>내용</label>
 							<textarea class="summernote"></textarea>
 							<div class="tools">
 								<div class="hidden-xs">
-									<a class="btn btn-secondary hero-upload" href="javascript:reviewForm.submit();">등록하기</a>
+									<a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a>
 								</div>
 							</div>
 						</div>
@@ -143,7 +154,45 @@ function uploadSummernoteImageFile(file, el) {
 		}
 	});
 };
-	
+	/*  주소 검색용 */
 $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
+</script>
+<!-- 유효성 -->
+<script>
+	$('.title').keyup(function (e){
+		var title = $(this).val();
+		$('#titleCounter').html("("+title.length+" / 최대 40자)");    //글자수 실시간 카운팅
+	
+		if (title.length > 40){
+			alert("최대 40자까지 입력 가능합니다.");
+			$(this).val(title.substring(0, 40));
+			$('#titleCounter').html("(40 / 최대 40자)");
+		}
+});
+
+	function validation() {
+		if(reviewForm.campName.value == '' || reviewForm.campName.value == null) {
+			alert('캠핑장 이름을 입력해주세요.');
+			return false;
+		}
+		
+		if(reviewForm.zipcode.value == '' || reviewForm.zipcode.value == null ){
+			alert('캠핑장 주소를 입력해주세요.');
+			return false;
+		}
+		
+		if(reviewForm.title.value.length < 5 || reviewForm.title.value.length == '') {
+			alert('제목은 필수 입력입니다.');
+		}
+		
+		if(reviewForm.type.value == 'all'){
+			alert('분야를 선택해주세요!');
+			return false;
+		}
+		else {
+			reviewForm.submit();
+		}		
+	}
+	
 </script>
 </html>

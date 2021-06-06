@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.campfire.domain.Criteria;
-import com.campfire.domain.ReviewReplyVO;
+import com.campfire.domain.reviewBoard.ReviewReplyVO;
 
 public interface ReviewReplyMapper {
 	public int insertReply(ReviewReplyVO reply);

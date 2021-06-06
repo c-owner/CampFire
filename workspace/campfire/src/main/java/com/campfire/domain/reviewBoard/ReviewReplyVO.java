@@ -1,4 +1,4 @@
-package com.campfire.domain;
+package com.campfire.domain.reviewBoard;
 
 import lombok.Data;
 

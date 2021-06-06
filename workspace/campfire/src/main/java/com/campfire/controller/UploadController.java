@@ -38,6 +38,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UploadController {
 	
+	final String fileFolder = "/Users/corner-macmini/upload/";
+	final String uploadFolder = "/Users/corner-macmini/upload";
+	
 	//썸네일 화면에 출력
 	@ResponseBody
 	@GetMapping("/display")

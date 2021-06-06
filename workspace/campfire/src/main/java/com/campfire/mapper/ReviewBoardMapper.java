@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.campfire.domain.Criteria;
-import com.campfire.domain.ReviewBoardVO;
+import com.campfire.domain.reviewBoard.ReviewBoardVO;
 
 public interface ReviewBoardMapper {
 	public List<ReviewBoardVO> selectBoardList(Criteria cri);
