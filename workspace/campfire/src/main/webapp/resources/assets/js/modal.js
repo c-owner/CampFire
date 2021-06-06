@@ -143,7 +143,7 @@ $(document).ready(function () {
 	
 	
 	$("#userPw").on("keyup", function(e){
-		var reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+		var reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$/;
 		if(reg.test($(this).val())){
 			checkPw1 = true;
 		}else{
