@@ -90,7 +90,8 @@
 							<input type="hidden" name="category2" value="recent">
 							<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
 							style="border-radius: initial; height:30px; width: 100%; ">
-							<a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a>
+							<a href="javascript:searchForm.submit();" class="button primary icon solid fa-search">Search</a>
+							<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
 						</form>
 					</div>
 				</div>

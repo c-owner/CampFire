@@ -184,6 +184,7 @@ img.icon-round {
   border-bottom: solid 1px #f1f1f1;
   border-top: solid 1px #f1f1f1;
   display: flex;
+  padding-left: 10%;
 }
 .original-main .filters-container {
   margin: 48px 0px 20px 0px;
@@ -299,26 +300,33 @@ img.icon-round {
   object-fit: cover; 
 }
 
-  .big-width {display: block;	width: 100%;}
-	.small-width {display: none;}
-	.table-wrapper {overflow-x: hidden !important;}
-	select {width: 25%;	display: inline;}
-	input[name='keyword'] {	width: 54%; display: inline;}
-	.search {	width: 20%;	margin-top: 5%; }
-		@media ( max-width : 776px) {
-			#searhForm { width: 100%;	}
-			.writer { display: none;}
-			.newDate {display: none;}
-			.updateDate {display: none;	}
-			.big-width {display: none;}
-			.small-width {display: block;}
-			.search {width: 100%;}
-			select {width: 100%;}
-			input[name='keyword'] {
-				width: 100%;
-				display: inline;
-			}
+.big-width {display: block;	width: 100%;}
+.small-width {display: none;}
+.table-wrapper {overflow-x: hidden !important;}
+
+/* search  */
+select {width: 25%;	display: inline;}
+input[name='keyword'] {	width: 54%; display: inline;}
+.search {	width: 20%;	margin-top: 5%; }
+a.button.primary.icon.solid.fa-search {
+	border-radius: 0;
+	height: 30px;
+	line-height: 30px;
+}	
+	@media ( max-width : 776px) {
+		#searhForm { width: 100%;	}
+		.writer { display: none;}
+		.newDate {display: none;}
+		.updateDate {display: none;	}
+		.big-width {display: none;}
+		.small-width {display: block;}
+		.search {width: 100%;}
+		select {width: 100%;}
+		input[name='keyword'] {
+			width: 100%;
+			display: inline;
 		}
+	}
 	@media screen and (max-width: 480px) {
 		a.button.small {
 			width: 100%;
@@ -349,6 +357,9 @@ img.icon-round {
   
   .main-banner-container {
     margin-bottom: 5%;
+  }
+  .original-main.project .filters-container {
+  	padding-left: 0;
   }
 }
 
