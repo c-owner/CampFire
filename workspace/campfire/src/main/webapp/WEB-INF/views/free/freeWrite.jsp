@@ -103,17 +103,19 @@
 		callbacks : { 
 			onImageUpload : function(files, editor, welEditable) {
 			// 파일 업로드(다중업로드를 위해 반복문 사용)
+				var j = 0;
 				for (var i = files.length - 1; i >= 0; i--) {
-					uploadSummernoteImageFile(files[i], this);
+					uploadSummernoteImageFile(files[i], this, j);
+					j++;
 				}
 			}
 		}
 	});
     
-	function uploadSummernoteImageFile(file, el) {
+	function uploadSummernoteImageFile(file, el, i) {
 		data = new FormData();
 		data.append("uploadFile", file);
-		console.log(el);
+		console.log("el ~~~~~~~~~~" + el);
 		$.ajax({
 			data : data,
 			type : "POST",
@@ -122,8 +124,9 @@
 			enctype : 'multipart/form-data',
 			processData : false,
 			success : function(data) {
-				console.log(data);
-				$(el).summernote('editor.insertImage', data.url);
+				console.log(data.f_succeedList[i].uploadPath);
+				$(el).summernote('editor.insertImage', "/display?fileName=/Users/upload/" + data.f_succeedList[i].uploadPath+"/"+ data.f_succeedList[i].uuid+ "_" + data.f_succeedList[i].fileName);
+				//$(el).summernote('editor.insertImage', "/display?fileName=/Users/upload/2021/06/06/"+ data.f_succeedList[i].uuid+ "_" + data.f_succeedList[i].fileName);
 			}
 		});
 	};
