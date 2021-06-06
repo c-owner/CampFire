@@ -27,7 +27,7 @@ public class ReplyServiceTests {
 	@Test
 	public void testList() {
 		Criteria cri = new Criteria(1, 12);
-		log.info(service.getList(cri, 30L));
+		log.info(service.getList(cri, 89L));
 	}
 	
 //	@Test
