@@ -151,14 +151,14 @@
                                     </c:if>
                                  </div>
                                  
-                                 <form id="actionForm" action="/board/list">
+                                 <form id="actionForm" action="/free/freeList">
                                     <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
                                     <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
                                     <input type="hidden" name="type" value="${pageMaker.cri.type}">
                                     <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
                                  </form>
                                  <!-- B -->
-                                 <form action="/board/list" id="searchForm">
+                                 <form action="/free/freeList" id="searchForm">
                                     <div class="fields">
                                        <div class="field">
                                           <div style="text-align:center">
