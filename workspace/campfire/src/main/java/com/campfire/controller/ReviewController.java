@@ -58,19 +58,16 @@ public class ReviewController {
  
 	@PostMapping("/reviewWrite")
 	public String register(ReviewBoardVO board, RedirectAttributes rttr) {
-		if(board.getAttachList() != null ) {
-			board.getAttachList().forEach(log::info);
-		}
+//		if(board.getAttachList() != null ) {
+//			board.getAttachList().forEach(log::info);
+//		}
 		service.register(board);
 		rttr.addFlashAttribute("result", board.getBno());
 		
 		return "redirect:/review/reviewList";
 	}
 	
-	@GetMapping({"/reviewView", "/reviewModify"})
-	public void reviewView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,Model model){
-		model.addAttribute("review",service.view(bno));
-	}
+	@GetMapping({"/reviewModify"})
 	
 	@PostMapping("/modify")
 	public String modify(ReviewBoardVO board, Criteria cri, RedirectAttributes rttr) {

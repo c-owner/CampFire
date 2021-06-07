@@ -39,11 +39,12 @@
 								<div class="row">
 									<span style="margin-left: auto;">조회수 : ${review.readCnt}</span>
 								</div>
+								<span style="font-size:55px; display:block;">${review.star}</span>
 							</div>
 						</div>
 					</div>
-					<div style="margin-bottom: 10px;">
-						<textarea rows="12" cols="" readonly>${review.content}</textarea>
+					<div style="margin-bottom: 10px; border: darkgrey 1px solid; border-radius: 10px;">
+						${review.content}
 					</div>
 				</div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">

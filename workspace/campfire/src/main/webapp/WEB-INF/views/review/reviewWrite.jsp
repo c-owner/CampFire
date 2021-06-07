@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="/resources/assets/css/main.css" />
 	<link rel="stylesheet" href="/resources/assets/css/review.css" />
 	<link rel="stylesheet" href="/resources/assets/css/summernote-lite.css">
-	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 </head>
 <style>
 	input[type='text'] {
@@ -61,17 +61,18 @@
 				<header class="major">
 					<span class="category">캠핑 리뷰 작성</span>
 				</header>
-				<form name="reviewForm" class="reviewForm" action="/upload/review" method="post">
+				<form name="reviewForm" class="reviewForm" action="/review/reviewWrite" method="post">
 					<div class="row gtr-uniform">
 						<div class="col-10 col-11-xsmall" style="margin:0 auto;">							
 							<span id="startext">당신의 점수는? </span>
 							<p class="star_rating" style="display:inline; margin: 0 auto;">
-								    <a href="#" class="on">★</a>
-								    <a href="#" class="on">★</a>
-								    <a href="#" class="on">★</a>
-								    <a href="#" class="on">★</a>
-								    <a href="#" class="on">★</a>
-								</p>
+							    <a href="#" class="on">★</a>
+							    <a href="#" class="on">★</a>
+							    <a href="#" class="on">★</a>
+							    <a href="#" class="on">★</a>
+							    <a href="#" class="on">★</a>
+							  <input type="hidden" name="star" value=""/>
+							</p>
 							
 							<label>캠핑장 이름</label>
 							<input type="text" name="campName">
@@ -81,7 +82,7 @@
 								
 								<input type="text" name="address" class="postcodify_address" value="" placeholder="주소" readonly/><br />
 								<input type="text" name="addressDetail" class="postcodify_details" value="" placeholder="상세주소2"/><br />
-								<input type="text" name="addressEtc" class="postcodify_extra_info" value="" placeholder="상세주소1"/><br />
+								<input type="text" name="addressEtc" class="postcodify_extra_info" value="" placeholder="상세주소1" readonly/><br />
 								
 								<select class="categories" name="type" id="category" >
 										<option value="all">전체분야</option>
@@ -97,7 +98,7 @@
 							<label>제목 <span style="color:#aaa;" id="titleCounter">(0 / 최대 40자)</span></label>
 							<input type="text" name="title" class="title" placeholder="제목을 입력해주세요. ">
 							<label>내용</label>
-							<textarea class="summernote"></textarea>
+							<textarea class="summernote" name="content"></textarea>
 							<div class="tools">
 								<div class="hidden-xs">
 									<!-- <a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a> -->
@@ -106,6 +107,7 @@
 							</div>
 						</div>
 					</div>
+					<input type="hidden" name="writer" value="campfire"/>
 				</form>
 			</div>
 		</div>
@@ -159,20 +161,30 @@ $('.summernote').summernote({
 		}
 	});
 	
+	//평점
+	var score = 1;
+	reviewForm.star.value = "5"; // default 5
+	$( ".star_rating a" ).click(function() {
+	    $(this).parent().children("a").removeClass("on");
+	    $(this).addClass("on").prevAll("a").addClass("on");
+		score = $('.on').length;
+	    reviewForm.star.value = score;
+	    return false;
+	});
+	
 function uploadSummernoteImageFile(file, el) {
+	console.log('star Length  : '+ star);
 	data = new FormData();
 	data.append("uploadFile", file);
 	console.log("el ~~~~~~~~~~" + el);
 	$.ajax({
 		data : data,
 		type : "POST",
-		url : "/upload/free",
+		url : "/reviewWrite",
 		contentType : false,
 		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-			console.log("데이타~~~~~~~~" + data);
-			console.log("데이타~~~~~~~~url" + data.url);
 			$(el).summernote('insertImage', data.url);
 		}
 	});
@@ -218,13 +230,6 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 	}
 	
 	
-	//평점
-
-	$( ".star_rating a" ).click(function() {
-	    $(this).parent().children("a").removeClass("on");
-	    $(this).addClass("on").prevAll("a").addClass("on");
-	    return false;
-	});
 </script>
 
 </html>
