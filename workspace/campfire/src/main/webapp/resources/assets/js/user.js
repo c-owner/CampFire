@@ -32,6 +32,7 @@ $("#loginBtn").on("click", function(e){
 				$("#userId").val("");
 				$("#userPw3").val("");
 				$('.modal-wrapper').removeClass("open");
+				location.reload();
 			}else {
 				alert("아이디 혹은 비밀번호를 다시 확인해 주십시오.");
 				return;
