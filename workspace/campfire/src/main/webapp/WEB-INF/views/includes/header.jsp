@@ -96,8 +96,8 @@
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 10%; padding:0;">
 									<label for="userId">아이디</label>
 									<input type="text" name="userId" id="userId" placeholder="ID">
-									<label for="userPw" style="margin-top: 15px;">비밀번호</label>
-									<input type="password" name="userPw" id="userPw" placeholder="PASSWARD">
+									<label for="userPw3" style="margin-top: 15px;">비밀번호</label>
+									<input type="password" name="userPw" id="userPw3" placeholder="PASSWARD">
 									<div><a href="javascript:void(0);" id="goSignUpBtn" style="text-decoration: none;">회원가입</a>&nbsp;&nbsp;&nbsp;<a href="#" id="findIdPw" style="text-decoration: none;">아이디/비밀번호 찾기</a></div>
 									<ul class="actions">
 										<li>
