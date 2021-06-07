@@ -15,7 +15,11 @@
 
 ---
 
-### [VERSION LOG #2021-05-28 0.01b](VERSION-log.md)
+## Version
+
+##### [VERSION LOG #2021-06-07 v0.01f-alpha](VERSION-log.md)
+
+
 
 
 
@@ -23,11 +27,13 @@
 
 ---
 
-# project planning
 
-[click here](projectPlan.md)
 
-**The project manager** : corner / mamulee / Heekng / juno0-0 / songfly_s
+
+
+**Contributors(5)**
+
+**The project manager** : corner(master) / mamulee / Heekng / juno0-0 / songfly_s
 
 
 
