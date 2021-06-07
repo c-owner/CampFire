@@ -36,7 +36,7 @@ public class FreeBoardReplyController {
 	//해당 게시글의 댓글 목록
 	@GetMapping(value="/freeReplyList/{bno}/{page}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<PageDTO> getList(@PathVariable("bno") Long bno, @PathVariable("page") int page){
-		Criteria cri = new Criteria(1, 10);
+		Criteria cri = new Criteria(page, 10);
 		return new ResponseEntity<PageDTO>(service.getList(cri, bno), HttpStatus.OK);
 	}
 	
