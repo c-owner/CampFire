@@ -14,108 +14,116 @@
 			.content img {
 				width: 100% !important;
 			}
+			
+			.replyBtn, .timeDiv {
+				text-align: right !important;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
-<%@include file="../includes/header.jsp" %>
-<div id="main">
-	<!-- Post -->
-		<section class="main special" style="margin-top: 30px;">
-			<div class="inner banner">
-				<header class="major">
-					<span class="category">자유게시판</span>
-				</header>
-			</div>
-			<div class="row" style="display:block;">
-				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">제목 : ${board.title}</h2></div>
-				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
-					<div class="header">
-						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">
-							No.${board.bno}
-						</h3>
-						<div style="position: absolute;">
-							<span>작성자 : ${board.writer}</span>
-						</div>
-						<div style="text-align: right;">
-							<span>조회수 : ㅇㅇㅇ</span>
-						</div>
-					</div>
-					<div style="margin-bottom: 10px; width: 100%;" class="content">
-						${board.content}
-						<!-- <textarea rows="" cols=""></textarea> -->
-					</div>
+		<%@include file="../includes/header.jsp" %>
+		<div id="main">
+		<!-- Post -->
+			<section class="main special" style="margin-top: 30px;">
+				<div class="inner banner">
+					<header class="major">
+						<span class="category">자유게시판</span>
+					</header>
 				</div>
-				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
-					<div class="row">
-						<div class="col-3" style="text-align:left; text-decoration: none;">
-							<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>${board.likeCnt}</a>
-						</div>
-						<div class="col-9" style="text-align: right;">
-							<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>
-						</div>
-					</div>
-					
-				</div>
-				
-				<!-- 댓글작성칸 -->
-				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
-					<div class="row">
-						<div class="col-9">
-							<input type="text">
-						</div>
-						<div class="col-3" style="padding:0 0;">
-							<ul class="actions stacked" style="margin: 0 0;">
-								<li>
-									<a class="button primary fit" style="border-radius: 6px;">댓글 작성</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<!-- 댓글리스트 -->
-				<div class="col-6 col-10-medium col-10-small" style="margin: 0 auto;">
-					<div>
-						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">댓글</h3>
-					</div>
-					<ul class="alt replies">
-						<!-- <li>
+				<div class="row" style="display:block;">
+					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">제목 : ${board.title}</h2></div>
+					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
+						<div class="header">
+							<h3 style="font-weight: bold; text-align: left; margin: 0 0;">
+								No.${board.bno}
+							</h3>
 							<div style="position: absolute;">
-								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
+								<span>작성자 : ${board.writer}</span>
 							</div>
 							<div style="text-align: right;">
-								<h5 style="margin: 0;">12분 전</h5>
+								<span>조회수 : ㅇㅇㅇ</span>
 							</div>
-							<div style="text-align: left;">
-								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
+						</div>
+						<div style="margin-bottom: 10px; width: 100%;" class="content">
+							${board.content}
+							<%-- <textarea>는 html 태그를 적용하지 않고 그대로 출력하기 때문에 사용 안함 --%>
+							<%-- <textarea rows="" cols=""></textarea> --%>
+						</div>
+					</div>
+					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
+						<div class="row">
+							<div class="col-3" style="text-align:left; text-decoration: none;">
+								<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>${board.likeCnt}</a>
 							</div>
-						</li>
-						<li>
-							<div style="position: absolute;">
-								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
+							<div class="col-9" style="text-align: right;">
+								<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>
 							</div>
-							<div style="text-align: right;">
-								<h5 style="margin: 0;">12분 전</h5>
+						</div>
+					</div>
+				
+					<!-- 댓글작성칸 -->
+					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
+						<div class="row">
+							<div class="col-9">
+								<input type="text" name="reply">
+								<%-- 현재 로그인된 sessionId 들어오는지 확인해야함 --%>
+								<input type="hidden" name="replyer" value="${sessionId}">
 							</div>
-							<div style="text-align: left;">
-								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
+							<div class="col-3" style="padding:0 0;">
+								<ul class="actions stacked" style="margin: 0 0;">
+									<li>
+										<a class="button primary fit write" href="javascript:void(0)" style="border-radius: 6px;">댓글 작성</a>
+									</li>
+								</ul>
 							</div>
-						</li> -->
-					</ul>
-					<div class="paging" style="text-align: center; margin-bottom: 2%;">
-									
+						</div>
+					</div>
+				
+					<!-- 댓글리스트 -->
+					<div class="col-6 col-10-medium col-10-small" style="margin: 0 auto;">
+						<div>
+							<h3 style="font-weight: bold; text-align: left; margin: 0 0;">댓글</h3>
+						</div>
+						<ul class="alt replies">
+							<!-- <li>
+								<div style="position: absolute;">
+									<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
+								</div>
+								<div style="text-align: right;">
+									<h5 style="margin: 0;">12분 전</h5>
+								</div>
+								<div style="text-align: left;">
+									<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
+								</div>
+							</li>
+							<li>
+								<div style="position: absolute;">
+									<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
+								</div>
+								<div style="text-align: right;">
+									<h5 style="margin: 0;">12분 전</h5>
+								</div>
+								<div style="text-align: left;">
+									<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
+								</div>
+							</li> -->
+						</ul>
+						<div class="paging" style="text-align: center; margin-bottom: 2%;">
+										
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-</div>
-<jsp:include page="../includes/footer.jsp"/>
-<script src="/resources/assets/js/reply.js"></script>
+			</section>
+		</div>
+		<jsp:include page="../includes/footer.jsp"/>
+		<script src="/resources/assets/js/reply.js"></script>
 	</body>
 	<script>
 		$(document).ready(function () {
 			var pageNum = 1;
 			var bno = "${board.bno}";
+			
+			showList(pageNum);
 			
 			$("#heartIcon").on("click", function(e){
 				e.preventDefault();
@@ -123,6 +131,22 @@
 				$(this).find(".fa-heart").toggleClass("fas");
 			});
 			
+			$(".write").on("click", function(e){
+				e.preventDefault();
+				
+				var reply = $("input[name='reply']").val();
+				//var replyer = $("input[name='replyer']").val();
+				var replyer = "test1";
+				
+				if(reply == ""){return;}
+				
+				replyService.add({bno: bno, reply: reply, replyer: replyer}, function(result){
+					alert(result);
+					pageNum = 1;
+					showList(pageNum);
+					$("input[name='reply']").val("");
+				});
+			});
 			
 			function showReplyPage(replyCnt){
 				var str = "";
@@ -163,63 +187,105 @@
 						str += "<a class='changePage' href='" + (endNum + 1) + "'><code>&gt;</code></a>";
 					}
 				}
-				
 				divTag.html(str);
 			}
 			
+			//페이지 이동 미완성
+			$(".paging").on("click", "a.changePage", function(e){
+				e.preventDefault();
+				pageNum = parseInt($(this).attr("href"));
+				showList(pageNum);
+			});
+			
 			function showList(page){
-				console.log
 				var replyUL = $(".replies");
 				
 				replyService.getList({bno:bno, page:page||1},
-						function(replyCnt, list){
-							var str = "";
-							if(list == null || list.length == 0){
-								//등록된 댓글이 없습니다.
-								if(pageNum > 1) {
-									pageNum -= 1;
-									showList(pageNum);
-								}
-								replyUL.html("등록된 댓글이 없습니다.");
-								return;
+					function(replyCnt, list){
+						var str = "";
+						if(list == null || list.length == 0){
+							//등록된 댓글이 없습니다.
+							if(pageNum > 1) {
+								pageNum -= 1;
+								showList(pageNum);
 							}
+							replyUL.html("등록된 댓글이 없습니다.");
+							return;
+						}
 							
-							/* <li>
-							<div style="position: absolute;">
-								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
-							</div>
-							<div style="text-align: right;">
-								<h5 style="margin: 0;">12분 전</h5>
-							</div>
-							<div style="text-align: left;">
-								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
-							</div>
-						</li> */
-							for(let i=0, len=list.length; i<len; i++){
-								str += "<li data-rno='" + list[i].rno + "'>";
-								str += "<div style='position: absolute;'>";
-								str += "<h4 style='margin: 0; text-align: left;'>";
-								str += "작성자: " + list[i].replyer + "</h4></div><br>";
-								/* str += "<div style='text-align: right;'>";
-								str += "<h5 style='margin: 0;'>12분 전</h5></div>"; */
-								str += "<div style='text-align: left;'>";
-								str += "<span>" + list[i].reply + "</span></div>";
-								//str += "<strong>" + replyService.displayTime(list[i].replyDate);
-								//if(list[i].replyDate != list[i].updateDate){
-								//	str += "<br>수정된 날짜 " +replyService.displayTime(list[i].updateDate);
-								//}
-								str += "</strong><br><a class='modify' href='" + list[i].rno + "'>수정</a>";
-								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
-								str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-								str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
-								str += "</div><div class='line'></div></li>";
+						for(let i=0, len=list.length; i<len; i++){
+							str += "<li data-rno='" + list[i].rno + "'>";
+							str += "<div style='position: absolute;'>";
+							str += "<h4 style='margin: 0; text-align: left;'>";
+							str += "작성자: " + list[i].replyer + "</h4></div><br>";
+							/* str += "<div style='text-align: right;'>";
+							str += "<h5 style='margin: 0;'>12분 전</h5></div>"; */
+							str += "<div style='text-align: left;'>";
+							str += "<span class='reply" + list[i].rno + "'>" + list[i].reply + "</span></div>";
+							str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
+							if(list[i].replyDate != list[i].updateDate){
+								str += "<br>수정된 날짜 " +replyService.timeForToday(list[i].updateDate);
 							}
-							replyUL.html(str);
-							showReplyPage(replyCnt);
-				});
+							str += "</strong></div><div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
+							str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
+							str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+							str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
+							str += "</div></li>";
+						}
+						replyUL.html(str);
+						showReplyPage(replyCnt);
+					});
 			}
-
-			showList(pageNum);
+			
+			$(".replies").on("click", "a.remove", function(e){
+				e.preventDefault();
+				var rnoValue = $(this).attr("href");
+				replyService.remove(rnoValue, 
+					function(result){
+						alert(result);
+						showList(pageNum);
+					}
+				);
+			});
+			
+			var check = false;
+			//댓글 수정
+			$(".replies").on("click", "a.modify", function(e){
+				e.preventDefault();
+				
+				if(check){alert("수정중인 댓글이 있습니다."); return;}
+				
+				var rnoValue = $(this).attr("href");
+				var replyTag = $(".reply" + rnoValue);
+				replyTag.html("<textarea style='resize: none;' class='" + rnoValue + "'>" + replyTag.text() + "</textarea>");
+				$(this).hide();
+				
+				var finishs = $(".finish");
+				for(let i=0; i<finishs.length; i++){
+					if($(finishs[i]).attr("href") == rnoValue){
+						$(finishs[i]).show();
+						check = true;
+						break;
+					}
+				}   			
+			});
+			
+			//수정 완료
+			$(".replies").on("click", "a.finish", function(e){
+				e.preventDefault();
+				
+				var rnoValue = $(this).attr("href");
+				var newReply = $("." + rnoValue).val();
+				
+				if(newReply == ""){return;}
+				
+				replyService.modify({rno:rnoValue, reply:newReply},
+						function(result){
+							alert(result);
+							check = false;
+							showList(pageNum);
+				});
+			});
 		});
 	</script>
 </html>
