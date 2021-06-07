@@ -25,7 +25,11 @@ public class FileCheckTask {
 	@Setter(onMethod_ = @Autowired)
 	private FreeBoardAttachMapper attachMapper;
 	
-	@Scheduled(cron="0 * * * * *")
+	//아무 요일 매월 마지막날 03:00시에 실행
+	//@Scheduled(cron="0 00 03 L * ?")
+	
+	//매일 23시 59분 59초에 실행
+	@Scheduled(cron="59 59 23 * * ?")
 	public void checkFiles() throws Exception {
 		log.warn("-------------------------------");
 		log.warn("file Check tast run............");
