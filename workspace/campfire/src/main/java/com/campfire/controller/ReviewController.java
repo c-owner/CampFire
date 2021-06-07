@@ -58,9 +58,9 @@ public class ReviewController {
  
 	@PostMapping("/reviewWrite")
 	public String register(ReviewBoardVO board, RedirectAttributes rttr) {
-		if(board.getAttachList() != null ) {
-			board.getAttachList().forEach(log::info);
-		}
+//		if(board.getAttachList() != null ) {
+//			board.getAttachList().forEach(log::info);
+//		}
 		service.register(board);
 		rttr.addFlashAttribute("result", board.getBno());
 		

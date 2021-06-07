@@ -25,6 +25,23 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	@Transactional
 	@Override
 	public void register(ReviewBoardVO board) {
+		int cntStar = Integer.parseInt(board.getStar()); 
+		String star = "★";
+		if(cntStar == 1 ) {
+			star = "★";
+		} else if (cntStar == 2 ) {
+			star = "★★";
+		} else if (cntStar == 3 ) {
+			star = "★★★";
+		} else if (cntStar == 4 ) {
+			star = "★★★★";
+		} else if (cntStar == 5 ) {
+			star = "★★★★★";
+		} else {
+			star = "평점없음";
+		}
+		board.setStar(star);
+		
 		mapper.insertBoard(board);
 		List<ReviewBoardAttachVO> attachList = board.getAttachList();
 		if(attachList == null || attachList.size() <= 0) {
