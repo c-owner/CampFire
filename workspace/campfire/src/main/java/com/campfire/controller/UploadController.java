@@ -45,7 +45,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		File file = new File("C:\\upload\\"+fileName);
+		//File file = new File("C:\\upload\\"+fileName);
+		File file = new File("/Users/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -70,8 +71,8 @@ public class UploadController {
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
-		String uploadFolder = "C:\\upload";
-		//String uploadFolder = "/Users/upload";
+		//String uploadFolder = "C:\\upload";
+		String uploadFolder = "/Users/upload";
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
