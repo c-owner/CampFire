@@ -18,6 +18,18 @@
 			.replyBtn, .timeDiv {
 				text-align: right !important;
 			}
+			
+			.replies a {
+				text-decoration: none;
+			}
+			
+			.paging a {
+				text-decoration: none;
+			}
+			
+			.paging code {
+				background: white;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -135,10 +147,10 @@
 				e.preventDefault();
 				
 				var reply = $("input[name='reply']").val();
-				//var replyer = $("input[name='replyer']").val();
-				var replyer = "test1";
+				var replyer = $("input[name='replyer']").val();
 				
 				if(reply == ""){return;}
+				if(replyer == ""){alert("로그인 후 이용이 가능합니다."); return;}
 				
 				replyService.add({bno: bno, reply: reply, replyer: replyer}, function(result){
 					alert(result);

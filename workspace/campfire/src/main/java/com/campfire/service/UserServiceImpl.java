@@ -42,6 +42,7 @@ public class UserServiceImpl implements UserService{
 	public boolean signIn(String userId, String userPw) {
 		boolean check = false;
 		String realPw = mapper.selectPw(userId);
+		if(realPw == null) {return false;}
 		if(realPw.equals(encrypt(userPw))) {
 			check = true;
 		}
