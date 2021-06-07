@@ -57,6 +57,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		});
 	}
 
+	@Transactional
 	@Override
 	public ReviewBoardVO view(Long bno) {
 		mapper.updateReadCnt(bno);

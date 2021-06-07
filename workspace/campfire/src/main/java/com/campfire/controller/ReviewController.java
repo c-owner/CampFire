@@ -67,10 +67,7 @@ public class ReviewController {
 		return "redirect:/review/reviewList";
 	}
 	
-	@GetMapping({"/reviewView", "/reviewModify"})
-	public void reviewView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri,Model model){
-		model.addAttribute("review",service.view(bno));
-	}
+	@GetMapping({"/reviewModify"})
 	
 	@PostMapping("/modify")
 	public String modify(ReviewBoardVO board, Criteria cri, RedirectAttributes rttr) {
