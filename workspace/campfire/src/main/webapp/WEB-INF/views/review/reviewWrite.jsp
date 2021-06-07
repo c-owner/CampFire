@@ -98,7 +98,7 @@
 							<label>제목 <span style="color:#aaa;" id="titleCounter">(0 / 최대 40자)</span></label>
 							<input type="text" name="title" class="title" placeholder="제목을 입력해주세요. ">
 							<label>내용</label>
-							<textarea class="summernote"></textarea>
+							<textarea class="summernote" name="content"></textarea>
 							<div class="tools">
 								<div class="hidden-xs">
 									<!-- <a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a> -->
@@ -107,6 +107,7 @@
 							</div>
 						</div>
 					</div>
+					<input type="hidden" name="writer" value="campfire"/>
 				</form>
 			</div>
 		</div>
@@ -161,13 +162,13 @@ $('.summernote').summernote({
 	});
 	
 	//평점
-	var star = 1;
-	star = $('.on').length;
+	var score = 1;
 	reviewForm.star.value = "5"; // default 5
 	$( ".star_rating a" ).click(function() {
 	    $(this).parent().children("a").removeClass("on");
 	    $(this).addClass("on").prevAll("a").addClass("on");
-	    reviewForm.star.value = star;
+		score = $('.on').length;
+	    reviewForm.star.value = score;
 	    return false;
 	});
 	

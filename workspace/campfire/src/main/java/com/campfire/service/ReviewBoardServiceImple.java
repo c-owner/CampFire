@@ -25,6 +25,10 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	@Transactional
 	@Override
 	public void register(ReviewBoardVO board) {
+		System.out.println("null checking .. : " + board.getContent());
+		log.info("null checking ... : " + board.getContent());
+		 
+		
 		int cntStar = Integer.parseInt(board.getStar()); 
 		String star = "★";
 		if(cntStar == 1 ) {
