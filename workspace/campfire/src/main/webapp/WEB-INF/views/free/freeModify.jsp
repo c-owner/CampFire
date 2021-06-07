@@ -46,18 +46,23 @@
 		<div class="wrapper">
 			<div class="inner">
 				<header class="major">
-                        <h2>자유게시판 글쓰기</h2>
+                        <h2>자유게시판 수정하기</h2>
                 </header>
-				<form class="reviewForm" action="/free/freeWrite" method="post" name="freeForm">
+				<form class="reviewForm" action="/free/freeModify" method="post" name="freeForm">
+					<input type="hidden" name="pageNum" value="${cri.pageNum}">
+					<input type="hidden" name="amount" value="${cri.amount}">
+					<input type="hidden" name="keyword" value="${cri.keyword}">
+					<input type="hidden" name="type" value="${cri.type}">
+					<input type="hidden" name="bno" value="${board.bno}">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
-							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
-							<textarea class="summernote" name="content"></textarea>
+							<input type="text" class="title_text" name="title" value="${board.title}" maxlength="30">
+							<textarea class="summernote" name="content">${board.content}</textarea>
 							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">수정</a></h3>
 				</form>
 			</div>
 		</div>

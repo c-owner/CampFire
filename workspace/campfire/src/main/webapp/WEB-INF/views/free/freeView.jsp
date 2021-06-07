@@ -30,6 +30,11 @@
 			.paging code {
 				background: white;
 			}
+			
+			#boardModify, #boardRemove {
+    			color: black !important;
+    			border-radius: 0;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -44,6 +49,12 @@
 				</div>
 				<div class="row" style="display:block;">
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">제목 : ${board.title}</h2></div>
+					<c:if test="${sessionId eq board.writer}">
+						<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto; text-align: right;">
+							<a class="button small" id="boardModify" href="/free/freeModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
+							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
+						</div>
+					</c:if>
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
 						<div class="header">
 							<h3 style="font-weight: bold; text-align: left; margin: 0 0;">
@@ -72,6 +83,13 @@
 							</div>
 						</div>
 					</div>
+					<form name="removeForm" action="/free/freeRemove">
+						<input type="hidden" name="pageNum" value="${cri.pageNum}">
+						<input type="hidden" name="amount" value="${cri.amount}">
+						<input type="hidden" name="type" value="${cri.type}">
+						<input type="hidden" name="keyword" value="${cri.keyword}">
+						<input type="hidden" name="bno" value="${board.bno}">
+					</form>
 				
 					<!-- 댓글작성칸 -->
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
@@ -134,6 +152,7 @@
 		$(document).ready(function () {
 			var pageNum = 1;
 			var bno = "${board.bno}";
+			var sessionId = "${sessionId}";
 			
 			showList(pageNum);
 			
@@ -149,7 +168,7 @@
 				var reply = $("input[name='reply']").val();
 				var replyer = $("input[name='replyer']").val();
 				
-				if(reply == ""){return;}
+				if(reply == ""){alert("내용을 입력해주세요."); return;}
 				if(replyer == ""){alert("로그인 후 이용이 가능합니다."); return;}
 				
 				replyService.add({bno: bno, reply: reply, replyer: replyer}, function(result){
@@ -230,19 +249,21 @@
 							str += "<div style='position: absolute;'>";
 							str += "<h4 style='margin: 0; text-align: left;'>";
 							str += "작성자: " + list[i].replyer + "</h4></div><br>";
-							/* str += "<div style='text-align: right;'>";
-							str += "<h5 style='margin: 0;'>12분 전</h5></div>"; */
 							str += "<div style='text-align: left;'>";
 							str += "<span class='reply" + list[i].rno + "'>" + list[i].reply + "</span></div>";
 							str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
 							if(list[i].replyDate != list[i].updateDate){
-								str += "<br>수정된 날짜 " +replyService.timeForToday(list[i].updateDate);
+								str += "<br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
 							}
-							str += "</strong></div><div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
-							str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
-							str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-							str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
-							str += "</div></li>";
+							str += "</strong></div>";
+							if(sessionId == list[i].replyer){
+								str += "<div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
+								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
+								str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+								str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
+								str += "</div>";
+							}
+							str += "</li>";
 						}
 						replyUL.html(str);
 						showReplyPage(replyCnt);
