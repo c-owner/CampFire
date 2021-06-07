@@ -15,6 +15,7 @@ public class MarketController {
 	@GetMapping
 	public void marketList() {}
 	
-	
+	@GetMapping(value="/marketTest")
+	public void marketTest() {;}
 
 }

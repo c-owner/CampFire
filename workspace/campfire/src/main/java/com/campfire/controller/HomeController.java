@@ -55,7 +55,7 @@ public class HomeController {
 	        session.setAttribute("sessionId", userInfo.get("email"));
 	        session.setAttribute("access_Token", access_Token);
 	    }
-		return "home";
+		return "redirect:/";	//메인경로 (현재url 추구)
 	}
 	
 	//카카오 로그아웃
@@ -64,7 +64,7 @@ public class HomeController {
 	    kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 	    session.removeAttribute("access_Token");
 	    session.removeAttribute("sessionId");
-	    return "home";
+	    return "redirect:/";
 	}
 
 }
