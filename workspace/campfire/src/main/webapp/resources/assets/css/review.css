@@ -83,11 +83,11 @@ select#category, select#from {
   width: 30%;
   height: 30px;
 }
-@media screen and (min-width: 546px ) {
+/* @media screen and (min-width: 546px ) {
   select#category, select#from {
     width: 40%;
   }
-}
+} */
 @media screen and (min-width: 1660px ) {
   select#category, select#from {
     width: 40%;

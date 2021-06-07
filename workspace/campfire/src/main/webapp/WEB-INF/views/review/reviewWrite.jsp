@@ -28,9 +28,27 @@
 		color:#545454;
 		margin: 0;
 	}
-	button, .button {
+/* 	button, .button {
 		box-shadow: none;
+	} */
+/* Summer note ****************** */	
+	button.note-btn {
+	    box-shadow: none;
 	}
+	
+	/* ************** 평점 ****************** */
+	.star_rating {font-size:0; letter-spacing:-4px; margin-right:5%;}
+	.star_rating a {
+	    font-size:22px;
+	    letter-spacing:0;
+	    display:inline-block;
+	    margin-left:5px;
+	    color:#ccc;
+	    text-decoration:none;
+	}
+	.star_rating a:first-child {margin-left:0;}
+	.star_rating a.on {color:#ffee58;}
+	a.star {color: #ffee58;}
 </style>
 
 <body class="is-preload">
@@ -46,17 +64,21 @@
 				<form name="reviewForm" class="reviewForm" action="/upload/review" method="post">
 					<div class="row gtr-uniform">
 						<div class="col-10 col-11-xsmall" style="margin:0 auto;">							
+							<span id="startext">당신의 점수는? </span>
+							<p class="star_rating" style="display:inline; margin: 0 auto;">
+								    <a href="#" class="on">★</a>
+								    <a href="#" class="on">★</a>
+								    <a href="#" class="on">★</a>
+								    <a href="#" class="on">★</a>
+								    <a href="#" class="on">★</a>
+								</p>
+							
 							<label>캠핑장 이름</label>
 							<input type="text" name="campName">
 							<label>캠핑장 주소</label>
 								<input type="text" name="zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" style="width:30%; display:inline;" readonly />
-								<div class="hidden-xs">
-									<div class="tools">
-										<div class="hidden-xs">
-											<a class="btn btn-secondary hero-upload" id="postcodify_search_button">검색</a>
-										</div>
-									</div>
-								</div>
+								<a class="btn btn-secondary hero-upload" id="postcodify_search_button">검색</a>
+								
 								<input type="text" name="address" class="postcodify_address" value="" placeholder="주소" readonly/><br />
 								<input type="text" name="addressDetail" class="postcodify_details" value="" placeholder="상세주소2"/><br />
 								<input type="text" name="addressEtc" class="postcodify_extra_info" value="" placeholder="상세주소1"/><br />
@@ -78,7 +100,8 @@
 							<textarea class="summernote"></textarea>
 							<div class="tools">
 								<div class="hidden-xs">
-									<a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a>
+									<!-- <a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a> -->
+									<a class="button small" href="javascript:validation();"><i class="fas fa-pencil-alt" style="line-height: inherit;">등록하기</i></a>
 								</div>
 							</div>
 						</div>
@@ -194,5 +217,14 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 		}		
 	}
 	
+	
+	//평점
+
+	$( ".star_rating a" ).click(function() {
+	    $(this).parent().children("a").removeClass("on");
+	    $(this).addClass("on").prevAll("a").addClass("on");
+	    return false;
+	});
 </script>
+
 </html>

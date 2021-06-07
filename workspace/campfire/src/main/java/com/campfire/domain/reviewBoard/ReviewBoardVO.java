@@ -22,6 +22,8 @@ public class ReviewBoardVO {
 	private int readCnt;
 	
 	private int replyCnt;
+	private String star; 
+	
 	
 	private List<ReviewBoardAttachVO> attachList;
 

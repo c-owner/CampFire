@@ -36,7 +36,9 @@
 							<div class="text-3">모닥불은 모든 캠퍼들의 활동을 응원합니다.</div>
 							<div class="tools">
 								<div class="hidden-xs">
-									<a class="btn btn-secondary hero-upload" href="/review/reviewWrite${pageMaker.cri.getListLink()}">지금 업로드 해보기</a>
+								
+									<a class="button small" href="/review/reviewWrite${pageMaker.cri.getListLink()}">지금 업로드 해보기</a>
+									<!-- <a class="btn btn-secondary hero-upload" href="/review/reviewWrite${pageMaker.cri.getListLink()}">지금 업로드 해보기</a>-->
 									<!-- <a class="btn btn-secondary-show" href="#">보러가기</a> -->
 								</div>
 							</div>
