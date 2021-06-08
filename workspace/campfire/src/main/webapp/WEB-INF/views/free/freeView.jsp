@@ -35,6 +35,10 @@
     			color: black !important;
     			border-radius: 0;
 			}
+			
+			.far {
+				color: red;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -76,7 +80,7 @@
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 						<div class="row">
 							<div class="col-3" style="text-align:left; text-decoration: none;">
-								<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i>${board.likeCnt}</a>
+								<a href="#" id="heartIcon" style="font-size:18px;text-decoration: none;"><i style="font-size: 35px;" class="far fa-heart"></i><span style="color: black;">${board.likeCnt}</span></a>
 							</div>
 							<div class="col-9" style="text-align: right;">
 								<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>
@@ -112,7 +116,7 @@
 					<!-- 댓글리스트 -->
 					<div class="col-6 col-10-medium col-10-small" style="margin: 0 auto;">
 						<div>
-							<h3 style="font-weight: bold; text-align: left; margin: 0 0;">댓글</h3>
+							<h3 style="font-weight: bold; text-align: left; margin-right: 3%;">댓글</h3>
 						</div>
 						<ul class="alt replies">
 							<!-- <li>
@@ -139,7 +143,9 @@
 							</li> -->
 						</ul>
 						<div class="paging" style="text-align: center; margin-bottom: 2%;">
-										
+							<ul class="pagination">
+							
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -184,7 +190,7 @@
 				var endNum = Math.ceil(pageNum / 10.0) * 10
 				var startNum = endNum - 9;
 				var realEnd = Math.ceil(replyCnt / 10.0)
-				var divTag = $(".paging");   			
+				var divTag = $(".paging ul");   			
 				
 				if(endNum > realEnd){
 					endNum = realEnd;
@@ -196,26 +202,26 @@
 				if(matchMedia("screen and (max-width:918px)").matches){
 					//918px보다 작을 때
 					if(pageNum > 1){
-						str += "<a class='changePage' href='" + (pageNum - 1) + "'><code>&lt;</code></a>";
+						str += "<li><a class='changePage' href='" + (pageNum - 1) + "'>이전</a></li>";
 					}
-					str += "<code>" + pageNum + "</code>";
+					str += "<li><a class='page active'>" + pageNum + "</a></li>";
 					if(pageNum < realEnd){
-						str += "<a class='changePage' href='" + (pageNum + 1) + "'><code>&gt;</code></a>";
+						str += "<li><a class='changePage' href='" + (pageNum + 1) + "'>다음</a>";
 					}
 				}else{
 					//918px 이상일 때
 					if(prev){
-						str += "<a class='changePage' href='" + (startNum - 1) + "'><code>&lt;</code></a>";
+						str += "<li><a class='changePage' href='" + (startNum - 1) + "'>이전</a></li>";
 					}
 					for(let i=startNum; i<=endNum; i++){
 						if(i == pageNum){
-							str += "<code>" + i + "</code>";
+							str += "<li><a class='page active'>" + i + "</a></li>";
 							continue;
 						}
-						str += "<a class='changePage' href='" + i + "'><code>" + i + "</code></a>";
+						str += "<li><a class='changePage' href='" + i + "'>" + i + "</a></li>";
 					}
 					if(next){
-						str += "<a class='changePage' href='" + (endNum + 1) + "'><code>&gt;</code></a>";
+						str += "<li><a class='changePage' href='" + (endNum + 1) + "'>다음</a><li>";
 					}
 				}
 				divTag.html(str);
@@ -251,9 +257,10 @@
 							str += "작성자: " + list[i].replyer + "</h4></div><br>";
 							str += "<div style='text-align: left;'>";
 							str += "<span class='reply" + list[i].rno + "'>" + list[i].reply + "</span></div>";
-							str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
 							if(list[i].replyDate != list[i].updateDate){
-								str += "<br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+								str += "<div class='timeDiv'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+							}else {
+								str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
 							}
 							str += "</strong></div>";
 							if(sessionId == list[i].replyer){
