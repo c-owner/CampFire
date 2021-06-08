@@ -64,14 +64,15 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		return mapper.selectBoard(bno);
 	}
 
-	@Transactional
 	@Override
 	public boolean modify(ReviewBoardVO board) {
-	
+		Criteria cri = new Criteria();
+		cri.setKeyword("");
+		cri.setType("");
 		
-		attach.deleteAll(board.getBno());
 		
 		boolean result = mapper.updateBoard(board) == 1;
+		
 		if(result && board.getAttachList() != null ) {
 			if(board.getAttachList().size() != 0 ) {
 				board.getAttachList().forEach(vo -> {
