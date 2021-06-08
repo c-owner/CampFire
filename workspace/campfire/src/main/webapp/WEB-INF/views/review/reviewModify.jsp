@@ -23,7 +23,7 @@
 		margin-bottom: 2rem;
 	}
 	
-	.reviewForm label {
+	.reviewModifyForm label {
 		font-size: 1.5rem;
 		color:#545454;
 		margin: 0;
@@ -59,9 +59,9 @@
 		<div class="wrapper">
 			<div class="inner">
 				<header class="major">
-					<span class="category">캠핑 리뷰 작성</span>
+					<span class="category">캠핑 리뷰 수정</span>
 				</header>
-				<form name="reviewForm" class="reviewForm" action="/review/reviewWrite" method="post">
+				<form name="reviewModifyForm" class="reviewModifyForm" action="/review/reviewModify" method="post">
 					<div class="row gtr-uniform">
 						<div class="col-10 col-11-xsmall" style="margin:0 auto;">							
 							<span id="startext">당신의 점수는? </span>
@@ -75,14 +75,14 @@
 							</p>
 							
 							<label>캠핑장 이름</label>
-							<input type="text" name="campName">
+							<input type="text" name="campName" value="${review.campName}">
 							<label>캠핑장 주소</label>
 								<input type="text" name="zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" style="width:30%; display:inline;" readonly />
 								<a class="btn btn-secondary hero-upload" id="postcodify_search_button">검색</a>
 								
-								<input type="text" name="address" class="postcodify_address" value="" placeholder="주소" readonly/><br />
-								<input type="text" name="addressDetail" class="postcodify_details" value="" placeholder="상세주소2"/><br />
-								<input type="text" name="addressEtc" class="postcodify_extra_info" value="" placeholder="상세주소1" readonly/><br />
+								<input type="text" name="address" class="postcodify_address" value="${review.address}" placeholder="주소" readonly/><br />
+								<input type="text" name="addressDetail" class="postcodify_details" value="${review.addressDetail}" placeholder="상세주소2"/><br />
+								<input type="text" name="addressEtc" class="postcodify_extra_info" value="${review.addressEtc}" placeholder="상세주소1" readonly/><br />
 								
 								<select class="categories" name="type" id="category" >
 										<option value="all">전체분야</option>
@@ -96,18 +96,23 @@
 							<br>
 							
 							<label>제목 <span style="color:#aaa;" id="titleCounter">(0 / 최대 40자)</span></label>
-							<input type="text" name="title" class="title" placeholder="제목을 입력해주세요. ">
+							<input type="text" name="title" class="title" value="${review.title}" placeholder="제목을 입력해주세요. ">
 							<label>내용</label>
-							<textarea class="summernote" name="content"></textarea>
+							<textarea class="summernote" name="content">${review.content}</textarea>
 							<div class="tools">
 								<div class="hidden-xs">
 									<!-- <a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a> -->
-									<a class="button small" href="javascript:validation();"><i class="fas fa-pencil-alt" style="line-height: inherit;">등록하기</i></a>
+									<a class="button small" href="javascript:validation();"><i class="fas fa-pencil-alt" style="line-height: inherit;">수정 완료</i></a>
 								</div>
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="writer" value="campfire"/>
+					<input type="hidden" name="writer" value="${review.writer}"/>
+					<input type="hidden" name="pageNum" value="${cri.pageNum}">
+					<input type="hidden" name="amount" value="${cri.amount}">
+					<input type="hidden" name="keyword" value="${cri.keyword}">
+					<input type="hidden" name="type" value="${cri.type}">
+					<input type="hidden" name="bno" value="${board.bno}">
 				</form>
 			</div>
 		</div>
@@ -163,24 +168,23 @@ $('.summernote').summernote({
 	
 	//평점
 	var score = 1;
-	reviewForm.star.value = "5"; // default 5
+	reviewModifyForm.star.value = "5"; // default 5
 	$( ".star_rating a" ).click(function() {
 	    $(this).parent().children("a").removeClass("on");
 	    $(this).addClass("on").prevAll("a").addClass("on");
 		score = $('.on').length;
-	    reviewForm.star.value = score;
+	    reviewModifyForm.star.value = score;
 	    return false;
 	});
 	
 function uploadSummernoteImageFile(file, el) {
-	console.log('star Length  : '+ star);
 	data = new FormData();
 	data.append("uploadFile", file);
 	console.log("el ~~~~~~~~~~" + el);
 	$.ajax({
 		data : data,
 		type : "POST",
-		url : "/reviewWrite",
+		url : "/reviewModify",
 		contentType : false,
 		enctype : 'multipart/form-data',
 		processData : false,
@@ -206,26 +210,26 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 });
 
 	function validation() {
-		if(reviewForm.campName.value == '' || reviewForm.campName.value == null) {
+		if(reviewModifyForm.campName.value == '' || reviewModifyForm.campName.value == null) {
 			alert('캠핑장 이름을 입력해주세요.');
 			return false;
 		}
 		
-		if(reviewForm.zipcode.value == '' || reviewForm.zipcode.value == null ){
+		if(reviewModifyForm.zipcode.value == '' || reviewModifyForm.zipcode.value == null ){
 			alert('캠핑장 주소를 입력해주세요.');
 			return false;
 		}
 		
-		if(reviewForm.title.value.length < 5 || reviewForm.title.value.length == '') {
+		if(reviewModifyForm.title.value.length < 5 || reviewModifyForm.title.value.length == '') {
 			alert('제목은 필수 입력입니다.');
 		}
 		
-		if(reviewForm.type.value == 'all'){
+		if(reviewModifyForm.type.value == 'all'){
 			alert('분야를 선택해주세요!');
 			return false;
 		}
 		else {
-			reviewForm.submit();
+			reviewModifyForm.submit();
 		}		
 	}
 	

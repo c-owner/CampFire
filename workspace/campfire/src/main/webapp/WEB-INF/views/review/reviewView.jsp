@@ -64,14 +64,9 @@
 							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
-							<a href="#" style="font-size: 21px; text-decoration: none;">테드한의 캠핑장 바로가기</a>
-						</div>
-						<ul class="actions special">
-							<li>
 								<input type="button" class="button" value="수정" onclick="location.href='/review/reviewModify${cri.getListLink()}&bno=${review.bno}'"/>
 								<input type="submit" class="button" value="삭제"/>
-							</li>
-						</ul>
+						</div>
 					</div>
 					
 				</div>
