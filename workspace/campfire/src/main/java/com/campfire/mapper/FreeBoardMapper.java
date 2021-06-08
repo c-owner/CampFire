@@ -16,4 +16,5 @@ public interface FreeBoardMapper {
 	public int delete(Long bno);
 	public int update(FreeBoardVO f_board);
 	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
+	public int readCntUp(Long bno);
 }

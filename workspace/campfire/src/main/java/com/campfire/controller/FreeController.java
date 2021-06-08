@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,12 @@ public class FreeController {
 	//전체 목록 가져오기
 	@GetMapping("/freeList")
 	public void getList(Criteria cri, Model model) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DAY_OF_MONTH, -1); //7일간 보이도록 하기위해서.
+		String nowday = format.format(cal.getTime());
+		
+		model.addAttribute("nowday",nowday);
 		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}
@@ -123,4 +131,5 @@ public class FreeController {
 			}
 		});
 	}
+	
 }
