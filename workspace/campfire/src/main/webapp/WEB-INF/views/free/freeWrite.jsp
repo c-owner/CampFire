@@ -54,7 +54,7 @@
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
-							<input type="hidden" name="writer" value="${sessionId}">
+							<input type="hidden" name="writer" value="test1">
 						</div>
 					</div>
 						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
@@ -128,9 +128,10 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
-				$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				//$(el).summernote('editor.insertImage', "/display?fileName=/Users/upload/" + url);
+				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
+				$(el).summernote('editor.insertImage', "/display?fileName=/free/" + url);
 				var str = "";
 				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					

@@ -23,7 +23,8 @@ public class ReviewBoardVO {
 	
 	private int replyCnt;
 	private String star; 
-	
+	private String thumb;
+	private String campName;
 	
 	private List<ReviewBoardAttachVO> attachList;
 

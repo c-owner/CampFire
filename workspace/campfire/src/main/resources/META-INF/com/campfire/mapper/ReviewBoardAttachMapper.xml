@@ -3,26 +3,26 @@
 <mapper namespace="com.campfire.mapper.ReviewBoardAttachMapper">
 	<select id="findByBno" resultType="com.campfire.domain.reviewBoard.ReviewBoardAttachVO">
 		SELECT UUID, UPLOADPATH, FILENAME, FILETYPE, BNO
-		FROM TBL_FREE_ATTACH
+		FROM TBL_REVIEW_ATTACH
 		WHERE BNO = #{bno}
 	</select>
 	
 	<select id="getOldFiles" resultType="com.campfire.domain.reviewBoard.ReviewBoardAttachVO">
 		SELECT UUID, UPLOADPATH, FILENAME, FILETYPE, BNO
-		FROM TBL_FREE_ATTACH
+		FROM TBL_REVIEW_ATTACH
 		WHERE UPLOADPATH = TO_CHAR(SYSDATE - 1, 'YYYY\MM\DD')
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO TBL_FREE_ATTACH(UUID, UPLOADPATH, FILENAME, FILETYPE, BNO)
+		INSERT INTO TBL_REVIEW_ATTACH(UUID, UPLOADPATH, FILENAME, FILETYPE, BNO)
 		VALUES(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
 	</insert>
 	
 	<delete id="delete">
-		DELETE FROM TBL_FREE_ATTACH WHERE UUID = #{uuid}
+		DELETE FROM TBL_REVIEW_ATTACH WHERE UUID = #{uuid}
 	</delete>
 	
 	<delete id="deleteAll">
-		DELETE FROM TBL_FREE_ATTACH WHERE BNO = #{bno}
+		DELETE FROM TBL_REVIEW_ATTACH WHERE BNO = #{bno}
 	</delete>
 </mapper>
