@@ -79,8 +79,7 @@ public class FreeController {
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		//return "redirect:/freeBoard/modify";
-		return "redirect:/freeBoard/list";
+		return "redirect:/free/freeList";
 	}
 	
 	//게시글 및 첨부파일 삭제
@@ -96,8 +95,7 @@ public class FreeController {
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		
-		//return "redirect:/freeBoard/modify";
-		return "redirect:/freeBoard/list";
+		return "redirect:/free/freeList";
 	}
 	
 	//게시글에 등록된 모든 첨부파일 목록

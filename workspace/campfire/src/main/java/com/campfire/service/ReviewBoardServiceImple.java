@@ -67,6 +67,8 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	@Transactional
 	@Override
 	public boolean modify(ReviewBoardVO board) {
+	
+		
 		attach.deleteAll(board.getBno());
 		
 		boolean result = mapper.updateBoard(board) == 1;

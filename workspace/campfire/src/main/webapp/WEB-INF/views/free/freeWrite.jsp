@@ -10,7 +10,7 @@
 	<meta name="keywords" content="" />
 	<link rel="stylesheet" href="/resources/assets/css/main.css" />
 	<link rel="stylesheet" href="/resources/assets/css/summernote-lite.css">
-	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 </head>
 <style>
 	.major {
