@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.MarketBoardMapper">
+	<insert id="insertBoard">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT SEQ_MARKET_BOARD.NEXTVAL FROM DUAL 
+		</selectKey>
+		INSERT INTO TBL_MARKET_BOARD (BNO, TITLE, CONTENT, WRITER) 
+		VALUES (#{bno}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<select id="selectBoard" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
+		SELECT BNO, TITLE, WRITER, REGDATE, UPDATEDATE, REPLYCNT FROM TBL_MARKET_BOARD WHERE BNO = #{bno}
+	</select>
+	
+	<update id="updateBoard">
+		UPDATE TBL_MARKET_BOARD 
+		SET TILTE = #{title}, CONTENT = #{content}, UPDATEDATE = SYSDATE 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<delete id="deleteBoard">
+		DELETE TBL_MARKET_BOARD WHERE BNO = #{bno}
+	</delete>
+	
+	<update id="updateReplyCnt">
+		UPDATE TBL_MARKET_BOARD 
+		SET REPLYCNT = REPLYCNT + #{amount} 
+		WHERE BNO = #{bno}
+	</update>
+</mapper>
