@@ -15,4 +15,5 @@ public class FreeBoardVO {
 	private int likeCnt;
 	private int replyCnt;
 	private List<FreeBoardAttachVO> attachList;
+	private int readCnt;
 }

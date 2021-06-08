@@ -20,10 +20,16 @@ public class BoardMapperTests {
 	private FreeBoardMapper mapper;
 	
 	@Test
-	public void testList() {
-		Criteria c = new Criteria(1, 10);
-		mapper.getListWithPaging(c).forEach(log::info);
+	public void testReadCnt() {
+		log.info("조회수 : "+mapper.readCntUp(126L));
 	}
+	
+	
+//	@Test
+//	public void testList() {
+//		Criteria c = new Criteria(1, 10);
+//		mapper.getListWithPaging(c).forEach(log::info);
+//	}
 	
 //	@Test
 //	public void testTotal() {

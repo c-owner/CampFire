@@ -64,7 +64,7 @@
 								<span>작성자 : ${board.writer}</span>
 							</div>
 							<div style="text-align: right;">
-								<span>조회수 : ㅇㅇㅇ</span>
+								<span>조회수 : ${board.readCnt}</span>
 							</div>
 						</div>
 						<div style="margin-bottom: 10px; width: 100%;" class="content">

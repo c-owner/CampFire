@@ -44,8 +44,10 @@ public class FreeBoardServiceImple implements FreeBoardService{
 		});
 	}
 
+	@Transactional
 	@Override
 	public FreeBoardVO get(Long bno) {
+		mapper.readCntUp(bno);
 		return mapper.read(bno);
 	}
 
