@@ -10,6 +10,7 @@
       <meta name="keywords" content="" />
       <link rel="stylesheet" href="/resources/assets/css/main.css" />
       <link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
       <style>
       .table-wrapper{
         width: 80%;
@@ -39,12 +40,13 @@
     		border-radius: 0;
 		}
 		
-         .big-width{display:block;}
-         .small-width{display:none;}
-         .table-wrapper {overflow-x:hidden !important;}
-         select{width: 25%;display: inline;}
-         input[name='keyword']{width: 55%; display: inline;}
-         .search{width: 18%;}
+        .big-width{display:block;}
+        .small-width{display:none;}
+        .table-wrapper {overflow-x:hidden !important;}
+        select{width: 25%;display: inline;}
+        input[name='keyword']{width: 55%; display: inline;}
+        .search{width: 18%;}
+        .material-icons {vertical-align: middle;}
          
          @media (max-width: 918px){
          	/* h1{
@@ -56,7 +58,6 @@
 			}
             .bno {display:none;}
             .regDate {display:none;}
-            .readCnt {display:none;}
             .big-width{display:none;}
             .small-width{display:block;}
 			select{width: 100%;}
@@ -92,12 +93,13 @@
                                        <c:forEach var="board" items="${list}">
                                           <tr class="tBody">
                                              <td class="bno">${board.bno}</td>
-                                             <td class="title"><a href="/free/freeView${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a>
-                                             	<i style="font-size: 35px;" class="far fa-heart"></i><span style="font-size: 0.5rem;">[${board.replyCnt}]</span><i className="material-icons">fiber_new</i><i class="fas fa-heart"></i><i class="material-icons">fiber_new</i>
+                                             <td class="title miniTitle"><a href="/free/freeView${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a>
+                                             	<%-- <i style="font-size: 35px;" class="far fa-heart"></i> --%><span style="font-size: 0.5rem;">[${board.replyCnt}]</span>
+                                             	<c:if test="${board.regDate > nowday}"><i class="material-icons"">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
                                              </td>
                                              <td class="writer">${board.writer}</td>
-                                             <td class="regDate">${board.regDate}</td>
-                                             <td class="updateDate">${board.updateDate}</td>
+                                             <td class="regDate">${board.updateDate}</td>
+                                             <td class="updateDate">${board.readCnt}</td>
                                           </tr>
                                        </c:forEach>
                                           <%-- <tr class="tBody">
@@ -185,6 +187,7 @@
 	<jsp:include page="../includes/footer.jsp"/>
    </body>
    <script>
+   
       $("a.search").on("click", function(e){
          e.preventDefault();
          var searchForm = $("#searchForm");
