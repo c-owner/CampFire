@@ -111,6 +111,7 @@
 						<div class="info">
 							<div class="info-detail">
 								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
+								<div class="star" style="color: gold;">${review.star}</div>
 								<div class="bottom">
 									<div class="username">
 										<span class="go-profile-area" data-username="">

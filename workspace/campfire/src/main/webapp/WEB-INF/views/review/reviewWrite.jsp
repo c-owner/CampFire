@@ -176,8 +176,8 @@ function uploadSummernoteImageFile(file, el) {
 		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-			//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
-			var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+			//var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "\\" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
+			var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "/" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
 			//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
 			var str = "";
@@ -191,9 +191,9 @@ function uploadSummernoteImageFile(file, el) {
 			}
 			
 			console.log("check : " + check);
-			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
-			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
-			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";					
+			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";					
+			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
 			str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
 			reviewForm.append(str);
 			j++;

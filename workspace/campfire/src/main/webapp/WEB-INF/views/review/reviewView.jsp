@@ -40,7 +40,7 @@
 								<div class="row">
 									<span style="margin-left: auto;">조회수 : ${review.readCnt}</span>
 								</div>
-								<span style="font-size:55px; display:block;">${review.star}</span>
+								<span style="font-size:30px; display:block; color: gold;">${review.star}</span>
 							</div>
 						</div>
 					</div>
