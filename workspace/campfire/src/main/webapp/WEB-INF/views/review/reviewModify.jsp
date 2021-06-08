@@ -77,7 +77,7 @@
 							<label>캠핑장 이름</label>
 							<input type="text" name="campName" value="${review.campName}">
 							<label>캠핑장 주소</label>
-								<input type="text" name="zipcode" class="postcodify_postcode5" value="" placeholder="우편번호" style="width:30%; display:inline;" readonly />
+								<input type="text" name="zipcode" class="postcodify_postcode5" value="${review.zipcode}" placeholder="우편번호" style="width:30%; display:inline;" readonly />
 								<a class="btn btn-secondary hero-upload" id="postcodify_search_button">검색</a>
 								
 								<input type="text" name="address" class="postcodify_address" value="${review.address}" placeholder="주소" readonly/><br />
@@ -95,7 +95,7 @@
 								</select>
 							<br>
 							
-							<label>제목 <span style="color:#aaa;" id="titleCounter">(0 / 최대 40자)</span></label>
+							<label>제목 <span style="color:#aaa;" id="titleCounter">(${review.title.length()} / 최대 40자)</span></label>
 							<input type="text" name="title" class="title" value="${review.title}" placeholder="제목을 입력해주세요. ">
 							<label>내용</label>
 							<textarea class="summernote" name="content">${review.content}</textarea>
@@ -177,19 +177,38 @@ $('.summernote').summernote({
 	    return false;
 	});
 	
+var j = 0;
+var check = false;
 function uploadSummernoteImageFile(file, el) {
+	var reviewForm = $("form[name=reviewForm]");
 	data = new FormData();
 	data.append("uploadFile", file);
 	console.log("el ~~~~~~~~~~" + el);
 	$.ajax({
 		data : data,
 		type : "POST",
-		url : "/reviewModify",
+		url : "/upload/review",
 		contentType : false,
 		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-			$(el).summernote('insertImage', data.url);
+			//var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "\\" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
+			var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "/" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
+			//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
+			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
+			var str = "";
+			
+			if(!check){
+				str += "<input type='hidden' name='thumb' value='"+url+"'>";
+				check = true;				
+			}
+			
+			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";
+			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";
+			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
+			str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+			reviewForm.append(str);
+			j++;
 		}
 	});
 };
