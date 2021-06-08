@@ -21,8 +21,7 @@
 					<span class="category">캠핑 리뷰</span>
 				</header>
 			</div>
-			<a href="/review/reviewList${cri.getListL
-			ink()}" class="button small primary">목록 보기</a>
+			<a href="/review/reviewList${cri.getListLink()}" class="button small primary">목록 보기</a>
 			<div class="row" style="display:block;">
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">${review.title}</h2></div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
