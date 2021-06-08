@@ -27,6 +27,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	public void register(ReviewBoardVO board) {
 		System.out.println("null checking .. : " + board.getContent());
 		log.info("null checking ... : " + board.getContent());
+		log.info("null checking ... : " + board);
 		 
 		
 		int cntStar = Integer.parseInt(board.getStar()); 
@@ -45,7 +46,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 			star = "평점없음";
 		}
 		board.setStar(star);
-		
+		log.info("thumb::::" + board.getThumb());
 		mapper.insertBoard(board);
 		List<ReviewBoardAttachVO> attachList = board.getAttachList();
 		if(attachList == null || attachList.size() <= 0) {
