@@ -31,6 +31,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.campfire.domain.AllFileDTO;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
+import com.campfire.domain.marketBoard.MarketBoardAttachVO;
+import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -65,8 +67,10 @@ public class UploadController {
 	@PostMapping(value="/upload/{vo}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<AllFileDTO> upload(MultipartFile uploadFile, @PathVariable("vo") String voName){
 		int check = 0;
-		List<FreeBoardAttachVO> succeedList = new ArrayList<>();
-		List<FreeBoardAttachVO> failureList = new ArrayList<>();
+		List<FreeBoardAttachVO> f_succeedList = new ArrayList<>();
+		List<FreeBoardAttachVO> f_failureList = new ArrayList<>();
+		List<ReviewBoardAttachVO> r_succeedList = new ArrayList<>();
+		List<ReviewBoardAttachVO> r_failureList = new ArrayList<>();
 		
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
@@ -93,8 +97,8 @@ public class UploadController {
 		}
 		
 		FreeBoardAttachVO f_vo = new FreeBoardAttachVO();
-		//ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
-		//MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
+		ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
+		MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
 		
 		String uploadFileName = uploadFile.getOriginalFilename();
 		String temp = uploadFileName;
@@ -108,20 +112,42 @@ public class UploadController {
 			uploadFile.transferTo(saveFile);
 			in = new FileInputStream(saveFile);
 			
-			
+			switch(check) {
+			case 1:
 				f_vo.setFileName(temp);
 				f_vo.setUuid(uuid.toString());
 				f_vo.setUploadPath(uploadFolderPath);
 				f_vo.setFileType(true);
-				succeedList.add(f_vo);
+				f_succeedList.add(f_vo);
+				break;
+			case 2:
+				log.info("uploadController!~~~~~~~~~~!: " + uploadFolderPath);
+				r_vo.setFileName(temp);
+				r_vo.setUuid(uuid.toString());
+				r_vo.setUploadPath(uploadFolderPath);
+				log.info("왜 안 돼????????"+r_vo.getUploadPath());
+				r_vo.setFileType(true);
+				r_succeedList.add(r_vo);
+				break;
+			case 3:
+				break;
+			}
 			
 		} catch (Exception e) {
-			failureList.add(f_vo);
+			f_failureList.add(f_vo);
 			log.error(e.getMessage());
 		}
 		
-		allFile.setF_succeedList(succeedList);
-		allFile.setF_failureList(failureList);
+		switch(check) {
+		case 1:
+			allFile.setF_succeedList(f_succeedList);
+			allFile.setF_failureList(f_failureList);
+			break;
+		case 2:
+			allFile.setR_succeedList(r_succeedList);
+			allFile.setR_failureList(r_failureList);
+			break;
+		}
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
 	}
 	

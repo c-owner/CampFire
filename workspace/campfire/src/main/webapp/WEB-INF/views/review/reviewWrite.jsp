@@ -176,8 +176,8 @@ function uploadSummernoteImageFile(file, el) {
 		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-			//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
-			var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+			//var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "\\" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
+			var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "/" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
 			//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
 			var str = "";
@@ -191,9 +191,10 @@ function uploadSummernoteImageFile(file, el) {
 			}
 			
 			console.log("check : " + check);
-			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
-			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
-			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+			console.log(data.r_succeedList[0].uploadPath);
+			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";					
+			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";
+			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
 			str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
 			reviewForm.append(str);
 			j++;
@@ -228,7 +229,10 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 });
 
 	function validation() {
+		console.log($("input[name='attachList[0].uploadPath']").val());
 		console.log($("input[name='attachList[0].fileName']").val());
+		console.log($("input[name='attachList[0].fileType']").val());
+		console.log($("input[name='attachList[0].uuid']").val());
 		console.log($("input[name='writer']").val());
 		if(reviewForm.campName.value == '' || reviewForm.campName.value == null) {
 			alert('캠핑장 이름을 입력해주세요.');
