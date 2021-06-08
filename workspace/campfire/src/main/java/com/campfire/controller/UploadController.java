@@ -73,6 +73,17 @@ public class UploadController {
 		else if(voName.equals("market")) {check = 3;}
 		//String uploadFolder = "C:\\upload";
 		String uploadFolder = "/Users/upload";
+		switch(check) {
+		case 1:
+			uploadFolder += "/free";
+			break;
+		case 2:
+			uploadFolder += "/review";
+			break;
+		case 3:
+			uploadFolder += "/market";
+			break;
+		}
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
@@ -97,13 +108,13 @@ public class UploadController {
 			uploadFile.transferTo(saveFile);
 			in = new FileInputStream(saveFile);
 			
-			if(check == 1) {
+			
 				f_vo.setFileName(temp);
 				f_vo.setUuid(uuid.toString());
 				f_vo.setUploadPath(uploadFolderPath);
 				f_vo.setFileType(true);
 				succeedList.add(f_vo);
-			}
+			
 		} catch (Exception e) {
 			failureList.add(f_vo);
 			log.error(e.getMessage());
