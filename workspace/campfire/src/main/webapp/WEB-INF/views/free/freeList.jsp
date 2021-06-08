@@ -120,37 +120,36 @@
                                  </h3>
                                  <!-- A -->
                                  <div class="big-width" style="text-align:center;">
-                                    <c:if test="${pageMaker.prev}">
-                                       <a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
-                                       <a class="changePage" href="${pageMaker.startPage - 1}"><code>&lt;</code></a>
-                                    </c:if>
-                                    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                                       <c:choose>
-                                          <c:when test="${num eq pageMaker.cri.pageNum}">
-                                             <code>${num}</code>
-                                          </c:when>
-                                          <c:otherwise>
-                                             <a class="changePage" href="${num}"><code>${num}</code></a>
-                                          </c:otherwise>
-                                       </c:choose>
-                                    </c:forEach>
-                                    <c:if test="${pageMaker.next}">
-                                       <a class="changePage" href="${pageMaker.endPage + 1}"><code>&gt;</code></a>
-                                       <a class="changePage" href="${pageMaker.realEnd}"><code>&gt;&gt;</code></a>
-                                    </c:if>
+                                 	<ul class="pagination">
+	                                    <c:if test="${pageMaker.prev}">
+	                                       <li><a class="changePage" href="${pageMaker.startPage - 1}">이전</a></li>
+	                                    </c:if>
+	                                    <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+	                                       <c:choose>
+	                                          <c:when test="${num eq pageMaker.cri.pageNum}">
+	                                             <li><a class="page active">${num}</a></li>
+	                                          </c:when>
+	                                          <c:otherwise>
+	                                             <li><a class="changePage" href="${num}">${num}</a></li>
+	                                          </c:otherwise>
+	                                       </c:choose>
+	                                    </c:forEach>
+	                                    <c:if test="${pageMaker.next}">
+	                                       <li><a class="changePage" href="${pageMaker.endPage + 1}">다음</a></li>
+	                                    </c:if>
+                                    </ul>
                                  </div>
                                  
                                  <div class="small-width" style="text-align:center;">
-                                    <c:if test="${pageMaker.cri.pageNum > 1}">
-                                       <a class="changePage" href="${1}"><code>&lt;&lt;</code></a>
-                                       <a class="changePage" href="${pageMaker.cri.pageNum - 1}"><code>&lt;</code></a>
-                                    </c:if>
-                                    <code>${pageMaker.cri.pageNum}</code>
-                                    <c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
-                                       <a class="changePage" href="${pageMaker.cri.pageNum + 1}"><code>&gt;</code></a>
-                                       <a class="changePage" href="${pageMaker.realEnd}"><code>&gt;&gt;</code></a>
-                                       
-                                    </c:if>
+                                 	<ul class="pagination">
+	                                    <c:if test="${pageMaker.cri.pageNum > 1}">
+	                                       <li><a class="changePage" href="${pageMaker.cri.pageNum - 1}">이전</a></li>
+	                                    </c:if>
+	                                    <li><a class="page active">${pageMaker.cri.pageNum}</a></li>
+	                                    <c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
+	                                       <li><a class="changePage" href="${pageMaker.cri.pageNum + 1}">다음</a></li>
+	                                    </c:if>
+                                    </ul>
                                  </div>
                                  
                                  <form id="actionForm" action="/free/freeList">

@@ -8,9 +8,10 @@ import com.campfire.domain.Criteria;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 
 public interface MarketBoardMapper {
-	public List<MarketBoardVO> selectBoardList(Criteria cri);
+	public List<MarketBoardVO> getListWithPaging(Criteria cri);
 	public int getTotal();
 	public int getTotal(Criteria cri);
+	public MarketBoardVO read(Long bno);
 	public void insertBoard(MarketBoardVO board);
 	public int updateBoard(MarketBoardVO board);
 	public int deleteBoard(Long bno);
