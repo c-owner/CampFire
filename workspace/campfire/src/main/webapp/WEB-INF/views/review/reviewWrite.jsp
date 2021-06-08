@@ -179,6 +179,7 @@ function uploadSummernoteImageFile(file, el) {
 			//var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "\\" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
 			var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "/" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
 			//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
+			console.log("url : :: : : " + url);
 			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
 			var str = "";
 			
