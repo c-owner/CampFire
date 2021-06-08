@@ -44,7 +44,7 @@ public class ReviewController {
 	final String fileFolder = "/Users/corner-macmini/upload/";
 	final String uploadFolder = "/Users/corner-macmini/upload";
 	
-	private ReviewBoardService service;
+	private ReviewBoardService service; 
 	
 	@GetMapping(value = "/reviewList")
 	public void reviewList(Criteria cri, Model model) { 
@@ -58,9 +58,9 @@ public class ReviewController {
  
 	@PostMapping("/reviewWrite")
 	public String register(ReviewBoardVO board, RedirectAttributes rttr) {
-		if(board.getAttachList() != null ) {
-			board.getAttachList().forEach(log::info);
-		}
+//		if(board.getAttachList() != null ) {
+//			board.getAttachList().forEach(log::info);
+//		}
 		service.register(board);
 		rttr.addFlashAttribute("result", board.getBno());
 		
