@@ -182,18 +182,13 @@ function uploadSummernoteImageFile(file, el) {
 			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
 			var str = "";
 			
-			console.log("URL : " + url);
-			console.log("check: " + check);
-			
 			if(!check){
-				str += "<input type='hidden' name='thumb' value='"+url+"'";
+				str += "<input type='hidden' name='thumb' value='"+url+"'>";
 				check = true;				
 			}
 			
-			console.log("check : " + check);
-			console.log(data.r_succeedList[0].uploadPath);
-			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";					
 			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";
+			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";
 			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
 			str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
 			reviewForm.append(str);
@@ -229,11 +224,6 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 });
 
 	function validation() {
-		console.log($("input[name='attachList[0].uploadPath']").val());
-		console.log($("input[name='attachList[0].fileName']").val());
-		console.log($("input[name='attachList[0].fileType']").val());
-		console.log($("input[name='attachList[0].uuid']").val());
-		console.log($("input[name='writer']").val());
 		if(reviewForm.campName.value == '' || reviewForm.campName.value == null) {
 			alert('캠핑장 이름을 입력해주세요.');
 			return false;
