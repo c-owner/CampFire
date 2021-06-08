@@ -47,6 +47,9 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		}
 		board.setStar(star);
 		log.info("thumb::::" + board.getThumb());
+		if(board.getThumb() == null) {
+			board.setThumb("");
+		}
 		mapper.insertBoard(board);
 		List<ReviewBoardAttachVO> attachList = board.getAttachList();
 		if(attachList == null || attachList.size() <= 0) {
@@ -54,6 +57,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		}
 		attachList.forEach(vo -> {
 			vo.setBno(board.getBno());
+			log.info("첨부파일 저장이 바로 밑에!!!!");
 			attach.insert(vo);
 		});
 	}
