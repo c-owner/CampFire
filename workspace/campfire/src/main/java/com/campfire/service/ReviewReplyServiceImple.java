@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
+import com.campfire.domain.ReplyPageDTO;
 import com.campfire.domain.reviewBoard.ReviewReplyVO;
 import com.campfire.mapper.ReviewBoardMapper;
 import com.campfire.mapper.ReviewReplyMapper;
@@ -43,8 +44,8 @@ public class ReviewReplyServiceImple implements ReviewReplyService{
 	}
 
 	@Override
-	public PageDTO getList(Criteria cri, Long bno) {
-		return new PageDTO(cri, rmapper.getTotal(bno), rmapper.selectReplyList(cri, bno));
+	public PageDTO selectReplyList(Criteria cri, Long bno) {
+		return new PageDTO(cri ,rmapper.getTotal(bno), rmapper.selectReplyList(cri, bno));
 	}
 
 }

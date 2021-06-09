@@ -15,6 +15,9 @@
 		    object-fit: contain;
 		    width: 100% !important;
 	    }
+	    .timeDiv {
+	    	text-align: right !important;
+	    }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -27,7 +30,7 @@
 					<span class="category">캠핑 리뷰</span>
 				</header>
 			</div>
-			<a href="/review/reviewList${cri.getListLink()}" class="button small primary">목록 보기</a>
+			<a href="/review/reviewList${cri.getListLink()}" class="button small primary">돌아가기</a>
 			<div class="row" style="display:block;">
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">${review.title}</h2></div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
@@ -87,8 +90,8 @@
 						<c:if test="${sessionId != null}">
 							<textarea rows="4" name="reply" id="reply" placeholder="10자 이상, 1000자 이내 작성" style="resize: none;"></textarea>
 							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 1000자)</span>
+							<a href="javascript:void(0);" class="button primary fit register" style="border-radius: 6px;">댓글 작성</a>
 						</c:if>
-						<a href="javascript:void(0);" class="button primary fit" style="border-radius: 6px;">댓글 작성</a>
 						</div>
 					</div>
 				</div>
@@ -98,29 +101,8 @@
 					<div>
 						<h3 style="font-weight: bold; text-align: left; margin: 5rem 0 0; border-bottom: 1px solid #aaa;">댓글</h3>
 					</div>
-					<ul class="alt">
-						<li>
-							<div style="position: absolute;">
-								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
-							</div>
-							<div style="text-align: right;">
-								<h5 style="margin: 0;">12분 전</h5>
-							</div>
-							<div style="text-align: left;">
-								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
-							</div>
-						</li>
-						<li>
-							<div style="position: absolute;">
-								<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
-							</div>
-							<div style="text-align: right;">
-								<h5 style="margin: 0;">12분 전</h5>
-							</div>
-							<div style="text-align: left;">
-								<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
-							</div>
-						</li>
+					<ul class="alt replies">
+						
 					</ul>
 				</div>
 				<div>
@@ -141,6 +123,7 @@
 </div>
 <jsp:include page="../includes/footer.jsp"/>
 	</body>
+	<script src="/resources/assets/js/reviewboard/reviewReply.js"></script>
 	<script>
 		var contextPath = "${pageContext.request.contextPath}";
 		$(document).ready(function () {
@@ -203,10 +186,80 @@
 					}
 				});
 			}
+			
+/**********************************************
+			REPLY MODULE 
+**********************************************/
+			
+			var replyer = "${sessionId}";
+			var bno = "${review.bno}";
+			var pageNum = 1;
+			 showList();
+			
+			$(".register").on("click", function(e){
+				e.preventDefault();
+				
+				var reply = $("textarea[name='reply']").val();
+				/* var replyer = $("input[name='replyer']").val(); */
+				
+				if(reply.length > 1000 || reply.length == '' || reply.length < 10) {
+					alert('글자 수는 10자 이상 300자 이내로 작성하셔야 합니다.');
+					return;
+				}
+				
+				console.log('들어오지 않는 이유 ..... ' + bno + '\n reply : ' + reply + '\n replyer  : ' + replyer);
+				console.log('replyService.add 함수를 찾을 수 없음 .. ');
+				replyService.add({bno:bno, reply:reply, replyer:replyer}, function(result){
+						pageNum = 1;
+						showList(pageNum);
+				});
+			});
+			
+			$(".pagination").on("click", "a.changePage", function(e) {
+				e.preventDefault();
+				pageNum = parseInt($(this).attr("href"));
+				showList(pageNum);
+			});
+			
+			function showList(page) {
+				var replyUL = $(".replies");
+				replyService.getList({bno:bno, page:page||1},
+					function(replyCnt, list){
+						if(list == null || list.length == 0 ){
+							if(pageNum > 1){
+								pageNum -= 1;
+								showList(pageNum);
+							}
+							replyUL.html("등록된 댓글이 없습니다.");
+							return;
+						}
+						var str = "";
+						
+						for(let i=0, len=list.length; i<len; i++) {
+					/* 		var rDate = list[i].replyDate.substr(0,16);
+							var uDate = list[i].updateDate.substr(0,16); */
+							str += "<li data-rno='" + list[i].rno + "'>";
+							str += "<div style='position: absolute;'>";
+							str += "<h4> style='margin: 0; text-align: left;'>작성자: " + list[i].replyer + "</h4></div>";
+							if(list[i].replyDate != list[i].updateDate){
+								str += "<div class='timeDiv'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+							}else {
+								str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
+							}
+							/* str += "<div style='text-align: right;'><h5 style='margin: 0;'>"+ rDate +"</h5></div>"; */
+							str += "<div style='text-align: left;'><span>"+ list[i].reply +"</span></div>";
+							str += "</li>";
+						}
+						replyUL.html(str);
+						showReplyPage(replyCnt);
+					});
+			} 
+			
+			
 		});
 		
 		/**********************************************
-					댓글	
+					댓글	유효성
 		**********************************************/
 		$('#reply').keyup(function (e){
 			var reply_Content = $(this).val();
@@ -218,5 +271,7 @@
 				$('#counter').html("1000 / 최대 1000자)");
 			}
 		});
+		
+		
 	</script>
 </html>

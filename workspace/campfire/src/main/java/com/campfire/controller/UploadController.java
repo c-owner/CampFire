@@ -40,15 +40,15 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UploadController {
 	
-	final String fileFolder = "/Users/corner-macmini/upload/";
-	final String uploadFolder = "/Users/corner-macmini/upload";
+//	String fileFolder = "/usr/local/corner-macmini/upload/";
+//	String uploadFolder = "/usr/local/corner-macmini/upload";
 	
 	//썸네일 화면에 출력
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		//File file = new File("C:\\upload\\"+fileName);
-		File file = new File("/Users/upload/"+fileName);
+		//File file = new File("/usr/local/upload/"+fileName);
+		File file = new File("/usr/local/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -76,7 +76,7 @@ public class UploadController {
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
 		//String uploadFolder = "C:\\upload";
-		String uploadFolder = "/Users/upload";
+		String uploadFolder = "/usr/local/upload";
 		switch(check) {
 		case 1:
 			uploadFolder += "/free";
@@ -158,7 +158,7 @@ public class UploadController {
 		File file = null;
 		
 		try {
-			file = new File("C:\\upload\\" + URLDecoder.decode(fileName));
+			file = new File("/usr/local/upload/" + URLDecoder.decode(fileName));
 			file.delete();
 			
 			if(fileType.equals("image")) {
@@ -181,7 +181,7 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping(value="/download", produces= {MediaType.APPLICATION_OCTET_STREAM_VALUE})
 	public ResponseEntity<Resource> download(String fileName, @RequestHeader("User-Agent") String userAgent){
-		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
+		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
 		
 		String resourceName = resource.getFilename();
 		String originalName = resourceName.substring(resourceName.indexOf("_") + 1);

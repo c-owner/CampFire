@@ -152,7 +152,7 @@
 			</section>
 		</div>
 		<jsp:include page="../includes/footer.jsp"/>
-		<script src="/resources/assets/js/reply.js"></script>
+		<script src="/resources/assets/js/freeboard/freeReply.js"></script>
 	</body>
 	<script>
 		$(document).ready(function () {
