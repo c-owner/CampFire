@@ -10,6 +10,12 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
+		<style>
+		img { 
+		    object-fit: contain;
+		    width: 80%;
+	    }
+		</style>
 	</head>
 	<body class="is-preload">
 <%@include file="../includes/header.jsp" %>
@@ -75,12 +81,18 @@
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 					<div class="row">
 						<div class="col-9">
-							<input type="text">
+						<c:if test="${sessionId == null}">
+							<textarea name="content" id="reply" rows="4" name="reply" style="resize: none;" readonly>로그인 후 댓글을 작성하실 수 있습니다.</textarea>
+						</c:if>
+						<c:if test="${sessionId != null}">
+							<textarea rows="4" name="reply" id="reply" placeholder="10자 이상, 300자 이내 작성" style="resize: none;"></textarea>
+							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 300자)</span>
+						</c:if>
 						</div>
 						<div class="col-3" style="padding:0 0;">
 							<ul class="actions stacked" style="margin: 0 0;">
 								<li>
-									<a class="button primary fit" style="border-radius: 6px;">댓글 작성</a>
+									<a href="javascript:void(0);" class="button primary fit" style="border-radius: 6px;">댓글 작성</a>
 								</li>
 							</ul>
 						</div>
