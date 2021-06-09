@@ -80,21 +80,15 @@
 				<!-- 댓글작성칸 -->
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 					<div class="row">
-						<div class="col-9">
+						<div class="col-12">
 						<c:if test="${sessionId == null}">
 							<textarea name="content" id="reply" rows="4" name="reply" style="resize: none;" readonly>로그인 후 댓글을 작성하실 수 있습니다.</textarea>
 						</c:if>
 						<c:if test="${sessionId != null}">
-							<textarea rows="4" name="reply" id="reply" placeholder="10자 이상, 300자 이내 작성" style="resize: none;"></textarea>
-							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 300자)</span>
+							<textarea rows="4" name="reply" id="reply" placeholder="10자 이상, 1000자 이내 작성" style="resize: none;"></textarea>
+							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 1000자)</span>
 						</c:if>
-						</div>
-						<div class="col-3" style="padding:0 0;">
-							<ul class="actions stacked" style="margin: 0 0;">
-								<li>
-									<a href="javascript:void(0);" class="button primary fit" style="border-radius: 6px;">댓글 작성</a>
-								</li>
-							</ul>
+						<a href="javascript:void(0);" class="button primary fit" style="border-radius: 6px;">댓글 작성</a>
 						</div>
 					</div>
 				</div>
@@ -102,7 +96,7 @@
 				<!-- 댓글리스트 -->
 				<div class="col-6 col-10-medium col-10-small" style="margin: 0 auto;">
 					<div>
-						<h3 style="font-weight: bold; text-align: left; margin: 0 0;">댓글</h3>
+						<h3 style="font-weight: bold; text-align: left; margin: 5rem 0 0; border-bottom: 1px solid #aaa;">댓글</h3>
 					</div>
 					<ul class="alt">
 						<li>
@@ -208,6 +202,20 @@
 						console.log(c);
 					}
 				});
+			}
+		});
+		
+		/**********************************************
+					댓글	
+		**********************************************/
+		$('#reply').keyup(function (e){
+			var reply_Content = $(this).val();
+			$('#counter').html("("+reply_Content.length+" / 최대 1000자)");    //글자수 실시간 카운팅
+
+			if (reply_Content.length > 1000){
+				alert("최대 1000자까지 입력 가능합니다.");
+				$(this).val(reply_Content.substring(0, 1000));
+				$('#counter').html("1000 / 최대 1000자)");
 			}
 		});
 	</script>
