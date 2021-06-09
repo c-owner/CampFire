@@ -13,7 +13,7 @@
 		<style>
 		img { 
 		    object-fit: contain;
-		    width: 80%;
+		    width: 100% !important;
 	    }
 		</style>
 	</head>
