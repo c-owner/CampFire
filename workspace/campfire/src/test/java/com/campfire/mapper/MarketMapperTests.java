@@ -20,15 +20,16 @@ public class MarketMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MarketBoardMapper mapper;
 	
-	/*@Test
+	@Test
 	public void testInsert() {
 		MarketBoardVO vo = new MarketBoardVO();
-		vo.setBno(45L);
+		vo.setBno(50L);
 		vo.setTitle("마켓테스트 제목");
 		vo.setContent("마켓테스트 내용");
 		vo.setWriter("test1");
+		vo.setMarketKeyword("S");
 		mapper.insertBoard(vo);
-	}*/
+	}
 	
 	/*@Test
 	public void testDelete() {

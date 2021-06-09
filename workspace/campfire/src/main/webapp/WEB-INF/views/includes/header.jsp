@@ -61,7 +61,14 @@
 							</li>
 							
 							<li><a href="#">테마검색</a></li>
-							<li><a href="/market/marketList">장작장터</a></li>
+							<li>
+								<a href="#" class="dropdown">장작장터</a>
+								<ul>
+									<li><a href="/market/marketList">팝니다</a></li>
+									<li><a href="/market/marketList">삽니다</a></li>
+									<li><a href="/market/marketList">무료나눔</a></li>
+								</ul>
+							</li>
 							<li>
 								<a href="#" class="dropdown">모닥불</a>
 								<ul>
