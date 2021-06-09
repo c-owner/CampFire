@@ -13,5 +13,6 @@ public class MarketBoardVO {
 	private String regDate;
 	private String updateDate;
 	private int replyCnt;
+	private String marketKeyword;
 	private List<MarketBoardAttachVO> attachList;
 }

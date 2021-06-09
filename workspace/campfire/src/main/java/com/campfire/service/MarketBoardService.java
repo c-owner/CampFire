@@ -3,6 +3,7 @@ package com.campfire.service;
 import java.util.List;
 
 import com.campfire.domain.Criteria;
+import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 
 public interface MarketBoardService {
@@ -12,5 +13,5 @@ public interface MarketBoardService {
 	public MarketBoardVO get(Long bno);
 	public boolean remove(Long bno);
 	public boolean modify(MarketBoardVO vo);
-	public List<MarketBoardVO> getAttachList(Long bno);
+	public List<MarketBoardAttachVO> getAttachList(Long bno);
 }

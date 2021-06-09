@@ -29,10 +29,10 @@
 	
 	<!-- 게시글 목록(검색 포함) -->
 	<select id="getListWithPaging" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT 
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT, MARKETKEYWORD 
 		FROM
 			(SELECT /*+ INDEX_DESC(TBL_MARKET_BOARD PK_MARKET_BOARD)*/
-				ROWNUM R, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT 
+				ROWNUM R, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT, MARKETKEYWORD 
 				FROM TBL_MARKET_BOARD 
 				WHERE <include refid="criteria"/>
 					ROWNUM <![CDATA[<=]]> #{pageNum} * #{amount})
@@ -53,8 +53,8 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			SELECT SEQ_MARKET_BOARD.NEXTVAL FROM DUAL 
 		</selectKey>
-		INSERT INTO TBL_MARKET_BOARD (BNO, TITLE, CONTENT, WRITER) 
-		VALUES (#{bno}, #{title}, #{content}, #{writer})
+		INSERT INTO TBL_MARKET_BOARD (BNO, TITLE, CONTENT, WRITER, MARKETKEYWORD) 
+		VALUES (#{bno}, #{title}, #{content}, #{writer}, #{marketKeyword})
 	</insert>
 	
 	<select id="read" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
@@ -62,7 +62,7 @@
 	</select>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
-		SELECT BNO, TITLE, WRITER, REGDATE, UPDATEDATE, REPLYCNT FROM TBL_MARKET_BOARD WHERE BNO = #{bno}
+		SELECT BNO, TITLE, WRITER, REGDATE, UPDATEDATE, REPLYCNT, MARKETKEYWORD FROM TBL_MARKET_BOARD WHERE BNO = #{bno}
 	</select>
 	
 	
