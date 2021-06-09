@@ -7,8 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.campfire.domain.Criteria;
-import com.campfire.domain.freeBoard.FreeBoardReplyVO;
-import com.campfire.domain.reviewBoard.ReviewReplyVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -28,7 +26,7 @@ public class ReviewReplyServiceTests {
 	@Test
 	public void testList() {
 		Criteria cri = new Criteria(1, 12);
-		log.info(service.getList(cri, 404L));
+		log.info(service.selectReplyList(cri, 404L));
 	}
 	
 //	@Test
