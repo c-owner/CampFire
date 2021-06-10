@@ -227,7 +227,7 @@
 				divTag.html(str);
 			}
 			
-			//페이지 이동 미완성
+			//페이지 이동
 			$(".paging").on("click", "a.changePage", function(e){
 				e.preventDefault();
 				pageNum = parseInt($(this).attr("href"));

@@ -4,31 +4,11 @@
 
 
 var replyService = (function(){
-	
-	function add(reply, callback, error){
-		$.ajax({
-			type: "post",
-			url: "/reviewReplies/write",
-			data: JSON.stringify(reply),
-			contentType: "application/json; charset=utf-8",
-			success: function(result){
-				if(callback){
-					callback(result);
-				}	
-			},
-			error: function(xhr, status, er) {
-				if(error) {
-					error(er);
-				}
-			}
-		});
-	}	
-	
 	function getList(reply, callback, error){
 		$.getJSON("/reviewReplies/reviewReplyList/"+reply.bno+"/"+reply.page+".json", 
 			function(data){
 				if(callback){
-					callback(data.replyCnt, data.reviewList);
+					callback(data.replyCnt, data.reviewReplyList);
 				}
 			}).fail(function(xhr, status, err){
 			if(error){error(err);}
@@ -58,6 +38,27 @@ var replyService = (function(){
 		
 		return Math.floor(betweenTimeDay / 365)+'년 전';
 	}
+	
+	function add(reply, callback, error){
+		$.ajax({
+			type: "post",
+			url: "/reviewReplies/write",
+			data: JSON.stringify(reply),
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				if(callback){
+					callback(result);
+				}	
+			},
+			error: function(xhr, status, er) {
+				if(error) {
+					error(er);
+				}
+			}
+		});
+	}	
+	
+	
 	
 	// 댓글 삭제
 	function remove(rno, callback, error) {

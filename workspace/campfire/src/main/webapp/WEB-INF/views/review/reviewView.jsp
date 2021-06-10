@@ -15,7 +15,7 @@
 		    object-fit: contain;
 		    width: 100% !important;
 	    }
-	    .timeDiv {
+	    .replyBtn, .timeDiv {
 	    	text-align: right !important;
 	    }
 		</style>
@@ -106,17 +106,11 @@
 					</ul>
 				</div>
 				<div>
-					<ul class="pagination">
-						<!-- <li><a class="changePage">이전</a></li> -->
-						<li><a class="page active">1</a></li>
-						<li><a class="changePage">2</a></li>
-						<li><a class="changePage">3</a></li>
-						<li><a class="changePage">4</a></li>
-						<li><a class="changePage">5</a></li>
-						<li><a class="changePage">6</a></li>
-						<li><a class="changePage">7</a></li>
-						<li><a class="changePage">다음</a></li>
-					</ul>
+					<div class="paging" style="text-align: center; margin-bottom: 2%;">
+						<ul class="pagination">
+						
+						</ul>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -207,13 +201,53 @@
 					return;
 				}
 				
-				console.log('들어오지 않는 이유 ..... ' + bno + '\n reply : ' + reply + '\n replyer  : ' + replyer);
-				console.log('replyService.add 함수를 찾을 수 없음 .. ');
 				replyService.add({bno:bno, reply:reply, replyer:replyer}, function(result){
 						pageNum = 1;
 						showList(pageNum);
 				});
 			});
+			
+			function showReplyPage(replyCnt){
+				var str = "";
+				var endNum = Math.ceil(pageNum / 10.0) * 10
+				var startNum = endNum - 9;
+				var realEnd = Math.ceil(replyCnt / 10.0)
+				var divTag = $(".paging ul");   			
+				
+				if(endNum > realEnd){
+					endNum = realEnd;
+				}
+				
+				var prev = startNum != 1;
+				var next = endNum * 10 < replyCnt;
+				
+				if(matchMedia("screen and (max-width:918px)").matches){
+					//918px보다 작을 때
+					if(pageNum > 1){
+						str += "<li><a class='changePage' href='" + (pageNum - 1) + "'>이전</a></li>";
+					}
+					str += "<li><a class='page active'>" + pageNum + "</a></li>";
+					if(pageNum < realEnd){
+						str += "<li><a class='changePage' href='" + (pageNum + 1) + "'>다음</a>";
+					}
+				}else{
+					//918px 이상일 때
+					if(prev){
+						str += "<li><a class='changePage' href='" + (startNum - 1) + "'>이전</a></li>";
+					}
+					for(let i=startNum; i<=endNum; i++){
+						if(i == pageNum){
+							str += "<li><a class='page active'>" + i + "</a></li>";
+							continue;
+						}
+						str += "<li><a class='changePage' href='" + i + "'>" + i + "</a></li>";
+					}
+					if(next){
+						str += "<li><a class='changePage' href='" + (endNum + 1) + "'>다음</a><li>";
+					}
+				}
+				divTag.html(str);
+			}
 			
 			$(".pagination").on("click", "a.changePage", function(e) {
 				e.preventDefault();
@@ -225,6 +259,7 @@
 				var replyUL = $(".replies");
 				replyService.getList({bno:bno, page:page||1},
 					function(replyCnt, list){
+						var str = "";
 						if(list == null || list.length == 0 ){
 							if(pageNum > 1){
 								pageNum -= 1;
@@ -233,14 +268,11 @@
 							replyUL.html("등록된 댓글이 없습니다.");
 							return;
 						}
-						var str = "";
 						
 						for(let i=0, len=list.length; i<len; i++) {
-					/* 		var rDate = list[i].replyDate.substr(0,16);
-							var uDate = list[i].updateDate.substr(0,16); */
 							str += "<li data-rno='" + list[i].rno + "'>";
 							str += "<div style='position: absolute;'>";
-							str += "<h4> style='margin: 0; text-align: left;'>작성자: " + list[i].replyer + "</h4></div>";
+							str += "<h4 style='margin: 0; text-align: left;'>작성자: " + list[i].replyer + "</h4></div>";
 							if(list[i].replyDate != list[i].updateDate){
 								str += "<div class='timeDiv'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
 							}else {
@@ -248,6 +280,13 @@
 							}
 							/* str += "<div style='text-align: right;'><h5 style='margin: 0;'>"+ rDate +"</h5></div>"; */
 							str += "<div style='text-align: left;'><span>"+ list[i].reply +"</span></div>";
+							if(sessionId == list[i].replyer){
+								str += "<div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
+								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
+								str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+								str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
+								str += "</div>";
+							}
 							str += "</li>";
 						}
 						replyUL.html(str);
@@ -255,6 +294,56 @@
 					});
 			} 
 			
+			// 댓글 삭제
+			$(".replies").on("click", "a.remove", function(e){
+				e.preventDefault();
+				var rnoValue = $(this).attr("href");
+				replyService.remove(rnoValue, 
+					function(result){
+						alert(result);
+						showList(pageNum);
+					}
+				);
+			});
+			
+			var check = false;
+			// 댓글 수정 
+			$(".replies").on("click", "a.modify", function(e){
+				e.preventDefault();
+				
+				if(check){alert("수정중인 댓글이 있습니다."); return;}
+				
+				var rnoValue = $(this).attr("href");
+				var replyTag = $(".reply" + rnoValue);
+				replyTag.html("<textarea style='resize: none;' class='" + rnoValue + "'>" + replyTag.text() + "</textarea>");
+				$(this).hide();
+				
+				var finishs = $(".finish");
+				for(let i=0; i<finishs.length; i++){
+					if($(finishs[i]).attr("href") == rnoValue){
+						$(finishs[i]).show();
+						check = true;
+						break;
+					}
+				}   			
+			});
+			
+			//수정 완료
+			$(".replies").on("click", "a.finish", function(e){
+				e.preventDefault();
+				
+				var rnoValue = $(this).attr("href");
+				var newReply = $("." + rnoValue).val();
+				
+				if(newReply == ""){return;}
+				
+				replyService.modify({rno:rnoValue, reply:newReply},
+						function(result){
+							alert(result);
+							check = false;
+							showList(pageNum);
+				});
+			});
 			
 		});
 		

@@ -62,7 +62,7 @@ public class ReviewReplyController {
 						: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@DeleteMapping(value = "/{rno}", produces = {MediaType.TEXT_PLAIN_VALUE})
+	@DeleteMapping(value = "/{rno}", produces = "text/html; charset=utf-8")
 	public ResponseEntity<String> remove(@PathVariable("rno") Long rno) {
 		return service.remove(rno) == true ?
 				new ResponseEntity<String>("댓글 삭제를 완료했습니다.", HttpStatus.OK) 
