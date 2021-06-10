@@ -4,8 +4,7 @@
 	<sql id="keyword">
 		<choose>
 			<when test="keyword != null and keyword != ''">
-				WHERE BNO LIKE '%'||#{keyword}||'%' 
-				OR TITLE LIKE '%'||#{keyword}||'%' 
+				WHERE TITLE LIKE '%'||#{keyword}||'%' 
 				OR CONTENT LIKE '%'||#{keyword}||'%' 
 				OR WRITER LIKE '%'||#{keyword}||'%' 
 				OR ADDRESS LIKE '%'||#{keyword}||'%' 
@@ -76,13 +75,11 @@
 		FROM (
 			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
 			FROM TBL_REVIEW_BOARD
-			WHERE
-			<include refid="criteria"/>
-			<include refid="keyword"/>
+			WHERE 
 			<![CDATA[
 				ROWNUM <= #{pageNum} * #{amount}
 			)
-			WHERE rn > ((#{pageNum} - 1) * #{amount})
+			WHERE rn > (#{pageNum} - 1) * #{amount}
 			]]>
 	</select>
 	

@@ -73,7 +73,7 @@
 									</select>
 		
 									<select name="categories" class="categories" id="category" >
-										<option value="all" ${pageMaker.cri.type == null ? 'selected':''}>전체분야</option>
+										<option value="all" ${pageMaker.cri.type == 'all' ? 'selected':''}>전체분야</option>
 										<option value="A7" ${pageMaker.cri.type == 'A7' ? 'selected':''}>유료 캠핑장</option>
 										<option value="B7" ${pageMaker.cri.type == 'B7' ? 'selected':''}>무료 캠핑장</option>
 										<option value="C7" ${pageMaker.cri.type == 'C7' ? 'selected':''}>노지 캠핑장</option>
@@ -207,14 +207,6 @@
 		e.preventDefault();
 		var searchForm = document.searchForm;
 		
-		if(!searchForm.find("option:selected").val()){
-			alert("검색 종류를 선택하세요.");
-			return false;
-		}
-		if(!searchForm.find("input[name='keyword']").val()){
-			alert("키워드를 입력하세요.");
-			return false;
-		}
 		searchForm.submit();
 	});
 	
