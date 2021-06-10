@@ -24,6 +24,8 @@ public class Criteria {
 		this.amount = amount;
 	}
 	
+	
+	
 	// 타입 배열로 만드는 메소드
 	public String[] getTypeList() {
 		return type == null ? new String[] {} : type.split("");

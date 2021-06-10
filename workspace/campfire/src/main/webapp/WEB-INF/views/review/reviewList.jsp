@@ -52,7 +52,7 @@
 
 			<div class="project original-main hidden-sm hidden-xs" style="margin-top: 0px;">
 				<div class="filters-container">
-					<form name="list" action="/review/reviewList" style="margin: 2rem 0;">
+					<form name="searchForm" id="searchForm" action="/review/reviewList" style="margin: 2rem 0;">
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
 							<div class="filter profile-filters">
@@ -63,9 +63,6 @@
 								</div>
 		
 									<!-- <span class="filter-side-divider"></span> -->
-								<form action="/review/reviewList" id="searchForm" >
-									<input type="hidden" name="category" value="">
-									<input type="hidden" name="category2" value="">
 									<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
 									<select name="from" class="select " id="from">
 										<option value="all" >전체기간</option>
@@ -75,7 +72,7 @@
 										<option value="month3">최근 3달</option>
 									</select>
 		
-									<select name="type" class="categories" id="category" >
+									<select name="categories" class="categories" id="category" >
 										<option value="all" ${pageMaker.cri.type == null ? 'selected':''}>전체분야</option>
 										<option value="A7" ${pageMaker.cri.type == 'A7' ? 'selected':''}>유료 캠핑장</option>
 										<option value="B7" ${pageMaker.cri.type == 'B7' ? 'selected':''}>무료 캠핑장</option>
@@ -88,7 +85,6 @@
 									<input type="text" class="searchTerm" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"
 									style="border-radius: initial; height:30px; width: 100%;">
 									<a href="javascript:void(0)" class="button primary icon solid fa-search">Search</a>
-								</form>
 									
 							</div>
 		
@@ -209,7 +205,7 @@
 	<script>
 	$("a.fa-search").on("click", function(e){
 		e.preventDefault();
-		var searchForm = $("#searchForm");
+		var searchForm = document.searchForm;
 		
 		if(!searchForm.find("option:selected").val()){
 			alert("검색 종류를 선택하세요.");

@@ -1,59 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campfire.mapper.ReviewBoardMapper">
-		<sql id="category">
-		<if test="from != null and type != null and keyword != null">
-			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
-				<foreach item="type" collection="typeList">
-					<trim prefix="OR">
-						<choose>
-							<when test="type=='A7'.toString()">
-								(TITLE LIKE '%'||#{keyword}||'%')
-							</when>
-							<when test="type=='B7'.toString()">
-								(CONTENT LIKE '%'||#{keyword}||'%')
-							</when>
-							<when test="type=='C7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
-							</when>
-							<when test="type=='D7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
-							</when>
-							<when test="type=='E7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
-							</when>
-							<when test="type=='F7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
-							</when>
-						</choose>
-					</trim>
-				</foreach>
-			</trim>
-		</if>
+	<sql id="keyword">
+		<choose>
+			<when test="keyword != null and keyword != ''">
+				WHERE BNO LIKE '%'||#{keyword}||'%' 
+				OR TITLE LIKE '%'||#{keyword}||'%' 
+				OR CONTENT LIKE '%'||#{keyword}||'%' 
+				OR WRITER LIKE '%'||#{keyword}||'%' 
+				OR ADDRESS LIKE '%'||#{keyword}||'%' 
+				OR ADDRESS_DETAIL LIKE '%'||#{keyword}||'%' 
+				OR ADDRESS_ETC LIKE '%'||#{keyword}||'%' 
+				OR CAMPNAME LIKE '%'||#{keyword}||'%' 
+			</when>
+		</choose>
 	</sql>
 		<sql id="criteria">
-		<if test="type != null and keyword != null">
+		<if test="type != null">
 			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
 				<foreach item="type" collection="typeList">
 					<trim prefix="OR">
 						<choose>
 							<when test="type=='A7'.toString()">
-								(TITLE LIKE '%'||#{keyword}||'%')
+								(CATEGORIES LIKE '유료 캠핑장')
 							</when>
 							<when test="type=='B7'.toString()">
-								(CONTENT LIKE '%'||#{keyword}||'%')
+								(CATEGORIES LIKE '무료 캠핑장')
 							</when>
 							<when test="type=='C7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
+								(CATEGORIES LIKE '노지 캠핑장')
 							</when>
 							<when test="type=='D7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
+								(CATEGORIES LIKE '난이도 캠핑장')
 							</when>
 							<when test="type=='E7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
+								(CATEGORIES LIKE '글램핑 캠핑장')
 							</when>
 							<when test="type=='F7'.toString()">
-								(WRITER LIKE '%'||#{keyword}||'%')
+								(CATEGORIES LIKE '카라반 캠핑장')
 							</when>
 						</choose>
 					</trim>
@@ -64,8 +48,25 @@
 	
 	<sql id="period">
 		<choose>
-			<when test="from != null">
-				ORDER BY REGDATE <![CDATA[ REGDATE BETWEEN TO_DATE(#{date1}, 'YYYY-MM-DD') AND TO_DATE(#{date2}, 'YYYY-MM-DD') +0.99999 ORDER BY REGDATE DESC ]]>
+			<when test="from != null and from == 'day'.toString()">
+			WHERE REGDATE BETWEEN SYSDATE-1 
+			AND SYSDATE 
+			ORDER BY REGDATE DESC
+			</when>
+			<when test="from != null and from == 'week'.toString()">
+			WHERE REGDATE BETWEEN SYSDATE-7 
+			AND SYSDATE 
+			ORDER BY REGDATE DESC			
+			</when>
+			<when test="from != null and from == 'month'.toString()">
+			WHERE REGDATE BETWEEN SYSDATE-30 
+			AND SYSDATE 
+			ORDER BY REGDATE DESC			
+			</when>
+			<when test="from != null and from == 'month3'.toString()">
+			WHERE REGDATE BETWEEN SYSDATE-31 
+			AND SYSDATE 
+			ORDER BY REGDATE DESC			
 			</when>
 		</choose>
 	</sql>
@@ -77,11 +78,11 @@
 			FROM TBL_REVIEW_BOARD
 			WHERE
 			<include refid="criteria"/>
-			
+			<include refid="keyword"/>
 			<![CDATA[
 				ROWNUM <= #{pageNum} * #{amount}
 			)
-		WHERE rn > ((#{pageNum} - 1) * #{amount})
+			WHERE rn > ((#{pageNum} - 1) * #{amount})
 			]]>
 	</select>
 	
