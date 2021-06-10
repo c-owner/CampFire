@@ -159,19 +159,6 @@ $('.summernote').summernote({
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
 	  
 	  	callbacks : { 
-	  		 onInit: function() {
-                 console.log('Summernote is launched');
-               },
-               onChange: function(contents, $editable) {
-                 console.log('onChange:', contents, $editable);
-               },
-			onImageLinkInsert: function(url, editor, welEditable) {
-		      // url is the image url from the dialog
-		      console.log("onImageLinkInsert", url, editor, welEditable);
-		      $img = $('<img>').attr({ src: url })
-		      // img 태그의 src를 url로 가져온다.
-		      $summernote.summernote('insertNode', $img[0]);
-			},
 			onImageUpload : function(files, editor, welEditable) {
 			// 파일 업로드(다중업로드를 위해 반복문 사용)
 				for (var i = files.length - 1; i >= 0; i--) {
