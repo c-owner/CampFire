@@ -9,5 +9,6 @@ public interface ReviewReplyService {
 	public ReviewReplyVO view(Long rno);
 	public boolean modify(ReviewReplyVO reply);
 	public boolean remove(Long rno);
-	public PageDTO getList(Criteria cri, Long bno);
+	public PageDTO selectReplyList(Criteria cri, Long bno);
+	
 }

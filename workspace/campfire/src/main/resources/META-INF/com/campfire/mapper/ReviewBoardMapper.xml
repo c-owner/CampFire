@@ -25,9 +25,9 @@
 
 
 	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
 		FROM (
-			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT
+			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
 			FROM TBL_REVIEW_BOARD
 			WHERE
 			<include refid="criteria"/>
@@ -51,19 +51,19 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			SELECT SEQ_REVIEW_BOARD.NEXTVAL FROM DUAL 
 		</selectKey>
-		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR) 
-		VALUES (#{bno}, #{title}, #{content}, #{writer}, #{zipcode}, #{address}, #{addressDetail}, #{addressEtc}, #{star})
+		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR, THUMB, CAMPNAME) 
+		VALUES (#{bno}, #{title}, #{content}, #{writer}, #{zipcode}, #{address}, #{addressDetail}, #{addressEtc}, #{star}, #{thumb}, #{campName})
 	</insert>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, READCNT, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR, THUMB, CAMPNAME
 		FROM TBL_REVIEW_BOARD
 		WHERE BNO = #{bno}
 	</select>
 	
 	<update id="updateBoard">
 		UPDATE TBL_REVIEW_BOARD
-		SET TITLE = #{title}, CONTENT = #{content}, UPDATEDATE = SYSDATE
+		SET TITLE = #{title}, CONTENT = #{content}, UPDATEDATE = SYSDATE, ZIPCODE = #{zipcode}, ADDRESS = #{address}, ADDRESS_DETAIL = #{addressDetail}, ADDRESS_ETC = #{addressEtc}, STAR = #{star}, THUMB = #{thumb}, CAMPNAME = #{campName} 
 		WHERE BNO = #{bno}
 	</update>
 	

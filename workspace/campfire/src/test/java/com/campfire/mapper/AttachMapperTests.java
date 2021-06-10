@@ -7,6 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
+import com.campfire.domain.marketBoard.MarketBoardAttachVO;
+import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -17,6 +19,12 @@ import lombok.extern.log4j.Log4j;
 public class AttachMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private FreeBoardAttachMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private ReviewBoardAttachMapper amapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MarketBoardAttachMapper Mmapper;
 	
 //	@Test
 //	public void test() {
@@ -34,9 +42,36 @@ public class AttachMapperTests {
 //		mapper.insert(vo);
 //	}
 	
+//	@Test
+//	public void testInsert() {
+//		ReviewBoardAttachVO vo = new ReviewBoardAttachVO();
+//		vo.setUuid("TEST1");
+//		vo.setUploadPath("TEST~");
+//		vo.setFileName("빠일네임");
+//		vo.setFileType(true);
+//		vo.setBno(23L);
+//		amapper.insert(vo);
+//	}
+	
+//	@Test
+//	public void testInsert() {
+//		MarketBoardAttachVO vo = new MarketBoardAttachVO();
+//		vo.setUuid("TEST1");
+//		vo.setUploadPath("TEST~");
+//		vo.setFileName("빠일네임");
+//		vo.setFileType(true);
+//		vo.setBno(44L);
+//		Mmapper.insert(vo);
+//	}
+	
+//	@Test
+//	public void testFind() {
+//		mapper.findByBno(89L).forEach(log::info);
+//	}
+	
 	@Test
 	public void testFind() {
-		mapper.findByBno(89L).forEach(log::info);
+		Mmapper.findByBno(44L).forEach(log::info);
 	}
 	
 //	@Test

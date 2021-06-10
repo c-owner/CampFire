@@ -158,37 +158,57 @@ $('.summernote').summernote({
 					uploadSummernoteImageFile(files[i], this);
 				}
 			}
+	  
 		}
 	});
-	
-	//평점
-	var score = 1;
-	reviewForm.star.value = "5"; // default 5
-	$( ".star_rating a" ).click(function() {
-	    $(this).parent().children("a").removeClass("on");
-	    $(this).addClass("on").prevAll("a").addClass("on");
-		score = $('.on').length;
-	    reviewForm.star.value = score;
-	    return false;
-	});
-	
+
+var j = 0;
+var check = false;
 function uploadSummernoteImageFile(file, el) {
-	console.log('star Length  : '+ star);
+	var reviewForm = $("form[name=reviewForm]");
 	data = new FormData();
 	data.append("uploadFile", file);
 	console.log("el ~~~~~~~~~~" + el);
 	$.ajax({
 		data : data,
 		type : "POST",
-		url : "/reviewWrite",
+		url : "/upload/review",
 		contentType : false,
 		enctype : 'multipart/form-data',
 		processData : false,
 		success : function(data) {
-			$(el).summernote('insertImage', data.url);
+			//var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "\\" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
+			var url = encodeURIComponent(data.r_succeedList[0].uploadPath + "/" + data.r_succeedList[0].uuid + "_" + data.r_succeedList[0].fileName);
+			//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
+			console.log("url : :: : : " + url);
+			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
+			var str = "";
+			
+			if(!check){
+				str += "<input type='hidden' name='thumb' value='"+url+"'>";
+				check = true;				
+			}
+			
+			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";
+			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";
+			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
+			str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+			reviewForm.append(str);
+			j++;
 		}
 	});
 };
+
+//평점
+var score = 1;
+reviewForm.star.value = "5"; // default 5
+$( ".star_rating a" ).click(function() {
+    $(this).parent().children("a").removeClass("on");
+    $(this).addClass("on").prevAll("a").addClass("on");
+	score = $('.on').length;
+    reviewForm.star.value = score;
+    return false;
+});
 	/*  주소 검색용 */
 $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 </script>
@@ -217,7 +237,8 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 		}
 		
 		if(reviewForm.title.value.length < 5 || reviewForm.title.value.length == '') {
-			alert('제목은 필수 입력입니다.');
+			alert('제목은 5자 이상 필수 입력입니다.');
+			return false;
 		}
 		
 		if(reviewForm.type.value == 'all'){
@@ -225,6 +246,7 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 			return false;
 		}
 		else {
+			check = false;
 			reviewForm.submit();
 		}		
 	}

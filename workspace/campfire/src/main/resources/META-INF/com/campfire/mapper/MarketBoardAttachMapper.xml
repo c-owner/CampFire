@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.campfire.mapper.ReviewBoardAttachMapper">
-	<select id="findByBno" resultType="com.campfire.domain.reviewBoard.ReviewBoardAttachVO">
+<mapper namespace="com.campfire.mapper.MarketBoardAttachMapper">
+	<select id="findByBno" resultType="com.campfire.domain.marketBoard.MarketBoardAttachVO">
 		SELECT UUID, UPLOADPATH, FILENAME, FILETYPE, BNO
-		FROM TBL_REVIEW_ATTACH
+		FROM TBL_MARKET_ATTACH 
 		WHERE BNO = #{bno}
 	</select>
 	
-	<select id="getOldFiles" resultType="com.campfire.domain.reviewBoard.ReviewBoardAttachVO">
+	<select id="getOldFiles" resultType="com.campfire.domain.marketBoard.MarketBoardAttachVO">
 		SELECT UUID, UPLOADPATH, FILENAME, FILETYPE, BNO
-		FROM TBL_REVIEW_ATTACH
+		FROM TBL_MARKET_ATTACH 
 		WHERE UPLOADPATH = TO_CHAR(SYSDATE - 1, 'YYYY\MM\DD')
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO TBL_REVIEW_ATTACH(UUID, UPLOADPATH, FILENAME, FILETYPE, BNO)
+		INSERT INTO TBL_MARKET_ATTACH(UUID, UPLOADPATH, FILENAME, FILETYPE, BNO)
 		VALUES(#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{bno})
 	</insert>
 	
 	<delete id="delete">
-		DELETE FROM TBL_REVIEW_ATTACH WHERE UUID = #{uuid}
+		DELETE FROM TBL_MARKET_ATTACH WHERE UUID = #{uuid}
 	</delete>
 	
 	<delete id="deleteAll">
-		DELETE FROM TBL_REVIEW_ATTACH WHERE BNO = #{bno}
+		DELETE FROM TBL_MARKET_ATTACH WHERE BNO = #{bno}
 	</delete>
 </mapper>

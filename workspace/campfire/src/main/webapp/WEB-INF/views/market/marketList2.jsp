@@ -3,15 +3,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
-		<title>초안 게시판 </title>
+		<title>리뷰게시판 | 모닥불🏕 </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/title-icon.png">
-
+		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
+		
+		
+		<!-- 합쳐지고 최소화된 최신 CSS -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap.min.css" /> -->
+		
+		<!-- 부가적인 테마 -->
+		<!-- <link rel="stylesheet" href="/resources/assets/bootstrap-css/bootstrap-theme.min.css" /> -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+		
+		
 		<style>
+			@media screen and (min-width: 1px) {
+				.inner.banner {
+					width: 100%;
+					max-width: 95%;
+				}
+			}
+			@media screen and (max-width: 1440px) {
+				.inner.banner {
+					padding: 0 30px;
+				}
+			}
+			
+			/* 최상단 배너 */
 			.main-banner-container {
 				display: flex;
 				align-items: center;
@@ -69,8 +92,36 @@
 				font-weight: bold;
 				text-decoration: none;
 			}
+			a.btn.btn-secondary-show {
+				position: absolute;
+			}
+			/* 카테고리 바 */
+			.filter-mobile{
+				display: flex;
+				margin: 0 auto;
+			}
+			select#category, select#from {
+				width: 30%;
+				height: 30px;
+			}
+			@media screen and (min-width: 546px ) {
+				select#category, select#from {
+					width: 40%;
+				}
+			}
+			@media screen and (min-width: 1660px ) {
+				select#category, select#from {
+					width: 40%;
+					height: 50px;
+				}
+			}
+			
+/*         */
 			.inner-image {
 				width: 40%;
+			}
+			.posts {
+				padding: 0 30px;
 			}
 			.posts > article .image img {
 				width: 100%;
@@ -79,17 +130,13 @@
 			a.image:hover img {
 				border-radius: 6px;
 			}
-			.inner {
-				margin: 0;
-				max-width: 100%;
-				width: 100%;
-			}
-			/* info */
+
+			/* post info 정보 */
 			.info {
 			/* padding: 18px 13px; */
 				position: relative;
 			}
-			/* title */
+			/* post title */
 			.title {
 				color: #222;
 				padding: 0;
@@ -108,7 +155,7 @@
 				border-radius: 50%;
 			}
 			
-			/* bottom */
+			/* post bottom */
 			
 			.bottom {
 				width: 100%;
@@ -145,7 +192,7 @@
 				width: 14px !important;
 				height: 13px;
 			}
-				@media (min-width: 1px) {
+				@media screen and (min-width: 1px) {
 					.view-icon, .love-icon, .comment-icon {
 						vertical-align: middle;
 						margin-right: 0px;
@@ -153,11 +200,154 @@
 				}
 				
 			/* 포스트 카테고리 바 post category bar */
+			.original-main.project .filters-container {
+				border-bottom: solid 1px #f1f1f1;
+				border-top: solid 1px #f1f1f1;
+			}
+			.original-main .filters-container {
+				margin: 48px 0px 20px 0px;
+			}
 			.filters-container .container {
 					width: 100%;
 					max-width: 1500px;
 			}
+			.filters-container .container {
+				width: 100%;
+				max-width: 1500px;
+			}
+			.filters-container .profile-filters {
+				/* text-align: center; */
+				display: flex;
+				justify-content: space-between;
+			}
+			.project .btn.btn-soft-pink.btn-none-background {
+				font-size: 1em;
+				letter-spacing: -0.25px;
+				font-weight: normal;
+				color: #777777;
+				font-family: 'NIXGONL-Vb';
+				background-color: #ffffff;
+				padding: 0 !important;
+				/* width: unset !important; */
+				margin-right: 32px;
+				border: 0px;
+				width: 5em;
+			}
+			.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
+				font-weight: bold;
+				color: #f85272;
+				background-color: #ffffff;
+				position: relative;
+				cursor: pointer;
+				width: 5em;
+			}
+			@media screen and (max-width: 435px){
+				.project .btn.btn-soft-pink.btn-none-background {
+					width: auto;
+				}
+				.project .btn.btn-soft-pink.btn-none-background:hover, .project .btn.btn-soft-pink.btn-none-background.active {
+					width: auto;
+				}
+			}
+			.project .filter-side-divider {
+				height: 14px;
+				background-color: #e1e1e1;
+				width: 1px;
+				display: inline-block;
+				position: relative;
+				top: 3px;
+			}
+			.project .filter-side-divider {
+				height: 14px;
+				background-color: #e1e1e1;
+				width: 1px;
+				display: inline-block;
+				position: relative;
+				top: 3px;
+			}			
+			.project .filter .bootstrap-select .btn-default {
+				color: #222222;
+				letter-spacing: -0.25px;
+				font-size: 0.929em;
+				font-family: 'NIXGONL-Vb';
+			}
+			.project .filter .bootstrap-select .btn-default .caret {
+				/* border-top: 4px solid #222222; */
+				/* border-bottom: none; */
+
+				/* 왜 안떠 ,,, */
+				background: url("/resources/images/down-arrow.png"); 
+				
+				border: none;
+				top: 30%;
+				width: 14px;
+				height: 14px;
+			}
+			.project .dropdown-menu.open {
+				border: 1px solid #e1e1e1;
+				border-radius: 4px;
+				box-shadow: none;
+				z-index: 99;
+			}
+			@media screen and (max-width: 447px) {
+				.filter-mobile{
+					display: flex;
+				}
+			}
+			.bootstrap-select.btn-group .dropdown-menu.inner {
+				position: static;
+				border: 0;
+				padding: 0;
+				margin: 0;
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+				border-radius: 0;
+				-webkit-box-shadow: none;
+				-moz-box-shadow: none;
+				box-shadow: none;
+			}
+			.dropdown-menu li {
+				text-align: left;
+				font-family: 'NIXGONL-Vb';
+				letter-spacing: -0.25px;
+				font-size: 0.857em;
+			}
 			
+			.imgDiv {
+				width: 100%;
+				height: 550px;
+				margin: 0 auto;
+			}
+			
+			.reviewImg {
+				width: 100%;
+				height: 100%;
+				object-fit: cover; 
+			}
+			
+			@media screen and (max-width: 1980px){
+				.imgDiv {
+					height: 340px; 
+				}
+			}
+			@media screen and (max-width: 980px){
+				.imgDiv {
+					width: 80%;
+					height: 300px; 
+				}
+				
+				.info {
+					width: 80%;
+					margin: 0 auto;
+				}
+				
+				.main-banner-container {
+					margin-bottom: 5%;
+				}
+			}
+
+			
+
 			
 		</style>
 		
@@ -168,14 +358,12 @@
 <%@include file="../includes/header.jsp" %>
 
 <div id="main">
-	<div class="wrapper">
 
 		<!-- Post -->
-		<section class="main special">
-			<div class="inner">
+		<section class="main special" style="margin-top: 30px;">
+			<div class="inner banner">
 					<header class="major">
 						<span class="category">캠핑 리뷰</span>
-						<h2><a href="#">샘플</a></h2>
 					</header>
 					<div class="main-banner-container">
 						<div class="description">
@@ -198,67 +386,35 @@
 
 			<div class="project original-main hidden-sm hidden-xs" style="margin-top: 0px;">
 				<div class="filters-container">
-					<form name="list" method="get">
+					<form name="list" method="get" style="margin: 2rem 0;">
 						<input type="hidden" id="order" value="noted">
 						<div class="container">
 							<div class="filter profile-filters">
-								<div>
-									<div class="btn btn-sort btn-soft-pink btn-none-background " data-value="pick">노트폴리오 픽</div>
-									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " data-value="newest">최신순</div>
-									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align active" data-value="noted">추천순</div>
+								<div class="filter-mobile">
+									<div class="btn btn-sort btn-soft-pink btn-none-background active" >캠퍼 픽</div>
+									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
+									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
 		
 									<span class="filter-side-divider"></span>
 		
-									<select name="from" class="select " id="from" style="display: none;">
+									<select name="from" class="select " id="from">
 										<option value="all" selected="">전체기간</option>
 										<option value="day">최근 24시간</option>
 										<option value="week">최근 1주일</option>
 										<option value="month">최근 1달</option>
 										<option value="month3">최근 3달</option>
-									</select><div class="btn-group bootstrap-select select"><button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="from"><div class="filter-option pull-left">전체기간</div>&nbsp;<div class="caret"></div></button><div class="dropdown-menu open"><ul class="dropdown-menu inner selectpicker" role="menu"><li rel="0" class="selected"><a tabindex="0" class="" style=""><span class="text">전체기간</span><i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li><li rel="1"><a tabindex="0" class="" style=""><span class="text">최근 24시간</span><i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li><li rel="2"><a tabindex="0" class="" style=""><span class="text">최근 1주일</span><i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li><li rel="3"><a tabindex="0" class="" style=""><span class="text">최근 1달</span><i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li><li rel="4"><a tabindex="0" class="" style=""><span class="text">최근 3달</span><i class="glyphicon glyphicon-ok icon-ok check-mark"></i></a></li></ul></div></div>
-		
-									<select class="categories" name="category" id="category" style="display: none;">
-										<option selected="" value="">전체분야</option>
-										<option value="J7"></option>
-										<option value="D7"></option>
-										<option value="C7"></option>
-										<option value="F7"></option>
-										<option value="G7"><option>
-										<option value="B7"></option>
-										<option value="K7"></option>
-										<option value="E7"></option>
-										<option value="I7"></option>
-										<option value="H7"></option>
-										<option value="A7"></option>
 									</select>
-									<div class="btn-group bootstrap-select categories">
-										<button type="button" class="btn dropdown-toggle selectpicker btn-default" data-toggle="dropdown" data-id="category">
-											<div class="filter-option pull-left">전체분야</div>&nbsp;
-											<div class="caret"></div>
-										</button>
-										<div class="dropdown-menu open">
-											<ul class="dropdown-menu inner selectpicker" role="menu">
-												<li rel="0" class="selected">
-													<a tabindex="0" class="" style="">
-														<span class="text">전체분야</span>
-														<i class="glyphicon glyphicon-ok icon-ok check-mark"></i>
-													</a>
-												</li>
-												<li rel="1">
-													<a tabindex="0" class="" style="">
-														<span class="text">무제</span>
-														<i class="glyphicon glyphicon-ok icon-ok check-mark"></i>
-													</a>
-												</li>
-												<li rel="2">
-													<a tabindex="0" class="" style="">
-														<span class="text">무제</span>
-														<i class="glyphicon glyphicon-ok icon-ok check-mark"></i>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
+		
+									<select class="categories" name="category" id="category" >
+										<option selected="" value="">전체분야</option>
+										<option value="A7">유료 캠핑장</option>
+										<option value="B7">무료 캠핑장</option>
+										<option value="C7">노지 캠핑장</option>
+										<option value="D7">난이도 캠핑장</option>
+										<option value="E7">글램핑 캠핑장</option>
+										<option value="F7">카라반 캠핑장</option>
+									</select>
+									
 								</div>
 							</div>
 		
@@ -273,7 +429,7 @@
 			<section class="main">
 				<div class="posts">
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg05.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg05.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -299,7 +455,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg06.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg06.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -325,7 +481,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg07.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg07.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -351,7 +507,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg08.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg08.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -377,7 +533,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg09.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg09.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -403,7 +559,7 @@
 						</div>
 					</article>
 					<article>
-						<a href="#" class="image"><img src="/resources/images/background/bg10.jpg" alt="" /></a>
+						<div class="imgDiv"><a href="#" class="image"><img class="reviewImg" src="/resources/images/background/bg10.jpg" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
@@ -446,12 +602,12 @@
 				
 			 
 				
-	</div>
 </div>
 
 
 
 <jsp:include page="../includes/footer.jsp"/>
 <%-- <%@include file="includes/footer.jsp" %> --%>
+
 	</body>
 </html>

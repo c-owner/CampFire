@@ -6,23 +6,20 @@
 		VALUES (SEQ_REVIEW_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
 	</insert>
 	
-	<select id="selectReply" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
+	<select id="selectReply" resultType="com.campfire.domain.reviewBoard.ReviewReplyVO">
 		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
 		FROM TBL_REVIEW_REPLY
 		WHERE RNO = #{rno}
 	</select>
 	
-	<select id="selectReplyList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		<![CDATA[
-			SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+	<select id="selectReplyList" resultType="com.campfire.domain.reviewBoard.ReviewReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
 			FROM (
 				SELECT /*+ INDEX_DESC(TBL_REVIEW_REPLY PK_REVIEW_REPLY) */
 				ROWNUM rn, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
-				FROM TBL_REVIEW_REPLY
-				WHERE BNO = #{bno} AND ROWNUM <= #{cri.pageNum} * ${cri.amount}
-			)
-			WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount}
-		]]>
+				FROM TBL_REVIEW_REPLY 
+				WHERE BNO = #{bno} AND ROWNUM <![CDATA[<=]]> #{cri.pageNum} * #{cri.amount})
+		WHERE rn <![CDATA[>]]> (#{cri.pageNum} - 1) * #{cri.amount}
 	</select>
 	
 	<update id="updateReply">

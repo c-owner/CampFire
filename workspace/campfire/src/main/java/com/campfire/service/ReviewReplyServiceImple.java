@@ -43,8 +43,8 @@ public class ReviewReplyServiceImple implements ReviewReplyService{
 	}
 
 	@Override
-	public PageDTO getList(Criteria cri, Long bno) {
-		return new PageDTO(cri, rmapper.getTotal(bno), rmapper.selectReplyList(cri, bno));
+	public PageDTO selectReplyList(Criteria cri, Long bno) {
+		return new PageDTO(cri ,rmapper.getTotal(bno), rmapper.selectReplyList(cri, bno));
 	}
 
 }

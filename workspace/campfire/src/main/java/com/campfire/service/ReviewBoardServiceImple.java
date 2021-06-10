@@ -27,6 +27,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	public void register(ReviewBoardVO board) {
 		System.out.println("null checking .. : " + board.getContent());
 		log.info("null checking ... : " + board.getContent());
+		log.info("null checking ... : " + board);
 		 
 		
 		int cntStar = Integer.parseInt(board.getStar()); 
@@ -45,7 +46,10 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 			star = "평점없음";
 		}
 		board.setStar(star);
-		
+		log.info("thumb::::" + board.getThumb());
+		if(board.getThumb() == null) {
+			board.setThumb("");
+		}
 		mapper.insertBoard(board);
 		List<ReviewBoardAttachVO> attachList = board.getAttachList();
 		if(attachList == null || attachList.size() <= 0) {
@@ -53,6 +57,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		}
 		attachList.forEach(vo -> {
 			vo.setBno(board.getBno());
+			log.info("첨부파일 저장이 바로 밑에!!!!");
 			attach.insert(vo);
 		});
 	}
@@ -64,14 +69,15 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		return mapper.selectBoard(bno);
 	}
 
-	@Transactional
 	@Override
 	public boolean modify(ReviewBoardVO board) {
-	
+		Criteria cri = new Criteria();
+		cri.setKeyword("");
+		cri.setType("");
 		
-		attach.deleteAll(board.getBno());
 		
 		boolean result = mapper.updateBoard(board) == 1;
+		
 		if(result && board.getAttachList() != null ) {
 			if(board.getAttachList().size() != 0 ) {
 				board.getAttachList().forEach(vo -> {

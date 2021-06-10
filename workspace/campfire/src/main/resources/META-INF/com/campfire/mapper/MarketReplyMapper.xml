@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.MarketReplyMapper">
+	<!-- public int insertReply(MarketReplyVO reply);
+	public MarketReplyVO selectReply(Long rno);
+	public int updateReply(MarketReplyVO reply);
+	public int deleteReply(Long rno);
+	public List<MarketReplyVO> selectReplyList(@Param("cri") Criteria cri, @Param("bno") Long bno);
+	public int getTotal(Long bno); -->
+	
+	<insert id="insertReply">
+		INSERT INTO TBL_MARKET_REPLY (RNO, BNO, REPLY, REPLYER) 
+		VALUES (SEQ_MARKET_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
+	</insert>
+	
+	<select id="selectReply" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
+		FROM TBL_MARKET_REPLY 
+		WHERE RNO = #{rno} 
+	</select>
+	
+	<update id="updateReply">
+		UPDATE TBL_MARKET_REPLY  
+		SET REPLY = #{reply}, UPDATEDATE = SYSDATE 
+		WHERE RNO = #{rno}
+	</update>
+	
+	<delete id="deleteReply">
+		DELETE TBL_MARKET_REPLY 
+		WHERE RNO = #{rno}
+	</delete>
+	
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(RNO) FROM TBL_MARKET_REPLY 
+		WHERE BNO = #{bno}
+	</select>
+	
+	<select id="selectReplyList" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
+		<![CDATA[
+			SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+			FROM (
+				SELECT /*+ INDEX_DESC(TBL_MARKET_REPLY PK_MARKET_REPLY) */
+				ROWNUM rn, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+				FROM TBL_MARKET_REPLY
+				WHERE BNO = #{bno} AND ROWNUM <= #{cri.pageNum} * ${cri.amount}
+			)
+			WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+</mapper>

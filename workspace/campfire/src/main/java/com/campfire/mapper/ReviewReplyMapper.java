@@ -12,6 +12,8 @@ public interface ReviewReplyMapper {
 	public ReviewReplyVO selectReply(Long rno);
 	public int updateReply(ReviewReplyVO reply);
 	public int deleteReply(Long rno);
+	
 	public List<ReviewReplyVO> selectReplyList(@Param("cri") Criteria cri, @Param("bno") Long bno);
+	
 	public int getTotal(Long bno);
 }

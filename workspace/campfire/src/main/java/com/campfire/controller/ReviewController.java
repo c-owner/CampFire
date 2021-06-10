@@ -67,9 +67,7 @@ public class ReviewController {
 		return "redirect:/review/reviewList";
 	}
 	
-	@GetMapping({"/reviewModify"})
-	
-	@PostMapping("/modify")
+	@PostMapping("/reviewModify")
 	public String modify(ReviewBoardVO board, Criteria cri, RedirectAttributes rttr) {
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result","success");
@@ -105,7 +103,7 @@ public class ReviewController {
 		
 	}
 	
-	@GetMapping(value="/reviewView")
+	@GetMapping(value={"/reviewView", "/reviewModify"})
 	public void reviewView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest req, Model model) {
 		log.info("reviewView....." + bno);
 		log.info("reviewView....." + cri);

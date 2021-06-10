@@ -99,12 +99,16 @@
 							<input type="text" name="title" class="title" placeholder="제목을 입력해주세요. ">
 							<label>내용</label>
 							<textarea class="summernote" name="content"></textarea>
+<<<<<<< HEAD
 							<div class="tools">
 								<div class="hidden-xs">
 									<!-- <a class="btn btn-secondary hero-upload" href="javascript:validation();">등록하기</a> -->
 									<a class="button small" href="javascript:validation();"><i class="fas fa-pencil-alt" style="line-height: inherit;">등록하기</i></a>
 								</div>
 							</div>
+=======
+							<input type="hidden" name="writer" value="test1">
+>>>>>>> 989b1a7713b1e51c13406a8e653e67731ed1956b
 						</div>
 					</div>
 					<input type="hidden" name="writer" value="campfire"/>
@@ -160,6 +164,7 @@ $('.summernote').summernote({
 			}
 		}
 	});
+<<<<<<< HEAD
 
 var j = 0;
 var check = false;
@@ -188,6 +193,36 @@ function uploadSummernoteImageFile(file, el) {
 			if(!check){
 				str += "<input type='hidden' name='thumb' value='"+url+"'";
 				check = true;				
+=======
+    
+	var j = 0;
+	function uploadSummernoteImageFile(file, el) {
+		data = new FormData();
+		var freeForm = $("form[name=freeForm]");
+		data.append("uploadFile", file);
+		$.ajax({
+			data : data,
+			type : "POST",
+			url : "/upload/free",
+			contentType : false,
+			enctype : 'multipart/form-data',
+			processData : false,
+			success : function(data) {
+				console.log(data);
+				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
+				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
+				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
+				$(el).summernote('editor.insertImage', "/display?fileName=/free/" + url);
+				var str = "";
+				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				freeForm.append(str);
+				j++;
+>>>>>>> 989b1a7713b1e51c13406a8e653e67731ed1956b
 			}
 			
 			console.log("check : " + check);
