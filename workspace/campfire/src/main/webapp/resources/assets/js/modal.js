@@ -68,6 +68,8 @@ $(document).ready(function () {
 		$("form[name='findPwForm']").hide();
 		$("form[name='findIdForm']").show();
 	});
+	
+// 회원 가입 ------------------------------------------------
 	$('#goSignUpBtn').on('click', function(e){
 		e.preventDefault();
 		$(".loginModal").hide();
@@ -93,7 +95,7 @@ $(document).ready(function () {
 	});
 	
 	$("#checkId").on("click", function(e){
-		e.preventDefault
+		e.preventDefault();
 		var id = $("#userId2").val();
 		var reg = /^[a-z0-9_]{8,12}$/;
 		if(!reg.test(id)){
@@ -141,10 +143,6 @@ $(document).ready(function () {
 		checkEmail = false;
 	});
 	
-	
-	
-	
-	
 	$("#userPw").on("keyup", function(e){
 		var reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-.]).{8,}$/;
 		if(reg.test($(this).val())){
@@ -173,7 +171,7 @@ $(document).ready(function () {
 	});
 	
 	
-});
+}); // document.ready
 function EmailCheck(){
 	var email = $("#memberEmail").val();
 	
@@ -184,8 +182,10 @@ function EmailCheck(){
 		contentType:"charset=utf-8",
 		success: function(result){
 			console.log(result);
-			if(result.trim() == "error"){
-				alert("이메일 확인 후 다시 시도해주세요.");
+			if(result.trim() == "no"){
+				alert("중복된 이메일입니다. 다시 시도해 주십시오.");
+			}else if(result.trim() == "error"){
+				alert("이메일 확인 후 다시 시도해 주십시오.");
 			}else{
 				alert("인증번호가 전송되었습니다.");
 				code = result;
@@ -222,7 +222,7 @@ function formSubmit(){
 		return false;
 	}
 	if(!checkPw1){
-		alert("비밀번호는 영문(대+소문자)+숫자포함 8자이상으로 입력해주세요.");
+		alert("비밀번호는 영문(대+소문자)+숫자+특수문자 포함 8자이상으로 입력해주세요.");
 		return false;
 	}
 	if(!checkPw2){
@@ -233,3 +233,70 @@ function formSubmit(){
 	signUpForm.submit();
 	
 }
+// ---------------------------------------------------------------회원 가입 끝
+
+// 아이디 찾기
+$("#goFindIdBtn").on("click", function(e){
+	e.preventDefault();
+	var email = $("input[name='userEmail']").val();
+	if(email == ""){
+		$("#findIdCheck").css("color", "red");
+		$("#findIdCheck").text("이메일을 입력해 주십시오.");
+	}else {
+		$("#findIdCheck").css("color", "#3c95fb");
+		$("#findIdCheck").text("요청을 처리 중입니다.");
+		$.ajax({
+			url:contextPath + "/account/findId?userEmail="+ email,
+			type:"get",
+			dataType:"text",
+			success:function(result){
+				alert(result);
+				$("input[name='userEmail']").val("");
+				$("#findIdCheck").text("");
+				$('.modal-wrapper').removeClass("open");
+			},
+			error:function(){ // 통신 오류 시
+				console.log("오류");
+			}
+		});
+	}
+})
+
+// 비밀번호 찾기 ---------------------------------------
+$("#goFindPwBtn").on("click", function(e){
+	e.preventDefault();
+	var id = $("input[name='userId3']").val();
+	var email = $("input[name='userEmail3']").val();
+
+	console.log(id);
+	if (id == ""){
+		$("#findPwCheck").css("color", "red");
+		$("#findPwCheck").text("아이디를 입력해 주십시오.");
+		$("input[name='userId3']").focus();
+		return;
+	}
+	if(email == ""){
+		$("#findPwCheck").css("color", "red");
+		$("#findPwCheck").text("이메일을 입력해 주십시오.");
+		$("input[name='userEmail3']").focus();
+		return;
+	}
+		console.log(email);
+		$("#findPwCheck").css("color", "#3c95fb");
+		$("#findPwCheck").text("요청을 처리 중입니다.");
+		$.ajax({
+			url:contextPath + "/account/findPw?userId="+id+"&userEmail="+ email,
+			type:"get",
+			dataType:"text",
+			success:function(result){
+				alert(result);
+				$("input[name='userId3']").val("");
+				$("input[name='userEmail3']").val("");
+				$("#findPwCheck").text("");
+				$('.modal-wrapper').removeClass("open");
+			},
+			error:function(){ // 통신 오류 시
+				console.log("오류");
+			}
+		});
+})
