@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
-import com.campfire.domain.ReplyPageDTO;
 import com.campfire.domain.reviewBoard.ReviewReplyVO;
 import com.campfire.mapper.ReviewBoardMapper;
 import com.campfire.mapper.ReviewReplyMapper;

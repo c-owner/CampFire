@@ -2,7 +2,6 @@ package com.campfire.service;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
-import com.campfire.domain.ReplyPageDTO;
 import com.campfire.domain.reviewBoard.ReviewReplyVO;
 
 public interface ReviewReplyService {
