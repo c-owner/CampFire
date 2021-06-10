@@ -93,7 +93,7 @@
                                        <c:forEach var="board" items="${list}">
                                           <tr class="tBody">
                                              <td class="bno">${board.bno}</td>
-                                             <td class="title miniTitle"><a href="/free/freeView${pageMaker.cri.getListLink()}&bno=${board.bno}">${board.title}</a>
+                                             <td class="title miniTitle"><a href="javascript: view(${board.bno})">${board.title}</a>
                                              	<%-- <i style="font-size: 35px;" class="far fa-heart"></i> --%><span style="font-size: 0.5rem;">[${board.replyCnt}]</span>
                                              	<c:if test="${board.regDate > nowday}"><i class="material-icons"">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
                                              </td>
@@ -115,7 +115,7 @@
                                     <tfoot>
                                     </tfoot>
                                  </table>
-                                 <h3 style="text-align: right;"><a href="/free/freeWrite${pageMaker.cri.getListLink()}" class="button small" style="border-radius: 0; text-decoration: none;">
+                                 <h3 style="text-align: right;"><a href="javascript: freeWrite();" class="button small" style="border-radius: 0; text-decoration: none;">
                                  	<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
                                  </h3>
                                  <!-- A -->
@@ -184,6 +184,7 @@
                   </div> 
       <!-- Scripts -->
 	<jsp:include page="../includes/footer.jsp"/>
+	<script src="/resources/assets/js/modal.js"></script>
    </body>
    <script>
    
@@ -217,6 +218,24 @@
             return;
          }
          alert("게시글 " + result + "번이 등록되었습니다.")
-      })
+      });
+      
+     function freeWrite(){
+    	 if ("${sessionId}" == ""){
+ 			alert("로그인 후 이용해 주십시오.");
+ 			goSignIn();
+ 		}else{
+ 			location.replace("/free/freeWrite${pageMaker.cri.getListLink()}");
+ 		}
+     }
+     
+     function view(bno){
+    	 if ("${sessionId}" == ""){
+ 			alert("로그인 후 이용해 주십시오.");
+ 			goSignIn();
+ 		}else{
+ 			location.replace("/free/freeView${pageMaker.cri.getListLink()}&bno="+bno);
+ 		}
+     }
    </script>
 </html>
