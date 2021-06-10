@@ -53,13 +53,6 @@
 
 <body class="is-preload">
 
-	<c:if test="${sessionId eq null}">
-		<script>
-		   alert("로그인 후 이용해주세요");
-		  	history.back();
-		</script>
-	</c:if>
-
 	<%@include file="../includes/header.jsp" %>
 	
 	<div id="main">

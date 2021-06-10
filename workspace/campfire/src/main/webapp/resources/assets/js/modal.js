@@ -17,6 +17,7 @@ function goSignUp(){
 	$(".signUpModal").show();
 	$('.modal-wrapper').toggleClass('open');
     $('.page-wrapper').toggleClass('blur-it');
+	$("#findIdBtn").css("background", "beige");
 }
 
 function goSignIn(){
@@ -47,20 +48,22 @@ $(document).ready(function () {
 		e.preventDefault();
 		$('.loginModal').hide();
 		$('.findModal').show();
+		$("#findIdBtn").css("background", "beige");
+		$("#findPwBtn").css("background", "white");
 	});
 	
 	$('#findPwBtn').on('click', function(e){
 		e.preventDefault();
-		$("#findIdBtn").children().css("color", "black");
-		$("#findPwBtn").children().css("color", "#2388fa");
+		$("#findPwBtn").css("background", "beige");
+		$("#findIdBtn").css("background", "white");
 	
 		$("form[name='findIdForm']").hide();
 		$("form[name='findPwForm']").show();
 	});
 	$('#findIdBtn').on('click', function(e){
 		e.preventDefault();
-		$("#findPwBtn").children().css("color", "black");
-		$("#findIdBtn").children().css("color", "#2388fa");
+		$("#findIdBtn").css("background", "beige");
+		$("#findPwBtn").css("background", "white");
 	
 		$("form[name='findPwForm']").hide();
 		$("form[name='findIdForm']").show();

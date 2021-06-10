@@ -37,7 +37,7 @@
 							<div class="tools">
 								<div class="hidden-xs">
 								
-									<a class="button small" href="/review/reviewWrite${pageMaker.cri.getListLink()}">지금 업로드 해보기</a>
+									<a class="button small" href="javascript: upload();">지금 업로드 해보기</a>
 									<!-- <a class="btn btn-secondary hero-upload" href="/review/reviewWrite${pageMaker.cri.getListLink()}">지금 업로드 해보기</a>-->
 									<!-- <a class="btn btn-secondary-show" href="#">보러가기</a> -->
 								</div>
@@ -105,7 +105,7 @@
 				<div class="posts">
 					<c:forEach var="review" items="${list}" begin="0" step="1">
 					<article>
-						<div class="imgDiv"><a href="/review/reviewView?bno=${review.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image">
+						<div class="imgDiv"><a href="javascript: view(${review.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
 						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="" /></a></div>
 						
 						<div class="info">
@@ -202,6 +202,7 @@
 
 
 <jsp:include page="../includes/footer.jsp"/>
+<script src="/resources/assets/js/modal.js"></script>
 <%-- <%@include file="includes/footer.jsp" %> --%>
 
 	</body>
@@ -228,5 +229,23 @@
 		actionForm.find("input[name='pageNum']").val(pageNum);
 		actionForm.submit();
 	});
+
+	function upload(){
+		if ("${sessionId}" == ""){
+			alert("로그인 후 이용해 주십시오.");
+			goSignIn();
+		}else{
+			location.replace("/review/reviewWrite${pageMaker.cri.getListLink()}");
+		}
+	}
+	
+	function view(bno, pageNum, amount){
+		if ("${sessionId}" == ""){
+			alert("로그인 후 이용해 주십시오.");
+			goSignIn();
+		}else{
+			location.replace("/review/reviewView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
+		}
+	}
 	</script>
 </html>
