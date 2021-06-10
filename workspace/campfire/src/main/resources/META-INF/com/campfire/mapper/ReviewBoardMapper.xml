@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campfire.mapper.ReviewBoardMapper">
-		<sql id="criteria">
-		<if test="type != null and keyword != null">
+		<sql id="category">
+		<if test="from != null and type != null and keyword != null">
 			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
 				<foreach item="type" collection="typeList">
 					<trim prefix="OR">
 						<choose>
-							<when test="type=='T'.toString()">
+							<when test="type=='A7'.toString()">
 								(TITLE LIKE '%'||#{keyword}||'%')
 							</when>
-							<when test="type=='C'.toString()">
+							<when test="type=='B7'.toString()">
 								(CONTENT LIKE '%'||#{keyword}||'%')
 							</when>
-							<when test="type=='W'.toString()">
+							<when test="type=='C7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='D7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='E7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='F7'.toString()">
 								(WRITER LIKE '%'||#{keyword}||'%')
 							</when>
 						</choose>
@@ -22,7 +31,44 @@
 			</trim>
 		</if>
 	</sql>
-
+		<sql id="criteria">
+		<if test="type != null and keyword != null">
+			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+				<foreach item="type" collection="typeList">
+					<trim prefix="OR">
+						<choose>
+							<when test="type=='A7'.toString()">
+								(TITLE LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='B7'.toString()">
+								(CONTENT LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='C7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='D7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='E7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+							<when test="type=='F7'.toString()">
+								(WRITER LIKE '%'||#{keyword}||'%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	
+	<sql id="period">
+		<choose>
+			<when test="from != null">
+				ORDER BY REGDATE <![CDATA[ REGDATE BETWEEN TO_DATE(#{date1}, 'YYYY-MM-DD') AND TO_DATE(#{date2}, 'YYYY-MM-DD') +0.99999 ORDER BY REGDATE DESC ]]>
+			</when>
+		</choose>
+	</sql>
 
 	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
@@ -31,6 +77,7 @@
 			FROM TBL_REVIEW_BOARD
 			WHERE
 			<include refid="criteria"/>
+			
 			<![CDATA[
 				ROWNUM <= #{pageNum} * #{amount}
 			)
@@ -51,8 +98,8 @@
 		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			SELECT SEQ_REVIEW_BOARD.NEXTVAL FROM DUAL 
 		</selectKey>
-		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR, THUMB, CAMPNAME) 
-		VALUES (#{bno}, #{title}, #{content}, #{writer}, #{zipcode}, #{address}, #{addressDetail}, #{addressEtc}, #{star}, #{thumb}, #{campName})
+		INSERT INTO TBL_REVIEW_BOARD (BNO, TITLE, CONTENT, WRITER, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR, THUMB, CAMPNAME, CATEGORIES) 
+		VALUES (#{bno}, #{title}, #{content}, #{writer}, #{zipcode}, #{address}, #{addressDetail}, #{addressEtc}, #{star}, #{thumb}, #{campName}, #{categories})
 	</insert>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">

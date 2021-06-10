@@ -26,6 +26,8 @@ public class ReviewBoardVO {
 	private String thumb;
 	private String campName;
 	
+	private String categories; // 카테고리 
+	
 	private List<ReviewBoardAttachVO> attachList;
 
 }

@@ -63,7 +63,10 @@
 								</div>
 		
 									<!-- <span class="filter-side-divider"></span> -->
-		
+								<form action="/review/reviewList" id="searchForm" >
+									<input type="hidden" name="category" value="">
+									<input type="hidden" name="category2" value="">
+									<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
 									<select name="from" class="select " id="from">
 										<option value="all" >전체기간</option>
 										<option value="day">최근 24시간</option>
@@ -72,29 +75,26 @@
 										<option value="month3">최근 3달</option>
 									</select>
 		
-									<select class="categories" name="type" id="category" >
-										<option value="all">전체분야</option>
-										<option value="A7">유료 캠핑장</option>
-										<option value="B7">무료 캠핑장</option>
-										<option value="C7">노지 캠핑장</option>
-										<option value="D7">난이도 캠핑장</option>
-										<option value="E7">글램핑 캠핑장</option>
-										<option value="F7">카라반 캠핑장</option>
+									<select name="type" class="categories" id="category" >
+										<option value="all" ${pageMaker.cri.type == null ? 'selected':''}>전체분야</option>
+										<option value="A7" ${pageMaker.cri.type == 'A7' ? 'selected':''}>유료 캠핑장</option>
+										<option value="B7" ${pageMaker.cri.type == 'B7' ? 'selected':''}>무료 캠핑장</option>
+										<option value="C7" ${pageMaker.cri.type == 'C7' ? 'selected':''}>노지 캠핑장</option>
+										<option value="D7" ${pageMaker.cri.type == 'D7' ? 'selected':''}>난이도 캠핑장</option>
+										<option value="E7" ${pageMaker.cri.type == 'E7' ? 'selected':''}>글램핑 캠핑장</option>
+										<option value="F7" ${pageMaker.cri.type == 'F7' ? 'selected':''}>카라반 캠핑장</option>
 									</select>
+									
+									<input type="text" class="searchTerm" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"
+									style="border-radius: initial; height:30px; width: 100%;">
+									<a href="javascript:void(0)" class="button primary icon solid fa-search">Search</a>
+								</form>
 									
 							</div>
 		
 						</div>
 					</form>
 					<div class="navSearch" style="text-align: right;">
-						<form action="/review/reviewList?search=" name="searchForm" id="search" method="post">
-							<input type="hidden" name="category" value="지역별">
-							<input type="hidden" name="category2" value="recent">
-							<input type="search" class="searchTerm" name="keyword" placeholder="검색어를 입력하세요"
-							style="border-radius: initial; height:30px; width: 100%; ">
-							<a href="javascript:searchForm.submit();" class="button primary icon solid fa-search">Search</a>
-							<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
-						</form>
 					</div>
 				</div>
 			</div>
@@ -137,6 +137,7 @@
 					</c:forEach>
 					
 				</div>
+				
 				<div class="big-width" style="text-align: center;">
 					<footer class="major">
 						<ul class="pagination" id="pagination_prev">
@@ -205,6 +206,21 @@
 
 	</body>
 	<script>
+	$("a.fa-search").on("click", function(e){
+		e.preventDefault();
+		var searchForm = $("#searchForm");
+		
+		if(!searchForm.find("option:selected").val()){
+			alert("검색 종류를 선택하세요.");
+			return false;
+		}
+		if(!searchForm.find("input[name='keyword']").val()){
+			alert("키워드를 입력하세요.");
+			return false;
+		}
+		searchForm.submit();
+	});
+	
 	$(".changePage").on("click", function(e){
 		e.preventDefault();
 		var actionForm = $("#actionForm");

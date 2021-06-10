@@ -25,10 +25,6 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 	@Transactional
 	@Override
 	public void register(ReviewBoardVO board) {
-		System.out.println("null checking .. : " + board.getContent());
-		log.info("null checking ... : " + board.getContent());
-		log.info("null checking ... : " + board);
-		 
 		
 		int cntStar = Integer.parseInt(board.getStar()); 
 		String star = "★";
@@ -46,6 +42,7 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 			star = "평점없음";
 		}
 		board.setStar(star);
+		log.info("CATEGORIES " + board.getCategories());
 		log.info("thumb::::" + board.getThumb());
 		if(board.getThumb() == null) {
 			board.setThumb("");

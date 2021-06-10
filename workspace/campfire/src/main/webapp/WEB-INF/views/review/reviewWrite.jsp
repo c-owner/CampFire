@@ -91,7 +91,7 @@
 								<input type="text" name="addressDetail" class="postcodify_details" value="" placeholder="상세주소2"/><br />
 								<input type="text" name="addressEtc" class="postcodify_extra_info" value="" placeholder="상세주소1" readonly/><br />
 								
-								<select class="categories" name="type" id="category" >
+								<select class="categories" name="categories" id="category">
 										<option value="all">전체분야</option>
 										<option value="A7">유료 캠핑장</option>
 										<option value="B7">무료 캠핑장</option>
@@ -248,7 +248,7 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 			return false;
 		}
 		
-		if(reviewForm.type.value == 'all'){
+		if(reviewForm.categories.value == 'all'){
 			alert('분야를 선택해주세요!');
 			return false;
 		}
@@ -258,7 +258,6 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 		}		
 	}
 	
-	
-</script>
+	</script>
 
 </html>
