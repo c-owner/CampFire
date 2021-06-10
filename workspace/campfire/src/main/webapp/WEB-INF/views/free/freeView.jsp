@@ -54,7 +54,7 @@
 				<div class="row" style="display:block;">
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">제목 : ${board.title}</h2></div>
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto; text-align: right;">
-						<a class="button small" id="boardModify" href="/free/freeModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="report far fa-lightbulb"></i>&nbsp;신고</a>
+						<a class="button small" id="boardModify" href="/free/freeModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="far fa-lightbulb"></i>&nbsp;신고</a>
 						<c:if test="${sessionId eq board.writer}">
 							<a class="button small" id="boardModify" href="/free/freeModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
@@ -245,20 +245,20 @@
 							str += "<li data-rno='" + list[i].rno + "'>";
 							str += "<div style='position: absolute;'>";
 							str += "<h4 style='margin: 0; text-align: left;'>";
-							str += "작성자: " + list[i].replyer + "</h4></div><div class='replyBtn'><a class='report report far fa-lightbulb' href='" + list[i].rno + "' style='color: red;'></a><br>";
-							str += "<div style='text-align: left; width: 90%; margin: 0 auto;'>";
+							str += "작성자: " + list[i].replyer + "</h4></div><div class='replyBtn'><a class='far fa-lightbulb' href='" + list[i].rno + "' style='color: red;'></a><br>";
+							str += "<div style='text-align: left; width: 90%; margin: 0 auto; margin-top: 3%;'>";
 							str += "<span class='reply" + list[i].rno + "'>" + list[i].reply + "</span></div>";
 							if(list[i].replyDate != list[i].updateDate){
-								str += "<div class='timeDiv'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+								str += "<div class='timeDiv'><strong>"+replyService.timeForToday(list[i].updateDate) + " 수정";
 							}else {
 								str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
 							}
 							str += "</strong></div>";
 							if(sessionId == list[i].replyer){
-								str += "<a class='modify' href='" + list[i].rno + "'>수정</a>";
-								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
+								str += "<a class='modify' href='" + list[i].rno + "'><i class='fas fa-pencil-alt'></i></a>";
+								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'><i class='fas fa-check' style='color: #41e841'></i></a>";
 								str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-								str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
+								str += "<a class='remove' href='" + list[i].rno + "'><i class='fas fa-trash-alt'></i></a>";
 								str += "</div>";
 							}
 							str += "</li>";
