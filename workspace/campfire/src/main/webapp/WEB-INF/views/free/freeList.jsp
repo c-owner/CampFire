@@ -226,14 +226,5 @@
  			location.replace("/free/freeWrite${pageMaker.cri.getListLink()}");
  		}
      }
-     
-     function view(bno){
-    	 if ("${sessionId}" == ""){
- 			alert("로그인 후 이용해 주십시오.");
- 			goSignIn();
- 		}else{
- 			location.replace("/free/freeView${pageMaker.cri.getListLink()}&bno="+bno);
- 		}
-     }
 	</script>
 </html>
