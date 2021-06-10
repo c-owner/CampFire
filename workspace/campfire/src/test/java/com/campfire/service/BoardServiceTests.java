@@ -18,6 +18,16 @@ import lombok.extern.log4j.Log4j;
 public class BoardServiceTests {
 	@Setter(onMethod_ = @Autowired)
 	private FreeBoardService service;
+
+	@Setter(onMethod_ = @Autowired)
+	private MarketBoardService s;
+	
+	
+	@Test
+	public void testList() {
+		Criteria cri = new Criteria(1, 10);
+		s.getList(cri, "S").forEach(log::info);
+	}
 	
 //	@Test
 //	public void test() {

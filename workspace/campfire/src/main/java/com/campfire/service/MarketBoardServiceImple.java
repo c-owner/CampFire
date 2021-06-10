@@ -1,5 +1,6 @@
 package com.campfire.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -22,8 +23,15 @@ public class MarketBoardServiceImple implements MarketBoardService {
 	private MarketBoardAttachMapper Amapper;
 
 	@Override
-	public List<MarketBoardVO> getList(Criteria cri) {
-		return mapper.getListWithPaging(cri);
+	public List<MarketBoardVO> getList(Criteria cri, String marketKeyword) {
+		System.out.println(cri.getPageNum());
+		System.out.println(cri.getAmount());
+		System.err.println(marketKeyword);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pageNum", cri.getPageNum());
+		map.put("amount", cri.getAmount());
+		map.put("marketKeyword", marketKeyword);
+		return mapper.getListWithPaging(map);
 	}
 
 	@Override
