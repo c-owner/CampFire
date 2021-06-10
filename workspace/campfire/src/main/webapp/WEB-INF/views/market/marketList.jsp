@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="/resources/assets/css/search.css" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
   <!-- Bootstrap core CSS -->
@@ -22,7 +23,6 @@
 <body class="is-preload">
 <%@include file="../includes/header.jsp" %>
   <!-- Page Content -->
-  <div class="main">
   <div class="container">
 
     <div class="row">
@@ -30,23 +30,19 @@
 
       <div class="col-lg-9">
 
-        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+    <!-- <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
               <img class="d-block img-fluid" src="/resources/images/market1.JPG" alt="First slide">
             </div>
-            <div class="carousel-item">
+         </div>
+        <div class="carousel-item">
               <img class="d-block img-fluid" src="/resources/images/market2.JPG" alt="Second slide">
             </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid" src="/resources/images/market1.JPG" alt="Third slide">
-            </div>
-          </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -55,10 +51,19 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
+        </div> -->
+        
+        <div id="index_01">
+        		<ul style="padding-left: 0;">
+        			<img style="max-width: 100%;height: auto;" src="/resources/images/market2.JPG" alt="슬라이드1">
+        		</ul>
         </div>
         
 		<div class="major">
         	<h1>팝니다</h1>
+        	<h3 style="text-align: right;"><a href="/market/marketWrite" class="button small" style="border-radius: 0; text-decoration: none;">
+            	<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
+            </h3>
         	<hr style="border-top: 2px solid black;">
 		</div>
 
@@ -174,7 +179,6 @@
 
     </div>
     <!-- /.row -->
-  </div>
 				<footer class="major">
 					<ul class="pagination">
 						<!--<li><a href="#" class="previous">Prev</a></li>-->

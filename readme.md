@@ -10,6 +10,8 @@
 
 - ~~**MVC model2 디자인 패턴 기반**~~ --> **Spring Framework MVC 패턴 기반** 
 - **캠핑 위치, 기타 정보 제공 사이트**
+- **중고 장터**
+- **캠퍼들 간의 소통**
 
 
 
@@ -17,7 +19,7 @@
 
 ## Version
 
-##### [VERSION LOG #2021-06-07 v0.01f-alpha](VERSION-log.md)
+##### [2021-06-10😶‍🌫️ v0.01g-alpha](VERSION-log.md)
 
 
 

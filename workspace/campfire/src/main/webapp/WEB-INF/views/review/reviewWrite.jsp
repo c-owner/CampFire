@@ -158,6 +158,7 @@ $('.summernote').summernote({
 					uploadSummernoteImageFile(files[i], this);
 				}
 			}
+	  
 		}
 	});
 

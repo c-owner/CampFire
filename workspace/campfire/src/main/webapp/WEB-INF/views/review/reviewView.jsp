@@ -11,9 +11,9 @@
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 		<style>
-		img { 
-		    object-fit: contain;
+		.col-6.col-10-medium.col-11-small img {
 		    width: 100% !important;
+		    object-fit: contain;
 	    }
 	    .replyBtn, .timeDiv {
 	    	text-align: right !important;
@@ -105,13 +105,11 @@
 						
 					</ul>
 				</div>
-				<div>
 					<div class="paging" style="text-align: center; margin-bottom: 2%;">
 						<ul class="pagination">
 						
 						</ul>
 					</div>
-				</div>
 			</div>
 		</section>
 </div>
@@ -279,7 +277,8 @@
 								str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
 							}
 							/* str += "<div style='text-align: right;'><h5 style='margin: 0;'>"+ rDate +"</h5></div>"; */
-							str += "<div style='text-align: left;'><span>"+ list[i].reply +"</span></div>";
+							str += "<div style='text-align: left;'><span class='reply" + list[i].rno + "'>"+ list[i].reply +"</span></div>";
+							
 							if(sessionId == list[i].replyer){
 								str += "<div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
 								str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";

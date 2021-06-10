@@ -8,7 +8,7 @@ var replyService = (function(){
 		$.getJSON("/reviewReplies/reviewReplyList/"+reply.bno+"/"+reply.page+".json", 
 			function(data){
 				if(callback){
-					callback(data.replyCnt, data.reviewReplyList);
+					callback(data.total, data.reviewReplyList);
 				}
 			}).fail(function(xhr, status, err){
 			if(error){error(err);}
