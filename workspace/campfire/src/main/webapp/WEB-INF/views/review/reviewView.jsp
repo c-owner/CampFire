@@ -11,9 +11,9 @@
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 		<style>
-		img { 
-		    object-fit: contain;
+		.col-6.col-10-medium.col-11-small img {
 		    width: 100% !important;
+		    object-fit: contain;
 	    }
 	    .replyBtn, .timeDiv {
 	    	text-align: right !important;

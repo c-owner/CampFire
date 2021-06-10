@@ -106,7 +106,7 @@
 					<c:forEach var="review" items="${list}" begin="0" step="1">
 					<article>
 						<div class="imgDiv"><a href="/review/reviewView?bno=${review.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image">
-						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" alt="" /></a></div>
+						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
