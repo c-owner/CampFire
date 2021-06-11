@@ -95,6 +95,9 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 
 	@Override
 	public List<ReviewBoardVO> getList(Criteria cri) {
+		log.info("===============================");
+		log.info(" type : " + cri.getCategories());
+		log.info("===============================");
 		return mapper.selectBoardList(cri);
 	}
 

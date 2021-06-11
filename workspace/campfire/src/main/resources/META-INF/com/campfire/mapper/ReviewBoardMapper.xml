@@ -21,22 +21,40 @@
 					<trim prefix="OR">
 						<choose>
 							<when test="type=='A7'.toString()">
+							<!-- 
 								(CATEGORIES LIKE '유료 캠핑장')
+							-->
+								(CATEGORIES LIKE 'A7')
 							</when>
 							<when test="type=='B7'.toString()">
+							<!-- 
 								(CATEGORIES LIKE '무료 캠핑장')
+							-->
+								(CATEGORIES LIKE 'B7')
 							</when>
 							<when test="type=='C7'.toString()">
+							<!-- 
 								(CATEGORIES LIKE '노지 캠핑장')
+							-->
+								(CATEGORIES LIKE 'C7')
 							</when>
 							<when test="type=='D7'.toString()">
+							<!-- 
 								(CATEGORIES LIKE '난이도 캠핑장')
+							-->
+								(CATEGORIES LIKE 'D7')
 							</when>
 							<when test="type=='E7'.toString()">
+							<!-- 
 								(CATEGORIES LIKE '글램핑 캠핑장')
+							-->
+								(CATEGORIES LIKE 'E7')
 							</when>
 							<when test="type=='F7'.toString()">
+							<!-- 
 								(CATEGORIES LIKE '카라반 캠핑장')
+							-->
+								(CATEGORIES LIKE 'F7')
 							</when>
 						</choose>
 					</trim>
@@ -45,41 +63,49 @@
 		</if>
 	</sql>
 	
+	<sql id="typeCriteria">
+		<if test="categories != null">
+			AND (CATEGORIES LIKE #{categories}) 
+		</if>
+	</sql>
 	<sql id="period">
 		<choose>
 			<when test="from != null and from == 'day'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-1 
-			AND SYSDATE 
+			AND REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from == 'week'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-7 
-			AND SYSDATE 
-			ORDER BY REGDATE DESC			
+			AND REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
+			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from == 'month'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-30 
-			AND SYSDATE 
-			ORDER BY REGDATE DESC			
+			AND REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
+			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from == 'month3'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-31 
-			AND SYSDATE 
-			ORDER BY REGDATE DESC			
+			AND REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
+			ORDER BY REGDATE DESC
 			</when>
 		</choose>
 	</sql>
 
 	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 		FROM (
-			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
+			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 			FROM TBL_REVIEW_BOARD
 			WHERE 
 			<![CDATA[
 				ROWNUM <= #{pageNum} * #{amount}
-			)
-			WHERE rn > (#{pageNum} - 1) * #{amount}
+			]]>
+				
+				<trim suffixOverrides="AND">
+					<include refid="typeCriteria"></include>
+			        <include refid="period"></include>
+				</trim>
+				) 
+			<![CDATA[
+				WHERE rn > (#{pageNum} - 1) * #{amount}
 			]]>
 	</select>
 	
