@@ -42,6 +42,7 @@ public class Criteria {
 			.queryParam("amount", amount)
 			.queryParam("from", from)
 			.queryParam("type", type)
+			.queryParam("categories", categories)
 			.queryParam("keyword", keyword);
 			
 		return builder.toUriString();

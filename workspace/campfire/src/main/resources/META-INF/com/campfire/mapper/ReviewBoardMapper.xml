@@ -16,25 +16,25 @@
 	</sql>
 	
 	<sql id="typeCriteria">
-		<if test="categories != null">
+		<if test="categories != null and categories != ''">
 			AND (CATEGORIES LIKE #{categories}) 
 		</if>
 	</sql>
 	<sql id="period">
 		<choose>
-			<when test="from != null and from == 'day'.toString()">
+			<when test="from != null and from != '' and from == 'day'.toString()">
 			OR REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'week'.toString()">
+			<when test="from != null and from != '' and from == 'week'.toString()">
 			OR REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'month'.toString()">
+			<when test="from != null and from != '' and from == 'month'.toString()">
 			OR REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'month3'.toString()">
+			<when test="from != null and from != '' and from == 'month3'.toString()">
 			OR REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
