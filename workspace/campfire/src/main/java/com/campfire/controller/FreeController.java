@@ -61,7 +61,6 @@ public class FreeController {
 	//게시글 등록
 	@PostMapping("/freeWrite")
 	public String register(FreeBoardVO f_vo, RedirectAttributes rttr) {
-		System.out.println(f_vo.getTitle());
 		if(f_vo.getAttachList() != null) {
 			f_vo.getAttachList().forEach(log::info);
 		}
