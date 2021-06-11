@@ -127,9 +127,9 @@
 							<li>
 								<a href="#" class="dropdown">장작장터</a>
 								<ul>
-									<li><a href="/market/marketList">팝니다</a></li>
-									<li><a href="/market/marketList">삽니다</a></li>
-									<li><a href="/market/marketList">무료나눔</a></li>
+									<li><a href="/market/marketList?check=S">팝니다</a></li>
+									<li><a href="/market/marketList?check=B">삽니다</a></li>
+									<li><a href="/market/marketList?check=F">무료나눔</a></li>
 								</ul>
 							</li>
 							<li>
@@ -163,7 +163,7 @@
 					<article class="full" style="min-height: 100vh;">
 					
 						<div class="image" data-position="center">
-							<img src="/resources/images/bg01.jpg" alt="" />
+							<img src="/resources/images/background/bg01.jpg" alt="" />
 						</div>
 						<div class="content">
 						<div align="center" style="margin-top: 50px;">
@@ -184,7 +184,7 @@
 								<div>
 									<div>
 										<div class="imgWrapper">
-											<img src="/resources/images/camping1.png">
+											<img src="/resources/images/background/bg10.jpg">
 										</div>
 										<div class="slideInfo">
 											<p>카테고리</p>
@@ -194,7 +194,7 @@
 								</div>
 								<div>
 									<div class="imgWrapper">
-										<img src="/resources/images/camping8.png" >
+										<img src="/resources/images/background/bg11.jpg" >
 									</div>
 									<div class="slideInfo">
 										<p>카테고리</p>
@@ -204,7 +204,7 @@
 									
 								<div>
 									<div class="imgWrapper">
-										<img src="/resources/images/camping8.png" >
+										<img src="/resources/images/background/bg12.jpg" >
 									</div>
 									<div class="slideInfo">
 										<p>카테고리</p>
@@ -213,21 +213,21 @@
 								</div>
 								<div>
 									<div class="imgWrapper">
-										<img src="/resources/images/camping8.png" >
+										<img src="/resources/images/background/bg13.jpg" >
 									</div>
 									<div class="slideInfo">
 										<p>카테고리</p>
 										<p>캠핑장 이름</p>
 									</div>
 								</div>
-								<div class="test2"><span id="t22"></span><img src="/resources/images/camping11.png" ></div>
-								<div><img src="/resources/images/camping8.png" ></div>
-								<div><img src="/resources/images/camping8.png" ></div>
-								<div><img src="/resources/images/camping8.png" ></div>
-								<div class="test3"><span id="t33"></span><img src="/resources/images/camping12.png" ></div>
-								<div><img src="/resources/images/camping8.png"></div>
-								<div><img src="/resources/images/camping8.png"></div>
-								<div><img src="/resources/images/camping8.png"></div>
+								<div class="test2"><span id="t22"></span><img src="/resources/images/background/bg01.jpg" ></div>
+								<div><img src="/resources/images/background/bg02.jpg" ></div>
+								<div><img src="/resources/images/background/bg03.jpg" ></div>
+								<div><img src="/resources/images/background/bg04.jpg" ></div>
+								<div class="test3"><span id="t33"></span><img src="/resources/images/background/bg05.jpg" ></div>
+								<div><img src="/resources/images/background/bg06.jpg"></div>
+								<div><img src="/resources/images/background/bg07.jpg"></div>
+								<div><img src="/resources/images/background/bg08.jpg"></div>
 							</section>
 					  	</div>
 					</article>

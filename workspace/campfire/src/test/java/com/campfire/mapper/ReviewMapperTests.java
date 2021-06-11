@@ -83,9 +83,9 @@ public class ReviewMapperTests {
 //	public void testMinusLikeCnt() {
 //		log.info(mapper.minusLikeCnt(405L));
 //	}
-	@Test
-	public void testPlusLikeCnt() {
-		log.info(mapper.plusLikeCnt(405L));
-	}
-	
+//	@Test
+//	public void testPlusLikeCnt() {
+//		log.info(mapper.plusLikeCnt(405L));
+//	}
+//	
 }

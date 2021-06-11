@@ -65,21 +65,21 @@
 									<!-- <span class="filter-side-divider"></span> -->
 									<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
 									<select name="from" class="select " id="from">
-										<option value="all" >전체기간</option>
-										<option value="day">최근 24시간</option>
-										<option value="week">최근 1주일</option>
-										<option value="month">최근 1달</option>
-										<option value="month3">최근 3달</option>
+										<option value="all" ${pageMaker.cri.from == 'all' ? 'selected':''}>전체기간</option>
+										<option value="day" ${pageMaker.cri.from == 'day' ? 'selected':''}>최근 24시간</option>
+										<option value="week" ${pageMaker.cri.from == 'week' ? 'selected':''}>최근 1주일</option>
+										<option value="month" ${pageMaker.cri.from == 'month' ? 'selected':''}>최근 1달</option>
+										<option value="month3" ${pageMaker.cri.from == 'month3' ? 'selected':''}>최근 3달</option>
 									</select>
 		
 									<select name="categories" class="categories" id="category" >
-										<option value="all" ${pageMaker.cri.type == 'all' ? 'selected':''}>전체분야</option>
-										<option value="A7" ${pageMaker.cri.type == 'A7' ? 'selected':''}>유료 캠핑장</option>
-										<option value="B7" ${pageMaker.cri.type == 'B7' ? 'selected':''}>무료 캠핑장</option>
-										<option value="C7" ${pageMaker.cri.type == 'C7' ? 'selected':''}>노지 캠핑장</option>
-										<option value="D7" ${pageMaker.cri.type == 'D7' ? 'selected':''}>난이도 캠핑장</option>
-										<option value="E7" ${pageMaker.cri.type == 'E7' ? 'selected':''}>글램핑 캠핑장</option>
-										<option value="F7" ${pageMaker.cri.type == 'F7' ? 'selected':''}>카라반 캠핑장</option>
+										<option value="all" ${pageMaker.cri.categories == 'all' ? 'selected':''}>전체분야</option>
+										<option value="A7" ${pageMaker.cri.categories == 'A7' ? 'selected':''}>유료 캠핑장</option>
+										<option value="B7" ${pageMaker.cri.categories == 'B7' ? 'selected':''}>무료 캠핑장</option>
+										<option value="C7" ${pageMaker.cri.categories == 'C7' ? 'selected':''}>노지 캠핑장</option>
+										<option value="D7" ${pageMaker.cri.categories == 'D7' ? 'selected':''}>난이도 캠핑장</option>
+										<option value="E7" ${pageMaker.cri.categories == 'E7' ? 'selected':''}>글램핑 캠핑장</option>
+										<option value="F7" ${pageMaker.cri.categories == 'F7' ? 'selected':''}>카라반 캠핑장</option>
 									</select>
 									
 									<input type="text" class="searchTerm" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"
@@ -102,12 +102,13 @@
 					<c:forEach var="review" items="${list}" begin="0" step="1">
 					<article>
 						<div class="imgDiv"><a href="javascript: view(${review.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="" /></a></div>
+						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
 								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
 								<div class="star" style="color: gold;">${review.star}</div>
+									<div style="text-align: right; float: right; font-size: 12px;">${review.updateDate}</div>
 								<div class="bottom">
 									<div class="username">
 										<span class="go-profile-area" data-username="">
@@ -186,7 +187,9 @@
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="type" value="${pageMaker.cri.type}">
+						<input type="hidden" name="categories" value="${pageMaker.cri.categories}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+						<input type="hidden" name="from" value="${pageMaker.cri.from}">
 					</form>
 			</section>
 

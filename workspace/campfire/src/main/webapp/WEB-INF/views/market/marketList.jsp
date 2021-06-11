@@ -120,7 +120,27 @@
 
         <div class="row">
 
+		<c:forEach var="board" items="${list}">
           <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <%-- <a href="#"><img class="card-img-top" src="${thumbnail[0]}" alt=""></a> --%>
+              <a href="#"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">${board.title}</a>
+                </h4>
+                <h5>99,000원</h5>
+                <p class="card-text">${board.content}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted" style="float: left;">${board.writer}</small>
+                <small class="text-muted" style="float: right;">${board.updateDate}</small>
+              </div>
+            </div>
+          </div>
+          </c:forEach>
+          
+          <!-- <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
               <div class="card-body">
@@ -220,7 +240,7 @@
                 <small class="text-muted" style="float: right;">21.06.07.</small>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
         <!-- /.row -->
@@ -252,11 +272,11 @@
 <script>
 	$(document).ready(function(){
 		var temp = "${check}";
-		
 		if(temp == "S"){$('#category option:eq(0)').prop('selected', true);}
 		if(temp == "B"){$('#category option:eq(1)').prop('selected', true);}
 		if(temp == "F"){$('#category option:eq(2)').prop('selected', true);}
-	
 	});
+	
+	
 </script>
 </html>

@@ -70,9 +70,10 @@
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 0; padding: 0;">
 									<form name="findIdForm" action="#" method="" style="margin-left: 0; margin-right: 0;">
-									<h3 class="cautionMsg" style="text-align: center;">가입에 등록한 이메일을 입력해주세요.</h3>
+									<h3 class="cautionMsg" style="text-align: center;">가입 시 등록한 이메일을 입력해 주십시오.<br>해당 이메일로 아이디 찾기 결과를 발송합니다.</h3>
 									<label for="userEmail2">이메일</label>
 									<input type="email" name="userEmail" id="userEmail2" placeholder="EMAIL" style="margin-bottom: 5%;">
+									<p id="findIdCheck"></p>
 									
 									<div class="row">
 										<div class="col-5 col-12-xsmall" style="margin-bottom: 5%;">
@@ -80,7 +81,7 @@
 										</div>
 										<div class="col-2" style="padding:0;"></div>
 										<div class="col-5 col-12-xsmall">
-											<a class="button primary col4Btn" id="goFindIdBtn">아이디 찾기</a>
+											<a class="button primary col4Btn" id="goFindIdBtn">이메일 발송</a>
 										</div>
 									</div>
 									
@@ -99,19 +100,19 @@
 							<div class="row gtr-uniform">
 								<div class="col-10 col-11-xsmall" style="margin: 0 auto; margin-top: 0; padding: 0;">
 									<form name="findPwForm" action="#" method="" style="display: none; margin-left: 0; margin-right: 0;">
-									<h3 class="cautionMsg" style="text-align: center;">가입에 등록한 이메일을 입력해주세요.<br>해당 이메일로 비밀번호 변경 링크를 발송합니다.</h3>
+									<h3 class="cautionMsg" style="text-align: center;">가입 시 등록한 정보를 입력해 주십시오.<br>해당 이메일로 비밀번호 변경 링크를 발송합니다.</h3>
 									<label for="userId3">아이디</label>
-									<input type="text" name="userId" id="userId3" placeholder="ID">
+									<input type="text" name="userId3" id="userId3" placeholder="ID">
 									<label for="userEmail3">이메일</label>
-									<input type="email" name="userEmail" id="userEmail3" placeholder="EMAIL" style="margin-bottom: 5%;">
-									
+									<input type="email" name="userEmail3" id="userEmail3" placeholder="EMAIL" style="margin-bottom: 5%;">
+									<p id="findPwCheck"></p>
 									<div class="row">
 										<div class="col-5 col-12-xsmall" style="margin-bottom: 5%;">
 											<a href="javascript:goSignIn2()" class="button primary col4Btn">로그인</a>
 										</div>
 										<div class="col-2" style="padding:0;"></div>
 										<div class="col-5 col-12-xsmall">
-											<a class="button primary col4Btn">이메일 발송</a>
+											<a class="button primary col4Btn" id="goFindPwBtn">이메일 발송</a>
 										</div>
 									</div>
 									

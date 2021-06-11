@@ -23,11 +23,11 @@ public class ReviewReplyServiceTests {
 //		log.info(service);
 //	}
 	
-	@Test
-	public void testList() {
-		Criteria cri = new Criteria(1, 12);
-		log.info(service.selectReplyList(cri, 404L));
-	}
+//	@Test
+//	public void testList() {
+//		Criteria cri = new Criteria(1, 12);
+//		log.info(service.selectReplyList(cri, 404L));
+//	}
 	
 //	@Test
 //	public void testRegister() {

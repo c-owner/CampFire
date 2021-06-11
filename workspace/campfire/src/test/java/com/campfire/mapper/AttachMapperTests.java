@@ -26,6 +26,14 @@ public class AttachMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MarketBoardAttachMapper Mmapper;
 	
+	@Test
+	public void thumbnail() {
+		Long[] test = {63L, 64L};
+		for(int i=0; i<test.length;i++) {
+			log.info(Mmapper.thumbnail(test[i]));
+		}
+	}
+	
 //	@Test
 //	public void test() {
 //		log.info(mapper);

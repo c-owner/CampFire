@@ -34,11 +34,10 @@ public class UserController {
 
 	@PostMapping(value="/signIn", consumes="application/json", produces=MediaType.TEXT_PLAIN_VALUE)
 	@ResponseBody
-	public ResponseEntity<String> signIn(@RequestBody UserVO user, HttpServletRequest req){
+	public ResponseEntity<String> signIn(@RequestBody UserVO user, HttpSession session){
 		log.info("login....." + user);
 		String result = null;
 		if(service.signIn(user.getUserId(), user.getUserPw())) {
-			HttpSession session = req.getSession();
 			session.setAttribute("sessionId", user.getUserId());
 			result = user.getUserId();		
 		}else {
@@ -51,30 +50,37 @@ public class UserController {
 	@ResponseBody
 	public ResponseEntity<String> sendMailCode(@RequestParam("email") String email) {
 		log.info("sendMailCode....." + email);
-		String title = "모닥불 인증메일입니다.";
-		String code = "";
-		String content = "";
-
-		Random rnd =new Random();
-		StringBuffer buf =new StringBuffer();
-		for(int i=0;i<7;i++){
-			if(rnd.nextBoolean()){
-				buf.append((char)((int)(rnd.nextInt(26))+97));
-			}else{
-				buf.append((rnd.nextInt(10))); 
+		
+		if(service.checkEmail(email)) {
+			return new ResponseEntity<String>("no", HttpStatus.OK);
+		}else {
+			
+			String title = "모닥불 인증메일입니다.";
+			String code = "";
+			String content = "";
+			
+			Random rnd =new Random();
+			StringBuffer buf =new StringBuffer();
+			for(int i=0;i<7;i++){
+				if(rnd.nextBoolean()){
+					buf.append((char)((int)(rnd.nextInt(26))+97));
+				}else{
+					buf.append((rnd.nextInt(10))); 
+				}
+			}
+			code = buf.toString();
+			
+			content = "모닥불 회원가입을 위한 인증코드입니다.\nCODE : "+code;
+			
+			boolean sendResult = new MailDTO(email, title, content).sendmail();
+			
+			if(sendResult) {
+				return new ResponseEntity<String>(code, HttpStatus.OK);
+			}else {
+				return new ResponseEntity<String>("error", HttpStatus.OK);
 			}
 		}
-		code = buf.toString();
-
-		content = "모닥불 회원가입을 위한 인증코드입니다.\nCODE : "+code;
-
-		boolean sendResult = new MailDTO(email, title, content).sendmail();
-
-		if(sendResult) {
-			return new ResponseEntity<String>(code, HttpStatus.OK);
-		}else {
-			return new ResponseEntity<String>("error", HttpStatus.OK);
-		}
+		
 	}
 
 	@PostMapping(value="/signUp")
@@ -98,27 +104,40 @@ public class UserController {
 	@GetMapping(value="/findId", produces= "application/text; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<String> findId(String userEmail){
+		
 		String result = "";
-		String title = "모닥불 - 회원님의 아이디 찾기 결과입니다.";
-		String userId = service.findId(userEmail);
-
-		if(userId != "") {
+		if(!service.checkEmail(userEmail)) {
+			log.info("이메일 없음");
+			result = "일치하는 회원 정보가 없습니다. 다시 시도해 주십시오.";
+		}else {
+			log.info("이메일 있음");
+			
+			String title = "[모닥불] 회원님의 아이디 찾기 결과입니다.";
+			String userId = service.findId(userEmail);
+			String encryptId = "";
+			String content = "";
+			
 			for(int i=0; i<userId.length(); i++) {
-				if(i >= 3) {
-					userId += "*";
+				if(i<userId.length()-3) {
+					encryptId += userId.charAt(i);					
+				}else {
+					encryptId += "*";
 				}
-				userId += userId.charAt(i);
 			}
-			String content = "회원님의 아이디는 "+userId+"입니다.";
-			MailDTO mailDTO = new MailDTO(userEmail, title, content);
-			if(mailDTO.sendmail()) {
+			
+			content = "회원님의 아이디는 '"+ encryptId + "' 입니다.";
+			
+			boolean sendResult = new MailDTO(userEmail, title, content).sendmail();
+			
+			if(sendResult) {
 				result = "아이디 찾기 메일이 발송되었습니다.";
 			}else {
-				result = "이메일 주소를 다시 확인해주세요.";
+				result = "이메일 전송에 실패했습니다. 잠시후 다시 시도해 주십시오.";
 			}
-		}else {
-			result = "이메일 주소를 다시 확인해주세요.";
+			
 		}
+		
+
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 	@GetMapping(value="/findPw", produces= "application/text; charset=utf-8")
@@ -128,14 +147,9 @@ public class UserController {
 		String title = "모닥불 - 회원님의 비밀번호 찾기입니다.";
 		
 		if(service.findPw(userId, userEmail)) {
-			for(int i=0; i<userId.length(); i++) {
-				if(i >= 3) {
-					userId += "*";
-				}
-				userId += userId.charAt(i);
-			}
-			String content = "아래의 링크를 통해 새로운 비밀번호를 입력해 주십시오.\n";
-			content += "비밀번호 변경 링크";
+
+			String content = "아래의 링크를 통해 새로운 비밀번호를 입력해 주십시오.<br>";
+			content += "<a href='http://camp-fire.kro.kr/account/changePW'>비밀번호 변경</a>";
 			MailDTO mailDTO = new MailDTO(userEmail, title, content);
 			if(mailDTO.sendmail()) {
 				result = "비밀번호 찾기 메일이 발송되었습니다.";
@@ -143,11 +157,10 @@ public class UserController {
 				result = "이메일 주소를 다시 확인해주세요.";
 			}
 		}else {
-			result = "아이디 혹은 이메일 주소를 다시 확인해주세요.";
+			result = "아이디 혹은 이메일 주소를 다시 확인해 주십시오.";
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
-	
 
 	
 //	체인지 pw

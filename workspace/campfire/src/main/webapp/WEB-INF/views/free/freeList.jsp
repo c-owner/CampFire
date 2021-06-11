@@ -93,10 +93,10 @@
 								<c:forEach var="board" items="${list}">
 									<tr class="tBody">
 										<td class="bno">${board.bno}</td>
-										<td class="title miniTitle"><a href="javascript: view(${board.bno});">${board.title}</a>
+										<td class="title miniTitle"><a href="/free/freeView?bno=${board.bno}">${board.title}</a>
 											<%-- <i style="font-size: 35px;" class="far fa-heart"></i> --%><span style="font-size: 0.5rem;">[${board.replyCnt}]</span>
 											&nbsp;
-											<c:if test="${board.regDate > nowday}"><i class="material-icons"">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
+											<c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
 										</td>
 										<td class="writer">${board.writer}</td>
 										<td class="regDate">${board.updateDate}</td>

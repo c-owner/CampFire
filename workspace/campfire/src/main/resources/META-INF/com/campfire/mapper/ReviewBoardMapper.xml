@@ -4,7 +4,7 @@
 	<sql id="keyword">
 		<choose>
 			<when test="keyword != null and keyword != ''">
-				WHERE TITLE LIKE '%'||#{keyword}||'%' 
+				OR TITLE LIKE '%'||#{keyword}||'%' 
 				OR CONTENT LIKE '%'||#{keyword}||'%' 
 				OR WRITER LIKE '%'||#{keyword}||'%' 
 				OR ADDRESS LIKE '%'||#{keyword}||'%' 
@@ -14,72 +14,51 @@
 			</when>
 		</choose>
 	</sql>
-		<sql id="criteria">
-		<if test="type != null">
-			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
-				<foreach item="type" collection="typeList">
-					<trim prefix="OR">
-						<choose>
-							<when test="type=='A7'.toString()">
-								(CATEGORIES LIKE '유료 캠핑장')
-							</when>
-							<when test="type=='B7'.toString()">
-								(CATEGORIES LIKE '무료 캠핑장')
-							</when>
-							<when test="type=='C7'.toString()">
-								(CATEGORIES LIKE '노지 캠핑장')
-							</when>
-							<when test="type=='D7'.toString()">
-								(CATEGORIES LIKE '난이도 캠핑장')
-							</when>
-							<when test="type=='E7'.toString()">
-								(CATEGORIES LIKE '글램핑 캠핑장')
-							</when>
-							<when test="type=='F7'.toString()">
-								(CATEGORIES LIKE '카라반 캠핑장')
-							</when>
-						</choose>
-					</trim>
-				</foreach>
-			</trim>
+	
+	<sql id="typeCriteria">
+		<if test="categories != null and categories != ''">
+			AND (CATEGORIES LIKE #{categories}) 
 		</if>
 	</sql>
-	
 	<sql id="period">
 		<choose>
-			<when test="from != null and from == 'day'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-1 
-			AND SYSDATE 
+			<when test="from != null and from != '' and from == 'day'.toString()">
+			OR REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'week'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-7 
-			AND SYSDATE 
-			ORDER BY REGDATE DESC			
+			<when test="from != null and from != '' and from == 'week'.toString()">
+			OR REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
+			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'month'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-30 
-			AND SYSDATE 
-			ORDER BY REGDATE DESC			
+			<when test="from != null and from != '' and from == 'month'.toString()">
+			OR REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
+			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'month3'.toString()">
-			WHERE REGDATE BETWEEN SYSDATE-31 
-			AND SYSDATE 
-			ORDER BY REGDATE DESC			
+			<when test="from != null and from != '' and from == 'month3'.toString()">
+			OR REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
+			ORDER BY REGDATE DESC
 			</when>
 		</choose>
 	</sql>
 
 	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD hh:mm') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh:mm') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 		FROM (
-			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME
+			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 			FROM TBL_REVIEW_BOARD
 			WHERE 
 			<![CDATA[
 				ROWNUM <= #{pageNum} * #{amount}
-			)
-			WHERE rn > (#{pageNum} - 1) * #{amount}
+			]]>
+				
+				<trim suffixOverrides="AND">
+					<include refid="typeCriteria"></include>
+					<include refid="keyword"></include>
+			        <include refid="period"></include>
+				</trim>
+				) 
+			<![CDATA[
+				WHERE rn > (#{pageNum} - 1) * #{amount}
 			]]>
 	</select>
 	
@@ -87,7 +66,9 @@
 		SELECT COUNT(BNO) FROM TBL_REVIEW_BOARD 
 	<where>
 		<trim suffixOverrides="AND">
-	        <include refid="criteria"></include>
+			<include refid="typeCriteria"></include>
+			<include refid="keyword"></include>
+	        <include refid="period"></include>
 		</trim>
 	</where>
 	</select>

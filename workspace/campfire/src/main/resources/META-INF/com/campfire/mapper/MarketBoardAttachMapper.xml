@@ -25,4 +25,12 @@
 	<delete id="deleteAll">
 		DELETE FROM TBL_MARKET_ATTACH WHERE BNO = #{bno}
 	</delete>
+	
+	<!-- 첫번째 올린 사진을 썸네일로 사용  -->
+	<select id="thumbnail" resultType="com.campfire.domain.marketBoard.MarketBoardAttachVO">
+		SELECT /*+ INDEX_ASC(TBL_MARKET_ATTACH SYS_C007283)*/ 
+		ROWNUM, UUID, UPLOADPATH, FILENAME, FILETYPE, BNO 
+		FROM TBL_MARKET_ATTACH 
+		WHERE BNO = #{bno} AND ROWNUM = 1
+	</select>
 </mapper>
