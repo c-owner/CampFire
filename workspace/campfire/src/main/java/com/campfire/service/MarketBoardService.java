@@ -14,4 +14,5 @@ public interface MarketBoardService {
 	public boolean remove(Long bno);
 	public boolean modify(MarketBoardVO vo);
 	public List<MarketBoardAttachVO> getAttachList(Long bno);
+	public List<MarketBoardAttachVO> thumbnail(Long bno);
 }

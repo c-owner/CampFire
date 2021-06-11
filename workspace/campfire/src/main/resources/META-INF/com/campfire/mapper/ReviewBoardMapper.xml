@@ -16,25 +16,25 @@
 	</sql>
 	
 	<sql id="typeCriteria">
-		<if test="categories != null">
+		<if test="categories != null and categories != ''">
 			AND (CATEGORIES LIKE #{categories}) 
 		</if>
 	</sql>
 	<sql id="period">
 		<choose>
-			<when test="from != null and from == 'day'.toString()">
+			<when test="from != null and from != '' and from == 'day'.toString()">
 			OR REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'week'.toString()">
+			<when test="from != null and from != '' and from == 'week'.toString()">
 			OR REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'month'.toString()">
+			<when test="from != null and from != '' and from == 'month'.toString()">
 			OR REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
-			<when test="from != null and from == 'month3'.toString()">
+			<when test="from != null and from != '' and from == 'month3'.toString()">
 			OR REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
@@ -42,7 +42,7 @@
 	</sql>
 
 	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD hh:mm') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh:mm') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 		FROM (
 			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 			FROM TBL_REVIEW_BOARD

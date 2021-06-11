@@ -1,5 +1,9 @@
 package com.campfire.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
+import com.campfire.domain.marketBoard.MarketBoardAttachVO;
+import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.service.MarketBoardService;
 
 import lombok.AllArgsConstructor;
@@ -31,8 +37,16 @@ public class MarketController {
 	@GetMapping("/marketList")
 	public void marketList(Criteria cri, @RequestParam("check") String check, Model model) {
 		model.addAttribute("check", check);
-		model.addAttribute("list", service.getList(cri, check));
-		//model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
+		List<MarketBoardVO> list = service.getList(cri, check);
+		List<MarketBoardAttachVO> thumbnail = null;
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).setUpdateDate(list.get(i).getUpdateDate().substring(0, 16));
+			thumbnail = service.thumbnail(list.get(i).getBno());
+		}
+		
+		model.addAttribute("thumbnail", thumbnail);
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}
 	
 	@ResponseBody

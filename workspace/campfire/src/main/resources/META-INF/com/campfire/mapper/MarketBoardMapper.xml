@@ -3,22 +3,22 @@
 <mapper namespace="com.campfire.mapper.MarketBoardMapper">
 	<!-- 검색 -->
 	<sql id="criteria">
-		<if test="cri.type != null and cri.keyword != null">
+		<if test="type != null and keyword != null">
 			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
-				<foreach item="cri.type" collection="typeList">
+				<foreach item="type" collection="typeList">
 					<trim prefixOverrides="OR">
 						<choose>
-							<when test="cri.type == 'T'.toString()">
-								TITLE LIKE '%'||#{cri.keyword}||'%' 
+							<when test="type == 'T'.toString()">
+								TITLE LIKE '%'||#{keyword}||'%' 
 							</when>
-							<when test="cri.type == 'C'.toString()">
-								CONTENT LIKE '%'||#{cri.keyword}||'%' 
+							<when test="type == 'C'.toString()">
+								CONTENT LIKE '%'||#{keyword}||'%' 
 							</when>
-							<when test="cri.type == 'W'.toString()">
-								WRITER LIKE '%'||#{cri.keyword}||'%' 
+							<when test="type == 'W'.toString()">
+								WRITER LIKE '%'||#{keyword}||'%' 
 							</when>
 							<otherwise>
-								TITLE LIKE '%'||#{cri.keyword}||'%' OR CONTENT LIKE '%'||#{cri.keyword}||'%' OR WRITER LIKE '%'||#{cri.keyword}||'%'  						
+								TITLE LIKE '%'||#{keyword}||'%' OR CONTENT LIKE '%'||#{keyword}||'%' OR WRITER LIKE '%'||#{keyword}||'%'  						
 							</otherwise>
 						</choose>
 					</trim>

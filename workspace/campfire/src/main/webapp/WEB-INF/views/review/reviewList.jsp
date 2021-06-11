@@ -102,12 +102,13 @@
 					<c:forEach var="review" items="${list}" begin="0" step="1">
 					<article>
 						<div class="imgDiv"><a href="javascript: view(${review.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="" /></a></div>
+						<img class="reviewImg" src="/display?fileName=/review/${review.thumb}" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
 						
 						<div class="info">
 							<div class="info-detail">
 								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
 								<div class="star" style="color: gold;">${review.star}</div>
+									<div style="text-align: right; float: right; font-size: 12px;">${review.updateDate}</div>
 								<div class="bottom">
 									<div class="username">
 										<span class="go-profile-area" data-username="">
@@ -185,6 +186,7 @@
 				<form id="actionForm" action="/review/reviewList">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<input type="hidden" name="type" value="${pageMaker.cri.type}">
 						<input type="hidden" name="categories" value="${pageMaker.cri.categories}">
 						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 						<input type="hidden" name="from" value="${pageMaker.cri.from}">
