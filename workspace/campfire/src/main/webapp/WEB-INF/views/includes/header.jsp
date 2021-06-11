@@ -23,6 +23,13 @@
 			color: black;
 		}    
 	}
+	.col4Btn{
+		font-size: 14px;
+		border-radius: 6px;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
 </style>
 </head>
 <body>
