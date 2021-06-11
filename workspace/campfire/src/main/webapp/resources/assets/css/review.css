@@ -289,7 +289,7 @@ img.icon-round {
 }
 
 .imgDiv {
-  width: 100%;
+  width: fit-content;
   height: 550px;
   margin: 0 auto;
 }
