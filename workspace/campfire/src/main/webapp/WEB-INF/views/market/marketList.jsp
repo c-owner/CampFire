@@ -112,7 +112,7 @@
 	       			<option value="free">무료나눔</option>
 	       		</select>
        		</div>
-        	<h3 class="writeBtn"><a href="javascript:checkLogin()" class="button small moveWrite" style="border-radius: 0; text-decoration: none;">
+        	<h3 class="writeBtn"><a href="/market/marketWrite" class="button small moveWrite" style="border-radius: 0; text-decoration: none;">
             	<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
             </h3>
         	<hr style="border-top: 2px solid black;">
@@ -277,13 +277,6 @@
 		if(temp == "F"){$('#category option:eq(2)').prop('selected', true);}
 	});
 	
-	function checkLogin(){
-   	 if ("${sessionId}" == ""){
-			alert("로그인 후 이용해 주십시오.");
-			goSignIn();
-		}else{
-			location.replace("/market/marketWrite${pageMaker.cri.getListLink()}");
-		}
-    }
+	
 </script>
 </html>
