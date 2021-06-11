@@ -9,4 +9,5 @@ public interface MarketBoardAttachMapper {
 	public void insert(MarketBoardAttachVO attach);
 	public void delete(String uuid);
 	public void deleteAll(Long bno);
+	public List<MarketBoardAttachVO> thumbnail(Long bno);
 }

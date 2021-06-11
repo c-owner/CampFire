@@ -1,5 +1,6 @@
 package com.campfire.service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,16 +23,16 @@ public class MarketBoardServiceImple implements MarketBoardService {
 	private MarketBoardMapper mapper;
 	private MarketBoardAttachMapper Amapper;
 
+	@Transactional
 	@Override
 	public List<MarketBoardVO> getList(Criteria cri, String marketKeyword) {
-		System.out.println(cri.getPageNum());
-		System.out.println(cri.getAmount());
-		System.err.println(marketKeyword);
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pageNum", cri.getPageNum());
 		map.put("amount", cri.getAmount());
 		map.put("marketKeyword", marketKeyword);
-		return mapper.getListWithPaging(map);
+		map.put("type", cri.getType());
+		map.put("keyword", cri.getKeyword());
+		return 	mapper.getListWithPaging(map);  
 	}
 
 	@Override
@@ -88,4 +89,9 @@ public class MarketBoardServiceImple implements MarketBoardService {
 		return Amapper.findByBno(bno);
 	}
 
+	//썸네일
+	public List<MarketBoardAttachVO> thumbnail(Long bno){
+		return Amapper.thumbnail(bno);
+	}
+	
 }
