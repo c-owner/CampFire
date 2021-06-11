@@ -1,5 +1,6 @@
 package com.campfire.domain.marketBoard;
 
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
