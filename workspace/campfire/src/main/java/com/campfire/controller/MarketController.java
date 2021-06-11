@@ -52,5 +52,8 @@ public class MarketController {
 	@ResponseBody
 	@GetMapping("/marketWrite")
 	public void register(@ModelAttribute("cri") Criteria cri) {;}
+	
+	@GetMapping(value="/marketView")
+	public void marketView() {}
 
 }
