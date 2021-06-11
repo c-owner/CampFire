@@ -7,7 +7,9 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import lombok.Data;
 import lombok.extern.log4j.Log4j;
@@ -45,11 +47,13 @@ public class MailDTO {
 		try {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(user));
-			
+			message.setHeader("content-type", "text/html;charset=utf-8"); 
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.receiver));
+			 
+            message.setContent(this.content, "text/html; charset=utf-8"); 
+             
 			
 			message.setSubject(this.title);
-			message.setText(this.content);
 			
 			Transport.send(message);
 		} catch (Exception e) {
