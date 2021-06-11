@@ -40,7 +40,6 @@
 	.keyword{
 		width: fit-content;
     	margin-left: 10%;
-    	border-color: black;
 	}
 </style>
 
@@ -52,27 +51,27 @@
 		<div class="wrapper">
 			<div class="inner">
                 <div class="field">
+                   <div style="text-align:center">
+                      <select class="keyword">
+                         <option value="S" >팝니다</option>
+                         <option value="B" >삽니다</option>
+                         <option value="P" >무료나눔</option>                         
+                      </select>         
+                   </div>
                 </div>
 					<header class="major">
 	                        <h2 style="padding-top: 1em;">장작장터 글쓰기</h2>
 	                </header>
-				<form class="reviewForm" action="/market/marketWrite" method="post" name="marketForm">
-                   <div style="text-align:center; margin-top: 1%;">
-                      <select class="keyword" name="marketKeyword">
-                         <option value="S" >팝니다</option>
-                         <option value="B" >삽니다</option>
-                         <option value="F" >무료나눔</option>                         
-                      </select>         
-                   </div>
+				<form class="reviewForm" action="/free/freeWrite" method="post" name="freeForm">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
-							<input type="hidden" name="writer" value="${sessionId}">
+							<input type="hidden" name="writer" value="test1">
 						</div>
 					</div>
-					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; marketForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -130,12 +129,12 @@
 	var j = 0;
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
-		var marketForm = $("form[name=marketForm]");
+		var freeForm = $("form[name=freeForm]");
 		data.append("uploadFile", file);
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/upload/market",
+			url : "/upload/free",
 			contentType : false,
 			enctype : 'multipart/form-data',
 			processData : false,
@@ -143,16 +142,16 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
-				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
-				$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				//$(el).summernote('editor.insertImage', "/display?fileName=/free/" + url);
+				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
+				$(el).summernote('editor.insertImage', "/display?fileName=/free/" + url);
 				var str = "";
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
-				marketForm.append(str);
+				freeForm.append(str);
 				j++;
 			}
 		});

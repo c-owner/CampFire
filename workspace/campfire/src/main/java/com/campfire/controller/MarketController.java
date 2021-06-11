@@ -1,15 +1,17 @@
 package com.campfire.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
@@ -47,19 +49,9 @@ public class MarketController {
 		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}
 	
+	@ResponseBody
 	@GetMapping("/marketWrite")
 	public void register(@ModelAttribute("cri") Criteria cri) {;}
-	
-	@PostMapping("/marketWrite")
-	public String registet(MarketBoardVO m_vo, RedirectAttributes rttr) {
-		if(m_vo.getAttachList() != null) {
-			m_vo.getAttachList().forEach(log::info);
-		}
-		service.register(m_vo);
-		rttr.addFlashAttribute("result", m_vo.getBno());
-		rttr.addAttribute("check", m_vo.getMarketKeyword());
-		return "redirect:/market/marketList";
-	}
 	
 	@GetMapping(value="/marketView")
 	public void marketView() {}
