@@ -47,8 +47,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
+		File file = new File("C:\\upload\\"+fileName);
 		//File file = new File("/usr/local/upload/"+fileName);
-		File file = new File("/usr/local/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -71,12 +71,14 @@ public class UploadController {
 		List<FreeBoardAttachVO> f_failureList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_succeedList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_failureList = new ArrayList<>();
+		List<MarketBoardAttachVO> m_succeedList = new ArrayList<>();
+		List<MarketBoardAttachVO> m_failureList = new ArrayList<>();
 		
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
-		//String uploadFolder = "C:\\upload";
-		String uploadFolder = "/usr/local/upload";
+		String uploadFolder = "C:\\upload";
+		//String uploadFolder = "/usr/local/upload";
 		switch(check) {
 		case 1:
 			uploadFolder += "/free";
@@ -130,11 +132,18 @@ public class UploadController {
 				r_succeedList.add(r_vo);
 				break;
 			case 3:
+				m_vo.setFileName(temp);
+				m_vo.setUuid(uuid.toString());
+				m_vo.setUploadPath(uploadFolderPath);
+				m_vo.setFileType(true);
+				m_succeedList.add(m_vo);
 				break;
 			}
 			
 		} catch (Exception e) {
-			f_failureList.add(f_vo);
+			if(check == 1) {f_failureList.add(f_vo);}
+			else if(check == 2) {r_failureList.add(r_vo);}
+			else if(check == 3) {m_failureList.add(m_vo);}
 			log.error(e.getMessage());
 		}
 		
@@ -146,6 +155,10 @@ public class UploadController {
 		case 2:
 			allFile.setR_succeedList(r_succeedList);
 			allFile.setR_failureList(r_failureList);
+			break;
+		case 3:
+			allFile.setM_succeedList(m_succeedList);
+			allFile.setM_failureList(m_failureList);
 			break;
 		}
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
@@ -181,7 +194,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping(value="/download", produces= {MediaType.APPLICATION_OCTET_STREAM_VALUE})
 	public ResponseEntity<Resource> download(String fileName, @RequestHeader("User-Agent") String userAgent){
-		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
+		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
+		//Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
 		
 		String resourceName = resource.getFilename();
 		String originalName = resourceName.substring(resourceName.indexOf("_") + 1);
