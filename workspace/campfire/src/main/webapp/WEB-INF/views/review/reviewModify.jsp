@@ -85,13 +85,13 @@
 								<input type="text" name="addressEtc" class="postcodify_extra_info" value="${review.addressEtc}" placeholder="상세주소1" readonly/><br />
 								
 								<select class="categories" name="type" id="category" >
-										<option value="all">전체분야</option>
-										<option value="A7">유료 캠핑장</option>
-										<option value="B7">무료 캠핑장</option>
-										<option value="C7">노지 캠핑장</option>
-										<option value="D7">난이도 캠핑장</option>
-										<option value="E7">글램핑 캠핑장</option>
-										<option value="F7">카라반 캠핑장</option>
+										<option value="all" ${review.categories == null ? 'selected':''}>전체분야</option>
+										<option value="A7" ${review.categories == 'A7' ? 'selected':''}>유료 캠핑장</option>
+										<option value="B7" ${review.categories == 'B7' ? 'selected':''}>무료 캠핑장</option>
+										<option value="C7" ${review.categories == 'C7' ? 'selected':''}>노지 캠핑장</option>
+										<option value="D7" ${review.categories == 'D7' ? 'selected':''}>난이도 캠핑장</option>
+										<option value="E7" ${review.categories == 'E7' ? 'selected':''}>글램핑 캠핑장</option>
+										<option value="F7" ${review.categories == 'F7' ? 'selected':''}>카라반 캠핑장</option>
 								</select>
 							<br>
 							

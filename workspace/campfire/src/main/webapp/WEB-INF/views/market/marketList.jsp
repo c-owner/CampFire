@@ -14,9 +14,54 @@
   <!-- Bootstrap core CSS -->
   <link href="/resources/assets/market/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style>
-.col-lg-9{
-	margin: 0 auto;	
-}
+	.col-lg-9{
+		margin: 0 auto;	
+	}
+
+	.categoryDiv {
+		width: 18%;
+		display: inline-block;
+	}
+	
+	.writeBtn {
+		padding-left: 68%;
+		display: inline-block;
+	}
+	
+	@media screen and (max-width: 1680px){
+		.writeBtn {
+			padding-left: 70%;
+		}
+	}
+	
+	@media screen and (max-width: 1280px){
+		.writeBtn {
+			padding-left: 71%;
+		}
+	}
+	
+	@media screen and (max-width: 1199px){
+		.writeBtn {
+			padding-left: 69%;
+		}
+	}
+	
+	@media screen and (max-width: 767px){
+		.writeBtn {
+			padding-left: 59%;
+		}
+		
+		.categoryDiv {width: 23%;}
+	}
+	
+	@media screen and (max-width: 575px){
+		.writeBtn {
+			padding: 0;
+			width: 100%;
+		}
+		
+		.moveWrite, .categoryDiv {width: 100%;}
+	}
 </style>
 </head>
 
@@ -60,8 +105,14 @@
         </div>
         
 		<div class="major">
-        	<h1>팝니다</h1>
-        	<h3 style="text-align: right;"><a href="/market/marketWrite" class="button small" style="border-radius: 0; text-decoration: none;">
+			<div class='categoryDiv'>
+	       		<select name="category" id="category">
+	       			<option value="sale">팝니다</option>
+	       			<option value="buy">삽니다</option>
+	       			<option value="free">무료나눔</option>
+	       		</select>
+       		</div>
+        	<h3 class="writeBtn"><a href="/market/marketWrite" class="button small moveWrite" style="border-radius: 0; text-decoration: none;">
             	<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
             </h3>
         	<hr style="border-top: 2px solid black;">
@@ -69,7 +120,27 @@
 
         <div class="row">
 
+		<c:forEach var="board" items="${list}">
           <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <%-- <a href="#"><img class="card-img-top" src="${thumbnail[0]}" alt=""></a> --%>
+              <a href="#"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">${board.title}</a>
+                </h4>
+                <h5>99,000원</h5>
+                <p class="card-text">${board.content}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted" style="float: left;">${board.writer}</small>
+                <small class="text-muted" style="float: right;">${board.updateDate}</small>
+              </div>
+            </div>
+          </div>
+          </c:forEach>
+          
+          <!-- <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
               <div class="card-body">
@@ -169,7 +240,7 @@
                 <small class="text-muted" style="float: right;">21.06.07.</small>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
         <!-- /.row -->
@@ -198,5 +269,14 @@
   <script src="/resources/assets/market/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <jsp:include page="../includes/footer.jsp"/>
 </body>
-
+<script>
+	$(document).ready(function(){
+		var temp = "${check}";
+		if(temp == "S"){$('#category option:eq(0)').prop('selected', true);}
+		if(temp == "B"){$('#category option:eq(1)').prop('selected', true);}
+		if(temp == "F"){$('#category option:eq(2)').prop('selected', true);}
+	});
+	
+	
+</script>
 </html>

@@ -34,8 +34,9 @@
 			(SELECT /*+ INDEX_DESC(TBL_MARKET_BOARD PK_MARKET_BOARD)*/
 				ROWNUM R, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, REPLYCNT, MARKETKEYWORD 
 				FROM TBL_MARKET_BOARD 
-				WHERE <include refid="criteria"/>
-					ROWNUM <![CDATA[<=]]> #{pageNum} * #{amount})
+				WHERE <!-- <include refid="criteria"/> -->
+					ROWNUM <![CDATA[<=]]> #{pageNum} * #{amount}
+					AND MARKETKEYWORD = #{marketKeyword})
 		WHERE R <![CDATA[>]]> (#{pageNum} - 1) * #{amount}
 	</select>
 	

@@ -60,7 +60,7 @@ public class FileCheckTask {
 	private String getFolderYesterDay() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, -1);
+		cal.add(Calendar.MONTH, -1);
 		
 		return sdf.format(cal.getTime()).replace("-", File.separator);
 	}

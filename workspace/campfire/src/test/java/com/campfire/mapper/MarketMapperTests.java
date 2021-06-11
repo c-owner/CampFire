@@ -20,16 +20,16 @@ public class MarketMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MarketBoardMapper mapper;
 	
-	@Test
+	/*@Test
 	public void testInsert() {
 		MarketBoardVO vo = new MarketBoardVO();
 		vo.setBno(50L);
 		vo.setTitle("마켓테스트 제목");
 		vo.setContent("마켓테스트 내용");
 		vo.setWriter("test1");
-		vo.setMarketKeyword("S");
+		vo.setMarketKeyword("F");
 		mapper.insertBoard(vo);
-	}
+	}*/
 	
 	/*@Test
 	public void testDelete() {
@@ -44,11 +44,11 @@ public class MarketMapperTests {
 		mapper.updateBoard(vo);
 	}*/
 	
-	/*@Test
-	public void testList() {
-		Criteria c = new Criteria(1, 10);
-		mapper.getListWithPaging(c).forEach(log::info);
-	}*/
+//	@Test
+//	public void testList() {
+//		Criteria c = new Criteria(1, 10);
+//		mapper.getListWithPaging(c, "S").forEach(log::info);
+//	}
 	
 	/*@Test
 	public void testTotal() {
