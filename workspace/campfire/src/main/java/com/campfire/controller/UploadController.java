@@ -71,12 +71,14 @@ public class UploadController {
 		List<FreeBoardAttachVO> f_failureList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_succeedList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_failureList = new ArrayList<>();
+		List<MarketBoardAttachVO> m_succeedList = new ArrayList<>();
+		List<MarketBoardAttachVO> m_failureList = new ArrayList<>();
 		
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
-		//String uploadFolder = "C:\\upload";
-		String uploadFolder = "/usr/local/upload";
+		String uploadFolder = "C:\\upload";
+		//String uploadFolder = "/usr/local/upload";
 		switch(check) {
 		case 1:
 			uploadFolder += "/free";
@@ -130,6 +132,11 @@ public class UploadController {
 				r_succeedList.add(r_vo);
 				break;
 			case 3:
+				m_vo.setFileName(temp);
+				m_vo.setUuid(uuid.toString());
+				m_vo.setUploadPath(uploadFolderPath);
+				m_vo.setFileType(true);
+				m_succeedList.add(m_vo);
 				break;
 			}
 			
@@ -146,6 +153,10 @@ public class UploadController {
 		case 2:
 			allFile.setR_succeedList(r_succeedList);
 			allFile.setR_failureList(r_failureList);
+			break;
+		case 3:
+			allFile.setM_succeedList(m_succeedList);
+			allFile.setM_failureList(m_failureList);
 			break;
 		}
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
