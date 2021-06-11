@@ -127,9 +127,9 @@
 							<li>
 								<a href="#" class="dropdown">장작장터</a>
 								<ul>
-									<li><a href="/market/marketList">팝니다</a></li>
-									<li><a href="/market/marketList">삽니다</a></li>
-									<li><a href="/market/marketList">무료나눔</a></li>
+									<li><a href="/market/marketList?check=S">팝니다</a></li>
+									<li><a href="/market/marketList?check=B">삽니다</a></li>
+									<li><a href="/market/marketList?check=F">무료나눔</a></li>
 								</ul>
 							</li>
 							<li>
