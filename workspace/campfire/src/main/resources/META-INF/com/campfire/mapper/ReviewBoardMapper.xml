@@ -20,41 +20,14 @@
 				<foreach item="type" collection="typeList">
 					<trim prefix="OR">
 						<choose>
-							<when test="type=='A7'.toString()">
-							<!-- 
-								(CATEGORIES LIKE '유료 캠핑장')
-							-->
-								(CATEGORIES LIKE 'A7')
-							</when>
-							<when test="type=='B7'.toString()">
-							<!-- 
-								(CATEGORIES LIKE '무료 캠핑장')
-							-->
-								(CATEGORIES LIKE 'B7')
-							</when>
-							<when test="type=='C7'.toString()">
-							<!-- 
-								(CATEGORIES LIKE '노지 캠핑장')
-							-->
-								(CATEGORIES LIKE 'C7')
-							</when>
-							<when test="type=='D7'.toString()">
-							<!-- 
-								(CATEGORIES LIKE '난이도 캠핑장')
-							-->
-								(CATEGORIES LIKE 'D7')
-							</when>
-							<when test="type=='E7'.toString()">
-							<!-- 
-								(CATEGORIES LIKE '글램핑 캠핑장')
-							-->
-								(CATEGORIES LIKE 'E7')
-							</when>
-							<when test="type=='F7'.toString()">
-							<!-- 
-								(CATEGORIES LIKE '카라반 캠핑장')
-							-->
-								(CATEGORIES LIKE 'F7')
+							<when test="keyword != null and keyword != ''">
+								WHERE TITLE LIKE '%'||#{keyword}||'%' 
+								OR CONTENT LIKE '%'||#{keyword}||'%' 
+								OR WRITER LIKE '%'||#{keyword}||'%' 
+								OR ADDRESS LIKE '%'||#{keyword}||'%' 
+								OR ADDRESS_DETAIL LIKE '%'||#{keyword}||'%' 
+								OR ADDRESS_ETC LIKE '%'||#{keyword}||'%' 
+								OR CAMPNAME LIKE '%'||#{keyword}||'%' 
 							</when>
 						</choose>
 					</trim>
@@ -113,7 +86,8 @@
 		SELECT COUNT(BNO) FROM TBL_REVIEW_BOARD 
 	<where>
 		<trim suffixOverrides="AND">
-	        <include refid="criteria"></include>
+			<include refid="typeCriteria"></include>
+	        <include refid="period"></include>
 		</trim>
 	</where>
 	</select>
