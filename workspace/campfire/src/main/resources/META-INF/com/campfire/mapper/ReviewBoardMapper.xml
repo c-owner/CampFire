@@ -4,7 +4,7 @@
 	<sql id="keyword">
 		<choose>
 			<when test="keyword != null and keyword != ''">
-				WHERE TITLE LIKE '%'||#{keyword}||'%' 
+				OR TITLE LIKE '%'||#{keyword}||'%' 
 				OR CONTENT LIKE '%'||#{keyword}||'%' 
 				OR WRITER LIKE '%'||#{keyword}||'%' 
 				OR ADDRESS LIKE '%'||#{keyword}||'%' 
@@ -13,27 +13,6 @@
 				OR CAMPNAME LIKE '%'||#{keyword}||'%' 
 			</when>
 		</choose>
-	</sql>
-		<sql id="criteria">
-		<if test="type != null">
-			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
-				<foreach item="type" collection="typeList">
-					<trim prefix="OR">
-						<choose>
-							<when test="keyword != null and keyword != ''">
-								WHERE TITLE LIKE '%'||#{keyword}||'%' 
-								OR CONTENT LIKE '%'||#{keyword}||'%' 
-								OR WRITER LIKE '%'||#{keyword}||'%' 
-								OR ADDRESS LIKE '%'||#{keyword}||'%' 
-								OR ADDRESS_DETAIL LIKE '%'||#{keyword}||'%' 
-								OR ADDRESS_ETC LIKE '%'||#{keyword}||'%' 
-								OR CAMPNAME LIKE '%'||#{keyword}||'%' 
-							</when>
-						</choose>
-					</trim>
-				</foreach>
-			</trim>
-		</if>
 	</sql>
 	
 	<sql id="typeCriteria">
@@ -44,19 +23,19 @@
 	<sql id="period">
 		<choose>
 			<when test="from != null and from == 'day'.toString()">
-			AND REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
+			OR REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from == 'week'.toString()">
-			AND REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
+			OR REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from == 'month'.toString()">
-			AND REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
+			OR REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from == 'month3'.toString()">
-			AND REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
+			OR REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
 			ORDER BY REGDATE DESC
 			</when>
 		</choose>
@@ -74,6 +53,7 @@
 				
 				<trim suffixOverrides="AND">
 					<include refid="typeCriteria"></include>
+					<include refid="keyword"></include>
 			        <include refid="period"></include>
 				</trim>
 				) 
@@ -87,6 +67,7 @@
 	<where>
 		<trim suffixOverrides="AND">
 			<include refid="typeCriteria"></include>
+			<include refid="keyword"></include>
 	        <include refid="period"></include>
 		</trim>
 	</where>
