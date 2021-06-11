@@ -36,6 +36,8 @@ public class MarketController {
 	
 	private MarketBoardService service;
 	
+	//System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+	
 	@GetMapping("/marketList")
 	public void marketList(Criteria cri, @RequestParam("check") String check, Model model) {
 		model.addAttribute("check", check);

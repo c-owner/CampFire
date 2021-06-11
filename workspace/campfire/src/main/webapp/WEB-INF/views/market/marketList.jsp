@@ -130,7 +130,6 @@
                   <a href="#">${board.title}</a>
                 </h4>
                 <h5>99,000원</h5>
-                <p class="card-text">${board.content}</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted" style="float: left;">${board.writer}</small>
@@ -285,6 +284,26 @@
 			location.replace("/market/marketWrite${pageMaker.cri.getListLink()}");
 		}
 	}
+	
+	$("#category").on("change", function(){
+		var check = "";
+		//console.log($("#category option:selected").val());
+		if($("#category option:selected").val() == 'sale'){
+			check = "S";
+		}else if($("#category option:selected").val() == 'buy'){
+			check = "B";
+		}else {
+			check = "F";
+		}
+		console.log(check);
+		$.ajax({
+			url: "/market/marketList?check="+check,
+			type: "get",
+			success: function(data){
+				location.replace("/market/marketList?check="+check);
+			}
+		});
+	});
 	
 </script>
 </html>
