@@ -14,6 +14,21 @@
   <!-- Bootstrap core CSS -->
   <link href="/resources/assets/market/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style>
+	body {
+		line-height: 2.5;
+	}
+	
+	input {
+		font-family: initial;
+	    font-weight: 300;
+	    font-size: 1rem;
+	    line-height: 2.5;
+	}
+	
+	a {
+		color: #404040;
+	}
+	
 	.col-lg-9{
 		margin: 0 auto;	
 	}
@@ -124,16 +139,18 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <%-- <a href="#"><img class="card-img-top" src="${thumbnail[0]}" alt=""></a> --%>
-              <a href="#"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
+              <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">${board.title}</a>
+                  <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});">${board.title}</a>
                 </h4>
-                <h5>99,000원</h5>
+                <c:if test="${board.marketKeyword ne 'F'}">
+                	<h5>${board.price} 원</h5>
+				</c:if>
               </div>
               <div class="card-footer">
-                <small class="text-muted" style="float: left;">${board.writer}</small>
-                <small class="text-muted" style="float: right;">${board.updateDate}</small>
+                <small class="text-muted">${board.writer}</small><br>
+                <small class="text-muted">${board.updateDate}</small>
               </div>
             </div>
           </div>
@@ -305,5 +322,13 @@
 		});
 	});
 	
+	function view(bno, pageNum, amount){
+		if ("${sessionId}" == ""){
+			alert("로그인 후 이용해 주십시오.");
+			goSignIn();
+		}else{
+			location.replace("/market/marketView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
+		}
+	}
 </script>
 </html>

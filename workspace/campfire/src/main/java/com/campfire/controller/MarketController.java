@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +72,14 @@ public class MarketController {
 	}
 	
 	@GetMapping(value="/marketView")
-	public void marketView() {}
+	public void marketView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest req, Model model) {
+		log.info("장터상세진입" + bno);
+		log.info("장터상세진입" + cri);
+		HttpSession session = req.getSession();
+		String userId = (String)session.getAttribute("sessionId");
+		model.addAttribute("board", service.get(bno));
+		
+	}
+	
 
 }

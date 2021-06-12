@@ -15,5 +15,6 @@ public class MarketBoardVO {
 	private String updateDate;
 	private int replyCnt;
 	private String marketKeyword;
+	private String price;
 	private List<MarketBoardAttachVO> attachList;
 }

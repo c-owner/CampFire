@@ -14,6 +14,21 @@
   <!-- Bootstrap core CSS -->
   <link href="/resources/assets/market/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <style>
+	body {
+		line-height: 2.5;
+	}
+	
+	input {
+		font-family: initial;
+	    font-weight: 300;
+	    font-size: 1rem;
+	    line-height: 2.5;
+	}
+	
+	a {
+		color: #404040;
+	}
+	
 	.col-lg-9{
 		margin: 0 auto;	
 	}
@@ -125,10 +140,12 @@
 
 		<div class="item">
 			<img class="itemPicture" src="/resources/images/marketEX3.jpg" alt="">
-			<small class="text-muted" style="float: right; font-weight: 600;">21.06.11.</small><br>
-			<div class="itemTitle">모닥불용 램프</div>
-			<div class="itemPrice">30,000<span>원</span></div>
-			<div class="itemEle">작성자&nbsp;&nbsp;<p style="display: inline-block; color: black;">테스터</div>
+			<small class="text-muted" style="float: right; font-weight: 600;">${board.regDate}</small><br>
+			<div class="itemTitle">${board.title}</div>
+			<c:if test="${board.marketKeyword ne 'F'}">
+				<div class="itemPrice">${board.price}<span>원</span></div>
+			</c:if>
+			<div class="itemEle">작성자&nbsp;&nbsp;<p style="display: inline-block; color: black;">${board.writer}</div>
 			<div class="itemEle">연락처&nbsp;&nbsp;<p style="display: inline-block; color: black;">010-1234-5678</div>
 			<div class="itemEle">거래 지역&nbsp;&nbsp;<p style="display: inline-block; color: black;">서울</div>
 		</div>
@@ -139,7 +156,7 @@
 					<div class="row">
 						<h2 style="margin-left: -1%;">상세정보</h2>
 						<div class="col-12">
-							<p style="border-top: 1px solid rgb(238, 238, 238); padding-top: 1%;">장작장터 장작장터 좋아요!! 장작장터 좋아요!!	
+							<p style="border-top: 1px solid rgb(238, 238, 238); padding-top: 1%;">${board.content}
 						</div>
 					</div>
 				</div>
