@@ -1,6 +1,5 @@
 package com.campfire.domain.marketBoard;
 
-import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -17,4 +16,5 @@ public class MarketBoardVO {
 	private String marketKeyword;
 	private String price;
 	private List<MarketBoardAttachVO> attachList;
+	private String thumbnail;
 }

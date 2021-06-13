@@ -139,7 +139,8 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <%-- <a href="#"><img class="card-img-top" src="${thumbnail[0]}" alt=""></a> --%>
-              <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
+              <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});"><img class="card-img-top" src="/display?fileName=/market/${board.thumbnail}" alt=""></a>
+              <%-- <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a> --%>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});">${board.title}</a>

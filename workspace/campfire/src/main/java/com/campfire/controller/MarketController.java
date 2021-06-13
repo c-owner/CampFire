@@ -64,7 +64,6 @@ public class MarketController {
 		if(m_vo.getAttachList() != null) {
 			m_vo.getAttachList().forEach(log::info);
 		}
-		
 		service.register(m_vo);
 		rttr.addFlashAttribute("result", m_vo.getBno());
 		rttr.addAttribute("check", m_vo.getMarketKeyword());
