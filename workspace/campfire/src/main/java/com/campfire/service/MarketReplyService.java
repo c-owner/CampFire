@@ -5,9 +5,9 @@ import com.campfire.domain.PageDTO;
 import com.campfire.domain.marketBoard.MarketReplyVO;
 
 public interface MarketReplyService {
-	public int register(MarketReplyVO vo);
+	public int register(MarketReplyVO reply);
 	public MarketReplyVO get(Long rno);
 	public int remove(Long rno);
-	public int modify(MarketReplyVO vo);
+	public int modify(MarketReplyVO reply);
 	public PageDTO getList(Criteria cri, Long bno);
 }
