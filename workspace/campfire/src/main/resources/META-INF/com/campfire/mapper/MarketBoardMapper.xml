@@ -50,6 +50,10 @@
 		</where>
 	</select>
 	
+	<select id="categoryTotal" resultType="_int">
+		SELECT COUNT(BNO) FROM TBL_MARKET_BOARD WHERE MARKETKEYWORD = #{marketKeyword}
+	</select>
+	
 	<insert id="insertBoard">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			SELECT SEQ_MARKET_BOARD.NEXTVAL FROM DUAL 

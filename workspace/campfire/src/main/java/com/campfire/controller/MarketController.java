@@ -44,6 +44,7 @@ public class MarketController {
 	@GetMapping("/marketList")
 	public void marketList(Criteria cri, @RequestParam("check") String check, Model model) {
 		model.addAttribute("check", check);
+		//marketList에서 actionForm 주석 해제하면 여기서 오류
 		List<MarketBoardVO> list = service.getList(cri, check);
 		List<MarketBoardAttachVO> thumbnail = null;
 		for (int i = 0; i < list.size(); i++) {
@@ -53,7 +54,7 @@ public class MarketController {
 		
 		model.addAttribute("thumbnail", thumbnail);
 		model.addAttribute("list", list);
-		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
+		model.addAttribute("pageMaker", new PageDTO(cri, service.categoryTotal(check)));
 	}
 	
 	@GetMapping("/marketWrite")
@@ -79,7 +80,6 @@ public class MarketController {
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("sessionId");
 		model.addAttribute("board", service.get(bno));
-		
 	}
 	
 

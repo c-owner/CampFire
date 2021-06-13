@@ -172,7 +172,7 @@
 											<option value="TCW" ${pageMaker.cri.type == 'TCW' ? 'selected' : ''}>전체</option>
 										</select>
 										<input id="keyword" type="text" name="keyword" style="margin-top: 1%; height: 3.25rem;" value="${pageMaker.cri.keyword}">
-										<a href="javascript:void(0)" class="search button primary icon solid" style="text-decoration: none; margin-top: 1%; border-radius: 0.25rem; height: 3.25rem;">검색</a>
+										<a href="javascript:void(0)" class="button primary icon solid fa-search" style="text-decoration: none; margin-top: 1%; border-radius: 0.25rem; height: 3.25rem;">검색</a>
 									</div>
 								</div>
 							</div>

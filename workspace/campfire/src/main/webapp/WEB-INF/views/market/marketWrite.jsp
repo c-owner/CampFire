@@ -204,18 +204,17 @@
 			if($("#category").val() == "S"){
 				$('#category option:eq(0)').prop('selected', true);
 				$("input[name='price']").show();
+				$("input[name='price']").val("");
 			}else if($("#category").val() == "B"){
 				$('#category option:eq(1)').prop('selected', true);
 				$("input[name='price']").show();
+				$("input[name='price']").val("");
 			}else if($("#category").val() == "F"){
 				$('#category option:eq(2)').prop('selected', true);
 				$("input[name='price']").hide();
 				$("input[name='price']").val(0);
 			}
 		});
-		
 	});
-	
-	
 </script>
 </html>

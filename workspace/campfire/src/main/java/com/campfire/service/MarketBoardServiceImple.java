@@ -38,6 +38,11 @@ public class MarketBoardServiceImple implements MarketBoardService {
 	public int getTotal(Criteria cri) {
 		return mapper.getTotal(cri);
 	}
+	
+	@Override
+	public int categoryTotal(String marketKeyword) {
+		return mapper.categoryTotal(marketKeyword);
+	}
 
 	@Override
 	public void register(MarketBoardVO vo) {
@@ -93,5 +98,5 @@ public class MarketBoardServiceImple implements MarketBoardService {
 	public List<MarketBoardAttachVO> thumbnail(Long bno){
 		return Amapper.thumbnail(bno);
 	}
-	
+
 }

@@ -15,4 +15,5 @@ public interface MarketBoardService {
 	public boolean modify(MarketBoardVO vo);
 	public List<MarketBoardAttachVO> getAttachList(Long bno);
 	public List<MarketBoardAttachVO> thumbnail(Long bno);
+	public int categoryTotal(String marketKeyword);
 }
