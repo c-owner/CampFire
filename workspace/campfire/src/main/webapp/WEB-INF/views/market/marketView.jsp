@@ -163,7 +163,7 @@
 
 		<div class="item">
 			<!-- <img class="itemPicture" src="/resources/images/marketEX3.jpg" alt=""> -->
-			<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" alt="">
+			<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="">
 			<small class="text-muted" style="float: right; font-weight: 600;">${board.regDate}</small><br>
 			<div class="itempDiv">
 				<div class="itemTitle">${board.title}</div>
