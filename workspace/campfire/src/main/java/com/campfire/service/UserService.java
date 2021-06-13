@@ -10,4 +10,5 @@ public interface UserService {
 	public boolean signIn(String userId, String userPw);
 	public String findId(String userEmail);
 	public boolean findPw(String userId, String userEmail);
+	public boolean changePw(String userId, String userPw);
 }

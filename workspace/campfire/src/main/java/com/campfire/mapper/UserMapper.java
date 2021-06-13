@@ -11,4 +11,5 @@ public interface UserMapper {
 	public String selectPw(String userId);
 	public String findId(String userEmail);
 	public int findPw(@Param("userId") String userId, @Param("userEmail") String userEmail);
+	public int changePw(@Param("userId") String userId, @Param("userPw") String userPw);
 }

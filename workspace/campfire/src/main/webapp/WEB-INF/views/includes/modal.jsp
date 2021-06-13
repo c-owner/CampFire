@@ -216,12 +216,11 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!-- modal -->
-<script src="/resources/assets/js/modal.js"></script>
 <script>
 	var pageContext = "${pageContext.request.contextPath}";
 	var sessionId = "${sessionId}";
 </script>
-<script src="/resources/assets/js/user.js"></script>
+<script src="/resources/assets/js/modal.js"></script>
 <!-- modal end -->
 <script>
 	var contextPath = "${pageContext.request.contextPath}";

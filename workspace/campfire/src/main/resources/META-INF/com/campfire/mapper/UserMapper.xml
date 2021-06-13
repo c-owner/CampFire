@@ -25,4 +25,9 @@
 		SELECT COUNT(USERID) FROM CF_USER
 		WHERE USERID = #{userId} AND USEREMAIL = #{userEmail}
 	</select>
+	<update id="changePw">
+		UPDATE CF_USER
+		SET USERPW = #{userPw}
+		WHERE USERID = #{userId}
+	</update>
 </mapper>

@@ -3,15 +3,16 @@ package com.campfire.controller;
 
 import java.util.Random;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +56,7 @@ public class UserController {
 			return new ResponseEntity<String>("no", HttpStatus.OK);
 		}else {
 			
-			String title = "모닥불 인증메일입니다.";
+			String title = "[모닥불] 회원가입 인증 메일입니다.";
 			String code = "";
 			String content = "";
 			
@@ -142,14 +143,32 @@ public class UserController {
 	}
 	@GetMapping(value="/findPw", produces= "application/text; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<String> findPw(String userId, String userEmail){
+	public ResponseEntity<String> findPw(String userId, String userEmail, HttpServletResponse resp){
 		String result = "";
-		String title = "모닥불 - 회원님의 비밀번호 찾기입니다.";
+		String title = "[모닥불] 회원님의 비밀번호 찾기입니다.";
+		String code = "";
 		
 		if(service.findPw(userId, userEmail)) {
+			
+			Random rnd =new Random();
+			StringBuffer buf =new StringBuffer();
+			for(int i=0;i<7;i++){
+				if(rnd.nextBoolean()){
+					buf.append((char)((int)(rnd.nextInt(26))+97));
+				}else{
+					buf.append((rnd.nextInt(10))); 
+				}
+			}
+			code = buf.toString();
 
+			Cookie urlCookie = new Cookie("userId", userId);
+			urlCookie.setMaxAge(60*60); // 1시간
+			resp.addCookie(urlCookie);
+			
 			String content = "아래의 링크를 통해 새로운 비밀번호를 입력해 주십시오.<br>";
-			content += "<a href='http://camp-fire.kro.kr/account/changePW'>비밀번호 변경</a>";
+			content += "*비밀번호 변경 링크는 1시간 후에 만료됩니다.<br>";
+//			content += "<a href='http://camp-fire.kro.kr/account/changePW'>비밀번호 변경</a>";
+			content += "<a href='http://localhost:8084/account/changePW/"+code+"'>비밀번호 변경</a>";
 			MailDTO mailDTO = new MailDTO(userEmail, title, content);
 			if(mailDTO.sendmail()) {
 				result = "비밀번호 찾기 메일이 발송되었습니다.";
@@ -164,7 +183,26 @@ public class UserController {
 
 	
 //	체인지 pw
-	@GetMapping(value="/changePW")
-	public void changePW() {}
-
+	@GetMapping(value="/changePW/{code}")
+	public String changePW() {
+		return "/account/changePW";
+	}
+	
+	@PostMapping(value="/changePW", consumes="application/json", produces= "application/text; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<String> changePw(@RequestBody UserVO user, @CookieValue(value="userId", required=false) Cookie cookie, HttpServletResponse resp) {
+		log.info("userId : " + user.getUserId());
+		log.info("userPw : " + user.getUserPw());
+		String result = "";
+		if(!cookie.getValue().isEmpty()) {
+			if(service.changePw(user.getUserId(), service.encrypt(user.getUserPw()))) {
+				cookie.setMaxAge(0);
+				resp.addCookie(cookie);
+				result = "yes";
+			}			
+		}else {
+			result = "no";
+		}
+		return new ResponseEntity<String>(result, HttpStatus.OK);
+	}
 }
