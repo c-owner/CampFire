@@ -56,23 +56,23 @@
                 </header>
 				<form class="reviewForm" action="/market/marketWrite" method="post" name="marketForm">
                    <div style="text-align:center; margin-top: 1%;">
-                      <select class="keyword" name="marketKeyword">
+                      <select class="keyword" name="marketKeyword" id="category">
                          <option value="S" >팝니다</option>
                          <option value="B" >삽니다</option>
-                         <option value="P" >무료나눔</option>                         
+                         <option value="F" >무료나눔</option>                         
                       </select>         
                    </div>
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">
-							<input type="text" name="price" placeholder="판매가격을 입력해주세요." style="margin-top: 2%;">					
+							<input type="text" name="price" placeholder="가격을 입력해주세요." style="margin-top: 2%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
 							<input type="hidden" name="writer" value="${sessionId}">
 							<input type="hidden" name="thumbnail" value="">
 						</div>
 					</div>
-					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; marketForm.submit();" class="button big" style="text-decoration: none; border-radius: 6px;">등록</a></h3>
+					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; checkValue();" class="button big" style="text-decoration: none; border-radius: 6px;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -161,6 +161,61 @@
 		});
 	};
 	
+	function checkValue(){
+		var price = $("input[name='price']").val();
+		var title = $("input[name='title']").val();
+		var content = $("textarea[name='content']").val();
+		
+		if(price == ""){
+			alert("가격을 입력해주세요.");
+			$("input[name='price']").focus();
+			return;
+		}
+		
+		if(title == ""){
+			alert("제목을 입력해주세요.");
+			$("input[name='title']").focus();
+			return;
+		}
+		
+		if(content == ""){
+			alert("내용을 입력해주세요.");
+			return;
+		}
+		
+		marketForm.submit();
+	}
+	
 	//셀렉트 태그가 무료나눔일 경우 가격입력창 제거하는 함수
+	$(document).ready(function(){
+		var temp = "${check}";
+		if(temp == "S"){
+			$('#category option:eq(0)').prop('selected', true);
+			$("input[name='price']").show();
+		}else if(temp == "B"){
+			$('#category option:eq(1)').prop('selected', true);
+			$("input[name='price']").show();
+		}else if(temp == "F"){
+			$('#category option:eq(2)').prop('selected', true);
+			$("input[name='price']").hide();
+		}
+		
+		$("#category").on("change", function(){
+			if($("#category").val() == "S"){
+				$('#category option:eq(0)').prop('selected', true);
+				$("input[name='price']").show();
+			}else if($("#category").val() == "B"){
+				$('#category option:eq(1)').prop('selected', true);
+				$("input[name='price']").show();
+			}else if($("#category").val() == "F"){
+				$('#category option:eq(2)').prop('selected', true);
+				$("input[name='price']").hide();
+				$("input[name='price']").val(0);
+			}
+		});
+		
+	});
+	
+	
 </script>
 </html>

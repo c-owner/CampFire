@@ -43,6 +43,10 @@
 		display: inline-block;
 	}
 	
+	.itempDiv {
+		float: left;
+	}
+	
 	@media screen and (max-width: 1680px){
 		.writeBtn {
 			padding-left: 70%;
@@ -67,6 +71,20 @@
 		}
 		
 		.categoryDiv {width: 23%;}
+		.itemPicture {
+			clear: both;
+			width: 100% !important;
+		}
+		
+		.itempDiv {
+			clear: both;
+			text-align: center;
+			width: 100%;
+		}
+		
+		.itemPrice {
+			display: block !important;
+		}
 	}
 	
 	@media screen and (max-width: 575px){
@@ -79,7 +97,7 @@
 	}
 	
 	.itemPicture {
-		width: 60%;
+		width: 65%;
     	float: left;
     	padding: 4%;
 	}
@@ -129,7 +147,7 @@
 
       <div class="col-lg-9">
         
-		<div class="major">
+		<!-- <div class="major">
 			<div class='categoryDiv'>
 	       		<select name="category" id="category">
 	       			<option value="sale">팝니다</option>
@@ -141,19 +159,21 @@
             	<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
             </h3>
         	<hr style="border-top: 2px solid black;">
-		</div>
+		</div> -->
 
 		<div class="item">
 			<!-- <img class="itemPicture" src="/resources/images/marketEX3.jpg" alt=""> -->
 			<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" alt="">
 			<small class="text-muted" style="float: right; font-weight: 600;">${board.regDate}</small><br>
-			<div class="itemTitle">${board.title}</div>
-			<c:if test="${board.marketKeyword ne 'F'}">
-				<div class="itemPrice">${board.price}<span>원</span></div>
-			</c:if>
-			<div class="itemEle">작성자&nbsp;&nbsp;<p style="display: inline-block; color: black;">${board.writer}</div>
-			<div class="itemEle">연락처&nbsp;&nbsp;<p style="display: inline-block; color: black;">010-1234-5678</div>
-			<div class="itemEle">거래 지역&nbsp;&nbsp;<p style="display: inline-block; color: black;">서울</div>
+			<div class="itempDiv">
+				<div class="itemTitle">${board.title}</div>
+				<c:if test="${board.marketKeyword ne 'F'}">
+					<div class="itemPrice">${board.price}<span>원</span></div>
+				</c:if>
+				<div class="itemEle">작성자&nbsp;&nbsp;<p style="display: inline-block; color: black;">${board.writer}</div>
+				<div class="itemEle">연락처&nbsp;&nbsp;<p style="display: inline-block; color: black;">010-1234-5678</div>
+				<div class="itemEle">거래 지역&nbsp;&nbsp;<p style="display: inline-block; color: black;">서울</div>
+			</div>
 		</div>
 
       </div>

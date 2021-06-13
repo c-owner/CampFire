@@ -57,7 +57,9 @@ public class MarketController {
 	}
 	
 	@GetMapping("/marketWrite")
-	public void register(@ModelAttribute("cri") Criteria cri) {;}
+	public void register(@ModelAttribute("cri") Criteria cri, String check, Model model) {
+		model.addAttribute("check", check);
+	}
 	
 	@PostMapping("/marketWrite")
 	public String register(MarketBoardVO m_vo, RedirectAttributes rttr) {
