@@ -64,13 +64,15 @@
                    </div>
 					<div class="row gtr-uniform">
 						<br>
-						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
+						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">
+							<input type="text" name="price" placeholder="판매가격을 입력해주세요." style="margin-top: 2%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
 							<input type="hidden" name="writer" value="${sessionId}">
+							<input type="hidden" name="thumbnail" value="">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; marketForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; marketForm.submit();" class="button big" style="text-decoration: none; border-radius: 6px;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -150,10 +152,15 @@
 				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				if(j == 0){
+					var test = $("input[name='thumbnail']").val(url);
+				}
 				marketForm.append(str);
 				j++;
 			}
 		});
 	};
+	
+	//셀렉트 태그가 무료나눔일 경우 가격입력창 제거하는 함수
 </script>
 </html>

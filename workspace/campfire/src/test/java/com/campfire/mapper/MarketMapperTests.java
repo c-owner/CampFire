@@ -1,5 +1,7 @@
 package com.campfire.mapper;
 
+import java.util.HashMap;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +46,17 @@ public class MarketMapperTests {
 		mapper.updateBoard(vo);
 	}*/
 	
-//	@Test
-//	public void testList() {
-//		Criteria c = new Criteria(1, 10);
-//		mapper.getListWithPaging(c, "S").forEach(log::info);
-//	}
+	@Test
+	public void testList() {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pageNum", 1);
+		map.put("amount", 12);
+		map.put("marketKeyword", "S");
+		map.put("type", null);
+		map.put("keyword", null);
+		Criteria c = new Criteria(1, 10);
+		mapper.getListWithPaging(map).forEach(log::info);
+	}
 	
 	/*@Test
 	public void testTotal() {

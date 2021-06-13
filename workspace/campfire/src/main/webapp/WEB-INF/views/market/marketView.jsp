@@ -81,6 +81,7 @@
 	.itemPicture {
 		width: 60%;
     	float: left;
+    	padding: 4%;
 	}
 	
 	.itemTitle {
@@ -111,6 +112,10 @@
 		flex: 0 0 75%;
 	    max-width: 75%;
 	}
+	
+	.content img{
+		width: 100% !important;
+	}
 </style>
 </head>
 
@@ -139,7 +144,8 @@
 		</div>
 
 		<div class="item">
-			<img class="itemPicture" src="/resources/images/marketEX3.jpg" alt="">
+			<!-- <img class="itemPicture" src="/resources/images/marketEX3.jpg" alt=""> -->
+			<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" alt="">
 			<small class="text-muted" style="float: right; font-weight: 600;">${board.regDate}</small><br>
 			<div class="itemTitle">${board.title}</div>
 			<c:if test="${board.marketKeyword ne 'F'}">
@@ -155,7 +161,7 @@
       <div class="col-6 col-10-medium col-11-small" style="margin: 0 auto 10px auto;">
 					<div class="row">
 						<h2 style="margin-left: -1%;">상세정보</h2>
-						<div class="col-12">
+						<div class="col-12 content" style="width: 100%;">
 							<p style="border-top: 1px solid rgb(238, 238, 238); padding-top: 1%;">${board.content}
 						</div>
 					</div>
