@@ -67,5 +67,10 @@ public class UserServiceImpl implements UserService{
 	public boolean findPw(String userId, String userEmail) {
 		return mapper.findPw(userId, userEmail) == 1;
 	}
+
+	@Override
+	public boolean changePw(String userId, String userPw) {
+		return mapper.changePw(userId, userPw) == 1;
+	}
 	
 }
