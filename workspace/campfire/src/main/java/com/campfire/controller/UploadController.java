@@ -32,6 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.campfire.domain.AllFileDTO;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
+import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
 
 import lombok.extern.log4j.Log4j;
@@ -101,6 +102,8 @@ public class UploadController {
 		FreeBoardAttachVO f_vo = new FreeBoardAttachVO();
 		ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
 		MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
+		
+		MarketBoardVO mb_vo = new MarketBoardVO();
 		
 		String uploadFileName = uploadFile.getOriginalFilename();
 		String temp = uploadFileName;

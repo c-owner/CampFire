@@ -43,6 +43,22 @@
 		display: inline-block;
 	}
 	
+	.imgDiv {
+		width: fit-content;
+		height: 300px;
+	}
+	
+	.imgA {
+		overflow: hidden;
+		position: relative;
+		display: inline-block;
+	}
+	
+	.imgA img{
+		object-fit: cover;
+		height: 100%;
+	}
+	
 	@media screen and (max-width: 1680px){
 		.writeBtn {
 			padding-left: 70%;
@@ -139,7 +155,15 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <%-- <a href="#"><img class="card-img-top" src="${thumbnail[0]}" alt=""></a> --%>
-              <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a>
+              <div class="imgDiv">
+              	<a class="imgA" href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});">
+              		<%-- <c:if test="${board.thumbnail eq null}">
+              			<img class="icon-round" onerror="this.src='/resources/images/default_profile_face.png'" src="/resources/images/icon.png">
+              		</c:if> --%>
+              		<img class="card-img-top" src="/display?fileName=/market/${board.thumbnail}" alt="">
+              	</a>
+              </div>
+              <%-- <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});"><img class="card-img-top" src="/resources/images/marketEX.jpg" alt=""></a> --%>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="javascript: view(${board.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});">${board.title}</a>
@@ -294,11 +318,12 @@
 	});
 	
 	function checkLogin(){
+		var temp = "${check}";
 		if("${sessionId}" == ""){
 			alert("로그인 후 이용해 주십시오.");
 			goSignIn();
 		}else{
-			location.replace("/market/marketWrite${pageMaker.cri.getListLink()}");
+			location.replace("/market/marketWrite${pageMaker.cri.getListLink()}&check="+temp);
 		}
 	}
 	

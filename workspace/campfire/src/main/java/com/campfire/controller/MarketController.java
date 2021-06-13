@@ -57,14 +57,15 @@ public class MarketController {
 	}
 	
 	@GetMapping("/marketWrite")
-	public void register(@ModelAttribute("cri") Criteria cri) {;}
+	public void register(@ModelAttribute("cri") Criteria cri, String check, Model model) {
+		model.addAttribute("check", check);
+	}
 	
 	@PostMapping("/marketWrite")
 	public String register(MarketBoardVO m_vo, RedirectAttributes rttr) {
 		if(m_vo.getAttachList() != null) {
 			m_vo.getAttachList().forEach(log::info);
 		}
-		
 		service.register(m_vo);
 		rttr.addFlashAttribute("result", m_vo.getBno());
 		rttr.addAttribute("check", m_vo.getMarketKeyword());
