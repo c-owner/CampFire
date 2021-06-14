@@ -19,6 +19,9 @@
 	    padding: 30px 40px;
 	    background: #f4f4f4;
 	}
+	ul li{
+		padding-left: 0;
+	}
 	.tab_policy {
 	    height: 50px;
 	    padding-top: 40px;
@@ -28,6 +31,7 @@
 	}
 	.tab_policy li{
 	    float: left;
+		display: table;
 	    width: 165px;
 	    height: 48px;
 	    margin-right: -1px;
@@ -36,9 +40,9 @@
 	    line-height: 48px;
 	}
 	.tab_policy .link_policy {
+		display: table-cell;
 	    color: #666;
 	    font-size: 14px;
-	    line-height: 20px;
 	    vertical-align: middle;
 	}
 	a.link_policy { text-decoration: none; }
@@ -203,10 +207,9 @@
 			}
 			
 			.sch_comm {
-			    width: 500px;
+			    width: 50%;
 			    margin: 0 auto;
 			    padding-top: 11px;
-			    border-bottom: 1px solid #1e1e1e;
 			}
 			.sch_comm .sch_form {
 				position: relative;
@@ -228,10 +231,11 @@
 			.sch_comm .inp_keyword {
 				float: left;
 				width: 30rem;
-				height: 1px;
 				border: 0 none;
 				box-sizing: border-box;
 				color: #1e1e1e;
+				border-bottom: 1px solid #4d4d4d;
+				border-radius: 0;
 			}
 			.sch_comm .btn_search {
 				float: right;
@@ -265,13 +269,14 @@
 			        <p class="desc_account"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
 			    </div>
 			    <ul class="tab_policy" role="tablist">
-				    <li class=""><a href="/noticeList" class="link_policy" role="tab">이용약관</a></li>
+				    <li class=" on"><a href="/noticeList" class="link_policy" role="tab">이용약관</a></li>
 				    <!-- 활성화 시 on 클래스 추가 -->
+				    <!-- WAI-ARIA 속성 구현 예정 -->
 				    <li class=""><a href="/noticeList" class="link_policy" role="tab">위치기반서비스 이용약관</a></li>
 				    <li class=""><a href="/noticeList" class="link_policy" role="tab">개인정보처리방침</a></li>
 				    <li class=""><a href="/noticeList" class="link_policy" role="tab">운영정책</a></li>
 			        <li class=""><a href="/noticeList" class="link_policy" role="tab">권리침해신고안내</a></li>
-				    <li class="lst  on"><a href="/noticeList" class="link_policy" role="tab">공지사항</a></li>
+				    <li class=""><a href="/noticeList" class="link_policy" role="tab">공지사항</a></li>
 				</ul>
 				
 				<div class="wrap_cont wrap_notices">
@@ -371,8 +376,7 @@
                             <fieldset>
                                 <legend class="screen_out">검색어 입력폼</legend>
 
-                                <label for="search_word" class="lab_sch">검색</label>
-                                <input type="text" id="search_word" name="searchWord" class="inp_keyword" title="검색어" value="">
+                                <input type="text" id="search_word" name="searchWord" class="inp_keyword" title="검색어" value="" placeholder="검색">
 
                                 <a href="javascript:searchForm2.submit();" class="fas fa-search" style="padding-top: 5%;"></a>
                             </fieldset>
@@ -395,6 +399,24 @@
 		<jsp:include page="includes/footer.jsp"/>
 		<script src="/resources/assets/js/modal.js"></script>
 	</body>
+	<script>
+		$(document).ready(function () {
+			$(".link_policy").on("click", function(e){
+				e.preventDefault();
+				// lst 클래스를 포함하는 DOM 객체가 active class를 포함하면 true 아니면 false를 반환 
+				var on = $("this").parent().prop("li");
+				console.log(on + " on ");
+				if($(".lst").hasClass("on")){
+					$(".lst").removeClass("on");
+				}
+				
+				else {
+					$(".lst").addClass("on");
+				}
+			});
+		});
+	</script>
+	
 	<script>
 		$("a.search").on("click", function(e){
 			e.preventDefault();
@@ -436,5 +458,6 @@
  			location.replace("/campfire/guideWrite${pageMaker.cri.getListLink()}");
  		}
      }
+
 	</script>
 </html>
