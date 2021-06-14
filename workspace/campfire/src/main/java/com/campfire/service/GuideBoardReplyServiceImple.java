@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
-import com.campfire.domain.freeBoard.FreeBoardReplyVO;
 import com.campfire.domain.guideBoard.GuideBoardReplyVO;
 import com.campfire.mapper.GuideBoardMapper;
 import com.campfire.mapper.GuideBoardReplyMapper;

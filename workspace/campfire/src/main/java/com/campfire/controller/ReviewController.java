@@ -156,7 +156,7 @@ public class ReviewController {
 		
 		attachList.forEach(f_vo -> {
 			try {
-				Path origin = Paths.get(fileFolder + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+				Path origin = Paths.get(fileFolder + "/review/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {
