@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.FoodReplyMapper">
+	<insert id="insertReply">
+		INSERT INTO TBL_FOOD_REPLY (RNO, BNO, REPLY, REPLYER)
+		VALUES (SEQ_FOOD_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
+	</insert>
+	
+	<select id="selectReply" resultType="com.campfire.domain.foodBoard.FoodBoardReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+		FROM TBL_FOOD_REPLY
+		WHERE RNO = #{rno}
+	</select>
+	
+	<select id="selectReplyList" resultType="com.campfire.domain.foodBoard.FoodBoardReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
+			FROM (
+				SELECT /*+ INDEX_DESC(TBL_FOOD_REPLY PK_FOOD_REPLY) */
+				ROWNUM R, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+				FROM TBL_FOOD_REPLY 
+				WHERE BNO = #{bno} AND ROWNUM <![CDATA[<=]]> #{cri.pageNum} * #{cri.amount})
+		WHERE R <![CDATA[>]]> (#{cri.pageNum} - 1) * #{cri.amount}
+	</select>
+	
+	<update id="updateReply">
+		UPDATE TBL_FOOD_REPLY
+		SET REPLY = #{reply}, UPDATEDATE = SYSDATE
+		WHERE RNO = #{rno}
+	</update>
+	
+	<delete id="deleteReply">
+		DELETE TBL_FOOD_REPLY
+		WHERE RNO = #{rno}
+	</delete>
+	
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(RNO) FROM TBL_FOOD_REPLY
+		WHERE BNO = #{bno}
+	</select>
+</mapper>

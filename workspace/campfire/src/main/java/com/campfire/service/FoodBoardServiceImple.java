@@ -37,7 +37,7 @@ public class FoodBoardServiceImple implements FoodBoardService {
 	@Transactional
 	@Override
 	public FoodBoardVO get(Long bno) {
-		mapper.selectBoard(bno);
+		mapper.updateReadCnt(bno);
 		return mapper.selectBoard(bno);
 	}
 
