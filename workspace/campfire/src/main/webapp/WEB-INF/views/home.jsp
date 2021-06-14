@@ -338,26 +338,23 @@
 	}, 2000); */
 	
 	var imgArray = new Array(); 
-	imgArray[0]="/resources/images/background/bg01.jpg"; 
-	imgArray[1]="/resources/images/background/bg02.jpg"; 
-	imgArray[2]="/resources/images/background/bg03.jpg"; 
-	imgArray[3]="/resources/images/background/bg05.jpg"; 
-	imgArray[4]="/resources/images/background/bg06.jpg"; 
-	imgArray[5]="/resources/images/background/bg07.jpg"; 
-	imgArray[6]="/resources/images/background/bg08.jpg"; 
-	imgArray[7]="/resources/images/background/bg09.jpg"; 
-	imgArray[8]="/resources/images/background/bg10.jpg"; 
-	imgArray[9]="/resources/images/background/bg11.jpg"; 
-	imgArray[10]="/resources/images/background/bg12.jpg"; 
-	imgArray[11]="/resources/images/background/bg13.jpg"; 
+	imgArray[0]="/resources/images/background/bg14.jpg"; 
+	imgArray[1]="/resources/images/background/bg03.jpg"; 
+	imgArray[2]="/resources/images/background/bg05.jpg"; 
+	imgArray[3]="/resources/images/background/bg07.jpg"; 
+	imgArray[4]="/resources/images/background/bg08.jpg"; 
+	imgArray[5]="/resources/images/background/bg09.jpg"; 
+	imgArray[6]="/resources/images/background/bg10.jpg"; 
+	imgArray[7]="/resources/images/background/bg11.jpg"; 
+	imgArray[8]="/resources/images/background/bg12.jpg"; 
 	
 	function showImage(){ 
-		var imgNum=Math.round(Math.random()*12); 
+		var imgNum = Math.round(Math.random()*9); 
 		
-		var objImg=document.getElementById("image"); 
+		var objImg = document.getElementById("image"); 
 		
-		objImg.src=imgArray[imgNum]; 
-		setTimeout(showImage,5000); 
+		objImg.src = imgArray[imgNum]; 
+		setTimeout(showImage,6000); 
 		
 	}
 
