@@ -31,7 +31,7 @@
 				background: white;
 			}
 			
-			#boardModify, #boardRemove {
+			#boardReport, #boardModify, #boardRemove {
     			color: black !important;
     			border-radius: 0;
 			}

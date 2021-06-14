@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
+import com.campfire.domain.freeBoard.FreeBoardVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.service.MarketBoardService;
@@ -82,7 +83,7 @@ public class MarketController {
 		return "redirect:/market/marketList";
 	}
 	
-	@GetMapping(value="/marketView")
+	@GetMapping({"/marketView", "/marketModify"})
 	public void marketView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest req, Model model) {
 		log.info("장터상세진입" + bno);
 		log.info("장터상세진입" + cri);
@@ -93,7 +94,7 @@ public class MarketController {
 	
 	//게시글 및 첨부파일 삭제
 	@GetMapping("/marketRemove")
-	public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
+	public String remove(@RequestParam("bno") Long bno, @RequestParam("check") String check, Criteria cri, RedirectAttributes rttr) {
 		List<MarketBoardAttachVO> attachList = service.getAttachList(bno);
 		if(service.remove(bno)) {
 			deleteFiles(attachList);
@@ -103,6 +104,22 @@ public class MarketController {
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
+		rttr.addAttribute("check", check);
+		
+		return "redirect:/market/marketList";
+	}
+	
+	//게시글 수정
+	@PostMapping("/marketModify")
+	public String modify(MarketBoardVO m_vo, Criteria cri, RedirectAttributes rttr) {
+		if(service.modify(m_vo)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		rttr.addAttribute("check", m_vo.getMarketKeyword());
 		
 		return "redirect:/market/marketList";
 	}
@@ -118,9 +135,10 @@ public class MarketController {
 	private void deleteFiles(List<MarketBoardAttachVO> attachList) {
 		if(attachList == null || attachList.size() == 0) {return;}
 		
-		attachList.forEach(f_vo -> {
+		attachList.forEach(m_vo -> {
 			try {
-				Path origin = Paths.get("/usr/local/upload/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+//				Path origin = Paths.get("C:\\upload\\market\\" + m_vo.getUploadPath() + "\\" + m_vo.getUuid() + "_" + m_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/market/" + m_vo.getUploadPath() + "/" + m_vo.getUuid() + "_" + m_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {
