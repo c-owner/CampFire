@@ -1,5 +1,9 @@
 package com.campfire.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +11,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
+import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.service.MarketBoardService;
@@ -81,6 +89,44 @@ public class MarketController {
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("sessionId");
 		model.addAttribute("board", service.get(bno));
+	}
+	
+	//게시글 및 첨부파일 삭제
+	@GetMapping("/marketRemove")
+	public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
+		List<MarketBoardAttachVO> attachList = service.getAttachList(bno);
+		if(service.remove(bno)) {
+			deleteFiles(attachList);
+			rttr.addFlashAttribute("result", "success");
+		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		return "redirect:/market/marketList";
+	}
+	
+	//게시글에 등록된 모든 첨부파일 목록
+	@ResponseBody
+	@GetMapping(value="/getAttachList", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<MarketBoardAttachVO>> getAttachList(Long bno){
+		return new ResponseEntity<List<MarketBoardAttachVO>>(service.getAttachList(bno), HttpStatus.OK);
+	}
+	
+	//첨부파일 및 썸네일파일 삭제 메소드
+	private void deleteFiles(List<MarketBoardAttachVO> attachList) {
+		if(attachList == null || attachList.size() == 0) {return;}
+		
+		attachList.forEach(f_vo -> {
+			try {
+				Path origin = Paths.get("/usr/local/upload/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+				Files.delete(origin);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 	
 

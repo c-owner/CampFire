@@ -153,7 +153,7 @@
 				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
 				if(j == 0){
-					var test = $("input[name='thumbnail']").val(url);
+					$("input[name='thumbnail']").val(url);
 				}
 				marketForm.append(str);
 				j++;
@@ -198,6 +198,7 @@
 		}else if(temp == "F"){
 			$('#category option:eq(2)').prop('selected', true);
 			$("input[name='price']").hide();
+			$("input[name='price']").val(0);
 		}
 		
 		$("#category").on("change", function(){

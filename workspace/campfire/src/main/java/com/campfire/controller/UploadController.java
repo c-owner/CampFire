@@ -48,8 +48,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-//		File file = new File("C:\\upload\\"+fileName);
-		File file = new File("/usr/local/upload/"+fileName);
+		File file = new File("C:\\upload\\"+fileName);
+		//File file = new File("/usr/local/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -78,8 +78,8 @@ public class UploadController {
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
-//		String uploadFolder = "C:\\upload";
-		String uploadFolder = "/usr/local/upload";
+		String uploadFolder = "C:\\upload";
+		//String uploadFolder = "/usr/local/upload";
 		switch(check) {
 		case 1:
 			uploadFolder += "/free";
@@ -197,7 +197,7 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping(value="/download", produces= {MediaType.APPLICATION_OCTET_STREAM_VALUE})
 	public ResponseEntity<Resource> download(String fileName, @RequestHeader("User-Agent") String userAgent){
-//		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
+		//Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
 		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
 		
 		String resourceName = resource.getFilename();
