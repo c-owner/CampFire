@@ -115,7 +115,7 @@ public class CampfireController {
 		
 		attachList.forEach(g_vo -> {
 			try {
-				Path origin = Paths.get("C:\\upload\\" + g_vo.getUploadPath() + "\\" + g_vo.getUuid() + "_" + g_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/tip/" + g_vo.getUploadPath() + "\\" + g_vo.getUuid() + "_" + g_vo.getFileName());
 				Files.delete(origin);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -203,7 +203,7 @@ public class CampfireController {
 		
 		attachList.forEach(g_vo -> {
 			try {
-				Path origin = Paths.get("C:\\upload\\" + g_vo.getUploadPath() + "\\" + g_vo.getUuid() + "_" + g_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/guide/" + g_vo.getUploadPath() + "\\" + g_vo.getUuid() + "_" + g_vo.getFileName());
 				Files.delete(origin);
 
 			} catch (IOException e) {

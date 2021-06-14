@@ -50,8 +50,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		File file = new File("C:\\upload\\"+fileName);
-		//File file = new File("/usr/local/upload/"+fileName);
+//		File file = new File("C:\\upload\\"+fileName);
+		File file = new File("/usr/local/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
