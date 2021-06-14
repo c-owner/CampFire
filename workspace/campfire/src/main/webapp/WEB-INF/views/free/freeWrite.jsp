@@ -54,7 +54,7 @@
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
-							<input type="hidden" name="writer" value="test1">
+							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
 						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
