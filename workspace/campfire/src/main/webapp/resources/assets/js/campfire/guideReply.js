@@ -7,6 +7,7 @@ var replyService = (function(){
 		$.getJSON("/guideReplies/guideReplyList/"+reply.bno+"/"+reply.page+".json", 
 			function(data){
 				if(callback){
+					console.log(data);
 					callback(data.total, data.guideBoardReplyList);
 				}
 			}).fail(function(xhr, status, err){
