@@ -68,27 +68,4 @@ public class HomeController {
 	    return "redirect:/";
 	}
 	
-	
-	@GetMapping(value = "/noticeList")
-	public void getList() {
-		
-	}
-	@GetMapping(value = "/noticeWrite")
-	public void noticeWrite() {
-		
-	}
-	@GetMapping(value = "/noticeModify")
-	public void noticeModify() {
-		
-	}
-	@GetMapping(value = "/noticeRemove")
-	public void noticeRemove() {
-		
-	}
-	@GetMapping(value = "/getAttachList")
-	public void getAttachList() {
-		
-	}
-	
-
 }

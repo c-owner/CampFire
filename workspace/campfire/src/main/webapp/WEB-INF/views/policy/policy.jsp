@@ -259,7 +259,7 @@
 	
 	<body class="is-preload">
 
-	<%@include file="includes/header.jsp" %>
+	<%@include file="../includes/header.jsp" %>
 
 	<div id="main">
 		<div class="wrapper">
@@ -269,14 +269,14 @@
 			        <p class="desc_account"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
 			    </div>
 			    <ul class="tab_policy" role="tablist">
-				    <li class=" on"><a href="/noticeList" class="link_policy" role="tab">이용약관</a></li>
+				    <li class=" "><a href="/noticeList" class="link_policy" role="tab">이용약관</a></li>
 				    <!-- 활성화 시 on 클래스 추가 -->
 				    <!-- WAI-ARIA 속성 구현 예정 -->
 				    <li class=""><a href="/noticeList" class="link_policy" role="tab">위치기반서비스 이용약관</a></li>
 				    <li class=""><a href="/noticeList" class="link_policy" role="tab">개인정보처리방침</a></li>
 				    <li class=""><a href="/noticeList" class="link_policy" role="tab">운영정책</a></li>
 			        <li class=""><a href="/noticeList" class="link_policy" role="tab">권리침해신고안내</a></li>
-				    <li class=""><a href="/noticeList" class="link_policy" role="tab">공지사항</a></li>
+				    <li class=" on"><a href="/noticeList" class="link_policy" role="tab">공지사항</a></li>
 				</ul>
 				
 				<div class="wrap_cont wrap_notices">
@@ -315,70 +315,57 @@
                             </tbody>
                         </table>
                     </div>
-					<!-- A -->
-					<div class="big-width" style="text-align:center;">
-						<ul class="pagination">
-							<c:if test="${pageMaker.prev}">
-								<li><a class="changePage" href="${pageMaker.startPage - 1}">이전</a></li>
-							</c:if>
-							<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-								<c:choose>
-									<c:when test="${num eq pageMaker.cri.pageNum}">
-										<li><a class="page active">${num}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li><a class="changePage" href="${num}">${num}</a></li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							<c:if test="${pageMaker.next}">
-								<li><a class="changePage" href="${pageMaker.endPage + 1}">다음</a></li>
-							</c:if>
-						</ul>
-					</div>
-				
-					<div class="small-width" style="text-align:center;">
-						<ul class="pagination">
-							<c:if test="${pageMaker.cri.pageNum > 1}">
-								<li><a class="changePage" href="${pageMaker.cri.pageNum - 1}">이전</a></li>
-							</c:if>
-							<li><a class="page active">${pageMaker.cri.pageNum}</a></li>
-							<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
-								<li><a class="changePage" href="${pageMaker.cri.pageNum + 1}">다음</a></li>
-							</c:if>
-						</ul>
-					</div>
-				
-					<form id="actionForm" action="/noticeList" style="margin:0;">
-						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="type" value="${pageMaker.cri.type}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-					</form>
-					<!-- B -->
-					<!-- <form action="/noticeList" id="searchForm">
-						<div class="fields">
-							<div class="field">
-								<div class="row" style="text-align:center">
-									<div class="col-8 col-12-small" id="keywordDiv">
-										<input id="keyword" type="text" name="keyword" style="/* margin-top: 1%; */ height: 3.25rem;" value="${pageMaker.cri.keyword}">
-									</div>
-									<div class="col-2 col-4-small col-6-xsmall" id="searchBtnDiv" style="margin:0 auto;">
-										<a href="javascript:void(0)" class="button primary icon solid fa-search search" style="text-decoration: none;/*  margin-top: 1%; */ border-radius: 0.25rem; width:100%; height: 3.25rem;">검색</a>
-									</div>
-								</div>
-							</div>
+					<footer class="major">
+						<div class="big-width" style="text-align:center;">
+							<ul class="pagination">
+								<c:if test="${pageMaker.prev}">
+									<li><a class="changePage" href="${pageMaker.startPage - 1}">이전</a></li>
+								</c:if>
+								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+									<c:choose>
+										<c:when test="${num eq pageMaker.cri.pageNum}">
+											<li><a class="page active">${num}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a class="changePage" href="${num}">${num}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${pageMaker.next}">
+									<li><a class="changePage" href="${pageMaker.endPage + 1}">다음</a></li>
+								</c:if>
+							</ul>
 						</div>
-					</form> -->
+						
+						<div class="small-width" style="text-align:center;">
+							<ul class="pagination">
+								<c:if test="${pageMaker.cri.pageNum > 1}">
+									<li><a class="changePage" href="${pageMaker.cri.pageNum - 1}">이전</a></li>
+								</c:if>
+								<li><a class="page active">${pageMaker.cri.pageNum}</a></li>
+								<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
+									<li><a class="changePage" href="${pageMaker.cri.pageNum + 1}">다음</a></li>
+								</c:if>
+							</ul>
+						</div>
+						<form id="actionForm" action="/policy/policy">
+							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+							<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+							<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
+							<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
+							<input type="hidden" name="check" value="${check}">
+						</form>
+					</footer>
 					<div class="sch_comm">
 
-                        <form method="post" class="sch_form" name="SearchFrm" id="SearchFrm" action="/notices?lang=">
+                        <form method="post" class="sch_form" name="SearchFrm" id="searchForm" action="/policy/policy">
                             <fieldset>
                                 <legend class="screen_out">검색어 입력폼</legend>
 
-                                <input type="text" id="search_word" name="searchWord" class="inp_keyword" title="검색어" value="" placeholder="검색">
 
-                                <a href="javascript:searchForm2.submit();" class="fas fa-search" style="padding-top: 5%;"></a>
+								<input type="hidden" name="check" value="">
+                                <input type="text" id="search_word" name="keyword" class="inp_keyword" title="검색어" value="${pageMaker.cri.keyword}" placeholder="검색">
+                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%;"></a>
                             </fieldset>
 
                             <input type="hidden" id="currentPage" name="currentPage" value="1">
@@ -396,7 +383,7 @@
 		
 
 
-		<jsp:include page="includes/footer.jsp"/>
+		<jsp:include page="../includes/footer.jsp"/>
 		<script src="/resources/assets/js/modal.js"></script>
 	</body>
 	<script>

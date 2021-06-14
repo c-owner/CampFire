@@ -55,7 +55,7 @@
 							<a href="/">
 								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
 							</a></li>
-							<li><a href="/noticeList">공지사항</a></li>
+							<li><a href="/policy/policy?tab=notices">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>

@@ -1,14 +1,16 @@
 package com.campfire.service;
 
-import com.campfire.domain.UserVO;
+import java.util.List;
+
+import com.campfire.domain.Criteria;
+import com.campfire.domain.PolicyVO;
 
 public interface PolicyService {
-	public boolean checkId(String userId);
-	public boolean checkEmail(String userEmail);
-	public String encrypt(String pw);
-	public boolean signUp(UserVO user);
-	public boolean signIn(String userId, String userPw);
-	public String findId(String userEmail);
-	public boolean findPw(String userId, String userEmail);
-	public boolean changePw(String userId, String userPw);
+	public List<PolicyVO> getList(Criteria cri, String policyKeyword);
+	public int getTotal(Criteria cri);
+	public void register(PolicyVO vo);
+	public PolicyVO get(Long bno);
+	public boolean remove(Long bno);
+	public boolean modify(PolicyVO vo);
+	public int categoryTotal(Criteria cri, String policyKeyword);
 }
