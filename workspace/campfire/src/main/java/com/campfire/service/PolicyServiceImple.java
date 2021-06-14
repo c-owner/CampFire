@@ -1,14 +1,71 @@
 package com.campfire.service;
 
-import com.campfire.domain.UserVO;
+import java.util.HashMap;
+import java.util.List;
 
-public interface PolicyServiceImple {
-	public boolean checkId(String userId);
-	public boolean checkEmail(String userEmail);
-	public String encrypt(String pw);
-	public boolean signUp(UserVO user);
-	public boolean signIn(String userId, String userPw);
-	public String findId(String userEmail);
-	public boolean findPw(String userId, String userEmail);
-	public boolean changePw(String userId, String userPw);
+import org.springframework.stereotype.Service;
+
+import com.campfire.domain.Criteria;
+import com.campfire.domain.PolicyVO;
+import com.campfire.mapper.PolicyMapper;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class PolicyServiceImple implements PolicyService {
+
+	private PolicyMapper mapper;
+	
+	@Override
+	public List<PolicyVO> getList(Criteria cri, String policyKeyword) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pageNum", cri.getPageNum());
+		map.put("amount", cri.getAmount());
+		map.put("policyKeyword", policyKeyword);
+		map.put("type", cri.getType());
+		map.put("keyword", cri.getKeyword());
+		map.put("typeList", cri.getTypeList());
+		return 	mapper.getListWithPaging(map);  
+	}
+
+	@Override
+	public int getTotal(Criteria cri) {
+		return mapper.getTotal(cri);
+	}
+	
+	@Override
+	public int categoryTotal(Criteria cri, String policyKeyword) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pageNum", cri.getPageNum());
+		map.put("amount", cri.getAmount());
+		map.put("policyKeyword", policyKeyword);
+		map.put("type", cri.getType());
+		map.put("keyword", cri.getKeyword());
+		map.put("typeList", cri.getTypeList());
+		return mapper.categoryTotal(map);
+	}
+
+	@Override
+	public void register(PolicyVO vo) {
+		mapper.insertBoard(vo);
+	}
+	
+	@Override
+	public PolicyVO get(Long bno) {
+		return mapper.read(bno);
+	}
+
+	@Override
+	public boolean remove(Long bno) {
+		return mapper.deleteBoard(bno) == 1;
+	}
+
+	@Override
+	public boolean modify(PolicyVO vo) {
+		boolean modifyResult = mapper.updateBoard(vo) == 1;
+		
+		return modifyResult;
+	}
+
 }
