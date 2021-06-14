@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.FoodBoardMapper">
+	<select id="selectBoardList" resultType="com.campfire.domain.foodBoard.FoodBoardVO">
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD hh:mm') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh:mm') as UPDATEDATE, LIKECNT, REPLYCNT, READCNT 
+		FROM (
+			SELECT /*+ INDEX_DESC(TBL_FOOD_BOARD PK_FOOD_BOARD)*/ ROWNUM R, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT  
+			FROM TBL_FOOD_BOARD 
+			WHERE 
+			<![CDATA[
+				ROWNUM <= #{pageNum} * #{amount}
+			]]>
+		)
+		<![CDATA[
+				WHERE R > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(BNO) FROM TBL_FOOD_BOARD
+	</select>
+	
+	<insert id="insertBoard">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT SEQ_FOOD_BOARD.NEXTVAL FROM DUAL 	
+		</selectKey>
+		INSERT INTO TBL_FOOD_BOARD (BNO, TITLE, CONTENT, WRITER)
+		VALUES (#{bno}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<select id="selectBoard" resultType="com.campfire.domain.foodBoard.FoodBoardVO">
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD hh:mm') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh:mm') as UPDATEDATE, LIKECNT, REPLYCNT, READCNT 
+		FROM TBL_FOOD_BOARD 
+		WHERE BNO = #{bno}
+	</select>
+	
+	<update id="updateBoard">
+		UPDATE TBL_FOOD_BOARD 
+		SET TITLE = #{title}, CONTENT = #{content}, UPDATEDATE = SYSDATE  
+		WHERE BNO = #{bno}
+	</update>
+	
+	<delete id="deleteBoard">
+		DELETE TBL_FOOD_BOARD 
+		WHERE RNO = #{rno}
+	</delete>
+	
+	<update id="updateReadCnt">
+		UPDATE TBL_FOOD_BOARD 
+		SET READCNT = READCNT + 1 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateReplyCnt">
+		UPDATE TBL_FOOD_BOARD 
+		SET REPLYCNT = REPLYCNT + #{amount} 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="updateLikeCnt">
+		UPDATE TBL_FOOD_BOARD
+		SET LIKECNT = LIKECNT + #{amount}
+		WHERE BNO = #{bno}
+	</update>
+	
+	<insert id="insertLike">
+		INSERT INTO TBL_FOOD_LIKE (BNO, USERID) 
+		VALUES (#{bno}, #{userId})
+	</insert>
+	
+	<select id="checkLike" resultType="_int">
+		SELECT COUNT(BNO) 
+		FROM TBL_FOOD_LIKE 
+		WHERE BNO = #{bno} AND USERID = #{userId} 
+	</select>
+	
+	<delete id="deleteLike">
+		DELETE TBL_FOOD_LIKE 
+		WHERE BNO = #{bno} AND USERID = #{userId}
+	</delete>
+	
+	<update id="plusLikeCnt">
+		UPDATE TBL_FOOD_BOARD 
+		SET LIKECNT = LIKECNT + 1 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<update id="minusLikeCnt">
+		UPDATE TBL_FOOD_BOARD 
+		SET LIKECNT = LIKECNT - 1 
+		WHERE BNO = #{bno}
+	</update>
+	
+	<select id="getLikeCnt" resultType="_int">
+		SELECT LIKECNT FROM TBL_FOOD_BOARD WHERE BNO = #{bno}
+	</select>
+</mapper>

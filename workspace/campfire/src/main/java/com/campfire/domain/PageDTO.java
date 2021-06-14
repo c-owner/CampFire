@@ -2,6 +2,7 @@ package com.campfire.domain;
 
 import java.util.List;
 
+import com.campfire.domain.foodBoard.FoodBoardReplyVO;
 import com.campfire.domain.freeBoard.FreeBoardReplyVO;
 import com.campfire.domain.guideBoard.GuideBoardReplyVO;
 import com.campfire.domain.marketBoard.MarketReplyVO;
@@ -22,7 +23,11 @@ public class PageDTO {
 	private List<FreeBoardReplyVO> freeBoardReplyList;
 	private List<TipBoardReplyVO> tipBoardReplyList;
 	private List<MarketReplyVO> marketReplyList;
+<<<<<<< HEAD
+	private List<FoodBoardReplyVO> foodReplyList;
+=======
 	private List<GuideBoardReplyVO> guideBoardReplyList;
+>>>>>>> 40ec9bc426eabca2450d6e2635e6d1239994d15e
 	
 	public PageDTO(Criteria cri, int total) {
 		this.cri = cri;
@@ -45,7 +50,6 @@ public class PageDTO {
 		this.reviewReplyList = reviewReplyList;
 	}
 	
-	
 	public PageDTO(Criteria cri, List<FreeBoardReplyVO> freeBoardReplyList ,int total) {
 		this(cri, total);
 		this.freeBoardReplyList = freeBoardReplyList;
@@ -60,8 +64,15 @@ public class PageDTO {
 		this(cri, total);
 		this.marketReplyList = marketReplyList;
 	}
+<<<<<<< HEAD
+	
+	public PageDTO(int total, List<FoodBoardReplyVO> foodReplyList, Criteria cri) {
+		this(cri, total);
+		this.foodReplyList = foodReplyList;
+=======
 	public PageDTO(Criteria cri, List<GuideBoardReplyVO> guideBoardReplyList, String total) {
 		this(cri, Integer.parseInt(total));
 		this.guideBoardReplyList = guideBoardReplyList;
+>>>>>>> 40ec9bc426eabca2450d6e2635e6d1239994d15e
 	}
 }

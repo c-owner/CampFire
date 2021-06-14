@@ -22,3 +22,4 @@ INSERT INTO CF_USER
 VALUES('test1', 'test1', 'test1@gmail.com');
 
 SELECT * FROM CF_USER;
+ㅋ
