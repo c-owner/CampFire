@@ -109,7 +109,7 @@
 										<c:forEach var="board" items="${list}">
 											<tr class="tBody">
 												<td class="bno">${board.bno}</td>
-												<td class="title miniTitle"><a href="/guide/guideView?bno=${board.bno}">${board.title}</a>
+												<td class="title miniTitle"><a href="/campfire/guideView?bno=${board.bno}">${board.title}</a>
 													<%-- <i style="font-size: 35px;" class="far fa-heart"></i> --%><span style="font-size: 0.5rem;">[${board.replyCnt}]</span>
 													&nbsp;
 													<c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
@@ -167,14 +167,14 @@
 							</ul>
 						</div>
 					   
-						<form id="actionForm" action="/guide/guideList" style="margin:0;">
+						<form id="actionForm" action="/campfire/guideList" style="margin:0;">
 							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 							<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 							<input type="hidden" name="type" value="${pageMaker.cri.type}">
 							<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 						</form>
 						<!-- B -->
-						<form action="/guide/guideList" id="searchForm">
+						<form action="/campfire/guideList" id="searchForm">
 							<div class="fields">
 								<div class="field">
 									<div class="row" style="text-align:center">
@@ -245,7 +245,7 @@
  			alert("로그인 후 이용해 주십시오.");
  			goSignIn();
  		}else{
- 			location.replace("/guide/guideWrite${pageMaker.cri.getListLink()}");
+ 			location.replace("/campfire/guideWrite${pageMaker.cri.getListLink()}");
  		}
      }
 	</script>

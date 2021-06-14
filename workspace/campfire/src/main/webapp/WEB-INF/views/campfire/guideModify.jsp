@@ -48,7 +48,7 @@
 				<header class="major">
                         <h2>캠핑 가이드 수정하기</h2>
                 </header>
-				<form class="reviewForm" action="/guide/guideModify" method="post" name="guideForm">
+				<form class="reviewForm" action="/campfire/guideModify" method="post" name="guideForm">
 					<input type="hidden" name="pageNum" value="${cri.pageNum}">
 					<input type="hidden" name="amount" value="${cri.amount}">
 					<input type="hidden" name="keyword" value="${cri.keyword}">

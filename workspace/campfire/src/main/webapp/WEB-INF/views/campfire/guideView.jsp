@@ -54,9 +54,9 @@
 				<div class="row" style="display:block;">
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">제목 : ${board.title}</h2></div>
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto; text-align: right;">
-						<a class="button small" id="boardModify" href="/guide/guideModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="far fa-lightbulb"></i>&nbsp;신고</a>
+						<a class="button small" id="boardModify" href="/campfire/guideModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="far fa-lightbulb"></i>&nbsp;신고</a>
 						<c:if test="${sessionId eq board.writer}">
-							<a class="button small" id="boardModify" href="/guide/guideModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
+							<a class="button small" id="boardModify" href="/campfire/guideModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</c:if>
 					</div>
@@ -78,7 +78,7 @@
 							<%-- <textarea rows="" cols=""></textarea> --%>
 						</div>
 					</div>
-					<form name="removeForm" action="/guide/guideRemove">
+					<form name="removeForm" action="/campfire/guideRemove">
 						<input type="hidden" name="pageNum" value="${cri.pageNum}">
 						<input type="hidden" name="amount" value="${cri.amount}">
 						<input type="hidden" name="type" value="${cri.type}">
@@ -143,7 +143,7 @@
 			</section>
 		</div>
 		<jsp:include page="../includes/footer.jsp"/>
-		<script src="/resources/assets/js/guideboard/guideReply.js"></script>
+		<script src="/resources/assets/js/campfire/guideReply.js"></script>
 	</body>
 	<script>
 		$(document).ready(function () {

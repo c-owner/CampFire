@@ -63,7 +63,7 @@ public class GuideController {
 			}
 			service.register(g_vo);
 			rttr.addFlashAttribute("result", g_vo.getBno());
-			return "redirect:/guide/guideList";
+			return "redirect:/campfire/guideList";
 		}
 		
 		//상세보기로 이동
@@ -83,7 +83,7 @@ public class GuideController {
 			rttr.addAttribute("type", cri.getType());
 			rttr.addAttribute("keyword", cri.getKeyword());
 			
-			return "redirect:/guide/guideList";
+			return "redirect:/campfire/guideList";
 		}
 		
 		//게시글 및 첨부파일 삭제
@@ -99,7 +99,7 @@ public class GuideController {
 			rttr.addAttribute("type", cri.getType());
 			rttr.addAttribute("keyword", cri.getKeyword());
 			
-			return "redirect:/guide/guideList";
+			return "redirect:/campfire/guideList";
 		}
 		
 		//게시글에 등록된 모든 첨부파일 목록

@@ -48,7 +48,7 @@
 				<header class="major">
                         <h2>캠핑 가이드 글쓰기</h2>
                 </header>
-				<form class="reviewForm" action="/guide/guideWrite" method="post" name="guideForm">
+				<form class="reviewForm" action="/campfire/guideWrite" method="post" name="guideForm">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
@@ -131,7 +131,7 @@
 				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
 				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				$(el).summernote('editor.insertImage', "/display?fileName=/guide/" + url);
+				$(el).summernote('editor.insertImage', "/display?fileName=/campfire/" + url);
 				var str = "";
 				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
