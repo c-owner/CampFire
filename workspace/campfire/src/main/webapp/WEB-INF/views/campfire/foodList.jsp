@@ -131,7 +131,7 @@
 						</ul>
 					</footer>
 				</div>
-				<form id="actionForm" action="/food/foodList">
+				<form id="actionForm" action="/campfire/foodList">
 						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 						<input type="hidden" name="type" value="${pageMaker.cri.type}">
@@ -173,7 +173,7 @@
 			alert("로그인 후 이용해 주십시오.");
 			goSignIn();
 		}else{
-			location.replace("/food/foodWrite${pageMaker.cri.getListLink()}");
+			location.replace("/campfire/foodWrite${pageMaker.cri.getListLink()}");
 		}
 	}
 	
@@ -182,7 +182,7 @@
 			alert("로그인 후 이용해 주십시오.");
 			goSignIn();
 		}else{
-			location.replace("/food/foodView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
+			location.replace("/campfire/foodView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
 		}
 	}
 	</script>
