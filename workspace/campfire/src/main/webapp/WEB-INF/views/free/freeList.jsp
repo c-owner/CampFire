@@ -190,7 +190,7 @@
 											<input id="keyword" type="text" name="keyword" style="/* margin-top: 1%; */ height: 3.25rem;" value="${pageMaker.cri.keyword}">
 										</div>
 										<div class="col-2 col-4-small col-6-xsmall" id="searchBtnDiv" style="margin:0 auto;">
-											<a href="javascript:void(0)" class="button primary icon solid fa-search" style="text-decoration: none;/*  margin-top: 1%; */ border-radius: 0.25rem; width:100%; height: 3.25rem;">검색</a>
+											<a href="javascript:void(0)" class="button primary icon solid fa-search search" style="text-decoration: none;/*  margin-top: 1%; */ border-radius: 0.25rem; width:100%; height: 3.25rem;">검색</a>
 										</div>
 									</div>
 								</div>
