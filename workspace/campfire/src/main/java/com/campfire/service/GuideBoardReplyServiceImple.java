@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
-import com.campfire.domain.freeBoard.FreeBoardReplyVO;
 import com.campfire.domain.guideBoard.GuideBoardReplyVO;
 import com.campfire.mapper.GuideBoardMapper;
 import com.campfire.mapper.GuideBoardReplyMapper;
@@ -22,7 +21,7 @@ public class GuideBoardReplyServiceImple implements GuideBoardReplyService{
 	
 	@Override
 	public PageDTO getList(Criteria cri, Long bno) {
-		return new PageDTO(r_mapper.getListWidhPaging(cri, bno), r_mapper.getTotal(bno), cri);
+		return new PageDTO(cri, r_mapper.getListWidhPaging(cri, bno), r_mapper.getTotal(bno)+"");
 	}
 	
 	@Transactional

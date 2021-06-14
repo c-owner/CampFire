@@ -33,7 +33,6 @@ import com.campfire.domain.AllFileDTO;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.guideBoard.GuideBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
-import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
 import com.campfire.domain.tipBoard.TipBoardAttachVO;
 
@@ -69,7 +68,7 @@ public class UploadController {
 	@ResponseBody
 	@PostMapping(value="/upload/{vo}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<AllFileDTO> upload(MultipartFile uploadFile, @PathVariable("vo") String voName){
-//		int check = 0;
+		int check = 0;
 		List<FreeBoardAttachVO> f_succeedList = new ArrayList<>();
 		List<FreeBoardAttachVO> f_failureList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_succeedList = new ArrayList<>();
