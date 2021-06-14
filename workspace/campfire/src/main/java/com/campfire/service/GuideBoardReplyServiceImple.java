@@ -22,7 +22,7 @@ public class GuideBoardReplyServiceImple implements GuideBoardReplyService{
 	
 	@Override
 	public PageDTO getList(Criteria cri, Long bno) {
-		return new PageDTO(cri, r_mapper.getListWidhPaging(cri, bno), r_mapper.getTotal(bno)+"");
+		return new PageDTO(r_mapper.getListWidhPaging(cri, bno), r_mapper.getTotal(bno), cri);
 	}
 	
 	@Transactional

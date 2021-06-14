@@ -48,7 +48,7 @@
 				<header class="major">
                         <h2>캠핑음식 글쓰기</h2>
                 </header>
-				<form class="foodForm" action="/food/foodWrite" method="post" name="foodForm">
+				<form class="foodForm" action="/campfire/foodWrite" method="post" name="foodForm">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
