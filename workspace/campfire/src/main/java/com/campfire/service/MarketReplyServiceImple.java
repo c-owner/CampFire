@@ -21,30 +21,35 @@ public class MarketReplyServiceImple implements MarketReplyService {
 	
 	@Transactional
 	@Override
-	public int register(MarketReplyVO vo) {
-		b_mapper.updateReplyCnt(vo.getBno(), 1);
-		return r_mapper.insertReply(vo);
+	public int register(MarketReplyVO reply) {
+		log.info("장터댓글등록 " + reply);
+		b_mapper.updateReplyCnt(reply.getBno(), 1);
+		return r_mapper.insertReply(reply);
 	}
 
 	@Override
 	public MarketReplyVO get(Long rno) {
+		log.info("장터댓글겟 " + rno);
 		return r_mapper.selectReply(rno);
 	}
 
 	@Transactional
 	@Override
 	public int remove(Long rno) {
+		log.info("장터댓글삭제 " +rno);
 		b_mapper.updateReplyCnt(r_mapper.selectReply(rno).getBno(), -1);
 		return r_mapper.deleteReply(rno);
 	}
 
 	@Override
-	public int modify(MarketReplyVO vo) {
-		return r_mapper.updateReply(vo);
+	public int modify(MarketReplyVO reply) {
+		log.info("장터댓글수정 " + reply);
+		return r_mapper.updateReply(reply);
 	}
 
 	@Override
 	public PageDTO getList(Criteria cri, Long bno) {
+		log.info("장터댓글리스트 " + bno);
 		return new PageDTO(r_mapper.getTotal(bno), cri, r_mapper.selectReplyList(cri, bno));
 	}
 
