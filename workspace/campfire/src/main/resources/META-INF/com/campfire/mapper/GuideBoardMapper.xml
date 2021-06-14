@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.GuideBoardMapper">
+	<!-- 검색 -->
+	<sql id="criteria">
+		<if test="type != null and keyword != null">
+			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+				<foreach item="type" collection="typeList">
+					<trim prefixOverrides="OR">
+						<choose>
+							<when test="type == 'T'.toString()">
+								TITLE LIKE '%'||#{keyword}||'%' 
+							</when>
+							<when test="type == 'C'.toString()">
+								CONTENT LIKE '%'||#{keyword}||'%' 
+							</when>
+							<when test="type == 'W'.toString()">
+								WRITER LIKE '%'||#{keyword}||'%' 
+							</when>
+							<otherwise>
+								TITLE LIKE '%'||#{keyword}||'%' OR CONTENT LIKE '%'||#{keyword}||'%' OR WRITER LIKE '%'||#{keyword}||'%'  						
+							</otherwise>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+
+	<!-- 게시글 목록(검색 포함) -->
+	<select id="getListWithPaging" resultType="com.campfire.domain.guideBoard.GuideBoardVO">
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh:mm') as UPDATEDATE, LIKECNT, REPLYCNT, READCNT
+		FROM
+			(SELECT /*+ INDEX_DESC(TBL_GUIDE_BOARD PK_GUIDE_BOARD)*/
+				ROWNUM R, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, REPLYCNT, READCNT
+				FROM TBL_GUIDE_BOARD 
+				WHERE <include refid="criteria"/>
+					ROWNUM <![CDATA[<=]]> #{pageNum} * #{amount})
+		WHERE R <![CDATA[>]]> (#{pageNum} - 1) * #{amount}
+	</select>
+	
+	<!-- 총 게시글 개수(검색 포함) -->
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(BNO) FROM TBL_GUIDE_BOARD
+		<where>
+			<trim suffixOverrides="AND">
+				<include refid="criteria"/>
+			</trim>
+		</where>
+	</select>
+	
+	<!-- 게시글 등록 -->
+	<insert id="insert">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			SELECT SEQ_GUIDE_BOARD.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_GUIDE_BOARD(BNO, TITLE, CONTENT, WRITER)
+		VALUES(#{bno}, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="read" resultType="com.campfire.domain.guideBoard.GuideBoardVO">
+		SELECT *
+		FROM TBL_GUIDE_BOARD
+		WHERE BNO = #{bno}
+	</select>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		DELETE FROM TBL_GUIDE_BOARD
+		WHERE BNO = #{bno}
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="update">
+		UPDATE TBL_GUIDE_BOARD
+		SET TITLE = #{title}, CONTENT = #{content}, UPDATEDATE = SYSDATE
+		WHERE BNO = #{bno}
+	</update>
+	
+	<!-- 댓글 추가 시 댓글수 수정 -->
+	<update id="updateReplyCnt">
+		UPDATE TBL_GUIDE_BOARD
+		SET REPLYCNT = REPLYCNT + #{amount}
+		WHERE BNO = #{bno}
+	</update>
+	
+	<!-- 조회수 -->
+	<update id="readCntUp">
+		UPDATE TBL_GUIDE_BOARD
+		SET READCNT = READCNT + 1
+		WHERE BNO = #{bno}
+	</update>
+</mapper>
