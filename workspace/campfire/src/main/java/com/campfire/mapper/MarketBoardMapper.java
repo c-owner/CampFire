@@ -16,5 +16,5 @@ public interface MarketBoardMapper {
 	public int updateBoard(MarketBoardVO board);
 	public int deleteBoard(Long bno);
 	public int updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
-	public int categoryTotal(String marketKeyword);
+	public int categoryTotal(HashMap<String, Object> map);
 }

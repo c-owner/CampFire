@@ -72,27 +72,63 @@
 				margin: 0 auto; 
 			}
 			
+			.searchTag {
+				float: left;
+				width: 20%;
+			}
+			
+			#keyword {
+				width: 68%;
+				float: left;
+				height: 3.25rem;
+			}
+			
+			.searchBtn {
+				text-decoration: none; 
+				border-radius: 0.25rem; 
+				height: 3.25rem;
+			}
+			
 			@media screen and (max-width: 1680px){
 				.writeBtn {
-					padding-left: 70%;
+					padding-left: 73%;
+				}
+				
+				#keyword {
+					width: 69%;
 				}
 			}
 			
 			@media screen and (max-width: 1280px){
 				.writeBtn {
-					padding-left: 71%;
+					padding-left: 74%;
+				}
+				
+				#keyword {
+					width: 70%;
 				}
 			}
 			
 			@media screen and (max-width: 1199px){
 				.writeBtn {
-					padding-left: 69%;
+					padding-left: 72%;
+				}
+				
+				#keyword {
+					width: 68%;
 				}
 			}
 			
 			@media screen and (max-width: 991px){
 				.big-width{display:none;}
 				.small-width{display:block;}
+				.writeBtn {
+					padding-left: 69%;
+				}
+				
+				#keyword {
+					width: 64%;
+				}				
 			}
 			
 			@media screen and (max-width: 767px){
@@ -101,6 +137,20 @@
 				}
 				
 				.categoryDiv {width: 23%;}
+				
+				.searchTag {
+					width: 100%;
+					clear: both;
+				}
+				
+				#keyword {
+					width: 100%;
+					clear: both;
+				}
+				
+				.searchBtn {
+					width: 100%;					
+				}
 			}
 			
 			@media screen and (max-width: 575px){
@@ -110,6 +160,10 @@
 				}
 				
 				.moveWrite, .categoryDiv {width: 100%;}
+				
+				.row > * {
+					padding: 0 1.25rem 0 1.25rem;
+				}
 			}
 		</style>
 	</head>
@@ -162,29 +216,27 @@
 			       			<option value="free">무료나눔</option>
 			       		</select>
 	       			</div>
-					<%-- <form action="/free/freeList" id="searchForm">
-						<div class="fields" class="field">
-							<div>
-								<div style="text-align:center">
-									<select name="type" style="padding-top: 0.5%;">
-										<option value="" ${pageMaker.cri.type == null ? 'selected' : ''}>검색 기준</option>
-										<option value="T" ${pageMaker.cri.type == 'T' ? 'selected' : ''}>제목</option>
-										<option value="C" ${pageMaker.cri.type == 'C' ? 'selected' : ''}>내용</option>
-										<option value="W" ${pageMaker.cri.type == 'W' ? 'selected' : ''}>작성자</option>
-										<option value="TC" ${pageMaker.cri.type == 'TC' ? 'selected' : ''}>제목 또는 내용</option>
-										<option value="TW" ${pageMaker.cri.type == 'TW' ? 'selected' : ''}>제목 또는 작성자</option>
-										<option value="TCW" ${pageMaker.cri.type == 'TCW' ? 'selected' : ''}>전체</option>
-									</select>
-									<input id="keyword" type="text" name="keyword" style="margin-top: 1%; height: 3.25rem;" value="${pageMaker.cri.keyword}">
-									<a href="javascript:void(0)" class="button primary icon solid fa-search" style="text-decoration: none; margin-top: 1%; border-radius: 0.25rem; height: 3.25rem;">검색</a>
-								</div>
-							</div>
-						</div>
-					</form> --%>	
 					<h3 class="writeBtn"><a href="javascript:checkLogin()" class="button small moveWrite" style="border-radius: 0; text-decoration: none;">
 						<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
 	            	</h3>
 	        		<hr style="border-top: 2px solid black;">
+					<form action="/market/marketList" id="searchForm">
+						<div class="fields" class="field">
+							<div>
+								<div style="text-align:center; width: 100%;">
+									<select class="searchTag" name="type" style="padding-top: 0.5%;">
+										<option value="" ${pageMaker.cri.type == null ? 'selected' : ''}>검색 기준</option>
+										<option value="T" ${pageMaker.cri.type == 'T' ? 'selected' : ''}>제목</option>
+										<option value="C" ${pageMaker.cri.type == 'C' ? 'selected' : ''}>내용</option>
+										<option value="TC" ${pageMaker.cri.type == 'TC' ? 'selected' : ''}>전체</option>
+									</select>
+									<input type="hidden" name="check" value="">
+									<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
+									<a href="javascript:void(0)" class="button primary icon solid fa-search searchBtn">검색</a>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			<%-- 검색창 상단에 넣은 코드 
 				<div class="major" style="width: 100%;">
@@ -219,7 +271,7 @@
 	            	</h3>
 	        		<hr style="border-top: 2px solid black;">
 				</div> --%>
-				<div class="row">
+				<div class="row contentDiv">
 					<c:forEach var="board" items="${list}">
 						<div class="col-lg-4 col-md-6 mb-4">
 							<!-- <div class="card h-100"> -->
@@ -299,6 +351,12 @@
 	</body>
 	<script>
 		$(document).ready(function(){
+			var list = '${list}';
+			if(list.length == 2){
+				$(".contentDiv").css({"width": "100%"});
+				$(".contentDiv").html("<div style='width: 100%; text-align: center; margin: 0 2% 2% 2%;'><p>검색 결과가 없습니다.</p></div>");
+			}
+			
 			var temp = "${check}";
 			if(temp == "S"){$('#category option:eq(0)').prop('selected', true);}
 			if(temp == "B"){$('#category option:eq(1)').prop('selected', true);}
@@ -350,6 +408,22 @@
 			var pageNum = $(this).attr("href");
 			actionForm.find("input[name='pageNum']").val(pageNum);
 			actionForm.submit();
+		});
+		
+		$(".searchBtn").on("click", function(e){
+			e.preventDefault();
+			var searchForm = $("#searchForm");
+			
+			if(!searchForm.find("option:selected").val()){
+				alert("검색 종류를 선택하세요.");
+				return false;
+			}
+			if(!searchForm.find("input[name='keyword']").val()){
+				alert("키워드를 입력하세요.");
+				return false;
+			}
+			$("input[name='check']").val("${check}");
+			searchForm.submit();
 		});
 	</script>
 </html>

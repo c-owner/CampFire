@@ -22,10 +22,25 @@ public class MarketMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MarketBoardMapper mapper;
 	
-	@Test
-	public void testTotal() {
-		log.info(mapper.categoryTotal("S"));
-	}
+//	@Test
+//	public void testTotal() {
+//		Criteria cri = new Criteria();
+//		
+//		cri.setType("T");
+//		cri.setKeyword("test");
+//		cri.setPageNum(1);
+//		cri.setAmount(12);
+//		
+//		HashMap<String, Object> map = new HashMap<>();
+//		map.put("type", cri.getType());
+//		map.put("keyword", cri.getKeyword());
+//		map.put("pageNum", cri.getPageNum());
+//		map.put("amount", cri.getAmount());
+//		map.put("typeList", cri.getTypeList());
+//		log.info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+cri.getTypeList());
+//		map.put("marketKeyword", "S");
+//		log.info(mapper.categoryTotal(map));
+//	}
 	
 	/*@Test
 	public void testInsert() {
