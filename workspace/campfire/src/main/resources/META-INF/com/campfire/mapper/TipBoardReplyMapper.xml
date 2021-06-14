@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campfire.mapper.TipBoardReplyMapper">
+	<!-- 댓글 목록 -->
+	<select id="getListWidhPaging" resultType="com.campfire.domain.tipBoard.TipBoardReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+		FROM
+			(SELECT /*+ INDEX_DESC(TBL_TIP_REPLY PK_TIP_REPLY) */
+				ROWNUM R, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+				FROM TBL_TIP_REPLY
+				WHERE BNO = #{bno}
+				AND ROWNUM <![CDATA[<=]]> #{cri.pageNum} * #{cri.amount})
+		WHERE R <![CDATA[>]]> (#{cri.pageNum} - 1) * #{cri.amount}
+	</select>
+	
+	<!-- 게시글의 전체 댓글 개수 -->
+	<select id="getTotal" resultType="_int">
+		SELECT COUNT(RNO) FROM TBL_TIP_REPLY WHERE BNO = #{bno}
+	</select>
+	
+	<!-- 댓글 추가 -->
+	<insert id="insert">
+		INSERT INTO TBL_TIP_REPLY(RNO, BNO, REPLY, REPLYER)
+		VALUES(SEQ_TIP_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer}) 
+	</insert>
+	
+	<!-- 하나의 댓글 정보 -->
+	<select id="read" resultType="com.campfire.domain.tipBoard.TipBoardReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
+		FROM TBL_TIP_REPLY WHERE RNO = #{rno}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="delete">
+		DELETE FROM TBL_TIP_REPLY WHERE RNO = #{rno}
+	</delete>
+	
+	<!-- 댓글 수정 -->	
+	<update id="update">
+		UPDATE TBL_TIP_REPLY
+		SET REPLY = #{reply}, UPDATEDATE = SYSDATE
+		WHERE RNO = #{rno}
+	</update>
+</mapper>
