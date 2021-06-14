@@ -45,59 +45,14 @@
 			
 			.itempDiv {
 				float: left;
-			}
-			
-			@media screen and (max-width: 1680px){
-				.writeBtn {
-					padding-left: 70%;
-				}
-			}
-			
-			@media screen and (max-width: 1280px){
-				.writeBtn {
-					padding-left: 71%;
-				}
-			}
-			
-			@media screen and (max-width: 1199px){
-				.writeBtn {
-					padding-left: 69%;
-				}
-			}
-			
-			@media screen and (max-width: 767px){
-				.writeBtn {
-					padding-left: 59%;
-				}
-				
-				.categoryDiv {width: 23%;}
-				.itemPicture {
-					clear: both;
-					width: 100% !important;
-				}
-				
-				.itempDiv {
-					clear: both;
-					text-align: center;
-					width: 100%;
-				}
-				
-				.itemPrice {
-					display: block !important;
-				}
-			}
-			
-			@media screen and (max-width: 575px){
-				.writeBtn {
-					padding: 0;
-					width: 100%;
-				}
-				
-				.moveWrite, .categoryDiv {width: 100%;}
+				padding-left: 10%;
+				padding-top: 2%;
 			}
 			
 			.itemPicture {
-				width: 65%;
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
 		    	float: left;
 		    	padding: 4%;
 			}
@@ -150,6 +105,63 @@
 				margin-top: 2%;
 				margin-bottom: 2%;
 			}
+			
+			.thumbnailDiv {
+				position: relative;
+				overflow: hidden;
+				height: 400px;
+				width: 50%;
+				float: left; 
+			}
+			
+			@media screen and (max-width: 1680px){
+				.writeBtn {
+					padding-left: 70%;
+				}
+			}
+			
+			@media screen and (max-width: 1280px){
+				.writeBtn {
+					padding-left: 71%;
+				}
+			}
+			
+			@media screen and (max-width: 1199px){
+				.writeBtn {
+					padding-left: 69%;
+				}
+			}
+			
+			@media screen and (max-width: 767px){
+				.writeBtn {
+					padding-left: 59%;
+				}
+				
+				.categoryDiv {width: 23%;}
+				.itemPicture {
+					clear: both;
+					width: 100% !important;
+				}
+				
+				.itempDiv {
+					clear: both;
+					text-align: center;
+					width: 100%;
+				}
+				
+				.itemPrice {
+					display: block !important;
+				}
+			}
+			
+			@media screen and (max-width: 575px){
+				.writeBtn {
+					padding: 0;
+					width: 100%;
+				}
+				
+				.moveWrite, .categoryDiv {width: 100%;}
+			}
 		</style>
 	</head>
 
@@ -159,7 +171,9 @@
 			<div class="row">
 				<div class="col-lg-9">
 					<div class="item">
-						<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="">
+						<div class="thumbnailDiv">
+							<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="">
+						</div>
 						<small class="text-muted" style="float: right; font-weight: 600;">${board.regDate}</small><br>
 						<div class="itempDiv">
 							<div class="itemTitle">${board.title}</div>
@@ -167,8 +181,7 @@
 								<div class="itemPrice">${board.price}<span>원</span></div>
 							</c:if>
 							<div class="itemEle">작성자&nbsp;&nbsp;<p style="display: inline-block; color: black;">${board.writer}</div>
-							<div class="itemEle">연락처&nbsp;&nbsp;<p style="display: inline-block; color: black;">010-1234-5678</div>
-							<div class="itemEle">거래 지역&nbsp;&nbsp;<p style="display: inline-block; color: black;">서울</div>
+							<div class="itemEle">거래 지역&nbsp;&nbsp;<p style="display: inline-block; color: black;">${board.area}</div>
 						</div>
 					</div>
 				</div>

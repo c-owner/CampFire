@@ -77,6 +77,14 @@ public class MarketController {
 		if(m_vo.getAttachList() != null) {
 			m_vo.getAttachList().forEach(log::info);
 		}
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
+		System.out.println(m_vo.getArea());
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
+		System.out.println("호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호호");
 		service.register(m_vo);
 		rttr.addFlashAttribute("result", m_vo.getBno());
 		rttr.addAttribute("check", m_vo.getMarketKeyword());
@@ -137,8 +145,8 @@ public class MarketController {
 		
 		attachList.forEach(m_vo -> {
 			try {
-//				Path origin = Paths.get("C:\\upload\\market\\" + m_vo.getUploadPath() + "\\" + m_vo.getUuid() + "_" + m_vo.getFileName());
-				Path origin = Paths.get("/usr/local/upload/market/" + m_vo.getUploadPath() + "/" + m_vo.getUuid() + "_" + m_vo.getFileName());
+				Path origin = Paths.get("C:\\upload\\market\\" + m_vo.getUploadPath() + "\\" + m_vo.getUuid() + "_" + m_vo.getFileName());
+//				Path origin = Paths.get("/usr/local/upload/market/" + m_vo.getUploadPath() + "/" + m_vo.getUuid() + "_" + m_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {

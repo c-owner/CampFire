@@ -65,6 +65,7 @@
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">
+							<input type="text" name="area" placeholder="지역을 입력해주세요." style="margin-top: 2%;">					
 							<input type="text" name="price" placeholder="가격을 입력해주세요." style="margin-top: 2%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
@@ -165,6 +166,13 @@
 		var price = $("input[name='price']").val();
 		var title = $("input[name='title']").val();
 		var content = $("textarea[name='content']").val();
+		var area = $("input[name='area']").val();
+		
+		if(area == ""){
+			alert("지역을 입력해주세요.");
+			$("input[name='area']").focus();
+			return;			
+		}
 		
 		if(isNaN(price)){
 			alert("숫자만 입력해주세요.");
