@@ -33,7 +33,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @AllArgsConstructor
-@RequestMapping("/guide/*")
+@RequestMapping("/campfire/*")
 public class GuideController {
 	private GuideBoardService service;
 	//전체 목록 가져오기
