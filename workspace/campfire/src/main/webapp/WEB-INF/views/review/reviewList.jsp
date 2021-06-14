@@ -61,7 +61,7 @@
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
 									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
 								</div>
-		
+								<div class="searchMenu">
 									<!-- <span class="filter-side-divider"></span> -->
 									<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
 									<select name="from" class="select " id="from">
@@ -85,6 +85,7 @@
 									<input type="text" class="searchTerm" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"
 									style="border-radius: initial; height:30px; width: 100%;">
 									<a href="javascript:void(0)" class="button primary icon solid fa-search">Search</a>
+								</div>
 									
 							</div>
 		
@@ -106,7 +107,18 @@
 						
 						<div class="info">
 							<div class="info-detail">
-								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
+							<c:set var="title_org" value="${review.title}"/>
+							<c:set var="title_length" value="${fn:length(title_org)}"/>
+							<c:set var = "post_title" value = "${fn:substring(title_org, 0, 23)}" />
+							<c:if test="${fn:length(title_org) > '23'}">
+								<div class="title">${post_title}…
+								<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
+							</c:if>
+							<c:if test="${fn:length(title_org) < '24'}">
+								<div class="title">${post_title}
+								<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
+							</c:if>
+								<div class="campName" style="text-align: right; float: right; font-size: 12px;">${review.campName}</div>
 								<div class="star" style="color: gold;">${review.star}</div>
 									<div style="text-align: right; float: right; font-size: 12px;">${review.updateDate}</div>
 								<div class="bottom">

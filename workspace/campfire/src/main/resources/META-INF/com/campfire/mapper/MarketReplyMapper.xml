@@ -13,7 +13,7 @@
 		VALUES (SEQ_MARKET_REPLY.NEXTVAL, #{bno}, #{reply}, #{replyer})
 	</insert>
 	
-	<select id="selectReply" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
+	<select id="selectReply" resultType="com.campfire.domain.marketBoard.MarketReplyVO">
 		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
 		FROM TBL_MARKET_REPLY 
 		WHERE RNO = #{rno} 
@@ -35,16 +35,14 @@
 		WHERE BNO = #{bno}
 	</select>
 	
-	<select id="selectReplyList" resultType="com.campfire.domain.marketBoard.MarketBoardVO">
-		<![CDATA[
-			SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
-			FROM (
-				SELECT /*+ INDEX_DESC(TBL_MARKET_REPLY PK_MARKET_REPLY) */
-				ROWNUM rn, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+	<select id="selectReplyList" resultType="com.campfire.domain.marketBoard.MarketReplyVO">
+		SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
+		FROM
+			(SELECT /*+ INDEX_DESC(TBL_MARKET_REPLY PK_MARKET_REPLY) */
+				ROWNUM R, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE
 				FROM TBL_MARKET_REPLY
-				WHERE BNO = #{bno} AND ROWNUM <= #{cri.pageNum} * ${cri.amount}
-			)
-			WHERE rn > (#{cri.pageNum} - 1) * #{cri.amount}
-		]]>
+				WHERE BNO = #{bno}
+				AND ROWNUM <![CDATA[<=]]> #{cri.pageNum} * #{cri.amount})
+		WHERE R <![CDATA[>]]> (#{cri.pageNum} - 1) * #{cri.amount}
 	</select>
 </mapper>

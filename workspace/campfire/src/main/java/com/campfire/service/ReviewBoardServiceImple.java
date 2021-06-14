@@ -54,7 +54,6 @@ public class ReviewBoardServiceImple implements ReviewBoardService {
 		}
 		attachList.forEach(vo -> {
 			vo.setBno(board.getBno());
-			log.info("첨부파일 저장이 바로 밑에!!!!");
 			attach.insert(vo);
 		});
 	}
