@@ -65,8 +65,7 @@ public class PageDTO {
 	public PageDTO(int total, List<FoodBoardReplyVO> foodReplyList, Criteria cri) {
 		this(cri, total);
 		this.foodReplyList = foodReplyList;
-	}
-	
+	}	
 	public PageDTO(Criteria cri, List<GuideBoardReplyVO> guideBoardReplyList, String total) {
 		this(cri, Integer.parseInt(total));
 		this.guideBoardReplyList = guideBoardReplyList;
