@@ -17,4 +17,5 @@ public class MarketBoardVO {
 	private String price;
 	private List<MarketBoardAttachVO> attachList;
 	private String thumbnail;
+	private String area;
 }

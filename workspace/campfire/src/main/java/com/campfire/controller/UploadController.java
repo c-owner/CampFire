@@ -231,7 +231,7 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping(value="/download", produces= {MediaType.APPLICATION_OCTET_STREAM_VALUE})
 	public ResponseEntity<Resource> download(String fileName, @RequestHeader("User-Agent") String userAgent){
-		//Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
+//		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
 		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
 		
 		String resourceName = resource.getFilename();
