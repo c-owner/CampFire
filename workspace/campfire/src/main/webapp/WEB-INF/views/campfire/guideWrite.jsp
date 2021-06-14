@@ -128,14 +128,14 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
-				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				//var url = encodeURIComponent(data.g_succeedList[0].uploadPath + "\\" + data.g_succeedList[0].uuid + "_" + data.g_succeedList[0].fileName);
+				var url = encodeURIComponent(data.g_succeedList[0].uploadPath + "/" + data.g_succeedList[0].uuid + "_" + data.g_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				$(el).summernote('editor.insertImage', "/display?fileName=/campfire/" + url);
+				$(el).summernote('editor.insertImage', "/display?fileName=/guide/" + url);
 				var str = "";
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.g_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.g_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.g_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
 				guideForm.append(str);
 				j++;

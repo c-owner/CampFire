@@ -8,7 +8,7 @@ import com.campfire.domain.PageDTO;
 import com.campfire.domain.freeBoard.FreeBoardReplyVO;
 import com.campfire.domain.guideBoard.GuideBoardReplyVO;
 import com.campfire.mapper.GuideBoardMapper;
-import com.campfire.mapper.GuideReplyMapper;
+import com.campfire.mapper.GuideBoardReplyMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @AllArgsConstructor
 public class GuideBoardReplyServiceImple implements GuideBoardReplyService{
-	private GuideReplyMapper r_mapper;
+	private GuideBoardReplyMapper r_mapper;
 	private GuideBoardMapper g_mapper;
 	
 	@Override

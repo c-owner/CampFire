@@ -110,32 +110,9 @@
 							<h3 style="font-weight: bold; text-align: left; margin-right: 3%;">댓글</h3>
 						</div>
 						<ul class="alt replies">
-							<!-- <li>
-								<div style="position: absolute;">
-									<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
-								</div>
-								<div style="text-align: right;">
-									<h5 style="margin: 0;">12분 전</h5>
-								</div>
-								<div style="text-align: left;">
-									<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
-								</div>
-							</li>
-							<li>
-								<div style="position: absolute;">
-									<h4 style="margin: 0; text-align: left;">작성자: 고희광</h4>
-								</div>
-								<div style="text-align: right;">
-									<h5 style="margin: 0;">12분 전</h5>
-								</div>
-								<div style="text-align: left;">
-									<span>댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.댓글내용입니다.</span>
-								</div>
-							</li> -->
 						</ul>
 						<div class="paging" style="text-align: center; margin-bottom: 2%;">
 							<ul class="pagination">
-							
 							</ul>
 						</div>
 					</div>

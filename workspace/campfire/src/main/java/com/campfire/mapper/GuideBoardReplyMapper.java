@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.campfire.domain.Criteria;
 import com.campfire.domain.guideBoard.GuideBoardReplyVO;
 
-public interface GuideReplyMapper {
+public interface GuideBoardReplyMapper {
 	public List<GuideBoardReplyVO> getListWidhPaging(@Param("cri") Criteria cri, @Param("bno") Long bno);
 	public int getTotal(Long bno);
 	public int insert(GuideBoardReplyVO g_vo);

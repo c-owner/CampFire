@@ -22,7 +22,7 @@ public class PageDTO {
 	private List<FreeBoardReplyVO> freeBoardReplyList;
 	private List<TipBoardReplyVO> tipBoardReplyList;
 	private List<MarketReplyVO> marketReplyList;
-	private List<GuideBoardReplyVO> guideReplyList;
+	private List<GuideBoardReplyVO> guideBoardReplyList;
 	
 	public PageDTO(Criteria cri, int total) {
 		this.cri = cri;
@@ -60,8 +60,8 @@ public class PageDTO {
 		this(cri, total);
 		this.marketReplyList = marketReplyList;
 	}
-	public PageDTO(Criteria cri, List<GuideBoardReplyVO> guideReplyList, String total) {
+	public PageDTO(Criteria cri, List<GuideBoardReplyVO> guideBoardReplyList, String total) {
 		this(cri, Integer.parseInt(total));
-		this.guideReplyList = guideReplyList;
+		this.guideBoardReplyList = guideBoardReplyList;
 	}
 }
