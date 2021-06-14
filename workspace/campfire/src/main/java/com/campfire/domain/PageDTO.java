@@ -2,6 +2,7 @@ package com.campfire.domain;
 
 import java.util.List;
 
+import com.campfire.domain.foodBoard.FoodBoardReplyVO;
 import com.campfire.domain.freeBoard.FreeBoardReplyVO;
 import com.campfire.domain.marketBoard.MarketReplyVO;
 import com.campfire.domain.reviewBoard.ReviewReplyVO;
@@ -19,6 +20,7 @@ public class PageDTO {
 	private List<ReviewReplyVO> reviewReplyList;
 	private List<FreeBoardReplyVO> freeBoardReplyList;
 	private List<MarketReplyVO> marketReplyList;
+	private List<FoodBoardReplyVO> foodReplyList;
 	
 	public PageDTO(Criteria cri, int total) {
 		this.cri = cri;
@@ -41,7 +43,6 @@ public class PageDTO {
 		this.reviewReplyList = reviewReplyList;
 	}
 	
-	
 	public PageDTO(Criteria cri, List<FreeBoardReplyVO> freeBoardReplyList ,int total) {
 		this(cri, total);
 		this.freeBoardReplyList = freeBoardReplyList;
@@ -50,5 +51,10 @@ public class PageDTO {
 	public PageDTO(int total, Criteria cri, List<MarketReplyVO> marketReplyList) {
 		this(cri, total);
 		this.marketReplyList = marketReplyList;
+	}
+	
+	public PageDTO(int total, List<FoodBoardReplyVO> foodReplyList, Criteria cri) {
+		this(cri, total);
+		this.foodReplyList = foodReplyList;
 	}
 }

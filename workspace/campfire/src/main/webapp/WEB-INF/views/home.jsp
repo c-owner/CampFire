@@ -138,7 +138,7 @@
 									<li><a href="/free/freeList">자유게시판</a></li>
 									<li><a href="/review/reviewList">캠핑 리뷰</a></li>
 									<li><a href="/campfire/tip">캠핑 팁</a></li>
-									<li><a href="/campfire/food">캠핑 음식</a></li>
+									<li><a href="/food/foodList">캠핑 음식</a></li>
 									<li><a href="/campfire/guide">캠핑 가이드</a></li>
 								</ul>
 							</li>
