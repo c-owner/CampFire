@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 	<head>
 		<title>팁게시판 | 모닥불🏕 </title>
@@ -105,31 +106,33 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="board" items="${list}">
-									<tr class="tBody">
-										<td class="bno">${board.bno}</td>
-										<td class="title miniTitle"><a href="/free/freeView?bno=${board.bno}">${board.title}</a>
-											<%-- <i style="font-size: 35px;" class="far fa-heart"></i> --%><span style="font-size: 0.5rem;">[${board.replyCnt}]</span>
-											&nbsp;
-											<c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
-										</td>
-										<td class="writer">${board.writer}</td>
-										<td class="regDate">${board.updateDate}</td>
-										<td class="updateDate">${board.readCnt}</td>
-									</tr>
-								</c:forEach>
-									<%-- <tr class="tBody">
-										<td class="bno">1234567</td>
-										<td class="title"><a href="#" style="color: black !important;">자유게시판 테스트용 제목입니다.</a>&nbsp;<span style="font-weight: bold; color: #ff2f3b;">[3]</span>
-											<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.25 12.5L4.75 9H3.5v6h1.25v-3.5L7.3 15h1.2V9H7.25zM9.5 15h4v-1.25H11v-1.11h2.5v-1.26H11v-1.12h2.5V9h-4zm9.75-6v4.5h-1.12V9.99h-1.25v3.52h-1.13V9H14.5v5c0 .55.45 1 1 1h4c.55 0 1-.45 1-1V9h-1.25z"/></svg>
-										</td>
-										<td class="writer">모닥불 테스터</td>
-										<td class="regDate">2021.06.03</td>
-										<td class="readCnt">27</td>
-									</tr> --%>
+								<c:choose>
+									<c:when test="${list != null and fn:length(list) > 0}">
+										<c:forEach var="board" items="${list}">
+											<tr class="tBody">
+												<td class="bno">${board.bno}</td>
+												<td class="title miniTitle"><a href="/campfire/tipView?bno=${board.bno}">${board.title}</a>
+													<%-- <i style="font-size: 35px;" class="far fa-heart"></i> --%><span style="font-size: 0.5rem;">[${board.replyCnt}]</span>
+													&nbsp;
+													<c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
+												</td>
+												<td class="writer">${board.writer}</td>
+												<td class="regDate">${board.updateDate}</td>
+												<td class="updateDate">${board.readCnt}</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr class="tBody">
+											<td colspan="5">
+												<h4 style="margin-top: 1rem;">현재 등록된 캠핑 가이드가 없습니다.</h4>
+											</td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
 							</tbody>
 						</table>
-						<h3 style="text-align: right;"><a href="javascript: freeWrite();" class="button small" style="border-radius: 0; text-decoration: none;">
+						<h3 style="text-align: right;"><a href="javascript: tipWrite();" class="button small" style="border-radius: 0; text-decoration: none;">
 							<i class="fas fa-pencil-alt"></i>&nbsp;글쓰기</a>
 						</h3>
 						<!-- A -->
@@ -166,14 +169,14 @@
 							</ul>
 						</div>
 					   
-						<form id="actionForm" action="/free/freeList" style="margin:0;">
+						<form id="actionForm" action="/campfire/tipList" style="margin:0;">
 							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 							<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 							<input type="hidden" name="type" value="${pageMaker.cri.type}">
 							<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 						</form>
 						<!-- B -->
-						<form action="/free/freeList" id="searchForm">
+						<form action="/campfire/tipList" id="searchForm">
 							<div class="fields">
 								<div class="field">
 									<div class="row" style="text-align:center">
@@ -239,12 +242,12 @@
 			alert("게시글 " + result + "번이 등록되었습니다.")
 		});
 
-	function freeWrite(){
+	function tipWrite(){
     	 if ("${sessionId}" == ""){
  			alert("로그인 후 이용해 주십시오.");
  			goSignIn();
  		}else{
- 			location.replace("/free/freeWrite${pageMaker.cri.getListLink()}");
+ 			location.replace("/campfire/tipWrite${pageMaker.cri.getListLink()}");
  		}
      }
 	</script>

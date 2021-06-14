@@ -33,7 +33,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @AllArgsConstructor
-@RequestMapping("/campfire/*")
+//@RequestMapping("/campfire/*")
 public class GuideController {
 	private GuideBoardService service;
 	//전체 목록 가져오기
@@ -117,11 +117,7 @@ public class GuideController {
 				try {
 					Path origin = Paths.get("C:\\upload\\" + g_vo.getUploadPath() + "\\" + g_vo.getUuid() + "_" + g_vo.getFileName());
 					Files.delete(origin);
-					
-					if(Files.probeContentType(origin).startsWith("image")) {
-						Path thumbnail = Paths.get("C:\\upload\\" + g_vo.getUploadPath() + "\\s_" + g_vo.getUuid() + "_" + g_vo.getFileName());
-						Files.delete(thumbnail);
-					}
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

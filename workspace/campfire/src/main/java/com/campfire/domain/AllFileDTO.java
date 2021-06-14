@@ -6,6 +6,7 @@ import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.guideBoard.GuideBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
+import com.campfire.domain.tipBoard.TipBoardAttachVO;
 
 import lombok.Data;
 
@@ -19,4 +20,6 @@ public class AllFileDTO {
 	List<ReviewBoardAttachVO> r_failureList;
 	List<GuideBoardAttachVO> g_succeedList;
 	List<GuideBoardAttachVO> g_failureList;
+	List<TipBoardAttachVO> t_succeedList;
+	List<TipBoardAttachVO> t_failureList;
 }

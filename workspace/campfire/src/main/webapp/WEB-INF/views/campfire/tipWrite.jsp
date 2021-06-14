@@ -48,16 +48,16 @@
 				<header class="major">
                         <h2>팁게시판 글쓰기</h2>
                 </header>
-				<form class="reviewForm" action="/free/freeWrite" method="post" name="freeForm">
+				<form class="reviewForm" action="/campfire/tipWrite" method="post" name="tipForm">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
-							<input type="hidden" name="writer" value="test1">
+							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; tipForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -115,12 +115,12 @@
 	var j = 0;
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
-		var freeForm = $("form[name=freeForm]");
+		var tipForm = $("form[name=tipForm]");
 		data.append("uploadFile", file);
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/upload/free",
+			url : "/upload/tip",
 			contentType : false,
 			enctype : 'multipart/form-data',
 			processData : false,
@@ -131,13 +131,13 @@
 				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
 				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				$(el).summernote('editor.insertImage', "/display?fileName=/free/" + url);
+				$(el).summernote('editor.insertImage', "/display?fileName=/tip/" + url);
 				var str = "";
 				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
-				freeForm.append(str);
+				tipForm.append(str);
 				j++;
 			}
 		});
