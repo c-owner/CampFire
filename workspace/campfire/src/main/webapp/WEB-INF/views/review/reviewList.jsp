@@ -106,7 +106,10 @@
 						
 						<div class="info">
 							<div class="info-detail">
-								<div class="title">${review.title}<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
+							<c:set var="title_org" value="${review.title}"/>
+							<c:set var="title_length" value="${fn:length(title_org)}"/>
+							<c:set var = "post_title" value = "${fn:substring(title_org, 0, 23)}" />
+								<div class="title">${post_title}…<span style="font-size: 8px;">[${review.replyCnt}]</span></div>
 								<div class="star" style="color: gold;">${review.star}</div>
 									<div style="text-align: right; float: right; font-size: 12px;">${review.updateDate}</div>
 								<div class="bottom">
