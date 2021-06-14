@@ -48,7 +48,7 @@
 				<header class="major">
                         <h2>팁게시판 수정하기</h2>
                 </header>
-				<form class="reviewForm" action="/free/freeModify" method="post" name="freeForm">
+				<form class="reviewForm" action="/campfire/tipModify" method="post" name="tipForm">
 					<input type="hidden" name="pageNum" value="${cri.pageNum}">
 					<input type="hidden" name="amount" value="${cri.amount}">
 					<input type="hidden" name="keyword" value="${cri.keyword}">
@@ -62,7 +62,7 @@
 							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; freeForm.submit();" class="button big" style="text-decoration: none;">수정</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; tipForm.submit();" class="button big" style="text-decoration: none;">수정</a></h3>
 				</form>
 			</div>
 		</div>
@@ -120,12 +120,12 @@
 	var j = 0;
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
-		var freeForm = $("form[name=freeForm]");
+		var tipForm = $("form[name=tipForm]");
 		data.append("uploadFile", file);
 		$.ajax({
 			data : data,
 			type : "POST",
-			url : "/upload/free",
+			url : "/upload/tip",
 			contentType : false,
 			enctype : 'multipart/form-data',
 			processData : false,
@@ -141,7 +141,7 @@
 				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
-				freeForm.append(str);
+				tipForm.append(str);
 				j++;
 			}
 		});

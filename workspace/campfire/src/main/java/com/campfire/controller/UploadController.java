@@ -31,9 +31,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.campfire.domain.AllFileDTO;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
+import com.campfire.domain.guideBoard.GuideBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
+import com.campfire.domain.tipBoard.TipBoardAttachVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -67,14 +69,20 @@ public class UploadController {
 	@ResponseBody
 	@PostMapping(value="/upload/{vo}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<AllFileDTO> upload(MultipartFile uploadFile, @PathVariable("vo") String voName){
-		int check = 0;
+//		int check = 0;
 		List<FreeBoardAttachVO> f_succeedList = new ArrayList<>();
 		List<FreeBoardAttachVO> f_failureList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_succeedList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_failureList = new ArrayList<>();
 		List<MarketBoardAttachVO> m_succeedList = new ArrayList<>();
 		List<MarketBoardAttachVO> m_failureList = new ArrayList<>();
+		List<GuideBoardAttachVO> g_succeedList = new ArrayList<>();
+		List<GuideBoardAttachVO> g_failureList = new ArrayList<>();
+		List<TipBoardAttachVO> t_succeedList = new ArrayList<>();
+		List<TipBoardAttachVO> t_failureList = new ArrayList<>();
 		
+	
+	
 		if(voName.equals("free")) {check = 1;}
 		else if(voName.equals("review")) {check = 2;}
 		else if(voName.equals("market")) {check = 3;}
@@ -91,6 +99,7 @@ public class UploadController {
 			uploadFolder += "/market";
 			break;
 		}
+
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
@@ -102,6 +111,8 @@ public class UploadController {
 		FreeBoardAttachVO f_vo = new FreeBoardAttachVO();
 		ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
 		MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
+		GuideBoardAttachVO g_vo = new GuideBoardAttachVO();
+		TipBoardAttachVO t_vo = new TipBoardAttachVO();
 		
 		
 		String uploadFileName = uploadFile.getOriginalFilename();
@@ -116,15 +127,15 @@ public class UploadController {
 			uploadFile.transferTo(saveFile);
 			in = new FileInputStream(saveFile);
 			
-			switch(check) {
-			case 1:
+			switch(voName) {
+			case "free":
 				f_vo.setFileName(temp);
 				f_vo.setUuid(uuid.toString());
 				f_vo.setUploadPath(uploadFolderPath);
 				f_vo.setFileType(true);
 				f_succeedList.add(f_vo);
 				break;
-			case 2:
+			case "review":
 				log.info("uploadController!~~~~~~~~~~!: " + uploadFolderPath);
 				r_vo.setFileName(temp);
 				r_vo.setUuid(uuid.toString());
@@ -133,34 +144,58 @@ public class UploadController {
 				r_vo.setFileType(true);
 				r_succeedList.add(r_vo);
 				break;
-			case 3:
+			case "market":
 				m_vo.setFileName(temp);
 				m_vo.setUuid(uuid.toString());
 				m_vo.setUploadPath(uploadFolderPath);
 				m_vo.setFileType(true);
 				m_succeedList.add(m_vo);
 				break;
+			case "guide":
+				g_vo.setFileName(temp);
+				g_vo.setUuid(uuid.toString());
+				g_vo.setUploadPath(uploadFolderPath);
+				g_vo.setFileType(true);
+				g_succeedList.add(g_vo);
+				break;
+			case "tip":
+				t_vo.setFileName(temp);
+				t_vo.setUuid(uuid.toString());
+				t_vo.setUploadPath(uploadFolderPath);
+				t_vo.setFileType(true);
+				t_succeedList.add(t_vo);
+				break;
 			}
 			
 		} catch (Exception e) {
-			if(check == 1) {f_failureList.add(f_vo);}
-			else if(check == 2) {r_failureList.add(r_vo);}
-			else if(check == 3) {m_failureList.add(m_vo);}
+			if(voName.equals("free")) {f_failureList.add(f_vo);}
+			else if(voName.equals("review")) {r_failureList.add(r_vo);}
+			else if(voName.equals("market")) {m_failureList.add(m_vo);}
+			else if(voName.equals("guide")) {g_failureList.add(g_vo);}
+			else if(voName.equals("tip")) {t_failureList.add(t_vo);}
 			log.error(e.getMessage());
 		}
 		
-		switch(check) {
-		case 1:
+		switch(voName) {
+		case "free":
 			allFile.setF_succeedList(f_succeedList);
 			allFile.setF_failureList(f_failureList);
 			break;
-		case 2:
+		case "review":
 			allFile.setR_succeedList(r_succeedList);
 			allFile.setR_failureList(r_failureList);
 			break;
-		case 3:
+		case "market":
 			allFile.setM_succeedList(m_succeedList);
 			allFile.setM_failureList(m_failureList);
+			break;
+		case "guide":
+			allFile.setG_succeedList(g_succeedList);
+			allFile.setG_failureList(g_failureList);
+			break;
+		case "tip":
+			allFile.setT_succeedList(t_succeedList);
+			allFile.setT_failureList(t_failureList);
 			break;
 		}
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
@@ -228,9 +263,5 @@ public class UploadController {
 		Date date = new Date();
 		return sdf.format(date).replace("-", File.separator);
 	}
-	
-	//타입 체크
-	private boolean checkImg(File file)throws IOException {
-		return Files.probeContentType(file.toPath()).startsWith("image");
-	}
+
 }

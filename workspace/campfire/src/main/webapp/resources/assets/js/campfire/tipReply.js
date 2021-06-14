@@ -4,11 +4,11 @@
 
 var replyService = (function(){
 	function getList(reply, callback, error){
-		$.getJSON("/guideReplies/guideReplyList/"+reply.bno+"/"+reply.page+".json", 
+		$.getJSON("/tipReplies/tipReplyList/"+reply.bno+"/"+reply.page+".json", 
 			function(data){
 				if(callback){
 					console.log(data);
-					callback(data.total, data.guideBoardReplyList);
+					callback(data.total, data.tipBoardReplyList);
 				}
 			}).fail(function(xhr, status, err){
 			if(error){error(err);}
@@ -41,7 +41,7 @@ var replyService = (function(){
 	function add(reply, callback, error){
 		$.ajax({
 			type: "post",
-			url: "/guideReplies/guideReplyWrite",
+			url: "/tipReplies/tipReplyWrite",
 			data: JSON.stringify(reply),
 			contentType: "application/json; charset=utf-8",
 			success: function(result){
@@ -54,7 +54,7 @@ var replyService = (function(){
 	}
 	
 	function get(rno, callback, error){
-		$.get("/guideReplies/"+rno+".json", function(data){
+		$.get("/tipReplies/"+rno+".json", function(data){
 			if(callback){callback(data);}
 		}).fail(function(xhr, status, err){
 			if(error){error(err);}
@@ -64,7 +64,7 @@ var replyService = (function(){
 	function remove(rno, callback, error){
 		$.ajax({
 			type: "delete",
-			url: "/guideReplies/"+rno,
+			url: "/tipReplies/"+rno,
 			success: function(result){
 				if(callback){callback(result);}
 			},
@@ -78,7 +78,7 @@ var replyService = (function(){
 		console.log(reply);
 		$.ajax({
 			type: "patch",
-			url: "/guideReplies/"+reply.rno,
+			url: "/tipReplies/"+reply.rno,
 			data: JSON.stringify(reply),
 			contentType: "application/json; charset=utf-8",
 			success: function(result){
