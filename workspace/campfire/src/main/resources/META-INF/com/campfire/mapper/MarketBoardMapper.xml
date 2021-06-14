@@ -14,11 +14,8 @@
 							<when test="type == 'C'.toString()">
 								CONTENT LIKE '%'||#{keyword}||'%' 
 							</when>
-							<when test="type == 'W'.toString()">
-								WRITER LIKE '%'||#{keyword}||'%' 
-							</when>
 							<otherwise>
-								TITLE LIKE '%'||#{keyword}||'%' OR CONTENT LIKE '%'||#{keyword}||'%' OR WRITER LIKE '%'||#{keyword}||'%'  						
+								TITLE LIKE '%'||#{keyword}||'%' OR CONTENT LIKE '%'||#{keyword}||'%'  						
 							</otherwise>
 						</choose>
 					</trim>
@@ -51,7 +48,11 @@
 	</select>
 	
 	<select id="categoryTotal" resultType="_int">
-		SELECT COUNT(BNO) FROM TBL_MARKET_BOARD WHERE MARKETKEYWORD = #{marketKeyword}
+		SELECT COUNT(BNO) FROM TBL_MARKET_BOARD WHERE
+		<if test="type != null and keyword != null">
+			<include refid="criteria"/>
+		</if>
+		MARKETKEYWORD = #{marketKeyword}
 	</select>
 	
 	<insert id="insertBoard">

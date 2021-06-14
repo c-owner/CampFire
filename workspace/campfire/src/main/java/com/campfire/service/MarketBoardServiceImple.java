@@ -31,6 +31,7 @@ public class MarketBoardServiceImple implements MarketBoardService {
 		map.put("marketKeyword", marketKeyword);
 		map.put("type", cri.getType());
 		map.put("keyword", cri.getKeyword());
+		map.put("typeList", cri.getTypeList());
 		return 	mapper.getListWithPaging(map);  
 	}
 
@@ -40,8 +41,15 @@ public class MarketBoardServiceImple implements MarketBoardService {
 	}
 	
 	@Override
-	public int categoryTotal(String marketKeyword) {
-		return mapper.categoryTotal(marketKeyword);
+	public int categoryTotal(Criteria cri, String marketKeyword) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("pageNum", cri.getPageNum());
+		map.put("amount", cri.getAmount());
+		map.put("marketKeyword", marketKeyword);
+		map.put("type", cri.getType());
+		map.put("keyword", cri.getKeyword());
+		map.put("typeList", cri.getTypeList());
+		return mapper.categoryTotal(map);
 	}
 
 	@Override
