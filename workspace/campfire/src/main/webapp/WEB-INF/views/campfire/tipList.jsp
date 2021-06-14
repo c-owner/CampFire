@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
-		<title>자유게시판 | 모닥불🏕 </title>
+		<title>팁게시판 | 모닥불🏕 </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -90,7 +90,7 @@
 				
 					<!-- Elements -->
 					<header class="major">
-						<h1>팁 게시판</h1>
+						<h1>팁게시판</h1>
 					</header>
 					<!-- Table -->
 					<div class="table-wrapper">

@@ -14,7 +14,11 @@ import lombok.extern.log4j.Log4j;
 public class CampfireController {
 	
 	@GetMapping("/tipList")
-	public void tipList() {
-		
-	}
+	public void tipList() {;}
+	@GetMapping("/tipView")
+	public void tipView() {;}
+	@GetMapping("/tipModify")
+	public void tipModify() {;}
+	@GetMapping("/tipWrite")
+	public void tipWrite() {;}
 }
