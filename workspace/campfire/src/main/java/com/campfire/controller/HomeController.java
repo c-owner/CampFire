@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,5 +67,28 @@ public class HomeController {
 	    session.removeAttribute("sessionId");
 	    return "redirect:/";
 	}
+	
+	
+	@GetMapping(value = "/noticeList")
+	public void getList() {
+		
+	}
+	@GetMapping(value = "/noticeWrite")
+	public void noticeWrite() {
+		
+	}
+	@GetMapping(value = "/noticeModify")
+	public void noticeModify() {
+		
+	}
+	@GetMapping(value = "/noticeRemove")
+	public void noticeRemove() {
+		
+	}
+	@GetMapping(value = "/getAttachList")
+	public void getAttachList() {
+		
+	}
+	
 
 }

@@ -111,7 +111,7 @@
 								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
 							</a></li>
 							
-							<li><a href="/generic">공지사항</a></li>
+							<li><a href="/noticeList">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>
@@ -237,7 +237,7 @@
 						</div>
 						<div class="content">
 							<ul class="actions">
-								<li><a href="#" class="button">Learn More</a></li>
+								<li><a href="#" class="button"></a></li>
 							</ul>
 						</div>
 					</article>
