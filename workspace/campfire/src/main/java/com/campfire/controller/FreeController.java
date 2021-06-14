@@ -119,7 +119,8 @@ public class FreeController {
 		
 		attachList.forEach(f_vo -> {
 			try {
-				Path origin = Paths.get("/usr/local/upload/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+//				Path origin = Paths.get("C:\\upload\\free\\" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/free/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {

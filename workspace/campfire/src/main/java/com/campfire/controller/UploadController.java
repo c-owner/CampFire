@@ -50,8 +50,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		File file = new File("C:\\upload\\"+fileName);
-		//File file = new File("/usr/local/upload/"+fileName);
+//		File file = new File("C:\\upload\\"+fileName);
+		File file = new File("/usr/local/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -81,24 +81,25 @@ public class UploadController {
 		List<TipBoardAttachVO> t_succeedList = new ArrayList<>();
 		List<TipBoardAttachVO> t_failureList = new ArrayList<>();
 		
-
-//		if(voName.equals("free")) {check = 1;}
-//		else if(voName.equals("review")) {check = 2;}
-//		else if(voName.equals("market")) {check = 3;}
+	
+	
+		if(voName.equals("free")) {check = 1;}
+		else if(voName.equals("review")) {check = 2;}
+		else if(voName.equals("market")) {check = 3;}
 //		String uploadFolder = "C:\\upload";
-		String uploadFolder = "/usr/local/upload/" + voName;
-//		switch(check) {
-//		case 1:
-//			uploadFolder += "/free";
-//			break;
-//		case 2:
-//			uploadFolder += "/review";
-//			break;
-//		case 3:
-//			uploadFolder += "/market";
-//			break;
-//		}
-		
+		String uploadFolder = "/usr/local/upload";
+		switch(check) {
+		case 1:
+			uploadFolder += "/free";
+			break;
+		case 2:
+			uploadFolder += "/review";
+			break;
+		case 3:
+			uploadFolder += "/market";
+			break;
+		}
+
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
@@ -113,7 +114,6 @@ public class UploadController {
 		GuideBoardAttachVO g_vo = new GuideBoardAttachVO();
 		TipBoardAttachVO t_vo = new TipBoardAttachVO();
 		
-		MarketBoardVO mb_vo = new MarketBoardVO();
 		
 		String uploadFileName = uploadFile.getOriginalFilename();
 		String temp = uploadFileName;
@@ -208,6 +208,7 @@ public class UploadController {
 		File file = null;
 		
 		try {
+//			file = new File("C:\\upload\\" + URLDecoder.decode(fileName));
 			file = new File("/usr/local/upload/" + URLDecoder.decode(fileName));
 			file.delete();
 			
