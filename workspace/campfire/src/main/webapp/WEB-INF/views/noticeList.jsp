@@ -403,16 +403,14 @@
 		$(document).ready(function () {
 			$(".link_policy").on("click", function(e){
 				e.preventDefault();
-				// lst 클래스를 포함하는 DOM 객체가 active class를 포함하면 true 아니면 false를 반환 
-				var on = $("this").parent().prop("li");
-				console.log(on + " on ");
-				if($(".lst").hasClass("on")){
-					$(".lst").removeClass("on");
-				}
-				
-				else {
-					$(".lst").addClass("on");
-				}
+				var on = $(this).parents("li");
+				var ons = $(".tab_policy li");
+				for(let i=0; i<ons.length; i++){
+					if($(ons[i]).attr("class") == "on"){
+						ons.removeClass("on");
+					}
+					on.addClass("on");
+				}			
 			});
 		});
 	</script>
