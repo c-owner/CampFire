@@ -134,6 +134,10 @@
 	.content img{
 		width: 100% !important;
 	}
+	
+	ul.alt li:first-child {
+		padding-top: 0.75rem;
+	}
 </style>
 </head>
 
@@ -209,15 +213,15 @@
 						<h3 style="font-weight: bold; text-align: left; margin: 5rem 0 0; border-bottom: 1px solid #aaa;">댓글</h3>
 					</div>
 					<ul class="alt replies">
-						
+							
+					</ul>
+					</div>
+				</div>
+				<div class="paging" style="text-align: center; margin-bottom: 2%;">
+					<ul class="pagination">
+					
 					</ul>
 				</div>
-					<div class="paging" style="text-align: center; margin-bottom: 2%;">
-						<ul class="pagination">
-						
-						</ul>
-					</div>
-			</div>
 
     </div>
     <!-- /.row -->
@@ -319,12 +323,12 @@ function showList(page) {
 			
 			for(let i=0, len=list.length; i<len; i++) {
 				str += "<li data-rno='" + list[i].rno + "'>";
-				str += "<div style='position: absolute;'>";
-				str += "<h4 style='margin: 0; text-align: left;'>작성자: " + list[i].replyer + "</h4></div>";
+				str += "<div>";
+				str += "<h4 style='margin: 0; text-align: left; font-weight: bolder;'>작성자: " + list[i].replyer + "</h4></div>";
 				if(list[i].replyDate != list[i].updateDate){
-					str += "<div class='timeDiv'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+					str += "<div class='timeDiv' style='text-align: right;'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
 				}else {
-					str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
+					str += "<div class='timeDiv' style='text-align: right;'><strong>" + replyService.timeForToday(list[i].replyDate);
 				}
 				/* str += "<div style='text-align: right;'><h5 style='margin: 0;'>"+ rDate +"</h5></div>"; */
 				str += "<div style='text-align: left;'><span class='reply" + list[i].rno + "'>"+ list[i].reply +"</span></div>";

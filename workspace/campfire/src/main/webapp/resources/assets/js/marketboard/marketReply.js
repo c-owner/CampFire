@@ -34,7 +34,7 @@ var replyService = (function(){
 	function remove(rno, callback, error) {
 		$.ajax({
 			type:"delete",
-			url:"marketReplies/"+ rno,
+			url:"/marketReplies/"+ rno,
 			success: function(result){
 				if(callback){
 					callback(result);

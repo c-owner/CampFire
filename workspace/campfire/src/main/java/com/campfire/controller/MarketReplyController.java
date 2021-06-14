@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
 import com.campfire.domain.marketBoard.MarketReplyVO;
-import com.campfire.domain.reviewBoard.ReviewReplyVO;
 import com.campfire.service.MarketReplyService;
 
 import lombok.Setter;
@@ -68,7 +67,7 @@ public class MarketReplyController {
 	//댓글 삭제
 	@DeleteMapping(value = "/{rno}", produces = "text/html; charset=utf-8")
 	public ResponseEntity<String> remove(@PathVariable("rno") Long rno) {
-	  return service.remove(rno) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) :
+	  return service.remove(rno) == 1 ? new ResponseEntity<>("댓글이 삭제되었습니다.", HttpStatus.OK) :
 	         new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	   }
 	
