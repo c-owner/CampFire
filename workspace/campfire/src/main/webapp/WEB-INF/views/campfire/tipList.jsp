@@ -43,16 +43,18 @@
 			.big-width{display:block;}
 			.small-width{display:none;}
 			.table-wrapper {overflow-x:hidden !important;}
-			/* select{width: 25%;display: inline;}
-			input[name='keyword']{width: 55%; display: inline;}
-			.search{width: 18%;} */
+			/* select{width: 25%;display: inline;} */
+			/* input[name='keyword']{width: 55%; display: inline;} */
+			/* .search{width: 18%;} */
 			.material-icons {vertical-align: middle;}
-	         #keywordDiv {
+	        
+	        #keywordDiv {
 	        	padding:0;
 	        }
 	        #searchBtnDiv {
 	        	padding:0;
 	        }
+	        
 			@media (max-width: 918px){
 				/* h1{
 					font-size: 1.5rem;
@@ -88,7 +90,7 @@
 				
 					<!-- Elements -->
 					<header class="major">
-						<h1>자유게시판</h1>
+						<h1>팁 게시판</h1>
 					</header>
 					<!-- Table -->
 					<div class="table-wrapper">
