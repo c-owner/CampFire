@@ -35,6 +35,7 @@ import com.campfire.domain.guideBoard.GuideBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
+import com.campfire.domain.tipBoard.TipBoardAttachVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -77,6 +78,8 @@ public class UploadController {
 		List<MarketBoardAttachVO> m_failureList = new ArrayList<>();
 		List<GuideBoardAttachVO> g_succeedList = new ArrayList<>();
 		List<GuideBoardAttachVO> g_failureList = new ArrayList<>();
+		List<TipBoardAttachVO> t_succeedList = new ArrayList<>();
+		List<TipBoardAttachVO> t_failureList = new ArrayList<>();
 		
 
 //		if(voName.equals("free")) {check = 1;}
@@ -108,6 +111,7 @@ public class UploadController {
 		ReviewBoardAttachVO r_vo = new ReviewBoardAttachVO();
 		MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
 		GuideBoardAttachVO g_vo = new GuideBoardAttachVO();
+		TipBoardAttachVO t_vo = new TipBoardAttachVO();
 		
 		MarketBoardVO mb_vo = new MarketBoardVO();
 		
@@ -154,6 +158,13 @@ public class UploadController {
 				g_vo.setFileType(true);
 				g_succeedList.add(g_vo);
 				break;
+			case "tip":
+				t_vo.setFileName(temp);
+				t_vo.setUuid(uuid.toString());
+				t_vo.setUploadPath(uploadFolderPath);
+				t_vo.setFileType(true);
+				t_succeedList.add(t_vo);
+				break;
 			}
 			
 		} catch (Exception e) {
@@ -161,6 +172,7 @@ public class UploadController {
 			else if(voName.equals("review")) {r_failureList.add(r_vo);}
 			else if(voName.equals("market")) {m_failureList.add(m_vo);}
 			else if(voName.equals("guide")) {g_failureList.add(g_vo);}
+			else if(voName.equals("tip")) {t_failureList.add(t_vo);}
 			log.error(e.getMessage());
 		}
 		
@@ -180,6 +192,11 @@ public class UploadController {
 		case "guide":
 			allFile.setG_succeedList(g_succeedList);
 			allFile.setG_failureList(g_failureList);
+			break;
+		case "tip":
+			allFile.setT_succeedList(t_succeedList);
+			allFile.setT_failureList(t_failureList);
+			break;
 		}
 		return new ResponseEntity<AllFileDTO>(allFile, HttpStatus.OK);
 	}
@@ -245,9 +262,5 @@ public class UploadController {
 		Date date = new Date();
 		return sdf.format(date).replace("-", File.separator);
 	}
-	
-	//타입 체크
-	private boolean checkImg(File file)throws IOException {
-		return Files.probeContentType(file.toPath()).startsWith("image");
-	}
+
 }
