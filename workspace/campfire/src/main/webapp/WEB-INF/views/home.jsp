@@ -87,7 +87,7 @@
 		</style>
 	</head>
 	
-	<body class="is-preload">
+	<body class="is-preload" onload="showImage()">
 
 			<!-- Header -->
 			<header id="header" style="position: absolute; background:#00000000;">
@@ -163,7 +163,7 @@
 					<article class="full" style="min-height: 100vh;">
 					
 						<div class="image" data-position="center">
-							<img src="/resources/images/background/bg01.jpg" alt="" />
+							<img src="/resources/images/background/bg02.jpg" alt="" id="image" />
 						</div>
 						<div class="content">
 						<div align="center" style="margin-top: 50px;">
@@ -336,6 +336,33 @@
 		$("#category").text(category[i]);
 		i++;
 	}, 2000); */
+	
+	var imgArray = new Array(); 
+	imgArray[0]="/resources/images/background/bg01.jpg"; 
+	imgArray[1]="/resources/images/background/bg02.jpg"; 
+	imgArray[2]="/resources/images/background/bg03.jpg"; 
+	imgArray[3]="/resources/images/background/bg05.jpg"; 
+	imgArray[4]="/resources/images/background/bg06.jpg"; 
+	imgArray[5]="/resources/images/background/bg07.jpg"; 
+	imgArray[6]="/resources/images/background/bg08.jpg"; 
+	imgArray[7]="/resources/images/background/bg09.jpg"; 
+	imgArray[8]="/resources/images/background/bg10.jpg"; 
+	imgArray[9]="/resources/images/background/bg11.jpg"; 
+	imgArray[10]="/resources/images/background/bg12.jpg"; 
+	imgArray[11]="/resources/images/background/bg13.jpg"; 
+	
+	function showImage(){ 
+		var imgNum=Math.round(Math.random()*12); 
+		
+		var objImg=document.getElementById("image"); 
+		
+		objImg.src=imgArray[imgNum]; 
+		setTimeout(showImage,5000); 
+		
+	}
+
+	
+	
 </script>
 
 
