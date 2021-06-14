@@ -87,7 +87,7 @@
 		</style>
 	</head>
 	
-	<body class="is-preload">
+	<body class="is-preload" onload="showImage()">
 
 			<!-- Header -->
 			<header id="header" style="position: absolute; background:#00000000;">
@@ -111,7 +111,7 @@
 								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
 							</a></li>
 							
-							<li><a href="/generic">공지사항</a></li>
+							<li><a href="/noticeList">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>
@@ -137,9 +137,15 @@
 								<ul>
 									<li><a href="/free/freeList">자유게시판</a></li>
 									<li><a href="/review/reviewList">캠핑 리뷰</a></li>
+<<<<<<< HEAD
 									<li><a href="/campfire/tip">캠핑 팁</a></li>
 									<li><a href="/food/foodList">캠핑 음식</a></li>
 									<li><a href="/campfire/guide">캠핑 가이드</a></li>
+=======
+									<li><a href="/campfire/tipList">캠핑 팁</a></li>
+									<li><a href="/campfire/foodList">캠핑 음식</a></li>
+									<li><a href="/campfire/guideList">캠핑 가이드</a></li>
+>>>>>>> 40ec9bc426eabca2450d6e2635e6d1239994d15e
 								</ul>
 							</li>
 							<li class="smallMenu">
@@ -163,7 +169,7 @@
 					<article class="full" style="min-height: 100vh;">
 					
 						<div class="image" data-position="center">
-							<img src="/resources/images/background/bg01.jpg" alt="" />
+							<img src="/resources/images/background/bg02.jpg" alt="" id="image" />
 						</div>
 						<div class="content">
 						<div align="center" style="margin-top: 50px;">
@@ -237,7 +243,7 @@
 						</div>
 						<div class="content">
 							<ul class="actions">
-								<li><a href="#" class="button">Learn More</a></li>
+								<li><a href="#" class="button"></a></li>
 							</ul>
 						</div>
 					</article>
@@ -336,6 +342,30 @@
 		$("#category").text(category[i]);
 		i++;
 	}, 2000); */
+	
+	var imgArray = new Array(); 
+	imgArray[0]="/resources/images/background/bg14.jpg"; 
+	imgArray[1]="/resources/images/background/bg03.jpg"; 
+	imgArray[2]="/resources/images/background/bg05.jpg"; 
+	imgArray[3]="/resources/images/background/bg07.jpg"; 
+	imgArray[4]="/resources/images/background/bg08.jpg"; 
+	imgArray[5]="/resources/images/background/bg09.jpg"; 
+	imgArray[6]="/resources/images/background/bg10.jpg"; 
+	imgArray[7]="/resources/images/background/bg11.jpg"; 
+	imgArray[8]="/resources/images/background/bg12.jpg"; 
+	
+	function showImage(){ 
+		var imgNum = Math.round(Math.random()*9); 
+		
+		var objImg = document.getElementById("image"); 
+		
+		objImg.src = imgArray[imgNum]; 
+		setTimeout(showImage,6000); 
+		
+	}
+
+	
+	
 </script>
 
 

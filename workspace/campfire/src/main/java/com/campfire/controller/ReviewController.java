@@ -41,8 +41,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ReviewController {
 	
-	final String fileFolder = "/Users/corner-macmini/upload/";
-	final String uploadFolder = "/Users/corner-macmini/upload";
+	final String fileFolder = "/usr/local/upload/";
+	final String uploadFolder = "/usr/local/upload";
 	
 	private ReviewBoardService service; 
 	
@@ -156,13 +156,9 @@ public class ReviewController {
 		
 		attachList.forEach(f_vo -> {
 			try {
-				Path origin = Paths.get(fileFolder + f_vo.getUploadPath() + "\\" + f_vo.getUuid() + "_" + f_vo.getFileName());
+				Path origin = Paths.get(fileFolder + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Files.delete(origin);
 				
-				if(Files.probeContentType(origin).startsWith("image")) {
-					Path thumbnail = Paths.get(fileFolder + f_vo.getUploadPath() + "\\s_" + f_vo.getUuid() + "_" + f_vo.getFileName());
-					Files.delete(thumbnail);
-				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

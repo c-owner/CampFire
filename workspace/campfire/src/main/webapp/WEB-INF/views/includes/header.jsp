@@ -55,7 +55,7 @@
 							<a href="/">
 								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
 							</a></li>
-							<li><a href="/generic">공지사항</a></li>
+							<li><a href="/noticeList">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
 								<ul>
@@ -81,9 +81,15 @@
 								<ul>
 									<li><a href="/free/freeList">자유게시판</a></li>
 									<li><a href="/review/reviewList">캠핑 리뷰</a></li>
+<<<<<<< HEAD
 									<li><a href="/campfire/tip">캠핑 팁</a></li>
 									<li><a href="/food/foodList">캠핑 음식</a></li>
 									<li><a href="/campfire/guide">캠핑 가이드</a></li>
+=======
+									<li><a href="/campfire/tipList">캠핑 팁</a></li>
+									<li><a href="/campfire/foodList">캠핑 음식</a></li>
+									<li><a href="/campfire/guideList">캠핑 가이드</a></li>
+>>>>>>> 40ec9bc426eabca2450d6e2635e6d1239994d15e
 								</ul>
 							</li>
 							<li class="smallMenu">

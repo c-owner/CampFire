@@ -43,11 +43,16 @@
 			.big-width{display:block;}
 			.small-width{display:none;}
 			.table-wrapper {overflow-x:hidden !important;}
-			select{width: 25%;display: inline;}
+			/* select{width: 25%;display: inline;}
 			input[name='keyword']{width: 55%; display: inline;}
-			.search{width: 18%;}
+			.search{width: 18%;} */
 			.material-icons {vertical-align: middle;}
-	         
+	         #keywordDiv {
+	        	padding:0;
+	        }
+	        #searchBtnDiv {
+	        	padding:0;
+	        }
 			@media (max-width: 918px){
 				/* h1{
 					font-size: 1.5rem;
@@ -63,6 +68,14 @@
 				select{width: 100%;}
 				input[name='keyword']{width: 100%;}
 				.search{width: 100%;}
+			}
+			@media (max-width: 736px){
+		        #keywordDiv {
+		        	padding:0 0 0 1.25rem;
+		        }
+		        #searchBtnDiv {
+		        	padding:0 0 0 1.25rem;
+		        }
 			}
 		</style>
 	</head>
@@ -151,7 +164,7 @@
 							</ul>
 						</div>
 					   
-						<form id="actionForm" action="/free/freeList">
+						<form id="actionForm" action="/free/freeList" style="margin:0;">
 							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 							<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 							<input type="hidden" name="type" value="${pageMaker.cri.type}">
@@ -161,18 +174,24 @@
 						<form action="/free/freeList" id="searchForm">
 							<div class="fields">
 								<div class="field">
-									<div style="text-align:center">
-										<select name="type" style="padding-top: 0.5%;">
-											<option value="" ${pageMaker.cri.type == null ? 'selected' : ''}>검색 기준</option>
-											<option value="T" ${pageMaker.cri.type == 'T' ? 'selected' : ''}>제목</option>
-											<option value="C" ${pageMaker.cri.type == 'C' ? 'selected' : ''}>내용</option>
-											<option value="W" ${pageMaker.cri.type == 'W' ? 'selected' : ''}>작성자</option>
-											<option value="TC" ${pageMaker.cri.type == 'TC' ? 'selected' : ''}>제목 또는 내용</option>
-											<option value="TW" ${pageMaker.cri.type == 'TW' ? 'selected' : ''}>제목 또는 작성자</option>
-											<option value="TCW" ${pageMaker.cri.type == 'TCW' ? 'selected' : ''}>전체</option>
-										</select>
-										<input id="keyword" type="text" name="keyword" style="margin-top: 1%; height: 3.25rem;" value="${pageMaker.cri.keyword}">
-										<a href="javascript:void(0)" class="button primary icon solid fa-search" style="text-decoration: none; margin-top: 1%; border-radius: 0.25rem; height: 3.25rem;">검색</a>
+									<div class="row" style="text-align:center">
+										<div class="col-3 col-12-small" id="typeDiv">
+											<select name="type" style="padding-top: 0.5%;">
+												<option value="" ${pageMaker.cri.type == null ? 'selected' : ''}>검색 기준</option>
+												<option value="T" ${pageMaker.cri.type == 'T' ? 'selected' : ''}>제목</option>
+												<option value="C" ${pageMaker.cri.type == 'C' ? 'selected' : ''}>내용</option>
+												<option value="W" ${pageMaker.cri.type == 'W' ? 'selected' : ''}>작성자</option>
+												<option value="TC" ${pageMaker.cri.type == 'TC' ? 'selected' : ''}>제목 또는 내용</option>
+												<option value="TW" ${pageMaker.cri.type == 'TW' ? 'selected' : ''}>제목 또는 작성자</option>
+												<option value="TCW" ${pageMaker.cri.type == 'TCW' ? 'selected' : ''}>전체</option>
+											</select>
+										</div>
+										<div class="col-7 col-12-small" id="keywordDiv">
+											<input id="keyword" type="text" name="keyword" style="/* margin-top: 1%; */ height: 3.25rem;" value="${pageMaker.cri.keyword}">
+										</div>
+										<div class="col-2 col-4-small col-6-xsmall" id="searchBtnDiv" style="margin:0 auto;">
+											<a href="javascript:void(0)" class="button primary icon solid fa-search search" style="text-decoration: none;/*  margin-top: 1%; */ border-radius: 0.25rem; width:100%; height: 3.25rem;">검색</a>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -26,7 +26,6 @@
 		
 
 
-		<jsp:include page="includes/footer.jsp" flush="false" />
-		<%-- <%@include file="includes/footer.jsp" %> --%>
+		<jsp:include page="includes/footer.jsp"/>
 	</body>
 </html>
