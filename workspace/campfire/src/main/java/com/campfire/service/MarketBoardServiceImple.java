@@ -98,7 +98,6 @@ public class MarketBoardServiceImple implements MarketBoardService {
 
 	@Override
 	public List<MarketBoardAttachVO> getAttachList(Long bno) {
-		
 		return Amapper.findByBno(bno);
 	}
 
