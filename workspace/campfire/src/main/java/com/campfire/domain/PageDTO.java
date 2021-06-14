@@ -5,6 +5,7 @@ import java.util.List;
 import com.campfire.domain.freeBoard.FreeBoardReplyVO;
 import com.campfire.domain.marketBoard.MarketReplyVO;
 import com.campfire.domain.reviewBoard.ReviewReplyVO;
+import com.campfire.domain.tipBoard.TipBoardReplyVO;
 
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class PageDTO {
 	private Criteria cri;
 	private List<ReviewReplyVO> reviewReplyList;
 	private List<FreeBoardReplyVO> freeBoardReplyList;
+	private List<TipBoardReplyVO> tipBoardReplyList;
 	private List<MarketReplyVO> marketReplyList;
 	
 	public PageDTO(Criteria cri, int total) {
@@ -45,6 +47,11 @@ public class PageDTO {
 	public PageDTO(Criteria cri, List<FreeBoardReplyVO> freeBoardReplyList ,int total) {
 		this(cri, total);
 		this.freeBoardReplyList = freeBoardReplyList;
+	}
+	
+	public PageDTO(List<TipBoardReplyVO> tipBoardReplyList ,Criteria cri, int total) {
+		this(cri, total);
+		this.tipBoardReplyList = tipBoardReplyList;
 	}
 	
 	public PageDTO(int total, Criteria cri, List<MarketReplyVO> marketReplyList) {
