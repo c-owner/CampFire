@@ -46,12 +46,14 @@ public class FileCheckTask {
 		//자유게시판
 		List<FreeBoardAttachVO> f_fileList = f_attachMapper.getOldFiles();
 		List<Path> f_fileListPaths = f_fileList.stream().map(f_vo -> 
-			Paths.get("C:\\upload", f_vo.getUploadPath(), f_vo.getUuid() + "_" + f_vo.getFileName()))
+			//Paths.get("C:\\upload", f_vo.getUploadPath(), f_vo.getUuid() + "_" + f_vo.getFileName()))
+			Paths.get("/usr/local/upload/", f_vo.getUploadPath(), f_vo.getUuid() + "_" + f_vo.getFileName()))
 				.collect(Collectors.toList());
 		
 		f_fileListPaths.forEach(log::warn);
 		
-		File f_targetDir = Paths.get("C:\\upload\\free\\", getFolderYesterDay()).toFile();
+		//File f_targetDir = Paths.get("C:\\upload\\free\\", getFolderYesterDay()).toFile();
+		File f_targetDir = Paths.get("/usr/local/upload/free/", getFolderYesterDay()).toFile();
 		
 		File[] f_removeFiles = f_targetDir.listFiles(file -> !f_fileListPaths.contains(file.toPath()));
 		
@@ -63,12 +65,14 @@ public class FileCheckTask {
 		//장터게시판
 		List<MarketBoardAttachVO> m_fileList = m_attachMapper.getOldFiles();
 		List<Path> m_fileListPaths = m_fileList.stream().map(m_vo -> 
-			Paths.get("C:\\upload", m_vo.getUploadPath(), m_vo.getUuid() + "_" + m_vo.getFileName()))
+			//Paths.get("C:\\upload", m_vo.getUploadPath(), m_vo.getUuid() + "_" + m_vo.getFileName()))
+			Paths.get("/usr/local/upload/", m_vo.getUploadPath(), m_vo.getUuid() + "_" + m_vo.getFileName()))
 				.collect(Collectors.toList());
 		
 		m_fileListPaths.forEach(log::warn);
 		
-		File m_targetDir = Paths.get("C:\\upload\\market\\", getFolderYesterDay()).toFile();
+		//File m_targetDir = Paths.get("C:\\upload\\market\\", getFolderYesterDay()).toFile();
+		File m_targetDir = Paths.get("/usr/local/upload/market/", getFolderYesterDay()).toFile();
 		
 		File[] m_removeFiles = m_targetDir.listFiles(file -> !m_fileListPaths.contains(file.toPath()));
 		

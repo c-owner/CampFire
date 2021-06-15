@@ -137,8 +137,8 @@ public class MarketController {
 		
 		attachList.forEach(m_vo -> {
 			try {
-				Path origin = Paths.get("C:\\upload\\market\\" + m_vo.getUploadPath() + "\\" + m_vo.getUuid() + "_" + m_vo.getFileName());
-//				Path origin = Paths.get("/usr/local/upload/market/" + m_vo.getUploadPath() + "/" + m_vo.getUuid() + "_" + m_vo.getFileName());
+//				Path origin = Paths.get("C:\\upload\\market\\" + m_vo.getUploadPath() + "\\" + m_vo.getUuid() + "_" + m_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/market/" + m_vo.getUploadPath() + "/" + m_vo.getUuid() + "_" + m_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {
