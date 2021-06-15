@@ -43,14 +43,15 @@ import lombok.extern.log4j.Log4j;
 public class UploadController {
 	
 	String fileFolder = "/usr/local/upload/";
-//	String uploadFolder = "/usr/local/upload";
+	String uploadFolder = "/usr/local/upload/";
+//	String fileFolder = "C:\\upload\\";
+//	String uploadFolder = "C:\\upload\\";
 	
 	//썸네일 화면에 출력
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-		File file = new File("C:\\upload\\"+fileName);
-//		File file = new File("/usr/local/upload/"+fileName);
+		File file = new File(fileFolder+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -79,9 +80,6 @@ public class UploadController {
 		List<TipBoardAttachVO> t_succeedList = new ArrayList<>();
 		List<TipBoardAttachVO> t_failureList = new ArrayList<>();
 	
-		String uploadFolder = "C:\\upload\\"+voName;
-//		String uploadFolder = "/usr/local/upload/"+voName;
-
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
@@ -189,8 +187,7 @@ public class UploadController {
 		File file = null;
 		
 		try {
-			file = new File("C:\\upload\\" + URLDecoder.decode(fileName));
-//			file = new File("/usr/local/upload/" + URLDecoder.decode(fileName));
+			file = new File(fileFolder + URLDecoder.decode(fileName));
 			file.delete();
 			
 			if(fileType.equals("image")) {
@@ -213,8 +210,7 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping(value="/download", produces= {MediaType.APPLICATION_OCTET_STREAM_VALUE})
 	public ResponseEntity<Resource> download(String fileName, @RequestHeader("User-Agent") String userAgent){
-		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
-//		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
+		Resource resource = new FileSystemResource(fileFolder + fileName);
 		
 		String resourceName = resource.getFilename();
 		String originalName = resourceName.substring(resourceName.indexOf("_") + 1);
