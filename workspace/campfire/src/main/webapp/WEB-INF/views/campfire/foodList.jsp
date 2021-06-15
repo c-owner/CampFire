@@ -47,8 +47,19 @@
 				<div class="posts">
 					<c:forEach var="food" items="${list}" begin="0" step="1">
 					<article>
-						<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-						<img class="reviewImg" src="https://img.youtube.com/vi/bzODJm-YivA/0.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+						<c:set var="thumbContent" value="${food.content}"/>			
+						<c:set var="thumbAfter" value="${fn:substringAfter(thumbContent, 'youtube.com/embed/')}"/>
+						<c:set var="thumbBefore" value="${fn:substringBefore(thumbAfter, '\"')}"/>		
+						<c:choose>
+						    <c:when test="${thumbBefore eq ''}">
+								<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
+								<img class="reviewImg" src="/resources/images/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+						    </c:when>
+						    <c:otherwise>
+						    	<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
+								<img class="reviewImg" src="https://img.youtube.com/vi/${thumbBefore}/0.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+						    </c:otherwise>
+						</c:choose>
 						
 						<div class="info">
 							<div class="info-detail">
