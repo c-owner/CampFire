@@ -49,8 +49,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> display(String fileName) {
-//		File file = new File("C:\\upload\\"+fileName);
-		File file = new File("/usr/local/upload/"+fileName);
+		File file = new File("C:\\upload\\"+fileName);
+//		File file = new File("/usr/local/upload/"+fileName);
 		
 		ResponseEntity<byte[]> result = null;
 		
@@ -68,7 +68,6 @@ public class UploadController {
 	@ResponseBody
 	@PostMapping(value="/upload/{vo}", produces= {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<AllFileDTO> upload(MultipartFile uploadFile, @PathVariable("vo") String voName){
-		int check = 0;
 		List<FreeBoardAttachVO> f_succeedList = new ArrayList<>();
 		List<FreeBoardAttachVO> f_failureList = new ArrayList<>();
 		List<ReviewBoardAttachVO> r_succeedList = new ArrayList<>();
@@ -79,25 +78,9 @@ public class UploadController {
 		List<GuideBoardAttachVO> g_failureList = new ArrayList<>();
 		List<TipBoardAttachVO> t_succeedList = new ArrayList<>();
 		List<TipBoardAttachVO> t_failureList = new ArrayList<>();
-		
 	
-	
-		if(voName.equals("free")) {check = 1;}
-		else if(voName.equals("review")) {check = 2;}
-		else if(voName.equals("market")) {check = 3;}
-//		String uploadFolder = "C:\\upload";
-		String uploadFolder = "/usr/local/upload";
-		switch(check) {
-		case 1:
-			uploadFolder += "/free";
-			break;
-		case 2:
-			uploadFolder += "/review";
-			break;
-		case 3:
-			uploadFolder += "/market";
-			break;
-		}
+		String uploadFolder = "C:\\upload\\"+voName;
+//		String uploadFolder = "/usr/local/upload/"+voName;
 
 		String uploadFolderPath = getFolder();
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
@@ -112,7 +95,6 @@ public class UploadController {
 		MarketBoardAttachVO m_vo = new MarketBoardAttachVO();
 		GuideBoardAttachVO g_vo = new GuideBoardAttachVO();
 		TipBoardAttachVO t_vo = new TipBoardAttachVO();
-		
 		
 		String uploadFileName = uploadFile.getOriginalFilename();
 		String temp = uploadFileName;
@@ -207,8 +189,8 @@ public class UploadController {
 		File file = null;
 		
 		try {
-//			file = new File("C:\\upload\\" + URLDecoder.decode(fileName));
-			file = new File("/usr/local/upload/" + URLDecoder.decode(fileName));
+			file = new File("C:\\upload\\" + URLDecoder.decode(fileName));
+//			file = new File("/usr/local/upload/" + URLDecoder.decode(fileName));
 			file.delete();
 			
 			if(fileType.equals("image")) {
@@ -231,8 +213,8 @@ public class UploadController {
 	@ResponseBody
 	@GetMapping(value="/download", produces= {MediaType.APPLICATION_OCTET_STREAM_VALUE})
 	public ResponseEntity<Resource> download(String fileName, @RequestHeader("User-Agent") String userAgent){
-//		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
-		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
+		Resource resource = new FileSystemResource("C:\\upload\\" + fileName);
+//		Resource resource = new FileSystemResource("/usr/local/upload/" + fileName);
 		
 		String resourceName = resource.getFilename();
 		String originalName = resourceName.substring(resourceName.indexOf("_") + 1);

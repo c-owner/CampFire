@@ -19,10 +19,10 @@ public class BoardMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private FreeBoardMapper mapper;
 	
-	@Test
-	public void testReadCnt() {
-		log.info("조회수 : "+mapper.readCntUp(126L));
-	}
+//	@Test
+//	public void testReadCnt() {
+//		log.info("조회수 : "+mapper.readCntUp(126L));
+//	}
 	
 	
 //	@Test

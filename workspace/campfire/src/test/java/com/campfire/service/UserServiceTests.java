@@ -53,8 +53,8 @@ public class UserServiceTests {
 //		log.info(service.findId("abc@naver.com"));
 //	}
 	
-	@Test
-	public void testFindPw() {
-		log.info(service.findPw("test123", "bc@naver.com"));
-	}
+//	@Test
+//	public void testFindPw() {
+//		log.info(service.findPw("test123", "bc@naver.com"));
+//	}
 }

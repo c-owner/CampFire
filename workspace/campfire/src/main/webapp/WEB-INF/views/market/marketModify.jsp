@@ -70,6 +70,7 @@
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">
+							<input type="text" name="area" value="${board.area}" style="margin-top: 2%;" maxlength="12">
 							<input type="text" name="price" value="${board.price}" style="margin-top: 2%;">					
 							<input type="text" class="title_text" name="title" value="${board.title}" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content">${board.content}</textarea>
@@ -149,7 +150,7 @@
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
 				var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
-				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				//var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "/" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/market/" + url);
 				var str = "";

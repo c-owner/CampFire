@@ -11,4 +11,5 @@ public interface FreeBoardAttachMapper {
 	public void insert(FreeBoardAttachVO f_vo);
 	public void delete(String uuid);
 	public void deleteAll(Long bno);
+	public int attCnt(Long bno);
 }

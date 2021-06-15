@@ -24,11 +24,11 @@ public class ReplyServiceTests {
 //		log.info(service);
 //	}
 	
-	@Test
-	public void testList() {
-		Criteria cri = new Criteria(1, 12);
-		log.info(service.getList(cri, 89L));
-	}
+//	@Test
+//	public void testList() {
+//		Criteria cri = new Criteria(1, 12);
+//		log.info(service.getList(cri, 89L));
+//	}
 	
 //	@Test
 //	public void testRegister() {

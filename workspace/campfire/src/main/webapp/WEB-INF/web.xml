@@ -33,10 +33,10 @@
 			<location>/Users/upload/temp</location>
 			-->
 			<!-- 
-			<location>C:\\upload\\temp</location>
 			-->
-			<location>/usr/local/upload/temp</location>
+			<location>C:\\upload\\temp</location>
 			<!-- 
+			<location>/usr/local/upload/temp</location>
 			-->
 			<max-file-size>20971520</max-file-size>
 			<max-request-size>41943040</max-request-size>

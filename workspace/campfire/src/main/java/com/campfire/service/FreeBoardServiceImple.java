@@ -38,10 +38,19 @@ public class FreeBoardServiceImple implements FreeBoardService{
 		List<FreeBoardAttachVO> attachList = f_vo.getAttachList();
 		if(attachList == null || attachList.size() <= 0) {return;}
 		
-		attachList.forEach(vo -> {
-			vo.setBno(f_vo.getBno());
-			a_mapper.insert(vo);
-		});
+		for(int i=0; i<attachList.size(); i++) {
+			if(attachList.get(i).getUuid() == null) {continue;}
+			attachList.get(i).setBno(f_vo.getBno());
+			a_mapper.insert(attachList.get(i));
+		}
+		
+//		attachList.forEach(vo -> {
+//			if(vo == null) {
+//				
+//			}
+//			vo.setBno(f_vo.getBno());
+//			a_mapper.insert(vo);
+//		});
 	}
 
 	@Transactional

@@ -23,11 +23,11 @@ public class BoardServiceTests {
 	private MarketBoardService s;
 	
 	
-	@Test
-	public void testList() {
-		Criteria cri = new Criteria(1, 10);
-		s.getList(cri, "S").forEach(log::info);
-	}
+//	@Test
+//	public void testList() {
+//		Criteria cri = new Criteria(1, 10);
+//		s.getList(cri, "S").forEach(log::info);
+//	}
 	
 //	@Test
 //	public void test() {
