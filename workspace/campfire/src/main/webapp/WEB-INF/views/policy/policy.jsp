@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 	<head>
-		<title>모닥불</title>
+		<title>서비스 약관 | 모닥불</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -15,7 +15,6 @@
 	.box_account {
 	    overflow: hidden;
 	    position: relative;
-	    margin-top: 80px;
 	    padding: 30px 40px;
 	    background: #f4f4f4;
 	}
@@ -266,7 +265,7 @@
 			<div class="inner">
 				<div id="mArticle">
 				<div class="box_account">
-			        <p class="desc_account"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
+			        <p class="desc_account" style="margin: 0;"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
 			    </div>
 			    <ul class="tab_policy" role="tablist">
 				    <li class=" "><a href="/noticeList" class="link_policy" role="tab">이용약관</a></li>

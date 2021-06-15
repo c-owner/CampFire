@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campfire.mapper.ReviewBoardMapper">
+	
+	<sql id="typeCriteria">
+		<if test="categories != null and categories != ''">
+			AND (CATEGORIES LIKE #{categories}) 
+		</if>
+	</sql>
 	<sql id="keyword">
 		<choose>
 			<when test="keyword != null and keyword != ''">
@@ -13,12 +19,6 @@
 				OR CAMPNAME LIKE '%'||#{keyword}||'%' 
 			</when>
 		</choose>
-	</sql>
-	
-	<sql id="typeCriteria">
-		<if test="categories != null and categories != ''">
-			AND (CATEGORIES LIKE #{categories}) 
-		</if>
 	</sql>
 	<sql id="period">
 		<choose>

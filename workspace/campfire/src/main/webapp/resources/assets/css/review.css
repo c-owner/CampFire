@@ -82,7 +82,7 @@ a.btn.btn-secondary-show {
 
 .searchMenu {
 	display: inline-flex;
-	
+	align-items: center;
 }
 .searchTerm {
 	border-radius: initial;

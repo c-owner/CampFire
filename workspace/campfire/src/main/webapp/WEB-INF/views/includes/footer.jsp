@@ -103,7 +103,7 @@
                             <dt class="sbj">
                                 <img src="/resources/images/community/bbsico_0.png" alt="" height="50"><br>
                                 캠핑 팁
-								<a href="/campfire/tip" class="fr more" title="더 보기">
+								<a href="/campfire/tipList" class="fr more" title="더 보기">
 									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
 									xml:space="preserve" width="16px" height="16px">
 									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
@@ -117,7 +117,7 @@
                             <dt class="sbj">
                                 <img src="/resources/images/community/bbsico_1.png" alt="" height="50"><br>
                                 캠핑 음식
-								<a href="/campfire/food" class="fr more" title="더 보기">
+								<a href="/campfire/foodList" class="fr more" title="더 보기">
 									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
 									xml:space="preserve" width="16px" height="16px">
 									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
@@ -131,7 +131,7 @@
                             <dt class="sbj">
                                 <img src="/resources/images/community/bbsico_2.png" alt="" height="50"><br>
                                 캠핑리뷰
-                                <a href="/revew/reviewList" class="fr more" title="더 보기">
+                                <a href="/review/reviewList" class="fr more" title="더 보기">
 									<svg x="0px" y="0px" viewBox="0 0 42 42" style="enable-background:new 0 0 42 42;"
 									xml:space="preserve" width="16px" height="16px">
 									<polygon points="42,20 22,20 22,0 20,0 20,20 0,20 0,22 20,22 20,42 22,42 22,22 42,22 "fill="#888">
