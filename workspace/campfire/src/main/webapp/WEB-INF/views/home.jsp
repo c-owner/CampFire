@@ -354,7 +354,7 @@
 		var objImg = document.getElementById("image"); 
 		
 		objImg.src = imgArray[imgNum]; 
-		setTimeout(showImage,6000); 
+		setTimeout(showImage,30000); 
 		
 	}
 
