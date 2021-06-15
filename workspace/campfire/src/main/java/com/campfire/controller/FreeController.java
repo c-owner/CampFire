@@ -25,6 +25,7 @@ import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.freeBoard.FreeBoardVO;
+import com.campfire.mapper.FreeBoardAttachMapper;
 import com.campfire.service.FreeBoardService;
 
 import lombok.AllArgsConstructor;
@@ -39,6 +40,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/free/*")
 public class FreeController {
 	private FreeBoardService service;
+	private FreeBoardAttachMapper a_service;
 	
 	//전체 목록 가져오기
 	@GetMapping("/freeList")
@@ -61,7 +63,6 @@ public class FreeController {
 	//게시글 등록
 	@PostMapping("/freeWrite")
 	public String register(FreeBoardVO f_vo, RedirectAttributes rttr) {
-		System.out.println(f_vo.getTitle());
 		if(f_vo.getAttachList() != null) {
 			f_vo.getAttachList().forEach(log::info);
 		}
@@ -73,7 +74,9 @@ public class FreeController {
 	//상세보기로 이동
 	@GetMapping({"/freeView", "/freeModify"})
 	public void move(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+		service.get(bno).setAttachList(a_service.findByBno(bno));
 		model.addAttribute("board", service.get(bno));
+		model.addAttribute("attachList", a_service.findByBno(bno));
 	}
 	
 	//게시글 수정
@@ -119,7 +122,7 @@ public class FreeController {
 		
 		attachList.forEach(f_vo -> {
 			try {
-//				Path origin = Paths.get("C:\\upload\\free\\" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+//				Path origin = Paths.get("C:\\upload\\free\\" + f_vo.getUploadPath() + "\\" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Path origin = Paths.get("/usr/local/upload/free/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Files.delete(origin);
 				

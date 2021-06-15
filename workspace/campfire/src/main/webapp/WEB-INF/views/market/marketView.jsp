@@ -43,7 +43,8 @@
 				display: inline-block;
 			}
 			
-			.itempDiv {
+			.itemDiv {
+				width: 50%;
 				float: left;
 				padding-left: 10%;
 				padding-top: 2%;
@@ -58,6 +59,7 @@
 			}
 			
 			.itemTitle {
+				width: 100%;
 				font-size: 24px;
 			    margin-bottom: 25px;
 			    font-weight: 600;
@@ -143,7 +145,7 @@
 					width: 100% !important;
 				}
 				
-				.itempDiv {
+				.itemDiv {
 					clear: both;
 					text-align: center;
 					width: 100%;
@@ -175,7 +177,7 @@
 							<img class="itemPicture" src="/display?fileName=/market/${board.thumbnail}" onerror="this.src='/resources/images/thumb/default_thumb.jpg'" alt="">
 						</div>
 						<small class="text-muted" style="float: right; font-weight: 600;">${board.regDate}</small><br>
-						<div class="itempDiv">
+						<div class="itemDiv">
 							<div class="itemTitle">${board.title}</div>
 							<c:if test="${board.marketKeyword ne 'F'}">
 								<div class="itemPrice">${board.price}<span>원</span></div>

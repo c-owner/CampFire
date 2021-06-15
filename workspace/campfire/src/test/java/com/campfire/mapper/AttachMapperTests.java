@@ -26,13 +26,13 @@ public class AttachMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private MarketBoardAttachMapper Mmapper;
 	
-	@Test
-	public void thumbnail() {
-		Long[] test = {63L, 64L};
-		for(int i=0; i<test.length;i++) {
-			log.info(Mmapper.thumbnail(test[i]));
-		}
-	}
+//	@Test
+//	public void thumbnail() {
+//		Long[] test = {63L, 64L};
+//		for(int i=0; i<test.length;i++) {
+//			log.info(Mmapper.thumbnail(test[i]));
+//		}
+//	}
 	
 //	@Test
 //	public void test() {
@@ -77,10 +77,10 @@ public class AttachMapperTests {
 //		mapper.findByBno(89L).forEach(log::info);
 //	}
 	
-	@Test
-	public void testFind() {
-		Mmapper.findByBno(44L).forEach(log::info);
-	}
+//	@Test
+//	public void testFind() {
+//		Mmapper.findByBno(44L).forEach(log::info);
+//	}
 	
 //	@Test
 //	public void testOld() {

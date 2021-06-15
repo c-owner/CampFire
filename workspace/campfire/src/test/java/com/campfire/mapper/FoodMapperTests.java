@@ -20,11 +20,11 @@ public class FoodMapperTests {
 	@Setter(onMethod_ = @Autowired)
 	private FoodBoardMapper mapper;
 	
-	@Test
-	public void testList() {
-		Criteria c = new Criteria(1,10);
-		mapper.selectBoardList(c).forEach(log::info);
-	}
+//	@Test
+//	public void testList() {
+//		Criteria c = new Criteria(1,10);
+//		mapper.selectBoardList(c).forEach(log::info);
+//	}
 	
 	/*@Test
 	public void testUpdate() {
