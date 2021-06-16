@@ -113,7 +113,7 @@
 					<input type="hidden" name="amount" value="${cri.amount}">
 					<input type="hidden" name="keyword" value="${cri.keyword}">
 					<input type="hidden" name="type" value="${cri.type}">
-					<input type="hidden" name="bno" value="${board.bno}">
+					<input type="hidden" name="bno" value="${review.bno}">
 					<input type="hidden" name="thumb" value="">
 					<c:if test="${attachList != null and fn:length(attachList) > 0}">
 						<c:forEach var="list" items="${attachList}" varStatus="i">
