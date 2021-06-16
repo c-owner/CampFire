@@ -61,7 +61,6 @@
 	    position: relative;
 	    color: #fff;
 	    background-color: #1e1e1e;
-	    border: 1px solid #1e1e1e;
 	    z-index: 99;
 	}
     
@@ -95,7 +94,8 @@
 	    width: 860px;
 	    margin-top: 80px;
 	    border-top: 2px solid #4d4d4d;
-	    word-break: normal;
+        border-bottom: 1px solid #4d4d4d;
+    	margin-bottom: 3em;
 	}
 	.tbl {
 	    width: 100%;
@@ -135,7 +135,7 @@
 	    text-decoration: none;
 	}
 	.inner_cell {
-		text-align: left;	
+		text-align: center;	
 	}
 
 	/* 페이징 처리 */
@@ -253,6 +253,7 @@
 			form{
 				margin: 0;
 			}
+			
 </style>
 	</head>
 	
@@ -267,6 +268,7 @@
 					<div class="box_account">
 				        <p class="desc_account" style="margin: 0;"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
 				    </div>
+				    <form>
 					    <ul class="tab_policy" role="tablist">
 						    <!-- 활성화 시 on 클래스 추가 -->
 						    <!-- WAI-ARIA 속성 구현 예정 -->
@@ -277,6 +279,7 @@
 					        <li class=""><a href="/policy/policy?tab=safeguard" class="link_policy" role="tab">권리침해신고안내</a></li>
 						    <li class=" on"><a href="/policy/policy?tab=notices" class="link_policy" role="tab">공지사항</a></li>
 						</ul>
+				    </form>
 				<div class="wrap_cont wrap_notices">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
@@ -284,14 +287,10 @@
 	                <div class="table-wrapper">
 	                    <div class="tbl_comm fst tbl_public">
 	                        <table class="tbl tbl_type2">
-	                        	<colgroup>
-	                                <col style="width:81%">
-	                                <col style="width:19%">
-	                            </colgroup>
 	                            <thead>
 	                            <tr>
-	                                <th scope="col">내용</th>
-	                                <th scope="col">등록일</th>
+	                                <th>내용</th>
+	                                <th>등록일</th>
 	                            </tr>
 	                            </thead>
 	                            <!-- posts -->
@@ -316,7 +315,7 @@
 	                            </tbody>
 	                        </table>
 	                    </div>
-						<footer class="major">
+						<footer>
 							<div class="big-width" style="text-align:center;">
 								<ul class="pagination">
 									<c:if test="${pageMaker.prev}">
@@ -395,6 +394,9 @@
 					}
 					on.addClass("on");
 				}			
+				
+				
+				
 			});
 			
 			$(".changePage").on("click", function(e){
