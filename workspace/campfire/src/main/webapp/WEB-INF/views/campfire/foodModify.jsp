@@ -51,11 +51,11 @@
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
-							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
-							<textarea class="summernote" name="content"></textarea>
+							<input type="text" class="title_text" name="title" value="${food.title}" placeholder="제목을 입력해주세요." maxlength="30">
+							<textarea class="summernote" name="content">${food.content}</textarea>
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; foodForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: validation();" class="button big" style="text-decoration: none;">등록</a></h3>
 						<input type="hidden" name="writer" value="${food.writer}"/>
 						<input type="hidden" name="pageNum" value="${cri.pageNum}">
 						<input type="hidden" name="amount" value="${cri.amount}">
@@ -141,5 +141,27 @@ function uploadSummernoteImageFile(file, el) {
 		}
 	});
 };
+
+function validation(){
+	var foodForm = $("form[name='foodForm']");
+	var title = $("input[name='title']").val();
+	var content = $("textarea[name='content']").val();
+	
+	if(title == ""){
+		alert("제목을 입력해주세요.");
+		$("input[name='title']").focus();
+		return;
+	}
+	
+	if(content == ""){
+		alert("내용을 입력해주세요.");
+		$("textarea[name='content']").focus();
+		return;
+	}
+	
+	j=0;
+	
+	foodForm.submit();
+}
 </script>
 </html>
