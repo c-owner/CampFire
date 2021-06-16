@@ -210,7 +210,7 @@
 		<script src="/resources/assets/js/modal.js"></script>
 	</body>
 	<script>
-		$("a.search").on("click", function(e){
+		$("a.fa-search").on("click", function(e){
 			e.preventDefault();
 			var searchForm = $("#searchForm");
 			
