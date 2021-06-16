@@ -9,6 +9,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
+		<link rel="stylesheet" href="/resources/assets/css/food.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 		<style>
 		.col-6.col-10-medium.col-11-small img {
@@ -25,19 +26,11 @@
 <div id="main">
 	<!-- Post -->
 		<section class="main special" style="margin-top: 30px;">
-			<div class="inner banner">
-				<header class="major">
-					<span class="category">캠핑 리뷰</span>
-				</header>
-			</div>
 			<a href="/campfire/foodList${cri.getListLink()}" class="button small primary">돌아가기</a>
 			<div class="row" style="display:block;">
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">${food.title}</h2></div>
 				<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;">
 					<div class="header">
-						<%-- <h3 style="font-weight: bold; text-align: left; margin: 0 0;">
-							${review.title}
-						</h3> --%>
 						<div class="row">
 							<div class="col-6" style="text-align: left;">
 								<h3>작성자 : ${food.writer}</h3>
@@ -52,7 +45,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="margin-bottom: 10px; border: darkgrey 1px solid; border-radius: 10px;">
+					<div class="video-container" style="margin-bottom: 10px; border: darkgrey 1px solid; border-radius: 10px;">
 						${food.content}
 					</div>
 				</div>
@@ -72,8 +65,10 @@
 							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
-								<input type="button" class="button" value="수정" onclick="location.href='/campfire/foodModify${cri.getListLink()}&bno=${food.bno}'"/>
-								<input type="submit" class="button" value="삭제"/>
+						<c:if test="${sessionId eq food.writer}">
+							<a class="button small" id="boardModify" href="/campfire/foodModify${cri.getListLink()}&bno=${food.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
+							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
+						</c:if>
 						</div>
 					</div>
 					
@@ -109,6 +104,13 @@
 						
 						</ul>
 					</div>
+					<form name="removeForm" action="/campfire/foodRemove">
+					<input type="hidden" name="pageNum" value="${cri.pageNum}">
+					<input type="hidden" name="amount" value="${cri.amount}">
+					<input type="hidden" name="type" value="${cri.type}">
+					<input type="hidden" name="keyword" value="${cri.keyword}">
+					<input type="hidden" name="bno" value="${food.bno}">
+				</form>
 			</div>
 		</section>
 </div>

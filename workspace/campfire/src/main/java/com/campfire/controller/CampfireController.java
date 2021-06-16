@@ -258,7 +258,7 @@ public class CampfireController {
 		
 	}
 	
-	@GetMapping("/remove")
+	@GetMapping("/foodRemove")
 	public String foodRemove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
 		List<FoodBoardAttachVO> attachList = f_service.getAttachList(bno);
 		if(f_service.remove(bno)) {

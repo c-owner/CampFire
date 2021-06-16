@@ -42,7 +42,7 @@
 	
 	<delete id="deleteBoard">
 		DELETE TBL_FOOD_BOARD 
-		WHERE RNO = #{rno}
+		WHERE BNO = #{bno}
 	</delete>
 	
 	<update id="updateReadCnt">

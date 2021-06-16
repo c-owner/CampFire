@@ -11,7 +11,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="/resources/assets/css/main.css" />
 		<link rel="stylesheet" href="/resources/assets/css/search.css" />
-		<link rel="stylesheet" href="/resources/assets/css/review.css" />
+		<link rel="stylesheet" href="/resources/assets/css/food.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
 	</head>
 	
@@ -42,6 +42,25 @@
 				</div>
 			</section>
 			
+			<hr style="border-top: 2px solid black;">
+					<form action="/campfire/foodList" id="searchForm">
+						<div class="fields" class="field">
+							<div>
+								<div style="text-align:center; width: 100%;">
+									<select class="searchTag" name="type" style="padding-top: 0.5%;">
+										<option value="" ${pageMaker.cri.type == null ? 'selected' : ''}>검색 기준</option>
+										<option value="T" ${pageMaker.cri.type == 'T' ? 'selected' : ''}>제목</option>
+										<option value="C" ${pageMaker.cri.type == 'C' ? 'selected' : ''}>내용</option>
+										<option value="TC" ${pageMaker.cri.type == 'TC' ? 'selected' : ''}>전체</option>
+									</select>
+									<input type="hidden" name="check" value="">
+									<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
+									<a href="javascript:void(0)" class="button primary icon solid fa-search searchBtn" style="">검색</a>
+								</div>
+							</div>
+						</div>
+					</form>
+			
 		<!-- Posts -->
 			<section class="main">
 				<div class="posts">
@@ -53,11 +72,11 @@
 						<c:choose>
 						    <c:when test="${thumbBefore eq ''}">
 								<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-								<img class="reviewImg" src="/resources/images/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+								<img class="foodImg" src="/resources/images/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
 						    </c:when>
 						    <c:otherwise>
 						    	<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-								<img class="reviewImg" src="https://img.youtube.com/vi/${thumbBefore}/0.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+								<img class="foodImg" src="https://img.youtube.com/vi/${thumbBefore}/0.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
 						    </c:otherwise>
 						</c:choose>
 						
@@ -164,7 +183,7 @@
 
 	</body>
 	<script>
-	$("a.fa-search").on("click", function(e){
+	/* $("a.fa-search").on("click", function(e){
 		e.preventDefault();
 		var searchForm = document.searchForm;
 		
@@ -177,7 +196,7 @@
 		var pageNum = $(this).attr("href");
 		actionForm.find("input[name='pageNum']").val(pageNum);
 		actionForm.submit();
-	});
+	}); */
 
 	function upload(){
 		if ("${sessionId}" == ""){
@@ -196,5 +215,29 @@
 			location.replace("/campfire/foodView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
 		}
 	}
+	
+	$(".changePage").on("click", function(e){
+		e.preventDefault();
+		var actionForm = $("#actionForm");
+		var pageNum = $(this).attr("href");
+		actionForm.find("input[name='pageNum']").val(pageNum);
+		actionForm.submit();
+	});
+	
+	$(".searchBtn").on("click", function(e){
+		e.preventDefault();
+		var searchForm = $("#searchForm");
+		
+		if(!searchForm.find("option:selected").val()){
+			alert("검색 종류를 선택하세요.");
+			return false;
+		}
+		if(!searchForm.find("input[name='keyword']").val()){
+			alert("키워드를 입력하세요.");
+			return false;
+		}
+		$("input[name='check']").val("${check}");
+		searchForm.submit();
+	});
 	</script>
 </html>
