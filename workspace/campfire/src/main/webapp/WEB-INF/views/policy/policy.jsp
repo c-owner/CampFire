@@ -283,7 +283,7 @@
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
 	                </div>
-	                <div class="area_cont">
+	                <div class="table-wrapper">
 	                    <div class="tbl_comm fst tbl_public">
 	                        <table class="tbl tbl_type2">
 	                        	<colgroup>
@@ -304,14 +304,14 @@
 	                                        <div class="inner_cell">
 	                                        <span class="txt_public">
 	                                            <a href="/policy/policy" class="loss_word link_txt">
-	                                                    개인정보 처리방침 개정안내
+	                                                    ${policy.title}
 	                                            </a>
-	                                                <c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
+	                                                <c:if test="${policy.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
 	                                        </span>
 	                                        </div>
 	                                    </td>
 	                                    <td>
-	                                    	<div class="inner_cell">2021-06-07</div>
+	                                    	<div class="inner_cell">${policy.updateDate}</div>
 	                                   	</td>
 	                                </tr>
                                 </c:forEach>
@@ -364,7 +364,7 @@
 	                            <fieldset>
 	                                <legend class="screen_out">검색어 입력폼</legend>
 	                                <input type="text" id="search_word" name="keyword" class="inp_keyword" title="검색어" value="${pageMaker.cri.keyword}" placeholder="검색">
-	                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%;"></a>
+	                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%; position: absolute;"></a>
 	                            </fieldset>
 								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
@@ -398,32 +398,31 @@
 					on.addClass("on");
 				}			
 			});
+			
+			$(".changePage").on("click", function(e){
+				e.preventDefault();
+				var actionForm = $("#actionForm");
+				var pageNum = $(this).attr("href");
+				actionForm.find("input[name='pageNum']").val(pageNum);
+				actionForm.submit();
+			});
+			$("a.search").on("click", function(e){
+				e.preventDefault();
+				var searchForm = $("#searchForm");
+				
+				if(!searchForm.find("input[name='keyword']").val()){
+					alert("키워드를 입력하세요.");
+					return false;
+				}
+				searchForm.submit();
+			});
+			
 		});
 	</script>
 	
 	<script>
 
-		$(".changePage").on("click", function(e){
-			e.preventDefault();
-			var actionForm = $("#actionForm");
-			var pageNum = $(this).attr("href");
-			actionForm.find("input[name='pageNum']").val(pageNum);
-			actionForm.submit();
-		});
-		$("a.search").on("click", function(e){
-			e.preventDefault();
-			var searchForm = $("#searchForm");
-			
-			if(!searchForm.find("option:selected").val()){
-				alert("검색 종류를 선택하세요.");
-				return false;
-			}
-			if(!searchForm.find("input[name='keyword']").val()){
-				alert("키워드를 입력하세요.");
-				return false;
-			}
-			searchForm.submit();
-		});
+	
    
    
 		//alert("${result}");
