@@ -183,20 +183,12 @@
 
 	</body>
 	<script>
-	/* $("a.fa-search").on("click", function(e){
+	/*  $("a.fa-search").on("click", function(e){
 		e.preventDefault();
 		var searchForm = document.searchForm;
 		
 		searchForm.submit();
-	});
-	
-	$(".changePage").on("click", function(e){
-		e.preventDefault();
-		var actionForm = $("#actionForm");
-		var pageNum = $(this).attr("href");
-		actionForm.find("input[name='pageNum']").val(pageNum);
-		actionForm.submit();
-	}); */
+	} */
 
 	function upload(){
 		if ("${sessionId}" == ""){
