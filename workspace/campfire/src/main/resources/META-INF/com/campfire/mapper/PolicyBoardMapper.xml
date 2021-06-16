@@ -4,7 +4,7 @@
 	<!-- 검색 -->
 	<sql id="tab">
 		<if test="tab != null and tab != ''">
-		 	(TAB LIKE #{tab}) 
+		 	(TAB LIKE #{tab}) AND 
 		</if>
 	</sql>
 	<sql id="keyword">
@@ -26,9 +26,8 @@
 				FROM TBL_POLICY_BOARD 
 				WHERE 
 				<include refid="keyword"/>
-				<include refid="tab"/>
-					ROWNUM <![CDATA[<=]]> #{pageNum} * #{amount}
-					AND TAB = #{tab})
+				<include refid="tab"/> 
+				ROWNUM <![CDATA[<=]]> #{pageNum} * #{amount})
 		WHERE R <![CDATA[>]]> (#{pageNum} - 1) * #{amount}
 	</select>
 	

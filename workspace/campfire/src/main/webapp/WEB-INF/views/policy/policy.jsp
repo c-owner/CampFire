@@ -298,6 +298,7 @@
 	                            </thead>
 	                            <!-- posts -->
 	                            <tbody>
+	                            <c:forEach var="policy" items="${list}" begin="0" step="1">
 	                                <tr>
 	                                    <td class="ta_left">
 	                                        <div class="inner_cell">
@@ -313,6 +314,7 @@
 	                                    	<div class="inner_cell">2021-06-07</div>
 	                                   	</td>
 	                                </tr>
+                                </c:forEach>
 	                            </tbody>
 	                        </table>
 	                    </div>

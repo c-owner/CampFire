@@ -15,6 +15,8 @@ public class Criteria {
 	private String keyword;
 	private String from; // 기간
 	private String categories; // 분야
+	private String tab;
+	
 	public Criteria() {
 		this(1, 12);
 	}
@@ -41,6 +43,7 @@ public class Criteria {
 			.queryParam("pageNum", pageNum)
 			.queryParam("amount", amount)
 			.queryParam("from", from)
+			.queryParam("tab", tab)
 			.queryParam("type", type)
 			.queryParam("categories", categories)
 			.queryParam("keyword", keyword);
