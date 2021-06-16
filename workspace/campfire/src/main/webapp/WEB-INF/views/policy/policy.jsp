@@ -267,7 +267,6 @@
 					<div class="box_account">
 				        <p class="desc_account" style="margin: 0;"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
 				    </div>
-				    <form action="/policy/policy" id="tabForm">
 					    <ul class="tab_policy" role="tablist">
 						    <!-- 활성화 시 on 클래스 추가 -->
 						    <!-- WAI-ARIA 속성 구현 예정 -->
@@ -278,7 +277,6 @@
 					        <li class=""><a href="/policy/policy?tab=safeguard" class="link_policy" role="tab">권리침해신고안내</a></li>
 						    <li class=" on"><a href="/policy/policy?tab=notices" class="link_policy" role="tab">공지사항</a></li>
 						</ul>
-					</form>
 				<div class="wrap_cont wrap_notices">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
