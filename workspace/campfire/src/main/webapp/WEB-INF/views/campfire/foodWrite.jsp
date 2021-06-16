@@ -57,7 +57,7 @@
 							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; foodForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: validation();" class="button big" style="text-decoration: none;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -111,7 +111,7 @@
 	var j = 0;
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
-		var foodForm = $("form[name=foodForm]");
+		var foodForm = $("form[name='foodForm']");
 		data.append("uploadFile", file);
 		$.ajax({
 			data : data,
@@ -138,5 +138,27 @@
 			}
 		});
 	};
+	
+	function validation(){
+		var foodForm = $("form[name='foodForm']");
+		var title = $("input[name='title']").val();
+		var content = $("textarea[name='content']").val();
+		
+		if(title == ""){
+			alert("제목을 입력해주세요.");
+			$("input[name='title']").focus();
+			return;
+		}
+		
+		if(content == ""){
+			alert("내용을 입력해주세요.");
+			$("textarea[name='content']").focus();
+			return;
+		}
+		
+		j=0;
+		
+		foodForm.submit();
+	}
 </script>
 </html>

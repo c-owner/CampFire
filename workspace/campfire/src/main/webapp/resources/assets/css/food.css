@@ -165,9 +165,15 @@ a.image:hover img {
 
 /* post info 정보 */
 .info {
-	/* padding: 18px 13px; */
 	position: relative;
 }
+
+@media screen and (min-width: 960px) {
+	.info {
+		padding: 5% 5%;
+	}
+}
+
 /* post title */
 .title {
 	color: #222;
