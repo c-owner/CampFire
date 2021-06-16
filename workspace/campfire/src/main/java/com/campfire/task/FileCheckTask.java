@@ -13,21 +13,26 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
+import com.campfire.domain.guideBoard.GuideBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
+import com.campfire.domain.tipBoard.TipBoardAttachVO;
 import com.campfire.mapper.FreeBoardAttachMapper;
+import com.campfire.mapper.GuideBoardAttachMapper;
 import com.campfire.mapper.MarketBoardAttachMapper;
+import com.campfire.mapper.TipBoardAttachMapper;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Component
 @Log4j
+@AllArgsConstructor
 public class FileCheckTask {
 	
-	@Setter(onMethod_ = @Autowired)
 	private FreeBoardAttachMapper f_attachMapper;
-	
-	@Setter(onMethod_ = @Autowired)
+	private TipBoardAttachMapper t_attachMapper;
+	private GuideBoardAttachMapper g_attachMapper;
 	private MarketBoardAttachMapper m_attachMapper;
 	
 	//아무 요일 매월 마지막날 03:00시에 실행
@@ -60,6 +65,44 @@ public class FileCheckTask {
 		for (File f_file : f_removeFiles) {
 			log.warn(f_file.getPath() + " deleted");
 			f_file.delete();
+		}
+		
+		// 캠핑 팁
+		List<TipBoardAttachVO> t_fileList = t_attachMapper.getOldFiles();
+		List<Path> t_fileListPaths = t_fileList.stream().map(t_vo -> 
+			//Paths.get("C:\\upload", t_vo.getUploadPath(), t_vo.getUuid() + "_" + t_vo.getFileName()))
+			Paths.get("/usr/local/upload/", t_vo.getUploadPath(), t_vo.getUuid() + "_" + t_vo.getFileName()))
+				.collect(Collectors.toList());
+		
+		t_fileListPaths.forEach(log::warn);
+		
+		//File t_targetDir = Paths.get("C:\\upload\\free\\", getFolderYesterDay()).toFile();
+		File t_targetDir = Paths.get("/usr/local/upload/free/", getFolderYesterDay()).toFile();
+		
+		File[] t_removeFiles = t_targetDir.listFiles(file -> !t_fileListPaths.contains(file.toPath()));
+		
+		for (File t_file : t_removeFiles) {
+			log.warn(t_file.getPath() + " deleted");
+			t_file.delete();
+		}
+		
+		// 캠핑 가이드
+		List<GuideBoardAttachVO> g_fileList = g_attachMapper.getOldFiles();
+		List<Path> g_fileListPaths = g_fileList.stream().map(g_vo -> 
+			//Paths.get("C:\\upload", g_vo.getUploadPath(), g_vo.getUuid() + "_" + g_vo.getFileName()))
+			Paths.get("/usr/local/upload/", g_vo.getUploadPath(), g_vo.getUuid() + "_" + g_vo.getFileName()))
+				.collect(Collectors.toList());
+		
+		g_fileListPaths.forEach(log::warn);
+		
+		//File g_targetDir = Paths.get("C:\\upload\\free\\", getFolderYesterDay()).toFile();
+		File g_targetDir = Paths.get("/usr/local/upload/free/", getFolderYesterDay()).toFile();
+		
+		File[] g_removeFiles = g_targetDir.listFiles(file -> !g_fileListPaths.contains(file.toPath()));
+		
+		for (File g_file : g_removeFiles) {
+			log.warn(g_file.getPath() + " deleted");
+			g_file.delete();
 		}
 		
 		//장터게시판
