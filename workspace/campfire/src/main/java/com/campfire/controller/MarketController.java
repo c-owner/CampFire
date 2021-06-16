@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,8 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.campfire.domain.Criteria;
 import com.campfire.domain.PageDTO;
-import com.campfire.domain.freeBoard.FreeBoardAttachVO;
-import com.campfire.domain.freeBoard.FreeBoardVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
 import com.campfire.mapper.MarketBoardAttachMapper;
@@ -111,9 +106,12 @@ public class MarketController {
 	//게시글 수정
 	@PostMapping("/marketModify")
 	public String modify(MarketBoardVO m_vo, Criteria cri, RedirectAttributes rttr) {
+		System.out.println("여기여기");
 		if(service.modify(m_vo)) {
+			System.out.println("여기여기여기여기");
 			rttr.addFlashAttribute("result", "success");
 		}
+		System.out.println("여기여기여기여기여기여기");
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
