@@ -57,15 +57,16 @@
 						<div class="container">
 							<div class="filter profile-filters">
 								<div class="filter-mobile">
-									<div class="btn btn-sort btn-soft-pink btn-none-background active" >캠퍼 픽</div>
-									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align " >최신순</div>
-									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align" >추천순</div>
+									<div class="btn btn-sort btn-soft-pink btn-none-background ${pageMaker.cri.type == '' ? 'active' :''}">최신순</div>
+									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align ${pageMaker.cri.type == 'hotest' ? 'active' :''}" >캠퍼 픽</div>
+									<div class="btn btn-sort btn-soft-pink btn-none-background btn-left-align ${pageMaker.cri.type == 'most' ? 'active' :''}" >조회순</div>
 								</div>
+								<input type="hidden" name="type" value="">
 								<div class="searchMenu">
 									<!-- <span class="filter-side-divider"></span> -->
 									<!-- <a href="javascript:searchForm.submit();" class="fas fa-search" style="text-decoration: none; margin-top: 5px;"></a> -->
 									<select name="from" class="select " id="from">
-										<option value="all" ${pageMaker.cri.from == 'all' ? 'selected':''}>전체기간</option>
+										<option value="" ${pageMaker.cri.from == '' ? 'selected':''}>전체기간</option>
 										<option value="day" ${pageMaker.cri.from == 'day' ? 'selected':''}>최근 24시간</option>
 										<option value="week" ${pageMaker.cri.from == 'week' ? 'selected':''}>최근 1주일</option>
 										<option value="month" ${pageMaker.cri.from == 'month' ? 'selected':''}>최근 1달</option>
@@ -73,7 +74,7 @@
 									</select>
 		
 									<select name="categories" class="categories" id="category" >
-										<option value="all" ${pageMaker.cri.categories == 'all' ? 'selected':''}>전체분야</option>
+										<option value="" ${pageMaker.cri.categories == '' ? 'selected':''}>전체분야</option>
 										<option value="A7" ${pageMaker.cri.categories == 'A7' ? 'selected':''}>유료 캠핑장</option>
 										<option value="B7" ${pageMaker.cri.categories == 'B7' ? 'selected':''}>무료 캠핑장</option>
 										<option value="C7" ${pageMaker.cri.categories == 'C7' ? 'selected':''}>노지 캠핑장</option>
@@ -196,13 +197,13 @@
 					</footer>
 				</div>
 				<form id="actionForm" action="/review/reviewList">
-						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-						<input type="hidden" name="type" value="${pageMaker.cri.type}">
-						<input type="hidden" name="categories" value="${pageMaker.cri.categories}">
-						<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-						<input type="hidden" name="from" value="${pageMaker.cri.from}">
-					</form>
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+					<input type="hidden" name="type" value="${pageMaker.cri.type}">
+					<input type="hidden" name="categories" value="${pageMaker.cri.categories}">
+					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+					<input type="hidden" name="from" value="${pageMaker.cri.from}">
+				</form>
 			</section>
 
 				
@@ -220,10 +221,28 @@
 	<script>
 	$("a.fa-search").on("click", function(e){
 		e.preventDefault();
+		console.log($("#from option:selected").val());
 		var searchForm = document.searchForm;
 		
 		searchForm.submit();
 	});
+	
+	$("div.filter-mobile").children().on("click", function(e){
+		$("div.filter-mobile").children().removeClass("active");
+		$(this).toggleClass("active");
+		console.log($(this).text());
+		var type = $(this).text();
+		var input = $("input[name='type']");
+		if(type == "최신순"){
+			input.val("");
+		}else if(type == "캠퍼 픽"){
+			input.val("hotest");
+		}else if(type == "조회순"){
+			input.val("most");
+		}
+		console.log(input.val());
+		searchForm.submit();
+	})
 	
 	$(".changePage").on("click", function(e){
 		e.preventDefault();
