@@ -87,7 +87,7 @@
 							<input type="hidden" name="thumbnail" value="">
 						</div>
 					</div>
-					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; checkValue();" class="button big" style="text-decoration: none; border-radius: 6px;">수정</a></h3>
+					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: lastCheck();" class="button big" style="text-decoration: none; border-radius: 6px;">수정</a></h3>
 				</form>
 			</div>
 		</div>
@@ -158,8 +158,8 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
-				//var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "/" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
+				//var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
+				var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "/" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/market/" + url);
 				var str = "";
@@ -180,6 +180,10 @@
 		var marketForm = $("form[name=marketForm]");
 		var attachList = $(".allList");
 		var target = $(".summernote").val();
+        var price = $("input[name='price']").val();
+        var title = $("input[name='title']").val();
+        var content = $("textarea[name='content']").val();
+        var area = $("input[name='area']").val();
 		
 		for(let i=0; i<attachList.length; i++){
 			if(target.indexOf($(attachList[i]).val()) == -1){
@@ -187,42 +191,49 @@
 			}
 		}
 		
+        if(area == ""){
+            alert("지역을 입력해주세요.");
+            $("input[name='area']").focus();
+            return;         
+         }
+         
+         if(isNaN(price)){
+            alert("숫자만 입력해주세요.");
+            $("input[name='price']").focus();
+            return;         
+         }
+         
+         if(price > 999999999){
+			$("input[name='price']").focus();
+			alert("가격이 너무 높습니다.");
+			return;
+		}
+         
+         if(price == ""){
+            alert("가격을 입력해주세요.");
+            $("input[name='price']").focus();
+            return;
+         }
+         
+         if(title == ""){
+            alert("제목을 입력해주세요.");
+            $("input[name='title']").focus();
+            return;
+         }
+         
+         if(content == ""){
+            alert("내용을 입력해주세요.");
+            return;
+         }
+		
 		j = 0;
 		
+		if($("input[name='thumbnail']").val() == ""){
+			var temp = $(".0");
+			$("input[name='thumbnail']").val(encodeURIComponent($(temp[0]).val() + "/" + $(temp[1]).val() + "_" + $(temp[2]).val()));
+		}
 		marketForm.submit();
 	}	
-	
-	
-	function checkValue(){
-		var price = $("input[name='price']").val();
-		var title = $("input[name='title']").val();
-		var content = $("textarea[name='content']").val();
-		
-		if(price == ""){
-			alert("가격을 입력해주세요.");
-			$("input[name='price']").focus();
-			return;
-		}
-		
-		if(isNaN(price)){
-			alert("숫자만 입력해주세요.");
-			$("input[name='price']").focus();
-			return;			
-		}
-		
-		if(title == ""){
-			alert("제목을 입력해주세요.");
-			$("input[name='title']").focus();
-			return;
-		}
-		
-		if(content == ""){
-			alert("내용을 입력해주세요.");
-			return;
-		}
-		
-		marketForm.submit();
-	}
 	
 	//셀렉트 태그가 무료나눔일 경우 가격입력창 제거하는 함수
 	$(document).ready(function(){

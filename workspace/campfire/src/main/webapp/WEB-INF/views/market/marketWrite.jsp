@@ -174,12 +174,6 @@
             }
          }
          
-         j = 0;
-         
-         marketForm.submit();
-      }
-      
-      function checkValue(){
          var price = $("input[name='price']").val();
          var title = $("input[name='title']").val();
          var content = $("textarea[name='content']").val();
@@ -197,6 +191,12 @@
             return;         
          }
          
+         if(price > 999999999){
+			$("input[name='price']").focus();
+			alert("가격이 너무 높습니다.");
+			return;
+		}
+         
          if(price == ""){
             alert("가격을 입력해주세요.");
             $("input[name='price']").focus();
@@ -213,6 +213,8 @@
             alert("내용을 입력해주세요.");
             return;
          }
+         
+         j = 0;
          
          marketForm.submit();
       }

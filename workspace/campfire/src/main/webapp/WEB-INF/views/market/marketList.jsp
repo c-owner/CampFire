@@ -89,6 +89,13 @@
 				height: 3.25rem;
 			}
 			
+			.card-title {
+				width: 300px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			
 			@media screen and (max-width: 1680px){
 				.writeBtn {
 					padding-left: 73%;
