@@ -49,7 +49,7 @@ public class PolicyController {
 		service.register(p_vo);
 		rttr.addFlashAttribute("result", p_vo.getBno());
 		rttr.addAttribute("tab", p_vo.getTab());
-		return "redirect:/policy/policyList";
+		return "redirect:/policy/policy";
 	}
 	
 	@GetMapping({"/policyView", "/policyModify"})
@@ -67,7 +67,7 @@ public class PolicyController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addAttribute("tab", tab);
 		
-		return "redirect:/policy/policyList";
+		return "redirect:/policy/policy";
 	}
 	
 	//게시글 수정
@@ -82,7 +82,7 @@ public class PolicyController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addAttribute("tab", p_vo.getTab());
 		
-		return "redirect:/policy/policyList";
+		return "redirect:/policy/policy";
 	}
 	
 	

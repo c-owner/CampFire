@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import com.campfire.domain.UserVO;
 
 public interface UserMapper {
+	public String selectAdmin(String userId);
 	public int selectId(String userId);
 	public int selectEmail(String userEmail);
 	public int insert(UserVO user);

@@ -236,7 +236,7 @@
 						</div>
 						<div class="content">
 							<ul class="actions">
-								<li><a href="/market/marketList?check=S" class="button">커뮤니티</a></li>
+								<li><a href="/free/freeList" class="button">커뮤니티</a></li>
 							</ul>
 						</div>
 					</article>
@@ -246,7 +246,7 @@
 						</div>
 						<div class="content">
 							<ul class="actions">
-								<li><a href="/free/freeList" class="button">장작장터</a></li>
+								<li><a href="/market/marketList?check=S" class="button">장작장터</a></li>
 							</ul>
 						</div>
 					</article>

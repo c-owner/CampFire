@@ -40,6 +40,7 @@ public class UserController {
 		String result = null;
 		if(service.signIn(user.getUserId(), user.getUserPw())) {
 			session.setAttribute("sessionId", user.getUserId());
+				session.setAttribute("admin", service.chkAdmin(user.getUserId()));
 			result = user.getUserId();		
 		}else {
 			result = "";

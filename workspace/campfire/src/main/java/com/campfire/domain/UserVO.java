@@ -7,4 +7,5 @@ public class UserVO {
 	private String userId;
 	private String userPw;
 	private String userEmail;
+	private String Adminstrator;
 }

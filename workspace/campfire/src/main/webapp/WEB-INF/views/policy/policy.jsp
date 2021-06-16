@@ -261,8 +261,11 @@
 		#tbl_regdate,#tbl_regdate2 {
 			display: none;
 		}
+	}
 	
-		
+	p > iframe.note-video-clip {
+		object-fit: contain !important;
+		width: 100% !important;
 	}
 </style>
 	</head>
@@ -277,18 +280,24 @@
 				<div id="mArticle">
 					<div class="box_account">
 				        <p class="desc_account" style="margin: 0;"> 
-				        <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
+				        <span class="ico_corp">&gt;</span>
+				         메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. 
+				         
+				         <c:if test="${admin eq '1' }">
+				          <a href="/policy/policyWrite" class="button">공지 작성</a>
+				         </c:if>     
+				         </p>
 				    </div>
 				    <form>
 					    <ul class="tab_policy" role="tablist">
 						    <!-- 활성화 시 on 클래스 추가 -->
 						    <!-- WAI-ARIA 속성 구현 예정 -->
-						    <li class=" "><a href="/policy/policy?tab=terms" class="link_policy">이용약관</a></li>
-						    <li class=""><a href="/policy/policy?tab=location" class="link_policy">위치기반서비스 이용약관</a></li>
-						    <li class=""><a href="/policy/policy?tab=privacy" class="link_policy">개인정보처리방침</a></li>
-						    <li class=""><a href="/policy/policy?tab=oppolicy" class="link_policy">운영정책</a></li>
-					        <li class=""><a href="/policy/policy?tab=safeguard" class="link_policy">권리침해신고안내</a></li>
-						    <li class=" on"><a href="/policy/policy?tab=notices" class="link_policy">공지사항</a></li>
+						    <li class="${pageMaker.cri.tab == 'terms' ? 'on' : ''}"><a href="/policy/policy?tab=terms" class="link_policy">이용약관</a></li>
+						    <li class="${pageMaker.cri.tab == 'location' ? 'on' : ''}"><a href="/policy/policy?tab=location" class="link_policy">위치기반서비스 이용약관</a></li>
+						    <li class="${pageMaker.cri.tab == 'privacy' ? 'on' : ''}"><a href="/policy/policy?tab=privacy" class="link_policy">개인정보처리방침</a></li>
+						    <li class="${pageMaker.cri.tab == 'oppolicy' ? 'on' : ''}"><a href="/policy/policy?tab=oppolicy" class="link_policy">운영정책</a></li>
+					        <li class="${pageMaker.cri.tab == 'safeguard' ? 'on' : ''}"><a href="/policy/policy?tab=safeguard" class="link_policy">권리침해신고안내</a></li>
+						    <li class="${pageMaker.cri.tab == 'notices' ? 'on' : ''}"><a href="/policy/policy?tab=notices" class="link_policy">공지사항</a></li>
 						</ul>
 				    </form>
 				<div class="wrap_cont wrap_notices">
@@ -397,8 +406,19 @@
 	</body>
 	<script>
 		$(document).ready(function () {
-			$(".link_policy").on("click", function(e){
-				e.preventDefault();
+			
+			/* p > iframe.note-video-clip {
+				object-fit: contain !important;
+				width: 100% !important;
+			} */
+			
+			$('iframe').css('object-fit','contain !important');
+			$('iframe').css('width','100% !important');
+			
+			
+			
+				var tab = "${pageMaker.cri.tab}";
+			$(".link_policy").on("click", function(){
 				var on = $(this).parents("li");
 				var ons = $(".tab_policy li");
 				for(let i=0; i<ons.length; i++){
@@ -406,9 +426,25 @@
 						ons.removeClass("on");
 					}
 					on.addClass("on");
+					location.href("/policy/policy?tab=" + tab);
 				}			
 				
-				
+				$("div.filter-mobile").children().on("click", function(e){
+					$("div.filter-mobile").children().removeClass("active");
+					$(this).toggleClass("active");
+					console.log($(this).text());
+					var type = $(this).text();
+					var input = $("input[name='type']");
+					if(type == "최신순"){
+						input.val("");
+					}else if(type == "캠퍼 픽"){
+						input.val("hotest");
+					}else if(type == "조회순"){
+						input.val("most");
+					}
+					console.log(input.val());
+					searchForm.submit();
+				})
 			});
 			
 			$(".changePage").on("click", function(e){

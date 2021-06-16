@@ -39,6 +39,10 @@
 			.far {
 				color: red;
 			}
+			p > iframe.note-video-clip {
+				object-fit: contain !important;
+				width: 100% !important;
+			} 
 		</style>
 	</head>
 	<body class="is-preload">

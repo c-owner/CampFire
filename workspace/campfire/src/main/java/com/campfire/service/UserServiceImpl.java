@@ -1,6 +1,7 @@
 package com.campfire.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.campfire.domain.UserVO;
 import com.campfire.mapper.UserMapper;
@@ -42,12 +43,23 @@ public class UserServiceImpl implements UserService{
 	public boolean signIn(String userId, String userPw) {
 		boolean check = false;
 		String realPw = mapper.selectPw(userId);
+		
 		if(realPw == null) {return false;}
 		if(realPw.equals(encrypt(userPw))) {
 			check = true;
 		}
 		return check;
 	}
+	
+	@Override
+	public String chkAdmin(String userId) {
+		String admin = "";
+		if(mapper.selectAdmin(userId).equals("1")) {
+			admin = mapper.selectAdmin(userId);
+		}
+		return admin;
+	}
+	
 
 	@Override
 	public String encrypt(String pw) {
