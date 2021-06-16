@@ -264,7 +264,6 @@
 			e.preventDefault();
 			
 			var reply = $("textarea[name='reply']").val();
-			/* var replyer = $("input[name='replyer']").val(); */
 			
 			if(reply.length > 1000 || reply.length == '' || reply.length < 10) {
 				alert('글자 수는 10자 이상 300자 이내로 작성하셔야 합니다.');
@@ -272,10 +271,10 @@
 			}
 			
 			replyService.add({bno:bno, reply:reply, replyer:replyer}, function(result){
+				$("textarea[name='reply']").val("");
 				alert(result);
 				pageNum = 1;
 				showList(pageNum);
-				/* $("input[name='reply']").val(""); */
 			});
 		});
 		

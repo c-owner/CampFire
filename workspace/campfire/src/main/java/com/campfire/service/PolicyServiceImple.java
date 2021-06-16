@@ -48,7 +48,7 @@ public class PolicyServiceImple implements PolicyService {
 	}
 	
 	@Override
-	public PolicyVO get(Long bno) {
+	public PolicyVO view(Long bno) {
 		return mapper.read(bno);
 	}
 

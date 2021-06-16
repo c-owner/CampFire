@@ -62,12 +62,14 @@
 					<input type="hidden" name="type" value="${cri.type}">
 					<input type="hidden" name="bno" value="${board.bno}">
 					<c:if test="${attachList != null and fn:length(attachList) > 0}">
-						<c:forEach var="list" items="${attachList}" varStatus="i">
-							<input type="hidden" class="${i.index}" name="attachList[${i.index}].uploadPath" value="${list.uploadPath}"/>
-							<input type="hidden" class="allList ${i.index}" name="attachList[${i.index}].uuid" value="${list.uuid}"/>
-							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileName" value="${list.fileName}"/>
-							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileType" value="${list.fileType}"/>
-						</c:forEach>
+						<div class="tempDiv">
+							<c:forEach var="list" items="${attachList}" varStatus="i">
+								<input type="hidden" class="${i.index}" name="attachList[${i.index}].uploadPath" value="${list.uploadPath}"/>
+								<input type="hidden" class="allList ${i.index}" name="attachList[${i.index}].uuid" value="${list.uuid}"/>
+								<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileName" value="${list.fileName}"/>
+								<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileType" value="${list.fileType}"/>
+							</c:forEach>
+						</div>
 					</c:if>
                    <div style="text-align:center; margin-top: 1%;">
                     <select class="keyword" name="marketKeyword" id="category">
@@ -142,7 +144,9 @@
 		}
 	});
     
+	
 	var j = "${fn:length(attachList)}";
+	var k = j;
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
 		var marketForm = $("form[name=marketForm]");
@@ -156,6 +160,7 @@
 			processData : false,
 			success : function(data) {
 				console.log(data);
+				var inputs = $(".tempDiv input");
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
 				//var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
@@ -167,10 +172,15 @@
 				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
 				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
-				if(j == 0){
-					$("input[name='thumbnail']").val(url);
+				$(".tempDiv").append(str);
+				for(let i=0; i<inputs.length; i++){
+					if($(inputs[i]).attr("class") == 0 || $(inputs[i]).attr("class") == "allList 0"){
+						console.log(inputs[i]);
+					}
 				}
-				marketForm.append(str);
+				/* if($(".tempDiv").children[j] == 0){
+					$("input[name='thumbnail']").val(url);
+				} */
 				j++;
 			}
 		});
@@ -225,13 +235,30 @@
             alert("내용을 입력해주세요.");
             return;
          }
-		
-		j = 0;
-		
-		if($("input[name='thumbnail']").val() == ""){
+        
+        console.log($("input[name='thumbnail']").val());
+        
+        if($("input[name='thumbnail']").val() == ""){
 			var temp = $(".0");
-			$("input[name='thumbnail']").val(encodeURIComponent($(temp[0]).val() + "/" + $(temp[1]).val() + "_" + $(temp[2]).val()));
-		}
+        	$("input[name='thumbnail']").val(encodeURIComponent($(temp[0]).val() + "/" + $(temp[1]).val() + "_" + $(temp[2]).val()));
+        }
+         
+        /* var len = $("."+k);
+        console.log($("input[name='thumbnail']").val());
+		if($("input[name='thumbnail']").val() == ""){
+			if($(temp[0]).val() === undefined){
+				//기존 첨부파일이 있을 경우
+			}else{
+				//기존 첨부파일이 없을 경우
+				console.log($(temp[0]).val() != "undefined");
+				console.log("OOOOOO");
+				$("input[name='thumbnail']").val(encodeURIComponent($(temp[0]).val() + "/" + $(temp[1]).val() + "_" + $(temp[2]).val()));
+				console.log($(temp[0]).val() == "undefined");
+				console.log("NNNNNN");
+				$("input[name='thumbnail']").val(encodeURIComponent($(len[0]).val() + "/" + $(len[1]).val() + "_" + $(len[2]).val()));
+			}
+		} */
+		j = 0;
 		marketForm.submit();
 	}	
 	

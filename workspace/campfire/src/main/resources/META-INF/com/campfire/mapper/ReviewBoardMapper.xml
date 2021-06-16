@@ -10,13 +10,13 @@
 	<sql id="keyword">
 		<choose>
 			<when test="keyword != null and keyword != ''">
-				OR TITLE LIKE '%'||#{keyword}||'%' 
+				AND (TITLE LIKE '%'||#{keyword}||'%' 
 				OR CONTENT LIKE '%'||#{keyword}||'%' 
 				OR WRITER LIKE '%'||#{keyword}||'%' 
 				OR ADDRESS LIKE '%'||#{keyword}||'%' 
 				OR ADDRESS_DETAIL LIKE '%'||#{keyword}||'%' 
 				OR ADDRESS_ETC LIKE '%'||#{keyword}||'%' 
-				OR CAMPNAME LIKE '%'||#{keyword}||'%' 
+				OR CAMPNAME LIKE '%'||#{keyword}||'%')
 			</when>
 		</choose>
 	</sql>
@@ -24,25 +24,21 @@
 		<choose>
 			<when test="from != null and from != '' and from == 'day'.toString()">
 			AND REGDATE BETWEEN SYSDATE-1 AND SYSDATE 
-			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from != '' and from == 'week'.toString()">
 			AND REGDATE BETWEEN SYSDATE-7 AND SYSDATE 
-			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from != '' and from == 'month'.toString()">
 			AND REGDATE BETWEEN SYSDATE-30 AND SYSDATE 
-			ORDER BY REGDATE DESC
 			</when>
 			<when test="from != null and from != '' and from == 'month3'.toString()">
 			AND REGDATE BETWEEN SYSDATE-31 AND SYSDATE 
-			ORDER BY REGDATE DESC
 			</when>
 		</choose>
 	</sql>
 
 	<select id="selectBoardList" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD hh:mm') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh:mm') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD hh24:mm') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD hh24:mm') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 		FROM (
 			SELECT /*+ INDEX_DESC(TBL_REVIEW_BOARD PK_REVIEW_BOARD) */ ROWNUM rn, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, LIKECNT, READCNT, REPLYCNT, STAR, THUMB, CAMPNAME, CATEGORIES 
 			FROM TBL_REVIEW_BOARD
@@ -56,6 +52,14 @@
 					<include refid="keyword"></include>
 			        <include refid="period"></include>
 				</trim>
+				<choose>
+					<when test="type != null and type != '' and type == 'hotest'.toString()">
+						ORDER BY LIKECNT DESC
+					</when>
+					<when test="type != null and type != '' and type == 'most'.toString()">
+						ORDER BY READCNT DESC
+					</when>
+				</choose>
 				) 
 			<![CDATA[
 				WHERE rn > (#{pageNum} - 1) * #{amount}
@@ -82,7 +86,7 @@
 	</insert>
 	
 	<select id="selectBoard" resultType="com.campfire.domain.reviewBoard.ReviewBoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, READCNT, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR, THUMB, CAMPNAME
+		SELECT BNO, TITLE, CONTENT, WRITER, TO_CHAR(REGDATE, 'YYYY-MM-DD') as REGDATE, TO_CHAR(UPDATEDATE, 'YYYY-MM-DD') as UPDATEDATE, LIKECNT, READCNT, REPLYCNT, ZIPCODE, ADDRESS, ADDRESS_DETAIL, ADDRESS_ETC, STAR, THUMB, CAMPNAME
 		FROM TBL_REVIEW_BOARD
 		WHERE BNO = #{bno}
 	</select>
