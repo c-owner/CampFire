@@ -116,6 +116,10 @@
 				float: left; 
 			}
 			
+			.replyBtn, .timeDiv {
+				text-align: right !important;
+			}
+			
 			@media screen and (max-width: 1680px){
 				.writeBtn {
 					padding-left: 70%;
@@ -211,8 +215,8 @@
 							<textarea name="content" id="reply" rows="4" name="reply" style="resize: none;" readonly>로그인 후 댓글을 작성하실 수 있습니다.</textarea>
 						</c:if>
 						<c:if test="${sessionId != null}">
-							<textarea rows="4" name="reply" id="reply" placeholder="10자 이상, 1000자 이내 작성" style="resize: none;"></textarea>
-							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 1000자)</span>
+							<textarea rows="2" name="reply" id="reply" placeholder="10자 이상, 1000자 이내 작성" style="resize: none;"></textarea>
+							<!-- <span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 1000자)</span> -->
 							<a href="javascript:void(0);" class="button primary fit register" style="border-radius: 6px;">댓글 작성</a>
 						</c:if>
 						</div>
@@ -323,37 +327,40 @@
 			showList(pageNum);
 		});
 		
-		function showList(page) {
+		function showList(page){
 			var replyUL = $(".replies");
+			
 			replyService.getList({bno:bno, page:page||1},
 				function(replyCnt, list){
 					var str = "";
-					if(list == null || list.length == 0 ){
-						if(pageNum > 1){
+					if(list == null || list.length == 0){
+						//등록된 댓글이 없습니다.
+						if(pageNum > 1) {
 							pageNum -= 1;
 							showList(pageNum);
 						}
 						replyUL.html("등록된 댓글이 없습니다.");
 						return;
 					}
-					
-					for(let i=0, len=list.length; i<len; i++) {
-						str += "<li data-rno='" + list[i].rno + "'>";
-						str += "<div>";
-						str += "<h4 style='margin: 0; text-align: left; font-weight: bolder;'>작성자: " + list[i].replyer + "</h4></div>";
-						if(list[i].replyDate != list[i].updateDate){
-							str += "<div class='timeDiv' style='text-align: right;'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
-						}else {
-							str += "<div class='timeDiv' style='text-align: right;'><strong>" + replyService.timeForToday(list[i].replyDate);
-						}
-						/* str += "<div style='text-align: right;'><h5 style='margin: 0;'>"+ rDate +"</h5></div>"; */
-						str += "<div style='text-align: left;'><span class='reply" + list[i].rno + "'>"+ list[i].reply +"</span></div>";
 						
+					for(let i=0, len=list.length; i<len; i++){
+						str += "<li data-rno='" + list[i].rno + "'>";
+						str += "<div style='position: absolute;'>";
+						str += "<h4 style='margin: 0; text-align: left;'>";
+						str += "작성자: " + list[i].replyer + "</h4></div><div class='replyBtn'><a class='far fa-lightbulb' href='" + list[i].rno + "' style='color: red;'></a><br>";
+						str += "<div style='text-align: left; width: 90%; margin: 0 auto; margin-top: 3%;'>";
+						str += "<span class='reply" + list[i].rno + "'>" + list[i].reply + "</span></div>";
+						if(list[i].replyDate != list[i].updateDate){
+							str += "<div class='timeDiv'><strong>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+						}else {
+							str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
+						}
+						str += "</strong></div>";
 						if(sessionId == list[i].replyer){
-							str += "<div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
-							str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
+							str += "<a class='modify' href='" + list[i].rno + "'><i class='fas fa-pencil-alt'></i></a>";
+							str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'><i class='fas fa-check' style='color: #41e841'></i></a>";
 							str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-							str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
+							str += "<a class='remove' href='" + list[i].rno + "'><i class='fas fa-trash-alt'></i></a>";
 							str += "</div>";
 						}
 						str += "</li>";

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
 	<title>장작장터 | 모닥불🏕 </title>
@@ -60,6 +61,14 @@
 					<input type="hidden" name="keyword" value="${cri.keyword}">
 					<input type="hidden" name="type" value="${cri.type}">
 					<input type="hidden" name="bno" value="${board.bno}">
+					<c:if test="${attachList != null and fn:length(attachList) > 0}">
+						<c:forEach var="list" items="${attachList}" varStatus="i">
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].uploadPath" value="${list.uploadPath}"/>
+							<input type="hidden" class="allList ${i.index}" name="attachList[${i.index}].uuid" value="${list.uuid}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileName" value="${list.fileName}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileType" value="${list.fileType}"/>
+						</c:forEach>
+					</c:if>
                    <div style="text-align:center; margin-top: 1%;">
                     <select class="keyword" name="marketKeyword" id="category">
                          <option value="S" >팝니다</option>
@@ -78,7 +87,7 @@
 							<input type="hidden" name="thumbnail" value="">
 						</div>
 					</div>
-					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; checkValue();" class="button big" style="text-decoration: none; border-radius: 6px;">수정</a></h3>
+					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: lastCheck();" class="button big" style="text-decoration: none; border-radius: 6px;">수정</a></h3>
 				</form>
 			</div>
 		</div>
@@ -133,7 +142,7 @@
 		}
 	});
     
-	var j = 0;
+	var j = "${fn:length(attachList)}";
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
 		var marketForm = $("form[name=marketForm]");
@@ -154,10 +163,10 @@
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/market/" + url);
 				var str = "";
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 				if(j == 0){
 					$("input[name='thumbnail']").val(url);
 				}
@@ -167,36 +176,64 @@
 		});
 	};
 	
-	function checkValue(){
-		var price = $("input[name='price']").val();
-		var title = $("input[name='title']").val();
-		var content = $("textarea[name='content']").val();
+	function lastCheck(){
+		var marketForm = $("form[name=marketForm]");
+		var attachList = $(".allList");
+		var target = $(".summernote").val();
+        var price = $("input[name='price']").val();
+        var title = $("input[name='title']").val();
+        var content = $("textarea[name='content']").val();
+        var area = $("input[name='area']").val();
 		
-		if(price == ""){
-			alert("가격을 입력해주세요.");
+		for(let i=0; i<attachList.length; i++){
+			if(target.indexOf($(attachList[i]).val()) == -1){
+				$("."+i).remove();				
+			}
+		}
+		
+        if(area == ""){
+            alert("지역을 입력해주세요.");
+            $("input[name='area']").focus();
+            return;         
+         }
+         
+         if(isNaN(price)){
+            alert("숫자만 입력해주세요.");
+            $("input[name='price']").focus();
+            return;         
+         }
+         
+         if(price > 999999999){
 			$("input[name='price']").focus();
+			alert("가격이 너무 높습니다.");
 			return;
 		}
+         
+         if(price == ""){
+            alert("가격을 입력해주세요.");
+            $("input[name='price']").focus();
+            return;
+         }
+         
+         if(title == ""){
+            alert("제목을 입력해주세요.");
+            $("input[name='title']").focus();
+            return;
+         }
+         
+         if(content == ""){
+            alert("내용을 입력해주세요.");
+            return;
+         }
 		
-		if(isNaN(price)){
-			alert("숫자만 입력해주세요.");
-			$("input[name='price']").focus();
-			return;			
+		j = 0;
+		
+		if($("input[name='thumbnail']").val() == ""){
+			var temp = $(".0");
+			$("input[name='thumbnail']").val(encodeURIComponent($(temp[0]).val() + "/" + $(temp[1]).val() + "_" + $(temp[2]).val()));
 		}
-		
-		if(title == ""){
-			alert("제목을 입력해주세요.");
-			$("input[name='title']").focus();
-			return;
-		}
-		
-		if(content == ""){
-			alert("내용을 입력해주세요.");
-			return;
-		}
-		
 		marketForm.submit();
-	}
+	}	
 	
 	//셀렉트 태그가 무료나눔일 경우 가격입력창 제거하는 함수
 	$(document).ready(function(){

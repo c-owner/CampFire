@@ -57,7 +57,7 @@
 							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; tipForm.submit();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: lastCheck();" class="button big" style="text-decoration: none;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -133,14 +133,28 @@
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/tip/" + url);
 				var str = "";
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 				tipForm.append(str);
 				j++;
 			}
 		});
 	};
+	
+	function lastCheck(){
+		var tipForm = $("form[name=tipForm]");
+		var attachList = $(".allList");
+		var target = $(".summernote").val();
+		
+		for(let i=0; i<attachList.length; i++){
+			if(target.indexOf($(attachList[i]).val()) == -1){
+				$("."+i).remove();				
+			}
+		}
+		j = 0;
+		tipForm.submit();
+	}
 </script>
 </html>

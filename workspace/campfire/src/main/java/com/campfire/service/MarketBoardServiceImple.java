@@ -53,16 +53,16 @@ public class MarketBoardServiceImple implements MarketBoardService {
 	}
 
 	@Override
-	public void register(MarketBoardVO vo) {
-		mapper.insertBoard(vo);
-		List<MarketBoardAttachVO> attachList = vo.getAttachList();
+	public void register(MarketBoardVO m_vo) {
+		mapper.insertBoard(m_vo);
+		List<MarketBoardAttachVO> attachList = m_vo.getAttachList();
 		if(attachList == null || attachList.size() <= 0) {return;}
 		
-		attachList.forEach(mvo -> {
-			mvo.setBno(vo.getBno());
-			Amapper.insert(mvo);
-		});
-		
+		for(int i=0; i<attachList.size(); i++) {
+			if(attachList.get(i).getUuid() == null) {continue;}
+			attachList.get(i).setBno(m_vo.getBno());
+			Amapper.insert(attachList.get(i));
+		}
 	}
 	
 	@Transactional

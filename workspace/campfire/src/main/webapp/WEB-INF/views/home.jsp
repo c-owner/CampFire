@@ -90,7 +90,7 @@
 	<body class="is-preload" onload="showImage()">
 
 				<!-- Header -->
-			<header id="header">
+			<header id="header" style="position: absolute; background:#00000000;">
 				<!-- Nav -->
 				<nav class="smallNav">
 					<ul>

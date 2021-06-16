@@ -229,13 +229,13 @@
 		});
    
 		//alert("${result}");
-		var result = "${result}";
+		/* var result = "${result}";
 		$(document).ready(function(){
 			if(result == '' || isNaN(result)){
 				return;
 			}
 			alert("게시글 " + result + "번이 등록되었습니다.")
-		});
+		}); */
 
 	function freeWrite(){
     	 if ("${sessionId}" == ""){

@@ -33,21 +33,22 @@ public class PolicyController {
 	private PolicyService service;
 	
 	@GetMapping("/policy")
-	public void marketList(Criteria cri, @RequestParam("tab") String policy, Model model) {
-		model.addAttribute("list", service.getList(cri, policy));
+	public void marketList(Criteria cri, @RequestParam("tab") String tab, Model model) {
+		model.addAttribute("tab", tab);
+		model.addAttribute("list", service.getList(cri, tab));
 		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}
 	
 	@GetMapping("/policyWrite")
-	public void register(@ModelAttribute("cri") Criteria cri, String check, Model model) {
-		model.addAttribute("check", check);
+	public void register(@ModelAttribute("cri") Criteria cri, String tab, Model model) {
+		model.addAttribute("tab", tab);
 	}
 	
 	@PostMapping("/policyWrite")
 	public String register(PolicyVO p_vo, RedirectAttributes rttr) {
 		service.register(p_vo);
 		rttr.addFlashAttribute("result", p_vo.getBno());
-		rttr.addAttribute("check", p_vo.getPolicyKeyword());
+		rttr.addAttribute("tab", p_vo.getTab());
 		return "redirect:/policy/policyList";
 	}
 	
@@ -59,12 +60,12 @@ public class PolicyController {
 	}
 	
 	@GetMapping("/policyRemove")
-	public String remove(@RequestParam("bno") Long bno, @RequestParam("check") String check, Criteria cri, RedirectAttributes rttr) {
+	public String remove(@RequestParam("bno") Long bno, @RequestParam("tab") String tab, Criteria cri, RedirectAttributes rttr) {
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
-		rttr.addAttribute("check", check);
+		rttr.addAttribute("tab", tab);
 		
 		return "redirect:/policy/policyList";
 	}
@@ -79,7 +80,7 @@ public class PolicyController {
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
-		rttr.addAttribute("check", p_vo.getPolicyKeyword());
+		rttr.addAttribute("tab", p_vo.getTab());
 		
 		return "redirect:/policy/policyList";
 	}

@@ -8,7 +8,7 @@ import com.campfire.domain.PolicyVO;
 
 public interface PolicyMapper {
 	
-	public List<PolicyVO> getListWithPaging(HashMap<String, Object> map);
+	public List<PolicyVO> selectBoardList(HashMap<String, Object> map);
 	public int getTotal(Criteria cri);
 	public PolicyVO read(Long bno);
 	public void insertBoard(PolicyVO board);

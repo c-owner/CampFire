@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
 	<title>팁게시판 | 모닥불🏕 </title>
@@ -54,6 +55,14 @@
 					<input type="hidden" name="keyword" value="${cri.keyword}">
 					<input type="hidden" name="type" value="${cri.type}">
 					<input type="hidden" name="bno" value="${board.bno}">
+					<c:if test="${attachList != null and fn:length(attachList) > 0}">
+						<c:forEach var="list" items="${attachList}" varStatus="i">
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].uploadPath" value="${list.uploadPath}"/>
+							<input type="hidden" class="allList ${i.index}" name="attachList[${i.index}].uuid" value="${list.uuid}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileName" value="${list.fileName}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileType" value="${list.fileType}"/>
+						</c:forEach>
+					</c:if>
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
@@ -62,7 +71,7 @@
 							<input type="hidden" name="writer" value="${sessionId}">
 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: j=0; tipForm.submit();" class="button big" style="text-decoration: none;">수정</a></h3>
+					<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: lastCheck();" class="button big" style="text-decoration: none;">수정</a></h3>
 				</form>
 			</div>
 		</div>
@@ -117,7 +126,7 @@
 		}
 	});
     
-	var j = 0;
+	var j = "${fn:length(attachList)}";
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
 		var tipForm = $("form[name=tipForm]");
@@ -137,14 +146,28 @@
 				$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				//$(el).summernote('editor.insertImage', "/display?fileName=/Users/upload/" + url);
 				var str = "";
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 				tipForm.append(str);
 				j++;
 			}
 		});
 	};
+	
+	function lastCheck(){
+		var tipForm = $("form[name=tipForm]");
+		var attachList = $(".allList");
+		var target = $(".summernote").val();
+		
+		for(let i=0; i<attachList.length; i++){
+			if(target.indexOf($(attachList[i]).val()) == -1){
+				$("."+i).remove();				
+			}
+		}
+		j = 0;
+		tipForm.submit();
+	}
 </script>
 </html>

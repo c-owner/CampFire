@@ -18,15 +18,13 @@ public class PolicyServiceImple implements PolicyService {
 	private PolicyMapper mapper;
 	
 	@Override
-	public List<PolicyVO> getList(Criteria cri, String policyKeyword) {
+	public List<PolicyVO> getList(Criteria cri, String tab) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pageNum", cri.getPageNum());
 		map.put("amount", cri.getAmount());
-		map.put("policyKeyword", policyKeyword);
-		map.put("type", cri.getType());
+		map.put("tab", tab);
 		map.put("keyword", cri.getKeyword());
-		map.put("typeList", cri.getTypeList());
-		return 	mapper.getListWithPaging(map);  
+		return 	mapper.selectBoardList(map);  
 	}
 
 	@Override
@@ -35,14 +33,12 @@ public class PolicyServiceImple implements PolicyService {
 	}
 	
 	@Override
-	public int categoryTotal(Criteria cri, String policyKeyword) {
+	public int categoryTotal(Criteria cri, String tab) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("pageNum", cri.getPageNum());
 		map.put("amount", cri.getAmount());
-		map.put("policyKeyword", policyKeyword);
-		map.put("type", cri.getType());
+		map.put("tab", tab);
 		map.put("keyword", cri.getKeyword());
-		map.put("typeList", cri.getTypeList());
 		return mapper.categoryTotal(map);
 	}
 
@@ -64,7 +60,6 @@ public class PolicyServiceImple implements PolicyService {
 	@Override
 	public boolean modify(PolicyVO vo) {
 		boolean modifyResult = mapper.updateBoard(vo) == 1;
-		
 		return modifyResult;
 	}
 
