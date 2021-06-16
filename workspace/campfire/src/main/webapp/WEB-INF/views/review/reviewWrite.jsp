@@ -189,10 +189,10 @@ function uploadSummernoteImageFile(file, el) {
 				check = true;				
 			}
 			
-			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";
-			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";
-			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
-			str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+			str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";               
+            str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";               
+            str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";               
+            str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 			reviewForm.append(str);
 			j++;
 		}
@@ -245,10 +245,19 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 			alert('분야를 선택해주세요!');
 			return false;
 		}
-		else {
-			check = false;
-			reviewForm.submit();
-		}		
+
+        var attachList = $(".allList");
+        var target = $(".summernote").val();
+        
+        for(let i=0; i<attachList.length; i++){
+           if(target.indexOf($(attachList[i]).val()) == -1){
+              $("."+i).remove();            
+           }
+        }
+		
+		j = 0;
+		check = false;
+		reviewForm.submit();	
 	}
 	
 	</script>

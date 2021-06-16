@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
 	<title>모닥불</title>
@@ -113,6 +114,14 @@
 					<input type="hidden" name="keyword" value="${cri.keyword}">
 					<input type="hidden" name="type" value="${cri.type}">
 					<input type="hidden" name="bno" value="${board.bno}">
+					<c:if test="${attachList != null and fn:length(attachList) > 0}">
+						<c:forEach var="list" items="${attachList}" varStatus="i">
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].uploadPath" value="${list.uploadPath}"/>
+							<input type="hidden" class="allList ${i.index}" name="attachList[${i.index}].uuid" value="${list.uuid}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileName" value="${list.fileName}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileType" value="${list.fileType}"/>
+						</c:forEach>
+					</c:if>
 				</form>
 			</div>
 		</div>
