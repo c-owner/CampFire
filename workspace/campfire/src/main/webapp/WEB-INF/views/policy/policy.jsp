@@ -409,7 +409,6 @@
 				}			
 				
 				
-				
 			});
 			
 			$(".changePage").on("click", function(e){
