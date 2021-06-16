@@ -2212,6 +2212,8 @@ select::-ms-expand {
 
 textarea {
     padding: 0.75rem 1rem;
+    height: 5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 input[type="checkbox"],
