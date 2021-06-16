@@ -56,7 +56,7 @@ public class PolicyController {
 	public void marketView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest req, Model model) {
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("sessionId");
-		model.addAttribute("board", service.get(bno));
+		model.addAttribute("policy", service.view(bno));
 	}
 	
 	@GetMapping("/policyRemove")

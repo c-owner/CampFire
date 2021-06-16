@@ -254,6 +254,16 @@
 		margin: 0;
 	}
 			
+	#tbl_regdate {
+		width: 10rem;
+	}
+	@media screen and (max-width: 480px) {
+		#tbl_regdate,#tbl_regdate2 {
+			display: none;
+		}
+	
+		
+	}
 </style>
 	</head>
 	
@@ -266,18 +276,19 @@
 			<div class="inner">
 				<div id="mArticle">
 					<div class="box_account">
-				        <p class="desc_account" style="margin: 0;"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
+				        <p class="desc_account" style="margin: 0;"> 
+				        <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
 				    </div>
 				    <form>
 					    <ul class="tab_policy" role="tablist">
 						    <!-- 활성화 시 on 클래스 추가 -->
 						    <!-- WAI-ARIA 속성 구현 예정 -->
-						    <li class=" "><a href="/policy/policy?tab=terms" class="link_policy" role="tab">이용약관</a></li>
-						    <li class=""><a href="/policy/policy?tab=location" class="link_policy" role="tab">위치기반서비스 이용약관</a></li>
-						    <li class=""><a href="/policy/policy?tab=privacy" class="link_policy" role="tab">개인정보처리방침</a></li>
-						    <li class=""><a href="/policy/policy?tab=oppolicy" class="link_policy" role="tab">운영정책</a></li>
-					        <li class=""><a href="/policy/policy?tab=safeguard" class="link_policy" role="tab">권리침해신고안내</a></li>
-						    <li class=" on"><a href="/policy/policy?tab=notices" class="link_policy" role="tab">공지사항</a></li>
+						    <li class=" "><a href="/policy/policy?tab=terms" class="link_policy">이용약관</a></li>
+						    <li class=""><a href="/policy/policy?tab=location" class="link_policy">위치기반서비스 이용약관</a></li>
+						    <li class=""><a href="/policy/policy?tab=privacy" class="link_policy">개인정보처리방침</a></li>
+						    <li class=""><a href="/policy/policy?tab=oppolicy" class="link_policy">운영정책</a></li>
+					        <li class=""><a href="/policy/policy?tab=safeguard" class="link_policy">권리침해신고안내</a></li>
+						    <li class=" on"><a href="/policy/policy?tab=notices" class="link_policy">공지사항</a></li>
 						</ul>
 				    </form>
 				<div class="wrap_cont wrap_notices">
@@ -289,25 +300,25 @@
 	                        <table class="tbl tbl_type2">
 	                            <thead>
 	                            <tr>
-	                                <th>내용</th>
-	                                <th>등록일</th>
+	                                <th id="tbl_title">내용</th>
+	                                <th id="tbl_regdate">등록일</th>
 	                            </tr>
 	                            </thead>
 	                            <!-- posts -->
 	                            <tbody>
 	                            <c:forEach var="policy" items="${list}" begin="0" step="1">
 	                                <tr>
-	                                    <td class="ta_left">
+	                                    <td class="ta_left" id="tbl_title2">
 	                                        <div class="inner_cell">
 	                                        <span class="txt_public">
-	                                            <a href="/policy/policy" class="loss_word link_txt">
+	                                            <a href="javascript: view(${policy.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="loss_word link_txt">
 	                                                    ${policy.title}
 	                                            </a>
 	                                                <c:if test="${policy.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
 	                                        </span>
 	                                        </div>
 	                                    </td>
-	                                    <td>
+	                                    <td id="tbl_regdate2">
 	                                    	<div class="inner_cell">${policy.updateDate}</div>
 	                                   	</td>
 	                                </tr>
@@ -347,28 +358,30 @@
 									</c:if>
 								</ul>
 							</div>
+						</footer>
+						<div class="sch_comm">
+	                        <form class="sch_form" name="searchForm" id="searchForm" action="/policy/policy">
+	                            <fieldset>
+	                                <legend class="screen_out">검색어 입력폼</legend>
+	                                <input type="text" id="search_word" name="keyword" class="inp_keyword" title="검색어" value="" placeholder="검색">
+	                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%; position: absolute;"></a>
+	                            </fieldset>
+								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+								<input type="hidden" name="tab" value="${pageMaker.cri.tab}">
+	                        </form>
+	                    </div>
+	                    </div>
+	
 							<form id="actionForm" action="/policy/policy">
 								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 								<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
 								<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
+								<input type="hidden" name="tab" value="${pageMaker.cri.tab}">
+								<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 								<input type="hidden" name="check" value="${check}">
 							</form>
-						</footer>
-						<div class="sch_comm">
-	                        <form method="post" class="sch_form" name="SearchFrm" id="searchForm" action="/policy/policy">
-	                            <fieldset>
-	                                <legend class="screen_out">검색어 입력폼</legend>
-	                                <input type="text" id="search_word" name="keyword" class="inp_keyword" title="검색어" value="${pageMaker.cri.keyword}" placeholder="검색">
-	                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%; position: absolute;"></a>
-	                            </fieldset>
-								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-								<input type="hidden" name="tab" value="${tab}">
-	                        </form>
-	                    </div>
-	                    </div>
-	
 	
                		</div> <!-- area content-->
            		</div>  <!-- wrapper content-->
@@ -439,9 +452,18 @@
  			alert("로그인 후 이용해 주십시오.");
  			goSignIn();
  		}else{
- 			location.replace("/campfire/guideWrite${pageMaker.cri.getListLink()}");
+ 			location.replace("/policy/policy${pageMaker.cri.getListLink()}");
  		}
      }
+	
+	function view(bno, pageNum, amount){
+		if ("${sessionId}" == ""){
+			alert("로그인 후 이용해 주십시오.");
+			goSignIn();
+		}else{
+			location.replace("/policy/policyView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
+		}
+	}
 
 	</script>
 </html>
