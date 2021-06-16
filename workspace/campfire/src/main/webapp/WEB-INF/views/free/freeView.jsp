@@ -169,6 +169,7 @@
 				if(replyer == ""){alert("로그인 후 이용이 가능합니다."); return;}
 				
 				replyService.add({bno: bno, reply: reply, replyer: replyer}, function(result){
+					$("input[name='reply']").val("");
 					alert(result);
 					pageNum = 1;
 					showList(pageNum);

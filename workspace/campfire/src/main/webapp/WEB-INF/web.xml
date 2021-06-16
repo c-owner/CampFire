@@ -33,9 +33,9 @@
 			<location>/Users/upload/temp</location>
 			-->
 			<!-- 
+			<location>C:\\upload\\temp</location>
 			-->
 			<!-- 
-			<location>C:\\upload\\temp</location>
 			-->
 			<location>/usr/local/upload/temp</location>
 			<!-- 

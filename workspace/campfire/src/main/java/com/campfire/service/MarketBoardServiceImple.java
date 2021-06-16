@@ -86,10 +86,11 @@ public class MarketBoardServiceImple implements MarketBoardService {
 		
 		if(modifyResult && vo.getAttachList() != null) {
 			if(vo.getAttachList().size() != 0) {
-				vo.getAttachList().forEach(mvo -> {
-					mvo.setBno(vo.getBno());
-					Amapper.insert(mvo);
-				});
+				for(int i=0; i<vo.getAttachList().size(); i++) {
+					if(vo.getAttachList().get(i).getUuid() == null) {continue;}
+					vo.getAttachList().get(i).setBno(vo.getBno());
+					Amapper.insert(vo.getAttachList().get(i));
+				}
 			}
 		}
 		
