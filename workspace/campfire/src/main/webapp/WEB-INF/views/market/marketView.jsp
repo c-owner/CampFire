@@ -211,8 +211,8 @@
 							<textarea name="content" id="reply" rows="4" name="reply" style="resize: none;" readonly>로그인 후 댓글을 작성하실 수 있습니다.</textarea>
 						</c:if>
 						<c:if test="${sessionId != null}">
-							<textarea rows="4" name="reply" id="reply" placeholder="10자 이상, 1000자 이내 작성" style="resize: none;"></textarea>
-							<span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 1000자)</span>
+							<textarea rows="2" name="reply" id="reply" placeholder="10자 이상, 1000자 이내 작성" style="resize: none;"></textarea>
+							<!-- <span style="color:#aaa;" id="counter">10자 이상 (0 / 최대 1000자)</span> -->
 							<a href="javascript:void(0);" class="button primary fit register" style="border-radius: 6px;">댓글 작성</a>
 						</c:if>
 						</div>

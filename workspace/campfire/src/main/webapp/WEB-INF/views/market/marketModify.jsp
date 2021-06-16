@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
 	<title>장작장터 | 모닥불🏕 </title>
@@ -60,6 +61,14 @@
 					<input type="hidden" name="keyword" value="${cri.keyword}">
 					<input type="hidden" name="type" value="${cri.type}">
 					<input type="hidden" name="bno" value="${board.bno}">
+					<c:if test="${attachList != null and fn:length(attachList) > 0}">
+						<c:forEach var="list" items="${attachList}" varStatus="i">
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].uploadPath" value="${list.uploadPath}"/>
+							<input type="hidden" class="allList ${i.index}" name="attachList[${i.index}].uuid" value="${list.uuid}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileName" value="${list.fileName}"/>
+							<input type="hidden" class="${i.index}" name="attachList[${i.index}].fileType" value="${list.fileType}"/>
+						</c:forEach>
+					</c:if>
                    <div style="text-align:center; margin-top: 1%;">
                     <select class="keyword" name="marketKeyword" id="category">
                          <option value="S" >팝니다</option>
@@ -133,7 +142,7 @@
 		}
 	});
     
-	var j = 0;
+	var j = "${fn:length(attachList)}";
 	function uploadSummernoteImageFile(file, el) {
 		data = new FormData();
 		var marketForm = $("form[name=marketForm]");
@@ -149,15 +158,15 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				//var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
-				var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "/" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
+				var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "\\" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
+				//var url = encodeURIComponent(data.m_succeedList[0].uploadPath + "/" + data.m_succeedList[0].uuid + "_" + data.m_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/market/" + url);
 				var str = "";
-				str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
-				str += "<input type='hidden' name='attachList["+j+"].fileType' value='true'>";
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 				if(j == 0){
 					$("input[name='thumbnail']").val(url);
 				}
@@ -166,6 +175,23 @@
 			}
 		});
 	};
+	
+	function lastCheck(){
+		var marketForm = $("form[name=marketForm]");
+		var attachList = $(".allList");
+		var target = $(".summernote").val();
+		
+		for(let i=0; i<attachList.length; i++){
+			if(target.indexOf($(attachList[i]).val()) == -1){
+				$("."+i).remove();				
+			}
+		}
+		
+		j = 0;
+		
+		marketForm.submit();
+	}	
+	
 	
 	function checkValue(){
 		var price = $("input[name='price']").val();

@@ -31,6 +31,7 @@ import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.freeBoard.FreeBoardVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardVO;
+import com.campfire.mapper.MarketBoardAttachMapper;
 import com.campfire.service.MarketBoardService;
 
 import lombok.AllArgsConstructor;
@@ -47,6 +48,7 @@ import lombok.extern.log4j.Log4j;
 public class MarketController {
 	
 	private MarketBoardService service;
+	private MarketBoardAttachMapper a_service;
 	
 	@GetMapping("/marketList")
 	public void marketList(Criteria cri, @RequestParam("check") String check, Model model) {
@@ -83,11 +85,10 @@ public class MarketController {
 	
 	@GetMapping({"/marketView", "/marketModify"})
 	public void marketView(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, HttpServletRequest req, Model model) {
-		log.info("장터상세진입" + bno);
-		log.info("장터상세진입" + cri);
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("sessionId");
 		model.addAttribute("board", service.get(bno));
+		model.addAttribute("attachList", a_service.findByBno(bno));
 	}
 	
 	//게시글 및 첨부파일 삭제
@@ -113,6 +114,13 @@ public class MarketController {
 		if(service.modify(m_vo)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+		System.out.println(m_vo.getThumbnail());
+		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
+		System.out.println("★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆");
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());
