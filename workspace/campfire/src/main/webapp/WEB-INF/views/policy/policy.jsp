@@ -264,122 +264,119 @@
 		<div class="wrapper">
 			<div class="inner">
 				<div id="mArticle">
-				<div class="box_account">
-			        <p class="desc_account" style="margin: 0;"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
-			    </div>
-			    <form action="/market/marketList" id="searchForm">
-			    <ul class="tab_policy" role="tablist">
-				    <li class=" "><a href="/noticeList" class="link_policy" role="tab">이용약관</a></li>
-				    <!-- 활성화 시 on 클래스 추가 -->
-				    <!-- WAI-ARIA 속성 구현 예정 -->
-				    <li class=""><a href="/noticeList" class="link_policy" role="tab">위치기반서비스 이용약관</a></li>
-				    <li class=""><a href="/noticeList" class="link_policy" role="tab">개인정보처리방침</a></li>
-				    <li class=""><a href="/noticeList" class="link_policy" role="tab">운영정책</a></li>
-			        <li class=""><a href="/noticeList" class="link_policy" role="tab">권리침해신고안내</a></li>
-				    <li class=" on"><a href="/noticeList" class="link_policy" role="tab">공지사항</a></li>
-				</ul>
-				</form>
+					<div class="box_account">
+				        <p class="desc_account" style="margin: 0;"> <span class="ico_corp">&gt;</span> 메뉴에서 여러분에게 적용되는 약관 및 정책을 확인하실 수 있습니다. </p>
+				    </div>
+				    <form action="/policy/policy" id="tabForm">
+					    <ul class="tab_policy" role="tablist">
+						    <!-- 활성화 시 on 클래스 추가 -->
+						    <!-- WAI-ARIA 속성 구현 예정 -->
+						    <li class=" "><a href="/policy/policy?tab=terms" class="link_policy" role="tab">이용약관</a></li>
+						    <li class=""><a href="/policy/policy?tab=location" class="link_policy" role="tab">위치기반서비스 이용약관</a></li>
+						    <li class=""><a href="/policy/policy?tab=privacy" class="link_policy" role="tab">개인정보처리방침</a></li>
+						    <li class=""><a href="/policy/policy?tab=oppolicy" class="link_policy" role="tab">운영정책</a></li>
+					        <li class=""><a href="/policy/policy?tab=safeguard" class="link_policy" role="tab">권리침해신고안내</a></li>
+						    <li class=" on"><a href="/policy/policy?tab=notices" class="link_policy" role="tab">공지사항</a></li>
+						</ul>
+					</form>
 				<div class="wrap_cont wrap_notices">
-                <div class="area_tit">
-                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
-                </div>
-                <div class="area_cont">
-                    <div class="tbl_comm fst tbl_public">
-                        <table class="tbl tbl_type2">
-                        	<colgroup>
-                                <col style="width:81%">
-                                <col style="width:19%">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th scope="col">내용</th>
-                                <th scope="col">등록일</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="ta_left">
-                                        <div class="inner_cell">
-                                        <span class="txt_public">
-                                            <a href="/noticeList" class="loss_word link_txt">
-                                                    개인정보 처리방침 개정안내
-                                            </a>
-                                                <c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
-                                        </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                    	<div class="inner_cell">2021-06-07</div>
-                                   	</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-					<footer class="major">
-						<div class="big-width" style="text-align:center;">
-							<ul class="pagination">
-								<c:if test="${pageMaker.prev}">
-									<li><a class="changePage" href="${pageMaker.startPage - 1}">이전</a></li>
-								</c:if>
-								<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-									<c:choose>
-										<c:when test="${num eq pageMaker.cri.pageNum}">
-											<li><a class="page active">${num}</a></li>
-										</c:when>
-										<c:otherwise>
-											<li><a class="changePage" href="${num}">${num}</a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:if test="${pageMaker.next}">
-									<li><a class="changePage" href="${pageMaker.endPage + 1}">다음</a></li>
-								</c:if>
-							</ul>
-						</div>
-						
-						<div class="small-width" style="text-align:center;">
-							<ul class="pagination">
-								<c:if test="${pageMaker.cri.pageNum > 1}">
-									<li><a class="changePage" href="${pageMaker.cri.pageNum - 1}">이전</a></li>
-								</c:if>
-								<li><a class="page active">${pageMaker.cri.pageNum}</a></li>
-								<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
-									<li><a class="changePage" href="${pageMaker.cri.pageNum + 1}">다음</a></li>
-								</c:if>
-							</ul>
-						</div>
-						<form id="actionForm" action="/policy/policy">
-							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-							<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-							<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
-							<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
-							<input type="hidden" name="check" value="${check}">
-						</form>
-					</footer>
-					<div class="sch_comm">
-
-                        <form method="post" class="sch_form" name="SearchFrm" id="searchForm" action="/policy/policy">
-                            <fieldset>
-                                <legend class="screen_out">검색어 입력폼</legend>
-
-
-								<input type="hidden" name="check" value="">
-                                <input type="text" id="search_word" name="keyword" class="inp_keyword" title="검색어" value="${pageMaker.cri.keyword}" placeholder="검색">
-                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%;"></a>
-                            </fieldset>
-
-                            <input type="hidden" id="currentPage" name="currentPage" value="1">
-                            <input type="hidden" id="currentGroup" name="currentGroup" value="1">
-                        </form>
-                    </div>
-
-
-                		</div> <!-- area content-->
-            		</div>  <!-- wrapper content-->
-				</div> <!-- mArticle-->
-			</div> <!-- inner-->
-		</div> <!-- wrapper -->
-	</div>  <!-- main end-->
+	                <div class="area_tit">
+	                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
+	                </div>
+	                <div class="area_cont">
+	                    <div class="tbl_comm fst tbl_public">
+	                        <table class="tbl tbl_type2">
+	                        	<colgroup>
+	                                <col style="width:81%">
+	                                <col style="width:19%">
+	                            </colgroup>
+	                            <thead>
+	                            <tr>
+	                                <th scope="col">내용</th>
+	                                <th scope="col">등록일</th>
+	                            </tr>
+	                            </thead>
+	                            <!-- posts -->
+	                            <tbody>
+	                                <tr>
+	                                    <td class="ta_left">
+	                                        <div class="inner_cell">
+	                                        <span class="txt_public">
+	                                            <a href="/policy/policy" class="loss_word link_txt">
+	                                                    개인정보 처리방침 개정안내
+	                                            </a>
+	                                                <c:if test="${board.regDate > nowday}"><i class="material-icons">fiber_new</i><%-- <i class="fas fa-heart"></i> --%></c:if>
+	                                        </span>
+	                                        </div>
+	                                    </td>
+	                                    <td>
+	                                    	<div class="inner_cell">2021-06-07</div>
+	                                   	</td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
+						<footer class="major">
+							<div class="big-width" style="text-align:center;">
+								<ul class="pagination">
+									<c:if test="${pageMaker.prev}">
+										<li><a class="changePage" href="${pageMaker.startPage - 1}">이전</a></li>
+									</c:if>
+									<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+										<c:choose>
+											<c:when test="${num eq pageMaker.cri.pageNum}">
+												<li><a class="page active">${num}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a class="changePage" href="${num}">${num}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${pageMaker.next}">
+										<li><a class="changePage" href="${pageMaker.endPage + 1}">다음</a></li>
+									</c:if>
+								</ul>
+							</div>
+							
+							<div class="small-width" style="text-align:center;">
+								<ul class="pagination">
+									<c:if test="${pageMaker.cri.pageNum > 1}">
+										<li><a class="changePage" href="${pageMaker.cri.pageNum - 1}">이전</a></li>
+									</c:if>
+									<li><a class="page active">${pageMaker.cri.pageNum}</a></li>
+									<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
+										<li><a class="changePage" href="${pageMaker.cri.pageNum + 1}">다음</a></li>
+									</c:if>
+								</ul>
+							</div>
+							<form id="actionForm" action="/policy/policy">
+								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+								<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
+								<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
+								<input type="hidden" name="check" value="${check}">
+							</form>
+						</footer>
+						<div class="sch_comm">
+	                        <form method="post" class="sch_form" name="SearchFrm" id="searchForm" action="/policy/policy">
+	                            <fieldset>
+	                                <legend class="screen_out">검색어 입력폼</legend>
+	                                <input type="text" id="search_word" name="keyword" class="inp_keyword" title="검색어" value="${pageMaker.cri.keyword}" placeholder="검색">
+	                                <a href="javascript:void(0)" class="fas fa-search" style="padding-top: 5%;"></a>
+	                            </fieldset>
+								<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+								<input type="hidden" name="tab" value="${tab}">
+	                        </form>
+	                    </div>
+	
+	
+               		</div> <!-- area content-->
+           		</div>  <!-- wrapper content-->
+			</div> <!-- mArticle-->
+		</div> <!-- inner-->
+	</div> <!-- wrapper -->
+</div>  <!-- main end-->
 		
 
 
@@ -403,6 +400,14 @@
 	</script>
 	
 	<script>
+
+		$(".changePage").on("click", function(e){
+			e.preventDefault();
+			var actionForm = $("#actionForm");
+			var pageNum = $(this).attr("href");
+			actionForm.find("input[name='pageNum']").val(pageNum);
+			actionForm.submit();
+		});
 		$("a.search").on("click", function(e){
 			e.preventDefault();
 			var searchForm = $("#searchForm");
@@ -418,13 +423,6 @@
 			searchForm.submit();
 		});
    
-		$(".changePage").on("click", function(e){
-			e.preventDefault();
-			var actionForm = $("#actionForm");
-			var pageNum = $(this).attr("href");
-			actionForm.find("input[name='pageNum']").val(pageNum);
-			actionForm.submit();
-		});
    
 		//alert("${result}");
 		var result = "${result}";
