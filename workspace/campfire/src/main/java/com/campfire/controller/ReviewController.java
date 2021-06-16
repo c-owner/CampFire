@@ -84,7 +84,7 @@ public class ReviewController {
 		
 	}
 	
-	@GetMapping("/remove")
+	@GetMapping("/reviewRemove")
 	public String remove(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
 		List<ReviewBoardAttachVO> attachList = service.getAttachList(bno);
 		if(service.remove(bno)) {

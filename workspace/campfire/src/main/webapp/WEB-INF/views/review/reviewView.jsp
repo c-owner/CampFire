@@ -74,7 +74,7 @@
 						</div>
 						<div class="col-9" style="text-align: right;">
 								<input type="button" class="button" value="수정" onclick="location.href='/review/reviewModify${cri.getListLink()}&bno=${review.bno}'"/>
-								<input type="submit" class="button" value="삭제"/>
+								<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</div>
 					</div>
 					
@@ -95,7 +95,13 @@
 						</div>
 					</div>
 				</div>
-				
+				<form name="removeForm" action="/review/reviewRemove">
+					<input type="hidden" name="pageNum" value="${cri.pageNum}">
+					<input type="hidden" name="amount" value="${cri.amount}">
+					<input type="hidden" name="type" value="${cri.type}">
+					<input type="hidden" name="keyword" value="${cri.keyword}">
+					<input type="hidden" name="bno" value="${review.bno}">
+				</form>
 				<!-- 댓글리스트 -->
 				<div class="col-6 col-10-medium col-10-small" style="margin: 0 auto;">
 					<div>
