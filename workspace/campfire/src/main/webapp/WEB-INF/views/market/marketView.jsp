@@ -116,6 +116,10 @@
 				float: left; 
 			}
 			
+			.replyBtn, .timeDiv {
+				text-align: right !important;
+			}
+			
 			@media screen and (max-width: 1680px){
 				.writeBtn {
 					padding-left: 70%;
@@ -323,37 +327,40 @@
 			showList(pageNum);
 		});
 		
-		function showList(page) {
+		function showList(page){
 			var replyUL = $(".replies");
+			
 			replyService.getList({bno:bno, page:page||1},
 				function(replyCnt, list){
 					var str = "";
-					if(list == null || list.length == 0 ){
-						if(pageNum > 1){
+					if(list == null || list.length == 0){
+						//등록된 댓글이 없습니다.
+						if(pageNum > 1) {
 							pageNum -= 1;
 							showList(pageNum);
 						}
 						replyUL.html("등록된 댓글이 없습니다.");
 						return;
 					}
-					
-					for(let i=0, len=list.length; i<len; i++) {
-						str += "<li data-rno='" + list[i].rno + "'>";
-						str += "<div>";
-						str += "<h4 style='margin: 0; text-align: left; font-weight: bolder;'>작성자: " + list[i].replyer + "</h4></div>";
-						if(list[i].replyDate != list[i].updateDate){
-							str += "<div class='timeDiv' style='text-align: right;'><strong><br>"+replyService.timeForToday(list[i].updateDate) + " 수정";
-						}else {
-							str += "<div class='timeDiv' style='text-align: right;'><strong>" + replyService.timeForToday(list[i].replyDate);
-						}
-						/* str += "<div style='text-align: right;'><h5 style='margin: 0;'>"+ rDate +"</h5></div>"; */
-						str += "<div style='text-align: left;'><span class='reply" + list[i].rno + "'>"+ list[i].reply +"</span></div>";
 						
+					for(let i=0, len=list.length; i<len; i++){
+						str += "<li data-rno='" + list[i].rno + "'>";
+						str += "<div style='position: absolute;'>";
+						str += "<h4 style='margin: 0; text-align: left;'>";
+						str += "작성자: " + list[i].replyer + "</h4></div><div class='replyBtn'><a class='far fa-lightbulb' href='" + list[i].rno + "' style='color: red;'></a><br>";
+						str += "<div style='text-align: left; width: 90%; margin: 0 auto; margin-top: 3%;'>";
+						str += "<span class='reply" + list[i].rno + "'>" + list[i].reply + "</span></div>";
+						if(list[i].replyDate != list[i].updateDate){
+							str += "<div class='timeDiv'><strong>"+replyService.timeForToday(list[i].updateDate) + " 수정";
+						}else {
+							str += "<div class='timeDiv'><strong>" + replyService.timeForToday(list[i].replyDate);
+						}
+						str += "</strong></div>";
 						if(sessionId == list[i].replyer){
-							str += "<div class='replyBtn'><a class='modify' href='" + list[i].rno + "'>수정</a>";
-							str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>";
+							str += "<a class='modify' href='" + list[i].rno + "'><i class='fas fa-pencil-alt'></i></a>";
+							str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'><i class='fas fa-check' style='color: #41e841'></i></a>";
 							str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-							str += "<a class='remove' href='" + list[i].rno + "'>삭제</a>";
+							str += "<a class='remove' href='" + list[i].rno + "'><i class='fas fa-trash-alt'></i></a>";
 							str += "</div>";
 						}
 						str += "</li>";

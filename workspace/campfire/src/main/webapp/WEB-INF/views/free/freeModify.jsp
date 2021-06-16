@@ -143,8 +143,8 @@
 				console.log(data);
 				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
 				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
-				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				//var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "\\" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
+				var url = encodeURIComponent(data.f_succeedList[0].uploadPath + "/" + data.f_succeedList[0].uuid + "_" + data.f_succeedList[0].fileName);
 				//$(el).summernote('editor.insertImage', "/display?fileName=/Users/upload/" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/free/" + url);
 				var str = "";
@@ -162,12 +162,25 @@
 		var freeForm = $("form[name=freeForm]");
 		var attachList = $(".allList");
 		var target = $(".summernote").val();
+		var title = $("input[name='title']").val();
+        var content = $("textarea[name='content']").val();
 		
 		for(let i=0; i<attachList.length; i++){
 			if(target.indexOf($(attachList[i]).val()) == -1){
 				$("."+i).remove();				
 			}
 		}
+		
+        if(title == ""){
+            alert("제목을 입력해주세요.");
+            $("input[name='title']").focus();
+            return;
+         }
+         
+         if(content == ""){
+            alert("내용을 입력해주세요.");
+            return;
+         }
 		
 		j = 0;
 		
