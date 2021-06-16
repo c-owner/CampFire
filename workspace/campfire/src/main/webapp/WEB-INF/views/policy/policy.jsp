@@ -69,7 +69,6 @@
     .wrap_cont {
    	    overflow: visible;
 	    position: relative;
-	    width: 1160px;
 	    margin: 0 auto;
 	    padding-top: 20px;
 	    clear: both;
@@ -91,10 +90,8 @@
 	}
 	.tbl_comm {
 	    overflow: hidden;
-	    width: 860px;
 	    margin-top: 80px;
 	    border-top: 2px solid #4d4d4d;
-        border-bottom: 1px solid #4d4d4d;
     	margin-bottom: 3em;
 	}
 	.tbl {
@@ -140,119 +137,122 @@
 
 	/* 페이징 처리 */
 	.table-wrapper{
-				width: 80%;
-				margin: 0 auto;
-			}
-			table thead{
-				border-bottom: none;
-				border-top: solid 1px;
-			}
-			table th{
-				text-align: center !important;
-				padding: 0.75rem 0.75rem 0.75rem 0.75rem;
-			}
-			table td{
-				text-align: center !important;
-				padding: unset;
-			}
-			a{
-				text-decoration: none;
-			}
-			a:hover {
-				text-decoration: underline;
-			}
-			.button{
-				box-shadow: inset 0 0 0 0.5px #404040;
-				color: black;
-				border-radius: 0;
-			}
-			
-			.big-width{display:block;}
-			.small-width{display:none;}
-			.table-wrapper {overflow-x:hidden !important;}
-			/* select{width: 25%;display: inline;}
-			input[name='keyword']{width: 55%; display: inline;}
-			.search{width: 18%;} */
-			.material-icons {vertical-align: middle;}
-	         #keywordDiv {
-	        	padding:0;
-	        }
-	        #searchBtnDiv {
-	        	padding:0;
-	        }
-			@media (max-width: 918px){
-				/* h1{
-					font-size: 1.5rem;
-				    margin-left: 10%;
-				} */
-				.table-wrapper {
-				    width: 100%;
-				}
-				.bno {display:none;}
-				.regDate {display:none;}
-				.big-width{display:none;}
-				.small-width{display:block;}
-				select{width: 100%;}
-				input[name='keyword']{width: 100%;}
-				.search{width: 100%;}
-			}
-			@media (max-width: 736px){
-		        #keywordDiv {
-		        	padding:0 0 0 1.25rem;
-		        }
-		        #searchBtnDiv {
-		        	padding:0 0 0 1.25rem;
-		        }
-			}
-			
-			.sch_comm {
-			    width: 50%;
-			    margin: 0 auto;
-			    padding-top: 11px;
-			}
-			.sch_comm .sch_form {
-				position: relative;
-			}
-			.screen_out {
-				overflow: hidden;
-				position: absolute;
-				width: 0;
-				height: 0;
-				line-height: 0;
-				text-indent: -9999px;
-			}
-			.sch_comm .lab_sch {
-				position: absolute;
-				top: 10px;
-				left: 0;
-				color: #919191;
-			}
-			.sch_comm .inp_keyword {
-				float: left;
-				width: 30rem;
-				border: 0 none;
-				box-sizing: border-box;
-				color: #1e1e1e;
-				border-bottom: 1px solid #4d4d4d;
-				border-radius: 0;
-			}
-			.sch_comm .btn_search {
-				float: right;
-				width: 34px;
-			}	
-			.sch_comm .btn_search .ico_corp {
-				width: 17px;
-				height: 17px;
-				margin: 12px 0 13px 17px;
-				background-position: 0 -10px;
-			}		
-			
-			fieldset, img {
-				border: 0 none;
-			}
-			form{
-				margin: 0;
-			}
+		width: 80%;
+		margin: 0 auto;
+	}
+	table thead{
+		border-bottom: none;
+		border-top: solid 1px;
+	}
+	table th{
+		text-align: center !important;
+		padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+	}
+	table td{
+		text-align: center !important;
+		padding: unset;
+	}
+	a{
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	.button{
+		box-shadow: inset 0 0 0 0.5px #404040;
+		color: black;
+		border-radius: 0;
+	}
+	
+	footer {
+	    border-bottom: 1px solid #71717185;
+    }
+	
+	.big-width{display:block;}
+	.small-width{display:none;}
+	.table-wrapper {overflow-x:hidden !important;}
+	/* select{width: 25%;display: inline;}
+	input[name='keyword']{width: 55%; display: inline;}
+	.search{width: 18%;} */
+	.material-icons {vertical-align: middle;}
+        #keywordDiv {
+       	padding:0;
+       }
+       #searchBtnDiv {
+       	padding:0;
+       }
+	@media (max-width: 918px){
+		/* h1{
+			font-size: 1.5rem;
+		    margin-left: 10%;
+		} */
+		.table-wrapper {
+		    width: 100%;
+		}
+		.bno {display:none;}
+		.regDate {display:none;}
+		.big-width{display:none;}
+		.small-width{display:block;}
+		select{width: 100%;}
+		input[name='keyword']{width: 100%;}
+		.search{width: 100%;}
+	}
+	@media (max-width: 736px){
+        #keywordDiv {
+        	padding:0 0 0 1.25rem;
+        }
+        #searchBtnDiv {
+        	padding:0 0 0 1.25rem;
+        }
+	}
+	
+	.sch_comm {
+	    width: 50%;
+	    margin: 0 auto;
+	    padding-top: 11px;
+	}
+	.sch_comm .sch_form {
+		position: relative;
+	}
+	.screen_out {
+		overflow: hidden;
+		position: absolute;
+		width: 0;
+		height: 0;
+		line-height: 0;
+		text-indent: -9999px;
+	}
+	.sch_comm .lab_sch {
+		position: absolute;
+		top: 10px;
+		left: 0;
+		color: #919191;
+	}
+	.sch_comm .inp_keyword {
+		float: left;
+		border: 0 none;
+		box-sizing: border-box;
+		color: #1e1e1e;
+		border-bottom: 1px solid #4d4d4d;
+		border-radius: 0;
+	}
+	.sch_comm .btn_search {
+		float: right;
+		width: 34px;
+	}	
+	.sch_comm .btn_search .ico_corp {
+		width: 17px;
+		height: 17px;
+		margin: 12px 0 13px 17px;
+		background-position: 0 -10px;
+	}		
+	
+	fieldset, img {
+		border: 0 none;
+	}
+	form{
+		margin: 0;
+	}
 			
 </style>
 	</head>
@@ -314,7 +314,6 @@
                                 </c:forEach>
 	                            </tbody>
 	                        </table>
-	                    </div>
 						<footer>
 							<div class="big-width" style="text-align:center;">
 								<ul class="pagination">
@@ -367,6 +366,7 @@
 								<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
 								<input type="hidden" name="tab" value="${tab}">
 	                        </form>
+	                    </div>
 	                    </div>
 	
 	
