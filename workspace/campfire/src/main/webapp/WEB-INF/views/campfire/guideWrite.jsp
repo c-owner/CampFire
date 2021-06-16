@@ -145,15 +145,25 @@
 		var guideForm = $("form[name=guideForm]");
 		var attachList = $(".allList");
 		var target = $(".summernote").val();
+		var title = $("input[name='title']").val();
+        var content = $("textarea[name='content']").val();
 		
 		for(let i=0; i<attachList.length; i++){
 			if(target.indexOf($(attachList[i]).val()) == -1){
 				$("."+i).remove();				
 			}
 		}
+		if(title == ""){
+            alert("제목을 입력해주세요.");
+            $("input[name='title']").focus();
+            return;
+		}
+         if(content == ""){
+            alert("내용을 입력해주세요.");
+            return;
+        }
 		
-		j = 0;
-		
+         j = 0;
 		guideForm.submit();
 	}
 </script>
