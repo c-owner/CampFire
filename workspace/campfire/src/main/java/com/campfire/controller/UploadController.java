@@ -81,7 +81,7 @@ public class UploadController {
 		List<TipBoardAttachVO> t_failureList = new ArrayList<>();
 	
 		String uploadFolderPath = getFolder();
-		File uploadPath = new File(uploadFolder, uploadFolderPath);
+		File uploadPath = new File(uploadFolder+voName, uploadFolderPath);
 		AllFileDTO allFile = new AllFileDTO();
 		
 		if(!uploadPath.exists()) {
