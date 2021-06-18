@@ -206,11 +206,6 @@ function uploadSummernoteImageFile(file, el) {
 			//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 			$(el).summernote('editor.insertImage', "/display?fileName=/review/" + url);
 			var str = "";
-			
-			if(j == 0){
-				$("input[name='thumb']").val(url);
-			}
-			
 			str += "<input type='hidden' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";
 			str += "<input type='hidden' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";
 			str += "<input type='hidden' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";					
@@ -265,9 +260,13 @@ $(function() { $("#postcodify_search_button").postcodifyPopUp(); });
 			}
 		}
 		
-		if($("input[name='thumb']").val() == ""){
-			var temp = $(".0");
-			$("input[name='thumb']").val(encodeURIComponent($(temp[0]).val() + "/" + $(temp[1]).val() + "_" + $(temp[2]).val()));
+		for(let i=0; i<=j; i++){
+			var t = $("."+i);
+			if($(t).val() == undefined){
+				continue;				
+			}
+			$("input[name='thumbnail']").val(encodeURIComponent($(t[0]).val() + "\\" + $(t[1]).val() + "_" + $(t[2]).val()));
+			break;
 		}
 		
 		j = 0;

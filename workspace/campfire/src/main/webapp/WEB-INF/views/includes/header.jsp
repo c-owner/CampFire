@@ -90,8 +90,13 @@
 							<li class="smallMenu">
 								<a href="#" class="dropdown">계정</a>
 								<ul>
-									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
-									<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+									<c:if test="${sessionId eq null}">
+										<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+										<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+									</c:if>	
+									<c:if test="${sessionId ne null}">
+										<li><a href="/logout" class="logout">로그아웃</a></li>
+									</c:if>
 									<li><a href="/elements">고객센터</a></li>
 								</ul>
 							</li>	
