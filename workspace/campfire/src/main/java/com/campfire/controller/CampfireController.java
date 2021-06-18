@@ -225,6 +225,11 @@ public class CampfireController {
 // 캠핑 음식-------------------------------------------------------------------------------------------------------------------------------------------
 	@GetMapping(value = "/foodList")
 	public void foodList(Criteria cri, Model model) { 
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		String nowday = format.format(cal.getTime());
+		
+		model.addAttribute("nowday",nowday);
 		model.addAttribute("list", f_service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, f_service.getTotal(cri)));
 	}
