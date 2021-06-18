@@ -19,10 +19,16 @@
 .smallMenu > a.dropdown{
     display: none;
 }
+.smallMenu2 > a{
+	display: none;
+}
 @media screen and (max-width: 980 px){
     .smallMenu{
         display: block;
     }
+	.smallMenu2 > a{
+		display: block;
+	}
 }
 
 
