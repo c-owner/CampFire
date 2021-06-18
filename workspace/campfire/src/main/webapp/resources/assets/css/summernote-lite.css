@@ -10,6 +10,16 @@
  * Date: 2020-05-20T18:09Z
  * 
  */
+ 
+*, *:before, *:after {
+    box-sizing: unset;
+}
+
+input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"].disabled, input[type="reset"]:disabled, input[type="button"].disabled, input[type="button"]:disabled, button.disabled, button:disabled, .button.disabled, .button:disabled {
+    pointer-events: none;
+    opacity: 1.0;
+}
+
 @font-face {
 	font-family: "summernote";
 	font-style: normal;
@@ -454,19 +464,21 @@ input[type=submit].note-btn-block, input[type=reset].note-btn-block,
 }
 
 button.close {
-	padding: 0;
+	padding: revert;
 	cursor: pointer;
 	background: transparent;
 	border: 0;
+	height: 2.0rem;
 	-webkit-appearance: none
 }
 
 .close {
-	float: right;
+	/* float: right; */
+	margin-left: 94%;
 	font-size: 21px;
 	line-height: 1;
 	color: #000;
-	opacity: .2
+	opacity: 0.5;
 }
 
 .close:hover {
@@ -548,7 +560,7 @@ a.note-dropdown-item, a.note-dropdown-item:hover {
 .note-modal-content {
 	position: relative;
 	width: auto;
-	margin: 30px 20px;
+	margin: 0 auto;
 	border: 1px solid rgba(0, 0, 0, .2);
 	background: #fff;
 	background-clip: border-box;
@@ -581,7 +593,9 @@ a.note-dropdown-item, a.note-dropdown-item:hover {
 .note-modal-footer {
 	height: 40px;
 	padding: 10px;
-	text-align: center
+	text-align: center;
+	margin-bottom: 3%;
+    margin-left: 68%;
 }
 
 .note-modal-footer a {
@@ -595,7 +609,7 @@ a.note-dropdown-item, a.note-dropdown-item:hover {
 }
 
 .note-modal-footer .note-btn {
-	float: right
+	/* float: right */
 }
 
 .note-modal-title {
@@ -629,7 +643,7 @@ a.note-dropdown-item, a.note-dropdown-item:hover {
 @media ( min-width : 768px) {
 	.note-modal-content {
 		width: 600px;
-		margin: 30px auto
+		margin: 0 auto;
 	}
 }
 

@@ -26,7 +26,7 @@
 			<div class="inner banner">
 					<div class="main-banner-container">
 						<div class="inner-image">
-							<a class="image main"><img src="/resources/images/background/bg09.jpg" alt="" /></a>
+							<a class="image main"><img src="/resources/images/campfood.jpeg" alt="" /></a>
 						</div>
 						<div class="description">
 							<div class="text-1">캠핑요리 더욱 더 다양하게</div>
