@@ -39,6 +39,22 @@
 			.far {
 				color: red;
 			}
+			
+			@media (max-width: 736px){
+				.col-6, .col-10-medium, .col-11-small {
+					padding: 0;
+				}
+			
+				.row {
+					width: 100%;
+					margin: 0 auto;
+				}
+				
+				.col-9, .col-3 {
+					width: 100% !important;
+					padding: 0;
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">

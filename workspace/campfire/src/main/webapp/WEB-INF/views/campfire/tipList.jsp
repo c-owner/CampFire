@@ -41,19 +41,31 @@
 				border-radius: 0;
 			}
 			
+			.title, .miniTitle {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: block;
+				white-space: nowrap;
+				width: 100%;
+				margin: 0 auto;
+			}
+			
 			.big-width{display:block;}
 			.small-width{display:none;}
 			.table-wrapper {overflow-x:hidden !important;}
-			/* select{width: 25%;display: inline;} */
-			/* input[name='keyword']{width: 55%; display: inline;} */
-			/* .search{width: 18%;} */
+			/* select{width: 25%;display: inline;}
+			input[name='keyword']{width: 55%; display: inline;}
+			.search{width: 18%;} */
 			.material-icons {vertical-align: middle;}
-	        
-	        #keywordDiv {
+	         #keywordDiv {
 	        	padding:0;
 	        }
 	        #searchBtnDiv {
 	        	padding:0;
+	        }
+	        
+	        @media (max-width: 1100px){
+				.regDate {display:none;}
 	        }
 	        
 			@media (max-width: 918px){
@@ -65,7 +77,6 @@
 				    width: 100%;
 				}
 				.bno {display:none;}
-				.regDate {display:none;}
 				.big-width{display:none;}
 				.small-width{display:block;}
 				select{width: 100%;}
@@ -76,9 +87,26 @@
 		        #keywordDiv {
 		        	padding:0 0 0 1.25rem;
 		        }
-		        #searchBtnDiv {
+		        /* #searchBtnDiv {
 		        	padding:0 0 0 1.25rem;
-		        }
+		        } */
+		        
+		        #searchBtnDiv {
+					width: 100%;
+					padding: 0;
+				}
+			}
+			
+			@media (max-width: 607px){
+				.title, .miniTitle {
+					width: 250px;
+				}
+			}
+			
+			@media (max-width: 416px){
+				.title, .miniTitle {
+					width: 150px;
+				}
 			}
 		</style>
 	</head>
