@@ -403,3 +403,15 @@ a.button.primary.icon.solid.fa-search {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 635px) {
+	.filters-container {
+		padding: 0 15px 0 15px !important;
+	}	
+}
+
+@media screen and (max-width: 635px) {
+	.icon {
+		width: 100%;
+	}	
+}

@@ -55,7 +55,7 @@
 									</select>
 									<input type="hidden" name="check" value="">
 									<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
-									<a href="javascript:void(0)" class="button primary icon solid fa-search searchBtn" style="">검색</a>
+									<a href="javascript:void(0)" class="button primary icon solid fa-search searchBtn" style="border-radius: 6px;">검색</a>
 								</div>
 							</div>
 						</div>

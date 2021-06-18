@@ -7,12 +7,22 @@
 	width: 90%;
 }
 
-@media screen and (max-width: 735px) {
+@media screen and (max-width: 776px) {
+	.fields {
+		padding: 0 15px 0 15px;
+	}
+}
+
+@media screen and (max-width: 736px) {
 	.video-container iframe, .video-container object, .video-container embed
 	{
 		top: 5%;
 		left: 5%;
 		width: 90%;
+	}
+	
+	.imgDiv {
+		text-align: center;
 	}
 }
 
