@@ -172,6 +172,18 @@
 					padding: 0 1.25rem 0 1.25rem;
 				}
 			}
+			
+			@media screen and (max-width: 320px){
+				.contentDiv {
+					width: 100%;
+					margin: 0 auto;
+					padding: 0;
+				}
+				
+				.card-title {
+					width: 250px;
+				}
+			}
 		</style>
 	</head>
 
