@@ -46,7 +46,7 @@
 						<c:if test="${sessionId ne null}">
 						<li><a href="/logout" class="logout">로그아웃</a></li>
 						</c:if>
-						<li><a href="/elements">고객센터</a></li>
+						<li><a href="/policy/policy?tab=terms">고객센터</a></li>
 					</ul>
 				</nav>
 				<nav id="nav">
@@ -97,7 +97,7 @@
 									<c:if test="${sessionId ne null}">
 										<li><a href="/logout" class="logout">로그아웃</a></li>
 									</c:if>
-									<li><a href="/elements">고객센터</a></li>
+									<li><a href="/policy/policy?tab=terms">고객센터</a></li>
 								</ul>
 							</li>	
 						</ul>

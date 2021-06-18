@@ -167,11 +167,11 @@
                     <img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50"></a>
                 <div class="contact-icons">
                     <ul>
-                        <li><a href="#"
+                        <li><a href="/policy/policy?tab=privacy"
                                class="icon solid fa-envelope"><span>개인정보취급방침</span></a></li>
-                        <li><a href="#" class="icon brands fa-twitter"><span>홈페이지 이용약관</span></a></li>
-                        <li><a href="#" class="icon brands fa-facebook-f"><span>광고 및 제휴 문의</span></a></li>
-                        <li><a href="#" class="icon brands fa-linkedin-in"><span>고객센터</span></a></li>
+                        <li><a href="/policy/policy?tab=terms" class="icon brands fa-twitter"><span>홈페이지 이용약관</span></a></li>
+                        <li><a href="/policy/policy?tab=oppolicy" class="icon brands fa-facebook-f"><span>광고 및 제휴 문의</span></a></li>
+                        <li><a href="/policy/policy?tab=notices" class="icon brands fa-linkedin-in"><span>고객센터</span></a></li>
                     </ul>
                     <ul>
                         <li><a href="#" class="icon solid fa-phone"><span>전화 (031) 211-0000</span></a></li>

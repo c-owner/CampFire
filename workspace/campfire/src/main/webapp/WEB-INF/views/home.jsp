@@ -101,7 +101,7 @@
 						<c:if test="${sessionId ne null}">
 						<li><a href="/logout" class="logout">로그아웃</a></li>
 						</c:if>
-						<li><a href="/elements">고객센터</a></li>
+						<li><a href="/policy/policy?tab=terms">고객센터</a></li>
 					</ul>
 				</nav>
 				<nav id="nav">
@@ -152,7 +152,7 @@
 									<c:if test="${sessionId ne null}">
 										<li><a href="/logout" class="logout">로그아웃</a></li>
 									</c:if>
-									<li><a href="/elements">고객센터</a></li>
+									<li><a href="/policy/policy?tab=terms">고객센터</a></li>
 								</ul>
 							</li>	
 						</ul>
@@ -326,15 +326,15 @@
 	imgArray[0]="/resources/images/background/bg14.jpg"; 
 	imgArray[1]="/resources/images/background/bg03.jpg"; 
 	imgArray[2]="/resources/images/background/bg05.jpg"; 
-	imgArray[3]="/resources/images/background/bg07.jpg"; 
+	/* imgArray[3]="/resources/images/background/bg07.jpg"; 
 	imgArray[4]="/resources/images/background/bg08.jpg"; 
 	imgArray[5]="/resources/images/background/bg09.jpg"; 
 	imgArray[6]="/resources/images/background/bg10.jpg"; 
 	imgArray[7]="/resources/images/background/bg11.jpg"; 
-	imgArray[8]="/resources/images/background/bg12.jpg"; 
+	imgArray[8]="/resources/images/background/bg12.jpg";  */
 	
 	function showImage(){ 
-		var imgNum = Math.round(Math.random()*9); 
+		var imgNum = Math.round(Math.random() * 2); 
 		
 		var objImg = document.getElementById("image"); 
 		

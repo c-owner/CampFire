@@ -313,18 +313,20 @@
 					    <ul class="tab_policy">
 						    <!-- 활성화 시 on 클래스 추가 -->
 						    <!-- WAI-ARIA 속성 구현 예정 -->
-						    <li class="${pageMaker.cri.tab == 'terms' ? 'on' : ''} current" data-tab="tab-1"><a href="#" class="link_policy">이용약관</a></li>
-						    <li class="${pageMaker.cri.tab == 'location' ? 'on' : ''}" data-tab="tab-2"><a href="#" class="link_policy">위치기반서비스 이용약관</a></li>
-						    <li class="${pageMaker.cri.tab == 'privacy' ? 'on' : ''}" data-tab="tab-3"><a href="#" class="link_policy">개인정보처리방침</a></li>
-						    <li class="${pageMaker.cri.tab == 'oppolicy' ? 'on' : ''}" data-tab="tab-4"><a href="#" class="link_policy">운영정책</a></li>
-					        <li class="${pageMaker.cri.tab == 'safeguard' ? 'on' : ''}" data-tab="tab-5"><a href="#" class="link_policy">권리침해신고안내</a></li>
-						    <li class="${pageMaker.cri.tab == 'notices' ? 'on' : ''}" data-tab="tab-6"><a href="#" class="link_policy">공지사항</a></li>
+						    <li class="${pageMaker.cri.tab == 'terms' ? 'current' : ''}" data-tab="tab-1"><a href="#" class="link_policy">이용약관</a></li>
+						    <li class="${pageMaker.cri.tab == 'location' ? 'current' : ''}" data-tab="tab-2"><a href="#" class="link_policy">위치기반서비스 이용약관</a></li>
+						    <li class="${pageMaker.cri.tab == 'privacy' ? 'current' : ''}" data-tab="tab-3"><a href="#" class="link_policy">개인정보처리방침</a></li>
+						    <li class="${pageMaker.cri.tab == 'oppolicy' ? 'current' : ''}" data-tab="tab-4"><a href="#" class="link_policy">운영정책</a></li>
+					        <li class="${pageMaker.cri.tab == 'safeguard' ? 'current' : ''}" data-tab="tab-5"><a href="#" class="link_policy">권리침해신고안내</a></li>
+						    <li class="${pageMaker.cri.tab == 'notices' ? 'current' : ''}" data-tab="tab-6"><a href="#" class="link_policy">공지사항</a></li>
 						</ul>
 				    </form>
 				<div class="wrap_cont wrap_notices current" id="tab-1">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>이용약관</h4>
 	                </div>
+	                
+	                
 	                <div class="table-wrapper">
 	                    <div class="tbl_comm fst tbl_public">
 <div class="wrap_menu">
@@ -633,21 +635,173 @@
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>위치기반서비스 이용약관</h4>
 						</div>
+						<div class="table-wrapper">
+		                    <div class="tbl_comm fst tbl_public">
+		                   		<div class="wrap_terms">
+					                <h4 class="tit_subject fst">제 1 조 (목적)</h4>
+					                <p class="desc_g">
+					                    본 약관은 주식회사 모닥불(이하 &#34;회사&#34;)가 제공하는 위치기반서비스에 대해 회사와 위치기반서비스를 이용하는 개인위치정보주체(이하 &#34;이용자&#34;)간의 권리·의무 및 책임사항, 기타 필요한 사항 규정을 목적으로 합니다.
+					
+					                </p>
+					                <h4 class="tit_subject">제 2 조 (이용약관의 효력 및 변경)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>본 약관은 이용자가 본 약관에 동의하고 회사가 정한 절차에 따라 위치기반서비스의 이용자로 등록됨으로써 효력이 발생합니다.</li>
+					                    <li><span class="txt_num">②</span>회사는 법률이나 위치기반서비스의 변경사항을 반영하기 위한 목적 등으로 약관을 수정할 수 있습니다.</li>
+					                    <li><span class="txt_num">③</span>약관이 변경되는 경우 회사는 변경사항을 최소 7일 전에 회사의 홈페이지 등 기타 공지사항 페이지를 통해 게시합니다.</li>
+					                    <li><span class="txt_num">④</span>단, 개정되는 내용이 이용자 권리의 중대한 변경이 발생하는 경우에는 30일 전에 게시하도록 하겠습니다.</li>
+					                </ul>
+					                <h4 class="tit_subject">제 3 조 (약관 외 준칙) </h4>
+					                <p class="desc_g">
+					                    이 약관에 명시되지 않은 사항에 대해서는 위치 정보의 보호 및 이용 등에 관한 법률, 전기통신사업법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 관계법령 및 회사가 정한 지침 등의 규정에 따릅니다.
+					                </p>
+					                <h4 class="tit_subject">제 4 조 (서비스의 내용)</h4>
+					                <p class="desc_g">
+					                    회사는 직접 수집하거나 위치정보사업자로부터 수집한 이용자의 현재 위치 또는 현재 위치가 포함된 지역을 이용하여 아래와 같은 위치기반서비스를 제공합니다.
+					                </p>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>위치정보를 활용한 정보 검색결과 및 콘텐츠를 제공하거나 추천</li>
+					                    <li><span class="txt_num">②</span>생활편의를 위한 위치 공유, 위치/지역에 따른 알림, 경로 안내</li>
+					                    <li><span class="txt_num">③</span>위치기반의 컨텐츠 분류를 위한 콘텐츠 태깅(Geotagging)</li>
+					                    <li><span class="txt_num">④</span>위치기반의 맞춤형 광고</li>
+					                </ul>
+					                <h4 class="tit_subject">제 5 조 (서비스 이용요금)</h4>
+					                <p class="desc_g">
+					                    회사가 제공하는 위치기반서비스는 무료입니다.<br>단, 무선 서비스 이용 시 발생하는 데이터 통신료는 별도이며, 이용자가 가입한 각 이동통신사의 정책에 따릅니다.
+					                </p>
+					                <h4 class="tit_subject">제 6 조 (서비스 이용의 제한·중지)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>회사는 위치기반서비스사업자의 정책변경 등과 같이 회사의 제반사정 또는 법률상의 이유로 위치기반서비스를 유지할 수 없는 경우 위치기반서비스의 전부 또는 일부를 제한·변경·중지할 수 있습니다.</li>
+					                    <li><span class="txt_num">②</span>단, 위 항에 의한 위치기반서비스 중단의 경우 회사는 사전에 회사 홈페이지 등 기타 공지사항 페이지를 통해 공지하거나 이용자에게 통지합니다.</li>
+					                </ul>
+					                <h4 class="tit_subject">제 7 조 (개인위치정보주체의 권리)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>이용자는 언제든지 개인위치정보의 수집·이용·제공에 대한 동의 전부 또는 일부를 유보할 수 있습니다.</li>
+					                    <li><span class="txt_num">②</span>이용자는 언제든지 개인위치정보의 수집·이용·제공에 대한 동의 전부 또는 일부를 철회할 수 있습니다. 이 경우 회사는 지체 없이 철회된 범위의 개인위치정보 및 위치정보 수집·이용·제공사실 확인자료를 파기합니다.</li>
+					                    <li><span class="txt_num">③</span>이용자는 개인위치정보의 수집·이용·제공의 일시적인 중지를 요구할 수 있으며, 이 경우 회사는 이를 거절할 수 없고 이를 충족하는 기술적 수단을 마련합니다.</li>
+					                    <li><span class="txt_num">④</span>이용자는 회사에 대하여 아래 자료에 대한 열람 또는 고지를 요구할 수 있으며, 해당 자료에 오류가 있는 경우에는 정정을 요구할 수 있습니다. 이 경우 정당한 사유 없이 요구를 거절하지 않습니다.</li>
+					                        <ul class="list_2depth_type2">
+					                            <li><span class="txt_num">1.</span>이용자에 대한 위치정보 수집·이용·제공사실 확인자료</li>
+					                            <li><span class="txt_num">2.</span>이용자의 개인위치정보가 위치정보의 보호 및 이용 등에 관한 법률 또는 다른 법령의 규정에 의하여 제3자에게 제공된 이유 및 내용</li>
+					                        </ul>
+					                    <li><span class="txt_num">⑤</span>이용자는 권리행사를 위해 본 약관 제14조의 연락처를 이용하여 회사에 요청할 수 있습니다.</li>
+					                </ul>
+					                <h4 class="tit_subject">제 8 조 (개인위치정보의 이용 또는 제공)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>회사는 개인위치정보를 이용하여 위치기반서비스를 제공하는 경우 본 약관에 고지하고 동의를 받습니다.</li>
+					                    <li><span class="txt_num">②</span>회사는 이용자의 동의 없이 개인위치정보를 제3자에게 제공하지 않으며, 제3자에게 제공하는 경우에는 제공받는 자 및 제공목적을 사전에 이용자에게 고지하고 동의를 받습니다.</li>
+					                    <li><span class="txt_num">③</span>회사는 개인위치정보를 이용자가 지정하는 제3자에게 제공하는 경우 개인위치정보를 수집한 통신단말장치로 매회 이용자에게 제공받는 자, 제공일시 및 제공목적을 즉시 통지합니다.</li>
+					                    <li><span class="txt_num">④</span>단, 아래의 경우 이용자가 미리 특정하여 지정한 통신단말장치 또는 전자우편주소, 온라인게시 등으로 통지합니다.</li>
+					                    <ul class="list_2depth_type2">
+					                        <li><span class="txt_num">1.</span>개인위치정보를 수집한 당해 통신단말장치가 문자, 음성 또는 영상의 수신기능을 갖추지 아니한 경우</li>
+					                        <li><span class="txt_num">2.</span>이용자의 개인위치정보를 수집한 통신단말장치 외의 통신단말장치 또는 전자우편주소, 온라인게시 등으로 통보할 것을 미리 요청한 경우</li>
+					                    </ul>
+					                    <li><span class="txt_num">⑤</span>회사는 위치정보의 보호 및 이용 등에 관한 법률 제16조 제2항에 근거하여 개인위치정보 수집·이용·제공사실 확인자료를 자동으로 기록·보존하며, 해당 자료는 6개월간 보관합니다.</li>
+					                </ul>
+					                <a href="/policy/policy?tab=notices" target="_blank" class="btn_step btn_with">위치정보 제공 현황 자세히 보기<span class="ico_corp ico_arr"></span></a> <!-- 2019-07-09 링크 추가 -->
+					                <h4 class="tit_subject">제 9 조 (법정대리인의 권리)</h4>
+					                <p class="desc_g">
+					                    회사는 14세 미만의 이용자에 대해서는 개인위치정보를 이용한 위치기반서비스 제공 및 개인위치정보의 제3자 제공에 대한 동의를 이용자 및 이용자의 법정대리인으로부터 동의를 받아야 합니다. 이 경우 법정대리인은 본 약관 제7조에 의한 이용자의 권리를 모두 가집니다.
+					                </p>
+					                <h4 class="tit_subject">제 10 조 (8세 이하의 아동 동의 보호의무자의 권리)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>회사는 아래의 경우에 해당하는 자(이하 “8세 이하의 아동 등”)의 위치정보의 보호 및 이용 등에 관한 법률 제26조2항에 해당하는 자(이하 “보호의무자”)가 8세 이하의 아동 등의 생명 또는 신체보호를 위하여 개인위치정보의 이용 또는 제공에 동의하는 경우에는 본인의 동의가 있는 것으로 봅니다.</li>
+						                    <ul class="list_2depth_type2">
+						                        <li><span class="txt_num">1.</span>8세 이하의 아동</li>
+						                        <li><span class="txt_num">2.</span>피성년후견인</li>
+						                        <li><span class="txt_num">3.</span>장애인복지법 제2조제2항제2호에 따른 정신적 장애를 가진 사람으로서 장애인고용촉진 및 직업재활법 제2조제2호에 따른 중증장애인에 해당하는 사람(장애인복지법 제32조에 따라 장애인 등록을 한 사람만 해당한다)</li>
+						                    </ul>
+					                    <li><span class="txt_num">②</span>8세 이하의 아동 등의 생명 또는 신체의 보호를 위하여 개인위치정보의 이용 또는 제공에 동의를 하고자 하는 보호의무자는 서면동의서에 보호의무자임을 증명하는 서면을 첨부하여 회사에 제출하여야 합니다.</li>
+					                    <li><span class="txt_num">③</span>보호의무자는 8세 이하의 아동 등의 개인위치정보 이용 또는 제공에 동의하는 경우 본 약관 제7조에 의한 이용자의 권리를 모두 가집니다.</li>
+					                </ul>
+					                <h4 class="tit_subject">제 11 조 (손해배상)</h4>
+					                <p class="desc_g">
+					                    회사의 위치정보의 보호 및 이용 등에 관한 법률 제15조 및 26조의 규정을 위반한 행위로 인해 손해를 입은 경우 이용자는 회사에 손해배상을 청구할 수 있습니다. 회사는 고의, 과실이 없음을 입증하지 못하는 경우 책임을 면할 수 없습니다.
+					                </p>
+					                <h4 class="tit_subject">제 12 조 (면책)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>회사는 다음 각 호의 경우로 위치기반서비스를 제공할 수 없는 경우 이로 인하여 이용자에게 발생한 손해에 대해서는 책임을 부담하지 않습니다.
+					                        <ul class="list_2depth_type2">
+					                            <li><span class="txt_num">1.</span>천재지변 또는 이에 준하는 불가항력의 상태가 있는 경우</li>
+					                            <li><span class="txt_num">2.</span>위치기반서비스 제공을 위하여 회사와 서비스 제휴계약을 체결한 제3자의 고의적인 서비스 방해가 있는 경우</li>
+					                            <li><span class="txt_num">3.</span>이용자의 귀책사유로 위치기반서비스 이용에 장애가 있는 경우</li>
+					                            <li><span class="txt_num">4.</span>제1호 내지 제3호를 제외한 기타 회사의 고의·과실이 없는 사유로 인한 경우</li>
+					                        </ul>
+					                    </li>
+					                    <li><span class="txt_num">②</span>회사는 위치기반서비스 및 위치기반서비스에 게재된 정보, 자료, 사실의 신뢰도, 정확성 등에 대해서는 보증을 하지 않으며 이로 인해 발생한 이용자의 손해에 대하여는 책임을 부담하지 아니합니다.</li>
+					                </ul>
+					                <h4 class="tit_subject">제 13 조 (분쟁의 조정 및 기타)</h4>
+					                <ul class="list_1depth">
+					                    <li><span class="txt_num">①</span>회사는 위치정보와 관련된 분쟁의 해결을 위해 이용자와 성실히 협의합니다.</li>
+					                    <li><span class="txt_num">②</span>전항의 협의에서 분쟁이 해결되지 않은 경우, 회사와 이용자는 위치정보의 보호 및 이용 등에 관한 법률 제28조의 규정에 의해 방송통신위원회에 재정을 신청하거나, 개인정보보호법 제43조의 규정에 의해 개인정보 분쟁조정위원회에 조정을 신청할 수 있습니다.</li>
+					                </ul>
+					                <h4 class="tit_subject">제 14 조 (회사의 주소 및 연락처)</h4>
+					                <p class="desc_g">회사의 상호, 주소 및 연락처는 아래와 같습니다.</p>
+					                <ul class="list_2depth">
+					                    <li>상호 : 주식회사 모닥불</li>
+					                    <li>대표 : 천기훈 | 팀원 : 방준호, 홍아현, 송승훈, 고희광</li>
+					                    <li>주소 : 서울특별시 강남구 테헤란로 146</li>
+					                    <li>대표전화 : 1111-223X</li>
+					                </ul>
+					                <h4 class="tit_subject">부칙</h4>
+					                <strong class="tit_subject">제 1 조 (시행일)</strong>
+					                <p class="desc_g">본 약관은 2021년 3월 2일부터 시행됩니다.</p>
+					                <strong class="tit_subject">제 2 조 (위치정보관리책임자 정보)</strong>
+					                <p class="desc_g">
+					                    회사는 개인위치정보를 적절히 관리·보호하고, 이용자의 불만을 원활히 처리할 수 있도록 실질적인 책임을 질 수 있는 지위에 있는 자를 위치정보관리책임자로 지정해 운영하고 있으며, 위치정보관리책임자는 위치기반서비스를 제공하는 부서의 부서장으로서 성명과 연락처는 아래와 같습니다.
+					                </p>
+					                <ul class="list_2depth">
+					                    <li>성명 : 천기훈</li>
+					                    <li>대표전화 : 1111-223X</li>
+					                    <li>위치정보 전용문의 게시판 :
+					
+					                        
+					                            <a href="/policy/policy?tab=notices" class="link_policy">/policy/policy?tab=location</a>
+					                        
+					                        
+					
+					
+					
+					                    </li>
+					                </ul>
+					                <div class="wrap_btn">
+					                    <!-- <a href="#none" target="_blank" class="btn_step btn_with">[별표1] 위치기반서비스의 종류 및 요금<span class="ico_corp ico_arr"></span></a> -->
+					                    <a href="/policy/policy?tab=notices" target="_blank" class="btn_step btn_with">변경 전 위치기반서비스 이용약관 보기<span class="ico_corp ico_arr"></span></a>
+					                </div>
+					            </div>
+		                    </div>
+	                    </div>
+						
+						
 					</div>
 					<div class="wrap_cont wrap_notices" id="tab-3">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>개인정보처리방침</h4>
 						</div>
+						<div class="table-wrapper">
+		                    <div class="tbl_comm fst tbl_public">
+		                    
+		                    </div>
+	                    </div>
 					</div>
 					<div class="wrap_cont wrap_notices" id="tab-4">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>운영정책</h4>
 						</div>
+						<div class="table-wrapper">
+		                    <div class="tbl_comm fst tbl_public">
+		                    
+		                    </div>
+	                    </div>
 					</div>
 					<div class="wrap_cont wrap_notices" id="tab-5">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>권리침해신고안내</h4>
 						</div>
+						<div class="table-wrapper">
+		                    <div class="tbl_comm fst tbl_public">
+		                    
+		                    </div>
+	                    </div>
 					</div>
 					
 					
@@ -766,17 +920,25 @@
 		$(document).ready(function () {
 			
 				var tab = "${pageMaker.cri.tab}";
+				var on = $(this).parents("li");
+				var ons = $(".tab_policy li");
+				
 			$('ul.tab_policy li').click(function(){
 				var tab_id = $(this).attr('data-tab');
 
-				$('ul.tab_policy li').removeClass('current');
-				$('.wrap_cont').removeClass('current');
+				/* $('ul.tab_policy li').removeClass('current'); */
 
-				$(this).addClass('current');
+				for(let i=0; i<ons.length; i++){
+					if($(ons[i]).attr("class") == "current"){
+						ons.removeClass("current");
+						$('.wrap_cont').removeClass('current');
+					}
+				}	
 				$("#"+tab_id).addClass('current');
-				
-				/* location.href("/policy/policy?tab=" + tab); */
-			})
+				$(this).addClass('current');
+				window.location.href("/policy/policy?tab=" + tab);
+			
+			});
 
 			/* p > iframe.note-video-clip {
 				object-fit: contain !important;
