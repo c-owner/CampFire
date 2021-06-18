@@ -53,14 +53,14 @@
 	    padding-bottom: 180px;
     }
     /* 탭 활성화 상태 */
-    .tab_policy .on {
+    .tab_policy .current {
 	    z-index: 1;
 	    border-color: #1e1e1e;
+	    background-color: #1e1e1e;
     }
-    .tab_policy .on .link_policy {
+    .tab_policy .current .link_policy {
 	    position: relative;
 	    color: #fff;
-	    background-color: #1e1e1e;
 	    z-index: 99;
 	}
     
@@ -273,22 +273,15 @@
 	}
 	ul.tab_policy li{
 		background: none;
-		color: #222;
 		display: inline-block;
 		cursor: pointer;
 	}
 
-	ul.tab_policy li.on{
-		background: #ededed;
-		color: #222;
-	}
-
 	.wrap_cont{
 		display: none;
-		background: #ededed;
 	}
 
-	.wrap_cont.on{
+	.wrap_cont.current{
 		display: inherit;
 	}
 </style>
@@ -316,16 +309,14 @@
 					    <ul class="tab_policy">
 						    <!-- 활성화 시 on 클래스 추가 -->
 						    <!-- WAI-ARIA 속성 구현 예정 -->
-						    <li class="${pageMaker.cri.tab == 'terms' ? 'on' : ''}" data-tab="tab-1"><a href="/policy/policy?tab=terms" class="link_policy">이용약관</a></li>
-						    <li class="${pageMaker.cri.tab == 'location' ? 'on' : ''}" data-tab="tab-2"><a href="/policy/policy?tab=location" class="link_policy">위치기반서비스 이용약관</a></li>
-						    <li class="${pageMaker.cri.tab == 'privacy' ? 'on' : ''}" data-tab="tab-3"><a href="/policy/policy?tab=privacy" class="link_policy">개인정보처리방침</a></li>
-						    <li class="${pageMaker.cri.tab == 'oppolicy' ? 'on' : ''}" data-tab="tab-4"><a href="/policy/policy?tab=oppolicy" class="link_policy">운영정책</a></li>
-					        <li class="${pageMaker.cri.tab == 'safeguard' ? 'on' : ''}" data-tab="tab-5"><a href="/policy/policy?tab=safeguard" class="link_policy">권리침해신고안내</a></li>
-						    <li class="${pageMaker.cri.tab == 'notices' ? 'on' : ''}" data-tab="tab-6"><a href="/policy/policy?tab=notices" class="link_policy">공지사항</a></li>
+						    <li class="${pageMaker.cri.tab == 'terms' ? 'on' : ''}" data-tab="tab-1"><a href="#" class="link_policy">이용약관</a></li>
+						    <li class="${pageMaker.cri.tab == 'location' ? 'on' : ''}" data-tab="tab-2"><a href="#" class="link_policy">위치기반서비스 이용약관</a></li>
+						    <li class="${pageMaker.cri.tab == 'privacy' ? 'on' : ''}" data-tab="tab-3"><a href="#" class="link_policy">개인정보처리방침</a></li>
+						    <li class="${pageMaker.cri.tab == 'oppolicy' ? 'on' : ''}" data-tab="tab-4"><a href="#" class="link_policy">운영정책</a></li>
+					        <li class="${pageMaker.cri.tab == 'safeguard' ? 'on' : ''}" data-tab="tab-5"><a href="#" class="link_policy">권리침해신고안내</a></li>
+						    <li class="${pageMaker.cri.tab == 'notices' ? 'on' : ''}" data-tab="tab-6"><a href="#" class="link_policy">공지사항</a></li>
 						</ul>
 				    </form>
-			<c:choose>
-				<c:when test="${pageMaker.cri.tab eq 'terms' ? 'on' : ''}">
 				<div class="wrap_cont wrap_notices" id="tab-1">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>이용약관</h4>
@@ -486,36 +477,26 @@
 	
                		</div> <!-- area content-->
            		</div>  <!-- wrapper terms content-->
-				</c:when>
-				<c:when test="${pageMaker.cri.tab eq 'location' ? 'on' : ''}">
 					<div class="wrap_cont wrap_notices" id="tab-2">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>위치기반서비스 이용약관</h4>
 						</div>
 					</div>
-				</c:when>
-				<c:when test="${pageMaker.cri.tab eq 'privacy' ? 'on' : ''}">
 					<div class="wrap_cont wrap_notices" id="tab-3">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>개인정보처리방침</h4>
 						</div>
 					</div>
-				</c:when>
-				<c:when test="${pageMaker.cri.tab eq 'oppolicy' ? 'on' : ''}">
 					<div class="wrap_cont wrap_notices" id="tab-4">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>운영정책</h4>
 						</div>
 					</div>
-				</c:when>
-				<c:when test="${pageMaker.cri.tab eq 'safeguard' ? 'on' : ''}">
 					<div class="wrap_cont wrap_notices" id="tab-5">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>권리침해신고안내</h4>
 						</div>
 					</div>
-				</c:when>
-				<c:otherwise>
 				<div class="wrap_cont wrap_notices" id="tab-6">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
@@ -610,8 +591,6 @@
 	
                		</div> <!-- area content-->
            		</div>  <!-- wrapper notices content-->
-      			</c:otherwise>
-			</c:choose>
            		 
 			</div> <!-- mArticle-->
 		</div> <!-- inner-->
@@ -626,6 +605,7 @@
 	<script>
 		$(document).ready(function () {
 			
+				var tab = "${pageMaker.cri.tab}";
 			$('ul.tab_policy li').click(function(){
 				var tab_id = $(this).attr('data-tab');
 
@@ -634,6 +614,8 @@
 
 				$(this).addClass('current');
 				$("#"+tab_id).addClass('current');
+				
+				/* location.href("/policy/policy?tab=" + tab); */
 			})
 
 			/* p > iframe.note-video-clip {
@@ -646,11 +628,10 @@
 			
 			
 			
-				var tab = "${pageMaker.cri.tab}";
+/* 				
 			$(".link_policy").on("click", function(){
 				var on = $(this).parents("li");
 				var ons = $(".tab_policy li");
-				
 				for(let i=0; i<ons.length; i++){
 					if($(ons[i]).attr("class") == "on"){
 						ons.removeClass("on");
@@ -659,24 +640,8 @@
 					location.href("/policy/policy?tab=" + tab);
 				}			
 				
-				$("div.filter-mobile").children().on("click", function(e){
-					$("div.filter-mobile").children().removeClass("active");
-					$(this).toggleClass("active");
-					console.log($(this).text());
-					var type = $(this).text();
-					var input = $("input[name='type']");
-					if(type == "최신순"){
-						input.val("");
-					}else if(type == "캠퍼 픽"){
-						input.val("hotest");
-					}else if(type == "조회순"){
-						input.val("most");
-					}
-					console.log(input.val());
-					searchForm.submit();
-				})
 			});
-			
+ */			
 			$(".changePage").on("click", function(e){
 				e.preventDefault();
 				var actionForm = $("#actionForm");

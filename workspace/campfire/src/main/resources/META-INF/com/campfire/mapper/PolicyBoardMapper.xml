@@ -55,7 +55,7 @@
 			SELECT SEQ_POLICY_BOARD.NEXTVAL FROM DUAL 
 		</selectKey>
 		INSERT INTO TBL_POLICY_BOARD (BNO, TITLE, CONTENT, WRITER, TAB) 
-		VALUES (SEQ_POLICY_BOARD.NEXTVAL, #{title}, #{content}, #{writer}, #{tab})
+		VALUES (#{bno}, #{title}, #{content}, #{writer}, #{tab})
 	</insert>
 	
 	<select id="read" resultType="com.campfire.domain.PolicyVO">
