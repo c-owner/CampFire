@@ -38,6 +38,9 @@ public class PolicyController {
 		model.addAttribute("list", service.getList(cri, tab));
 		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotal(cri)));
 	}
+	@GetMapping("/terms")
+	public void terms() {
+	}
 	
 	@GetMapping("/policyWrite")
 	public void register(@ModelAttribute("cri") Criteria cri, String tab, Model model) {
