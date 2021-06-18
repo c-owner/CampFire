@@ -96,6 +96,10 @@
 				white-space: nowrap;
 			}
 			
+			.row, .contentDiv {
+				width: 100%;
+			}
+			
 			@media screen and (max-width: 1680px){
 				.writeBtn {
 					padding-left: 73%;
