@@ -37,6 +37,27 @@
 		color:#545454;
 		margin: 0;
 	}
+	
+	.keyword{
+		width: fit-content;
+    	margin-left: 10%;
+    	border-color: black;
+	}
+	
+	@media screen and (max-width: 736px){
+		.major {
+			width: 100% !important;
+		}
+		
+		.keyword {
+			margin-left: 0%;
+		}
+		
+		.col-10, .col-11-xsmall {
+			padding: 0;
+			width: 100% !important;
+		}
+	}	
 </style>
 
 <body class="is-preload">

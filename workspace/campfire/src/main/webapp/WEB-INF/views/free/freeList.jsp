@@ -62,6 +62,11 @@
 	        #searchBtnDiv {
 	        	padding:0;
 	        }
+	        
+	        @media (max-width: 1100px){
+				.regDate {display:none;}
+	        }
+	        
 			@media (max-width: 918px){
 				/* h1{
 					font-size: 1.5rem;
@@ -71,7 +76,6 @@
 				    width: 100%;
 				}
 				.bno {display:none;}
-				.regDate {display:none;}
 				.big-width{display:none;}
 				.small-width{display:block;}
 				select{width: 100%;}
@@ -103,11 +107,6 @@
 					width: 150px;
 				}
 			}
-			
-			@media (max-width: 320px){
-
-			}
-			
 		</style>
 	</head>
 	<body class="is-preload">
