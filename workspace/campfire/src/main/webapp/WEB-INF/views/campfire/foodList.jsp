@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="/resources/assets/css/search.css" />
 		<link rel="stylesheet" href="/resources/assets/css/food.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	
 	<body class="is-preload">
@@ -85,7 +86,7 @@
 							<c:set var="title_org" value="${food.title}"/>
 							<c:set var="title_length" value="${fn:length(title_org)}"/>
 							<c:set var = "post_title" value = "${fn:substring(title_org, 0, 23)}" />
-								<div class="title">${post_title}<span style="font-size: 8px;">[${food.replyCnt}]</span></div>
+								<div class="title">${post_title}<span style="font-size: 8px;">[${food.replyCnt}]</span>&nbsp;<c:if test="${food.regDate > nowday}"><i class="material-icons">fiber_new</i></c:if></div>
 									<div style="text-align: right; float: right; font-size: 12px;">${food.updateDate}</div>
 								<div class="bottom">
 									<div class="username">

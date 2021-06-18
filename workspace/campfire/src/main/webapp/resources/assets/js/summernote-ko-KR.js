@@ -163,7 +163,6 @@ return /******/ (function(modules) { // webpackBootstrap
         edit: '수정',
         textToDisplay: '링크에 표시할 내용',
         url: '이동할 URL',
-        openInNewWindow: '새창으로 열기'
       },
       table: {
         table: '표',

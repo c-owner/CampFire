@@ -12,7 +12,7 @@
  */
  
 *, *:before, *:after {
-    box-sizing: unset;
+    box-sizing: inherit;
 }
 
 input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"].disabled, input[type="reset"]:disabled, input[type="button"].disabled, input[type="button"]:disabled, button.disabled, button:disabled, .button.disabled, .button:disabled {
@@ -567,7 +567,7 @@ a.note-dropdown-item, a.note-dropdown-item:hover {
 	outline: 0;
 	border-radius: 5px;
 	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-	top: 25%;
+	top: 15%;
 }
 
 .note-modal-header {
@@ -594,8 +594,8 @@ a.note-dropdown-item, a.note-dropdown-item:hover {
 	height: 40px;
 	padding: 10px;
 	text-align: center;
-	margin-bottom: 3%;
-    margin-left: 68%;
+	margin-bottom: 7%;
+    margin-left: 64%;
 }
 
 .note-modal-footer a {
