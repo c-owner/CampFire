@@ -35,6 +35,17 @@
 				color:#545454;
 				margin: 0;
 			}
+			
+			@media (max-width: 736px){
+				.major {
+					width: 100%;
+				}
+				
+				.col-10, .col-11-xsmall {
+					width: 100% !important;
+					padding: 0;
+				}
+			}
 		</style>
 	</head>
 
