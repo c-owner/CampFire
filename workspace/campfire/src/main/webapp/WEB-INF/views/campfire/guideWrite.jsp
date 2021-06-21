@@ -142,9 +142,9 @@
 				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
 				$(el).summernote('editor.insertImage', "/display?fileName=/guide/" + url);
 				var str = "";
-				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.f_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.f_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.f_succeedList[0].fileName + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.g_succeedList[0].uploadPath + "'>";					
+				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.g_succeedList[0].uuid + "'>";					
+				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.g_succeedList[0].fileName + "'>";					
 				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 				guideForm.append(str);
 				j++;

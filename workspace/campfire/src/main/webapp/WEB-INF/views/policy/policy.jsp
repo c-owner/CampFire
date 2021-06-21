@@ -321,12 +321,12 @@
 						    <li class="${pageMaker.cri.tab == 'notices' ? 'current' : ''}" data-tab="tab-6"><a href="#" class="link_policy">공지사항</a></li>
 						</ul>
 				    </form>
-				<div class="wrap_cont wrap_notices current" id="tab-1">
+				<div class="wrap_cont wrap_notices" id="tab-1">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>이용약관</h4>
 	                </div>
 	                
-	                
+	                <!-- 이용약관 메뉴  -->
 	                <div class="table-wrapper">
 	                    <div class="tbl_comm fst tbl_public">
 <div class="wrap_menu">
@@ -630,7 +630,7 @@
            		
            		
            		
-           		
+           		<!--  모닥불 위치기반서비스 이용약관 -->
 					<div class="wrap_cont wrap_notices" id="tab-2">
 						<div class="area_tit">
 							<h4 class="tit_corp">모닥불 서비스 <br>위치기반서비스 이용약관</h4>
@@ -755,7 +755,7 @@
 					                    <li>위치정보 전용문의 게시판 :
 					
 					                        
-					                            <a href="/policy/policy?tab=notices" class="link_policy">/policy/policy?tab=location</a>
+					                            <a href="/policy/policy?tab=location" class="link_policy" style="color:cornflowerblue;">http://camp-fire.kro.kr/policy?tab=location</a>
 					                        
 					                        
 					
@@ -811,7 +811,7 @@
 					
 					
 					<!-- ----------공지사항----------- -->
-				<div class="wrap_cont wrap_notices" id="tab-6">
+				<div class="wrap_cont wrap_notices current" id="tab-6">
 	                <div class="area_tit">
 	                    <h4 class="tit_corp">모닥불 서비스 <br>공지사항</h4>
 	                </div>
@@ -925,6 +925,7 @@
 				
 			$('ul.tab_policy li').click(function(){
 				var tab_id = $(this).attr('data-tab');
+		
 
 				/* $('ul.tab_policy li').removeClass('current'); */
 
@@ -934,9 +935,11 @@
 						$('.wrap_cont').removeClass('current');
 					}
 				}	
+//  if == click --> tab Active --> page move 
+				// location.href = "/policy/policy?tab=" + tab;
 				$("#"+tab_id).addClass('current');
 				$(this).addClass('current');
-				window.location.href("/policy/policy?tab=" + tab);
+		
 			
 			});
 
@@ -998,24 +1001,10 @@
 			}
 			alert("게시글 " + result + "번이 등록되었습니다.")
 		});
-
-	function guideWrite(){
-    	 if ("${sessionId}" == ""){
- 			alert("로그인 후 이용해 주십시오.");
- 			goSignIn();
- 		}else{
- 			location.replace("/policy/policy${pageMaker.cri.getListLink()}");
- 		}
-     }
 	
-	function view(bno, pageNum, amount){
-		if ("${sessionId}" == ""){
-			alert("로그인 후 이용해 주십시오.");
-			goSignIn();
-		}else{
+		function view(bno, pageNum, amount){
 			location.replace("/policy/policyView?bno="+bno+"&pageNum="+pageNum+"&amount="+amount);
-		}
-	}
+		}	
 
 	</script>
 </html>

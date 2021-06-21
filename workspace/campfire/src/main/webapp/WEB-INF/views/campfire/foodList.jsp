@@ -27,7 +27,7 @@
 			<div class="inner banner">
 					<div class="main-banner-container">
 						<div class="inner-image">
-							<a class="image main"><img src="/resources/images/campfood.jpeg" alt="" /></a>
+							<a class="image main"><img src="/resources/images/campfire/food/campfood.jpeg" alt="" /></a>
 						</div>
 						<div class="description">
 							<div class="text-1">캠핑요리 더욱 더 다양하게</div>
@@ -73,7 +73,7 @@
 						<c:choose>
 						    <c:when test="${thumbBefore eq ''}">
 								<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-								<img class="foodImg" src="/resources/images/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+								<img class="foodImg" src="/resources/images/campfire/food/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
 						    </c:when>
 						    <c:otherwise>
 						    	<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">

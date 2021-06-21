@@ -223,10 +223,10 @@
 					<ul style="padding-left: 0;">
 		       			<c:choose>
 		       				<c:when test="${check == 'F'}">
-				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market1.JPG" alt="슬라이드1">
+				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market/market1.JPG" alt="슬라이드1">
 		       				</c:when>
 		       				<c:otherwise>
-				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market2.JPG" alt="슬라이드1">
+				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market/market2.JPG" alt="슬라이드1">
 		       				</c:otherwise>
 		       			</c:choose>
 	       			</ul>

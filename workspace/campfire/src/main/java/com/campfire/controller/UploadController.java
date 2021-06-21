@@ -42,8 +42,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class UploadController {
 	
-	String fileFolder = "/usr/local/upload/";
-	String uploadFolder = "/usr/local/upload/";
+	 String fileFolder = "/usr/local/upload/";
+	 String uploadFolder = "/usr/local/upload/";
 //	String fileFolder = "C:\\upload\\";
 //	String uploadFolder = "C:\\upload\\";
 	
