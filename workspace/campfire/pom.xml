@@ -59,6 +59,15 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		
+		<!-- json simple  -->
+		<dependency>
+		  <groupId>com.googlecode.json-simple</groupId>
+		  <artifactId>json-simple</artifactId>
+		  <version>1.1.1</version>
+		</dependency>
+		<!-- json simple  -->
+		
 		<!-- JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>

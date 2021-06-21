@@ -108,7 +108,7 @@
 					<ul>
 						<li class="current">
 							<a href="/">
-								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
+								<img class="current" src="/resources/images/icon/main-logo.png" alt="홈 바로가기" height="50">
 							</a></li>
 							<li class="smallMenu2"><a href="/">Home</a></li>
 							<li><a href="/policy/policy?tab=notices">공지사항</a></li>
@@ -326,15 +326,15 @@
 	imgArray[0]="/resources/images/background/bg14.jpg"; 
 	imgArray[1]="/resources/images/background/bg03.jpg"; 
 	imgArray[2]="/resources/images/background/bg05.jpg"; 
-	/* imgArray[3]="/resources/images/background/bg07.jpg"; 
+	imgArray[3]="/resources/images/background/bg07.jpg"; 
 	imgArray[4]="/resources/images/background/bg08.jpg"; 
 	imgArray[5]="/resources/images/background/bg09.jpg"; 
 	imgArray[6]="/resources/images/background/bg10.jpg"; 
 	imgArray[7]="/resources/images/background/bg11.jpg"; 
-	imgArray[8]="/resources/images/background/bg12.jpg";  */
+	imgArray[8]="/resources/images/background/bg12.jpg"; 
 	
 	function showImage(){ 
-		var imgNum = Math.round(Math.random() * 2); 
+		var imgNum = Math.round(Math.random() * 8); 
 		
 		var objImg = document.getElementById("image"); 
 		
