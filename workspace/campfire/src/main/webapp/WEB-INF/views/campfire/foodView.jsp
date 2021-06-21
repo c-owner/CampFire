@@ -65,7 +65,7 @@
 							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
-						<c:if test="${sessionId eq food.writer}">
+						<c:if test="${sessionId eq food.writer || admin eq '1' }">
 							<a class="button small" id="boardModify" href="/campfire/foodModify${cri.getListLink()}&bno=${food.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</c:if>

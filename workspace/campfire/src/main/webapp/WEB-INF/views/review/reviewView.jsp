@@ -73,6 +73,7 @@
 							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
+							<c:if test="${admin eq '1' || sessionId eq review.writer}"></c:if>
 								<a class="button small" href='/review/reviewModify${cri.getListLink()}&bno=${review.bno}' style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 								<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</div>
