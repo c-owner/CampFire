@@ -6,9 +6,19 @@
 
 ```
 
-**이슈 발견**
+ **~~이슈 발견~~**
 
-- 
+
+
+---
+
+## 2021-06-21 👏v0.01i_2-alpha
+
+- 메인 LOGO 제작 (Design PhotoShop)
+
+
+
+![Main-Logo](http://camp-fire.kro.kr/resources/images/icon/main-logo.png)
 
 ---
 
