@@ -45,6 +45,10 @@ public class HomeController {
 	public String generic() {
 		return "generic";
 	}
+	@RequestMapping(value = "/mapTest", method = RequestMethod.GET)
+	public String mapTest() {
+		return "mapTest";
+	}
 	
 	//카카오 로그인
 	@RequestMapping(value="/login")
