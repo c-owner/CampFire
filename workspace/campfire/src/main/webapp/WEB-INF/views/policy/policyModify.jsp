@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>팁게시판 | 모닥불🏕 </title>
+	<title> 공지사항 | 모닥불🏕 </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<meta name="description" content="" />
@@ -31,21 +31,10 @@
 		margin-bottom: 2rem;
 	}
 	
-	.reviewForm label {
+	.policyForm label {
 		font-size: 1.5rem;
 		color:#545454;
 		margin: 0;
-	}
-	
-	@media (max-width: 736px){
-		.major {
-			width: 100%;
-		}
-		
-		.col-10, .col-11-xsmall {
-			width: 100% !important;
-			padding: 0;
-		}
 	}
 </style>
 
@@ -57,18 +46,19 @@
 		<div class="wrapper">
 			<div class="inner">
 				<header class="major">
-                        <h2>팁게시판 글쓰기</h2>
+                        <h2>공지사항 글쓰기</h2>
                 </header>
-				<form class="reviewForm" action="/campfire/tipWrite" method="post" name="tipForm">
+				<form class="policyForm" action="/policy/policyModify" method="post" name="policyForm">
 					<div class="row gtr-uniform">
 						<br>
 						<div class="col-10 col-11-xsmall" style="margin: 0 auto; width: 80%;">					
 							<input type="text" class="title_text" name="title" value="" placeholder="제목을 입력해주세요." maxlength="30">
 							<textarea class="summernote" name="content"></textarea>
 							<input type="hidden" name="writer" value="${sessionId}">
-						</div>
+							<input type="hidden" name="tab" value="notices"/>
+ 						</div>
 					</div>
-						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: lastCheck();" class="button big" style="text-decoration: none;">등록</a></h3>
+						<h3 style="text-align: center; margin-top: 2%;"><a href="javascript: validation();" class="button big" style="text-decoration: none;">등록</a></h3>
 				</form>
 			</div>
 		</div>
@@ -87,30 +77,26 @@
 		// 에디터에 커서 이동 (input창의 autofocus라고 생각하시면 됩니다.)
 		focus : true,
 		toolbar: [
+			// 동영상첨부
+			['insert',['video']],
 			// 글꼴 설정
 			['fontname', ['fontname']],
 			// 글자 크기 설정
 			['fontsize', ['fontsize']],
-			// 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-			['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+			// 기울임꼴, 밑줄,취소 선, 서식지우기
+			['style', ['italic', 'underline','strikethrough', 'clear']],
 			// 글자색
-			['color', ['forecolor','color']],
-			// 표만들기
-			['table', ['table']],
+			['color', ['forecolor','color']],	
 			// 글머리 기호, 번호매기기, 문단정렬
 			['para', ['ul', 'ol', 'paragraph']],
 			// 줄간격
-			['height', ['height']],
-			// 그림첨부, 링크만들기, 동영상첨부
-			['insert',['picture','link','video']],
-			// 확대해서보기, 도움말
-			['view', ['fullscreen', 'help']]
+			['height', ['height']]
 		],
 		// 추가한 글꼴
 		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
 		// 추가한 폰트사이즈
 		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
-		placeholder: '내용을 입력해주세요.',
+		placeholder: '동영상 URL은 위 버튼으로 첨부해주세요.',
 		disableResizeEditor: true,
 		callbacks : { 
 			onImageUpload : function(files, editor, welEditable) {
@@ -123,49 +109,25 @@
 		}
 	});
     
-	var j = 0;
-	function uploadSummernoteImageFile(file, el) {
-		data = new FormData();
-		var tipForm = $("form[name=tipForm]");
-		data.append("uploadFile", file);
-		$.ajax({
-			data : data,
-			type : "POST",
-			url : "/upload/tip",
-			contentType : false,
-			enctype : 'multipart/form-data',
-			processData : false,
-			success : function(data) {
-				console.log(data);
-				//계속 0번방을 찾는 이유는 첨부파일 4개를 하나의 배열로 보내는 것이 아니라
-				//1개씩 보내고 1개씩 응답받기 때문에 응답받는 리스트에는 계속 0번방만 존재하기 때문이다.
-				//var url = encodeURIComponent(data.t_succeedList[0].uploadPath + "\\" + data.t_succeedList[0].uuid + "_" + data.t_succeedList[0].fileName);
-				var url = encodeURIComponent(data.t_succeedList[0].uploadPath + "/" + data.t_succeedList[0].uuid + "_" + data.t_succeedList[0].fileName);
-				//$(el).summernote('editor.insertImage', "/display?fileName=" + url);
-				$(el).summernote('editor.insertImage', "/display?fileName=/tip/" + url);
-				var str = "";
-				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.t_succeedList[0].uploadPath + "'>";					
-				str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.t_succeedList[0].uuid + "'>";					
-				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.t_succeedList[0].fileName + "'>";					
-				str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
-				tipForm.append(str);
-				j++;
-			}
-		});
-	};
 	
-	function lastCheck(){
-		var tipForm = $("form[name=tipForm]");
-		var attachList = $(".allList");
-		var target = $(".summernote").val();
+	function validation(){
+		var policyForm = $("form[name='policyForm']");
+		var title = $("input[name='title']").val();
+		var content = $("textarea[name='content']").val();
 		
-		for(let i=0; i<attachList.length; i++){
-			if(target.indexOf($(attachList[i]).val()) == -1){
-				$("."+i).remove();				
-			}
+		if(title == ""){
+			alert("제목을 입력해주세요.");
+			$("input[name='title']").focus();
+			return;
 		}
-		j = 0;
-		tipForm.submit();
+		
+		if(content == ""){
+			alert("내용을 입력해주세요.");
+			$("textarea[name='content']").focus();
+			return;
+		}
+		
+		policyForm.submit();
 	}
 </script>
 </html>

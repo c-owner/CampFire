@@ -101,15 +101,16 @@
 						<c:if test="${sessionId ne null}">
 						<li><a href="/logout" class="logout">로그아웃</a></li>
 						</c:if>
-						<li><a href="/elements">고객센터</a></li>
+						<li><a href="/policy/policy?tab=notices">고객센터</a></li>
 					</ul>
 				</nav>
 				<nav id="nav">
 					<ul>
 						<li class="current">
 							<a href="/">
-								<img class="current" src="/resources/images/icon/menu-icon.png" alt="홈 바로가기" height="50">
+								<img class="current" src="/resources/images/icon/main-logo.png" alt="홈 바로가기" height="50">
 							</a></li>
+							<li class="smallMenu2"><a href="/">Home</a></li>
 							<li><a href="/policy/policy?tab=notices">공지사항</a></li>
 							<li>
 								<a href="#" class="dropdown">캠핑장</a> 
@@ -142,12 +143,16 @@
 								</ul>
 							</li>
 							<li class="smallMenu">
-								<a href="/" class="dropdown">Home</a>
 								<a href="#" class="dropdown">계정</a>
 								<ul>
-									<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
-									<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
-									<li><a href="/elements">고객센터</a></li>
+									<c:if test="${sessionId eq null}">
+										<li><a href="javascript:goSignUp()" class="signup">회원가입</a></li>
+										<li><a href="javascript:goSignIn()" class="signin">로그인</a></li>
+									</c:if>	
+									<c:if test="${sessionId ne null}">
+										<li><a href="/logout" class="logout">로그아웃</a></li>
+									</c:if>
+									<li><a href="/policy/policy?tab=terms">고객센터</a></li>
 								</ul>
 							</li>	
 						</ul>
@@ -329,7 +334,7 @@
 	imgArray[8]="/resources/images/background/bg12.jpg"; 
 	
 	function showImage(){ 
-		var imgNum = Math.round(Math.random()*9); 
+		var imgNum = Math.round(Math.random() * 8); 
 		
 		var objImg = document.getElementById("image"); 
 		

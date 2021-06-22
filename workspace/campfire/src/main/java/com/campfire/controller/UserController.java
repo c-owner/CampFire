@@ -1,12 +1,19 @@
 package com.campfire.controller;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.net.URL;
 import java.util.Random;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -206,4 +213,50 @@ public class UserController {
 		}
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
+	
+	@GetMapping(value="/callDetail", consumes="application/json", produces = {
+			MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE })
+	@ResponseBody
+	public void callDetail(HttpServletRequest req, HttpServletResponse resp, @RequestParam String contentId, @RequestParam String contentTypeId) throws Exception {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html; charset=utf-8");
+		
+		String addr = "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/locationBasedList";
+		String serviceKey = "1G8bENnYaHFKNLIrcyVPCLk2nA11EYtohtW4z6SnefGSElzlv20lKgN9TLkBLhrMojg9RSuQv09K86F1dbKysQ%3D%3D";
+		String parameter = "";
+		
+		PrintWriter out = resp.getWriter();
+		
+		parameter = parameter + "&" + "contentId=" + contentId; // jsp에서 받아올 id, type
+		parameter = parameter + "&" + "contentTypeId=" + contentTypeId;
+		parameter = parameter + "&" + "MobileOS=ETC";
+		parameter = parameter + "&" + "MobileApp=tour";
+		parameter = parameter + "&" + "_type=json";
+		
+		addr = addr + serviceKey + parameter;
+		
+		URL url = new URL(addr);
+		
+		System.out.println(addr);
+		
+		InputStream in = url.openStream();
+		
+		ByteArrayOutputStream bos1 = new ByteArrayOutputStream();
+		IOUtils.copy(in, bos1);
+		
+		in.close();
+		bos1.close();
+		
+		
+		String mbos = bos1.toString("UTF-8");
+		
+		byte[] b = mbos.getBytes("UTF-8");
+		String s = new String(b, "UTF-8");
+		out.println(s);
+		
+		JSONObject json = new JSONObject();
+		json.put("data", s);
+	}
+	
 }
+

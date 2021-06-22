@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="/resources/assets/css/search.css" />
 		<link rel="stylesheet" href="/resources/assets/css/food.css" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon/title-icon.png">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	
 	<body class="is-preload">
@@ -26,7 +27,7 @@
 			<div class="inner banner">
 					<div class="main-banner-container">
 						<div class="inner-image">
-							<a class="image main"><img src="/resources/images/background/bg09.jpg" alt="" /></a>
+							<a class="image main"><img src="/resources/images/campfire/food/campfood.jpeg" alt="" /></a>
 						</div>
 						<div class="description">
 							<div class="text-1">캠핑요리 더욱 더 다양하게</div>
@@ -55,7 +56,7 @@
 									</select>
 									<input type="hidden" name="check" value="">
 									<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}">
-									<a href="javascript:void(0)" class="button primary icon solid fa-search searchBtn" style="">검색</a>
+									<a href="javascript:void(0)" class="button primary icon solid fa-search searchBtn" style="border-radius: 6px;">검색</a>
 								</div>
 							</div>
 						</div>
@@ -72,7 +73,7 @@
 						<c:choose>
 						    <c:when test="${thumbBefore eq ''}">
 								<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
-								<img class="foodImg" src="/resources/images/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
+								<img class="foodImg" src="/resources/images/campfire/food/noneVideo.jpg" onerror="this.src='/resources/images/thumb/default_thumb.png'" alt="" /></a></div>
 						    </c:when>
 						    <c:otherwise>
 						    	<div class="imgDiv"><a href="javascript: view(${food.bno}, ${pageMaker.cri.pageNum},${pageMaker.cri.amount});" class="image">
@@ -85,7 +86,7 @@
 							<c:set var="title_org" value="${food.title}"/>
 							<c:set var="title_length" value="${fn:length(title_org)}"/>
 							<c:set var = "post_title" value = "${fn:substring(title_org, 0, 23)}" />
-								<div class="title">${post_title}<span style="font-size: 8px;">[${food.replyCnt}]</span></div>
+								<div class="title">${post_title}<span style="font-size: 8px;">[${food.replyCnt}]</span>&nbsp;<c:if test="${food.regDate > nowday}"><i class="material-icons">fiber_new</i></c:if></div>
 									<div style="text-align: right; float: right; font-size: 12px;">${food.updateDate}</div>
 								<div class="bottom">
 									<div class="username">

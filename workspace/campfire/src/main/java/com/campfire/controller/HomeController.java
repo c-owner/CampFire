@@ -69,6 +69,7 @@ public class HomeController {
 	    kakao.kakaoLogout((String)session.getAttribute("access_Token"));
 	    session.removeAttribute("access_Token");
 	    session.removeAttribute("sessionId");
+	    session.removeAttribute("admin");
 	    return "redirect:/";
 	}
 	

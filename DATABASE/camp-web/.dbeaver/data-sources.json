@@ -29,9 +29,11 @@
 					"@dbeaver-meta-use-sys-schema@": "false",
 					"@dbeaver-meta-use-simple-constraints@": "false",
 					"@dbeaver-use-meta-optimizer@": "false",
-					"@dbeaver-meta-use-alternative-table-query@": "false"
+					"@dbeaver-meta-use-alternative-table-query@": "false",
+					"oracle.meta-search-in-synonyms": "false"
 				},
-				"auth-model": "oracle_native"
+				"auth-model": "oracle_native",
+				"handlers": {}
 			},
 			"custom-properties": {
 				"database.meta.separate.connection": "false"

@@ -464,75 +464,9 @@ print 'It took ' + i + ' iterations to sort the deck.';
 					</div>
 				</div>
 			</section>
-			
-			<div class="ariga">
-			
-			</div>
 
 		 
             <jsp:include page="includes/footer.jsp" flush="false" />
             <%-- <%@include file="includes/footer.jsp" %> --%>
 	</body>
-	
-	
-	<script>
-		// "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/locationBasedList?ServiceKey=1G8bENnYaHFKNLIrcyVPCLk2nA11EYtohtW4z6SnefGSElzlv20lKgN9TLkBLhrMojg9RSuQv09K86F1dbKysQ%3D%3D&pageNo=1&numOfRows=10&MobileOS=ETC&MobileApp=AppTest&mapX=128.9096784&mapY=35.4304607&radius=200000"
-		// http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/locationBasedList?ServiceKey=1G8bENnYaHFKNLIrcyVPCLk2nA11EYtohtW4z6SnefGSElzlv20lKgN9TLkBLhrMojg9RSuQv09K86F1dbKysQ%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json
-		var html = $(".ariga");
-	
-		// var xhr = new XMLHttpRequest();
-		var url = 'http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/locationBasedList'; /*URL*/
-		var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+'1G8bENnYaHFKNLIrcyVPCLk2nA11EYtohtW4z6SnefGSElzlv20lKgN9TLkBLhrMojg9RSuQv09K86F1dbKysQ%3D%3D'; /*Service Key*/
-		// queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
-		// queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
-		// queryParams += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC'); /**/
-		// queryParams += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /**/
-		// queryParams += '&' + encodeURIComponent('mapX') + '=' + encodeURIComponent('128.9096784'); /**/
-		// queryParams += '&' + encodeURIComponent('mapY') + '=' + encodeURIComponent('35.4304607'); /**/
-		// queryParams += '&' + encodeURIComponent('radius') + '=' + encodeURIComponent('200000'); /**/
-		// xhr.open('GET', url + queryParams);
-		// xhr.onreadystatechange = function () {
-		//     if (this.readyState == 4) {
-		//        html.append('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: ' + this.responseText + "<br>  " );
-		//     }
-		// };
-
-
-		// xhr.responseType='json';
-		// var data = xhr.response;
-		// var array = JSON.parse(data);
-		// xhr.onreadystatechange = function () {
-		//     if (this.readyState == 4) {
-						
-		// 			for (let i = 0; i < 5; i++ ) {
-		// 				console.log(array[i].doNm + ' __ ' + array[i].facltNm);
-		// 			}
-		//        html.append('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: ' + "<br>  " );
-		//     }
-		// };
-	
-		// xhr.send('');
-		$.ajax({
-			url: url + queryParams + "&_type=json",
-			dataType:"text",
-			contentType: "application/json",
-			success: function(list){
-				//for(){}
-				var eventArray=JSON.parse(list);
-				if(JSON.parse(list).length==0){
-					check=true;
-				} else { 
-					for(let i=0; i<eventArray.length;i++){
-						content+="<br>"+ eventArray.length+"";
-						/* content+="<dl><dd class='#'>"+eventArray[i].board_Title+"</dd></dl><dl><dd class='#'>"+eventArray[i].board_Address+"</dd></dl></a></li>"; */
-						content+="하하 ";
-					}
-				}
-				
-				html.append(content);
-			}	
-		});
-
-	</script>
-	
 </html>

@@ -143,8 +143,8 @@ $('.summernote').summernote({
 		    ['height', ['height']],
 		    // 그림첨부, 링크만들기, 동영상첨부
 		    ['insert',['picture','link','video']],
-		    // 코드보기, 확대해서보기, 도움말
-		    ['view', ['codeview','fullscreen', 'help']]
+		    // 확대해서보기, 도움말
+		    ['view', ['fullscreen', 'help']]
 		  ],
 		  // 추가한 글꼴
 		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
@@ -189,9 +189,9 @@ function uploadSummernoteImageFile(file, el) {
 				check = true;				
 			}
 			
-			str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.m_succeedList[0].uploadPath + "'>";               
-            str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.m_succeedList[0].uuid + "'>";               
-            str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.m_succeedList[0].fileName + "'>";               
+			str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].uploadPath' value='" + data.r_succeedList[0].uploadPath + "'>";               
+            str += "<input type='hidden' class='allList "+j+"' name='attachList["+j+"].uuid' value='" + data.r_succeedList[0].uuid + "'>";               
+            str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileName' value='" + data.r_succeedList[0].fileName + "'>";               
             str += "<input type='hidden' class='"+j+"' name='attachList["+j+"].fileType' value='true'>";
 			reviewForm.append(str);
 			j++;

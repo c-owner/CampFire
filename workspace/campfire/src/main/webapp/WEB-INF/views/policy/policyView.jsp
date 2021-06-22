@@ -58,7 +58,7 @@
 				<div class="row" style="display:block;">
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">${policy.title}</h2></div>
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto; text-align: right;">
-						<c:if test="${sessionId eq board.writer}">
+						<c:if test="${admin eq '1' || sessionId eq policy.writer}">
 							<a class="button small" id="boardModify" href="/policy/policyModify${cri.getListLink()}&bno=${policy.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</c:if>

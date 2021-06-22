@@ -35,6 +35,17 @@
 				color:#545454;
 				margin: 0;
 			}
+			
+			@media (max-width: 736px){
+				.major {
+					width: 100%;
+				}
+				
+				.col-10, .col-11-xsmall {
+					width: 100% !important;
+					padding: 0;
+				}
+			}
 		</style>
 	</head>
 
@@ -91,8 +102,8 @@
 				['height', ['height']],
 				// 그림첨부, 링크만들기, 동영상첨부
 				['insert',['picture','link','video']],
-				// 코드보기, 확대해서보기, 도움말
-				['view', ['codeview','fullscreen', 'help']]
+				// 확대해서보기, 도움말
+				['view', ['fullscreen', 'help']]
 			],
 			// 추가한 글꼴
 			fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],

@@ -73,7 +73,8 @@
 							</a>
 						</div>
 						<div class="col-9" style="text-align: right;">
-								<input type="button" class="button" value="수정" onclick="location.href='/review/reviewModify${cri.getListLink()}&bno=${review.bno}'"/>
+							<c:if test="${admin eq '1' || sessionId eq review.writer}"></c:if>
+								<a class="button small" href='/review/reviewModify${cri.getListLink()}&bno=${review.bno}' style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 								<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</div>
 					</div>
@@ -200,8 +201,8 @@
 				var reply = $("textarea[name='reply']").val();
 				/* var replyer = $("input[name='replyer']").val(); */
 				
-				if(reply.length > 1000 || reply.length == '' || reply.length < 10) {
-					alert('글자 수는 10자 이상 300자 이내로 작성하셔야 합니다.');
+				if(reply.length > 1000 || reply.length == '') {
+					alert('글자 수는 1자 이상 300자 이내로 작성하셔야 합니다.');
 					return;
 				}
 				
@@ -357,12 +358,12 @@
 		**********************************************/
 		$('#reply').keyup(function (e){
 			var reply_Content = $(this).val();
-			$('#counter').html("("+reply_Content.length+" / 최대 1000자)");    //글자수 실시간 카운팅
+			$('#counter').html("("+reply_Content.length+" / 최대 300자)");    //글자수 실시간 카운팅
 
-			if (reply_Content.length > 1000){
+			if (reply_Content.length > 300){
 				alert("최대 1000자까지 입력 가능합니다.");
-				$(this).val(reply_Content.substring(0, 1000));
-				$('#counter').html("1000 / 최대 1000자)");
+				$(this).val(reply_Content.substring(0, 300));
+				$('#counter').html("300 / 최대 300자)");
 			}
 		});
 		

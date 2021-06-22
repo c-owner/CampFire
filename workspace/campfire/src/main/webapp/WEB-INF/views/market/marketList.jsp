@@ -96,6 +96,10 @@
 				white-space: nowrap;
 			}
 			
+			.row, .contentDiv {
+				width: 100%;
+			}
+			
 			@media screen and (max-width: 1680px){
 				.writeBtn {
 					padding-left: 73%;
@@ -172,6 +176,18 @@
 					padding: 0 1.25rem 0 1.25rem;
 				}
 			}
+			
+			@media screen and (max-width: 320px){
+				.contentDiv {
+					width: 100%;
+					margin: 0 auto;
+					padding: 0;
+				}
+				
+				.card-title {
+					width: 250px;
+				}
+			}
 		</style>
 	</head>
 
@@ -207,10 +223,10 @@
 					<ul style="padding-left: 0;">
 		       			<c:choose>
 		       				<c:when test="${check == 'F'}">
-				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market1.JPG" alt="슬라이드1">
+				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market/market1.JPG" alt="슬라이드1">
 		       				</c:when>
 		       				<c:otherwise>
-				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market2.JPG" alt="슬라이드1">
+				       			<img style="max-width: 100%;height: auto;" src="/resources/images/market/market2.JPG" alt="슬라이드1">
 		       				</c:otherwise>
 		       			</c:choose>
 	       			</ul>

@@ -158,6 +158,17 @@
 				.itemPrice {
 					display: block !important;
 				}
+				
+				.thumbnailDiv {
+					width: 100%;
+				}
+				
+				.col-6, .col-10-medium, col-11-small{
+					width: 100% !important;
+					float: none;
+					max-width: 100%;
+					flex: none;
+				}
 			}
 			
 			@media screen and (max-width: 575px){
@@ -167,6 +178,37 @@
 				}
 				
 				.moveWrite, .categoryDiv {width: 100%;}
+			}
+			
+			@media screen and (max-width: 320px){
+				.thumbnailDiv {
+					height: 300px;
+					float: none;
+				}
+				
+				.itemPicture {
+					height: 100%;
+					margin-top: 5%;
+					padding: 0;
+					float: none;
+				}
+				
+				.text-muted {
+					margin-top: 5%;
+				}
+				
+				h2 {
+					margin: 0 auto !important;
+					padding: 0 !important;
+				}
+				
+				.itemPrice {
+					font-size: 25px;
+				}
+				
+				.itemDiv {
+					padding: 0;
+				}
 			}
 		</style>
 	</head>
@@ -200,8 +242,8 @@
 					</div>
 				</div>
 				<div class="col-6 col-10-medium col-11-small btnDiv">
-					<a class="button small" id="boardModify" href="/free/freeModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="far fa-lightbulb"></i>&nbsp;신고</a>
-					<c:if test="${sessionId eq board.writer}">
+					<a class="button small" id="boardModify" href="/free/freeModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="far fa-lightbulb" style="color: red;"></i>&nbsp;신고</a>
+					<c:if test="${sessionId eq board.writer || admin eq '1' }">
 						<a class="button small" id="boardModify" href="/market/marketModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 						<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 					</c:if>

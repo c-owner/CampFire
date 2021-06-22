@@ -41,9 +41,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ReviewController {
 	
-	final String fileFolder = "/usr/local/upload/";
-	final String uploadFolder = "/usr/local/upload";
-	
 	private ReviewBoardService service; 
 	
 	@GetMapping(value = "/reviewList")
@@ -156,7 +153,7 @@ public class ReviewController {
 		
 		attachList.forEach(f_vo -> {
 			try {
-				Path origin = Paths.get(fileFolder + "/review/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/review/"+ f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {

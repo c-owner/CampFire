@@ -39,6 +39,22 @@
 			.far {
 				color: red;
 			}
+			
+			@media (max-width: 736px){
+				.col-6, .col-10-medium, .col-11-small {
+					padding: 0;
+				}
+			
+				.row {
+					width: 100%;
+					margin: 0 auto;
+				}
+				
+				.col-9, .col-3 {
+					width: 100% !important;
+					padding: 0;
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -55,7 +71,7 @@
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto;"><h2 style="font-weight: bold;">제목 : ${board.title}</h2></div>
 					<div class="col-6 col-10-medium col-11-small" style="margin: 0 auto; text-align: right;">
 						<a class="button small" id="boardModify" href="/campfire/guideModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="far fa-lightbulb"></i>&nbsp;신고</a>
-						<c:if test="${sessionId eq board.writer}">
+						<c:if test="${sessionId eq board.writer || admin eq '1' }">
 							<a class="button small" id="boardModify" href="/campfire/guideModify${cri.getListLink()}&bno=${board.bno}" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-pencil-alt"></i>&nbsp;수정</a>
 							<a class="button small" id="boardRemove" href="javascript:removeForm.submit()" style="box-shadow: 0 0 0 0.5px black"><i class="fas fa-trash-alt"></i>&nbsp;삭제</a>
 						</c:if>

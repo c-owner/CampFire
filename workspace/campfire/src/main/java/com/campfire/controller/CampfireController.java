@@ -49,8 +49,6 @@ public class CampfireController {
 	private GuideBoardService g_service;
 	private FoodBoardService f_service;
 	
-	final String fileFolder = "/usr/local/upload/";
-
 // 캠핑 팁---------------------------------------------------------------------------------------------------------------------
 	@GetMapping("/tipList")
 	public void tipList(Criteria cri, Model model) {
@@ -225,6 +223,11 @@ public class CampfireController {
 // 캠핑 음식-------------------------------------------------------------------------------------------------------------------------------------------
 	@GetMapping(value = "/foodList")
 	public void foodList(Criteria cri, Model model) { 
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		String nowday = format.format(cal.getTime());
+		
+		model.addAttribute("nowday",nowday);
 		model.addAttribute("list", f_service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, f_service.getTotal(cri)));
 	}
@@ -330,7 +333,7 @@ public class CampfireController {
 		
 		attachList.forEach(f_vo -> {
 			try {
-				Path origin = Paths.get(fileFolder + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
+				Path origin = Paths.get("/usr/local/upload/" + f_vo.getUploadPath() + "/" + f_vo.getUuid() + "_" + f_vo.getFileName());
 				Files.delete(origin);
 				
 			} catch (IOException e) {

@@ -15,10 +15,12 @@ import org.springframework.stereotype.Component;
 import com.campfire.domain.freeBoard.FreeBoardAttachVO;
 import com.campfire.domain.guideBoard.GuideBoardAttachVO;
 import com.campfire.domain.marketBoard.MarketBoardAttachVO;
+import com.campfire.domain.reviewBoard.ReviewBoardAttachVO;
 import com.campfire.domain.tipBoard.TipBoardAttachVO;
 import com.campfire.mapper.FreeBoardAttachMapper;
 import com.campfire.mapper.GuideBoardAttachMapper;
 import com.campfire.mapper.MarketBoardAttachMapper;
+import com.campfire.mapper.ReviewBoardAttachMapper;
 import com.campfire.mapper.TipBoardAttachMapper;
 
 import lombok.AllArgsConstructor;
@@ -30,6 +32,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class FileCheckTask {
 	
+	private ReviewBoardAttachMapper r_attachMapper;
 	private FreeBoardAttachMapper f_attachMapper;
 	private TipBoardAttachMapper t_attachMapper;
 	private GuideBoardAttachMapper g_attachMapper;
@@ -122,6 +125,25 @@ public class FileCheckTask {
 		for (File m_file : m_removeFiles) {
 			log.warn(m_file.getPath() + " deleted");
 			m_file.delete();
+		}
+		
+		// 리뷰
+		List<ReviewBoardAttachVO> r_fileList = r_attachMapper.getOldFiles();
+		List<Path> r_fileListPaths = r_fileList.stream().map(r_vo -> 
+		//Paths.get("C:\\upload", r_vo.getUploadPath(), r_vo.getUuid() + "_" + r_vo.getFileName()))
+		Paths.get("/usr/local/upload/", r_vo.getUploadPath(), r_vo.getUuid() + "_" + r_vo.getFileName()))
+				.collect(Collectors.toList());
+		
+		r_fileListPaths.forEach(log::warn);
+		
+		//File m_targetDir = Paths.get("C:\\upload\\market\\", getFolderYesterDay()).toFile();
+		File r_targetDir = Paths.get("/usr/local/upload/review/", getFolderYesterDay()).toFile();
+		
+		File[] r_removeFiles = r_targetDir.listFiles(file -> !r_fileListPaths.contains(file.toPath()));
+		
+		for (File r_file : r_removeFiles) {
+			log.warn(r_file.getPath() + " deleted");
+			r_file.delete();
 		}
 	}
 	
